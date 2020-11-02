@@ -6,7 +6,7 @@ with GNU radio built in the filesystem using OE meta-sdr layer
 Build Instructions
 
 1. Clone repo
-2. Go to top-lever directory
+2. Go to top-level directory
 3. $ source setupsdk
 4. $ MACHINE=zcu106-zynqmp bitbake petalinux-image-minimal
 
