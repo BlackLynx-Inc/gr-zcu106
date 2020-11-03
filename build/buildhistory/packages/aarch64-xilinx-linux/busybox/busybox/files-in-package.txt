@@ -1,0 +1,10 @@
+drwxr-xr-x root       root             4096 ./bin
+lrwxrwxrwx root       root               14 ./bin/busybox -> busybox.nosuid
+-rwxr-xr-x root       root           615480 ./bin/busybox.nosuid
+-rwsr-xr-x root       root            77024 ./bin/busybox.suid
+lrwxrwxrwx root       root               14 ./bin/sh -> busybox.nosuid
+drwxr-xr-x root       root             4096 ./etc
+-rw-r--r-- root       root             2524 ./etc/busybox.links.nosuid
+-rw-r--r-- root       root              102 ./etc/busybox.links.suid
+drwxr-xr-x root       root             4096 ./etc/init.d
+-rwxr-xr-x root       root              579 ./etc/init.d/inetd.busybox

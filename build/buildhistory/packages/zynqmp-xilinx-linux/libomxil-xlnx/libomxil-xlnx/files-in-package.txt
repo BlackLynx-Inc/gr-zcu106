@@ -1,0 +1,11 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+-rwxr-xr-x root       root           109520 ./usr/bin/omx_decoder
+-rwxr-xr-x root       root           109504 ./usr/bin/omx_encoder
+drwxr-xr-x root       root             4096 ./usr/lib
+-rwxr-xr-x root       root            19912 ./usr/lib/libOMX.allegro.core.so.1.1.2
+lrwxrwxrwx root       root               28 ./usr/lib/libOMX.allegro.core.so.1 -> libOMX.allegro.core.so.1.1.2
+-rwxr-xr-x root       root           464584 ./usr/lib/libOMX.allegro.video_decoder.so.1.1.2
+lrwxrwxrwx root       root               37 ./usr/lib/libOMX.allegro.video_decoder.so.1 -> libOMX.allegro.video_decoder.so.1.1.2
+-rwxr-xr-x root       root           526888 ./usr/lib/libOMX.allegro.video_encoder.so.1.1.2
+lrwxrwxrwx root       root               37 ./usr/lib/libOMX.allegro.video_encoder.so.1 -> libOMX.allegro.video_encoder.so.1.1.2

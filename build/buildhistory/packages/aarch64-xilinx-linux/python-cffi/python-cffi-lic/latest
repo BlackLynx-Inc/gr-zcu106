@@ -1,0 +1,8 @@
+PV = 1.11.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2374
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-cffi/LICENSE /usr/share/licenses/python-cffi/generic_MIT

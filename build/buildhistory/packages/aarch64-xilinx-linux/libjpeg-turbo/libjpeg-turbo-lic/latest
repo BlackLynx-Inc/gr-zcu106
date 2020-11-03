@@ -1,0 +1,10 @@
+PE = 1
+PV = 1.5.2
+PR = r0
+PKG = libjpeg-lic
+RPROVIDES = libjpeg-turbo-lic (=1.5.2)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2883
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libjpeg-turbo/cdjpeg.h /usr/share/licenses/libjpeg-turbo/djpeg.c /usr/share/licenses/libjpeg-turbo/generic_BSD-3-Clause /usr/share/licenses/libjpeg-turbo/jpeglib.h

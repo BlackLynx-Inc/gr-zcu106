@@ -1,0 +1,5 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+DEPENDS = qtbase qtbase-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = qtxmlpatterns-lic qtxmlpatterns-ptest qtxmlpatterns-qmlplugins-dbg qtxmlpatterns-tools-dbg qtxmlpatterns-plugins-dbg qtxmlpatterns-qmldesigner qtxmlpatterns-qmlplugins qtxmlpatterns-tools qtxmlpatterns-plugins qtxmlpatterns-mkspecs qtxmlpatterns-examples-dev qtxmlpatterns-examples-staticdev qtxmlpatterns-examples-dbg qtxmlpatterns-examples qtxmlpatterns-dbg qtxmlpatterns-staticdev qtxmlpatterns-dev qtxmlpatterns-doc qtxmlpatterns-locale qtxmlpatterns
+LAYER = qt5-layer

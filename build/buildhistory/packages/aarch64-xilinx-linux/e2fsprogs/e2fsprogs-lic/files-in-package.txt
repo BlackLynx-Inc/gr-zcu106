@@ -1,0 +1,15 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/e2fsprogs
+-rw-r--r-- root       root             1391 ./usr/share/licenses/e2fsprogs/COPYING
+-rw-r--r-- root       root              192 ./usr/share/licenses/e2fsprogs/e2p.h
+-rw-r--r-- root       root              569 ./usr/share/licenses/e2fsprogs/et_name.c
+-rw-r--r-- root       root              228 ./usr/share/licenses/e2fsprogs/ext2fs.h
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/e2fsprogs/generic_BSD
+-rw-rw-r-- root       root            17611 ./usr/share/licenses/e2fsprogs/generic_GPLv2
+-rw-rw-r-- root       root            24925 ./usr/share/licenses/e2fsprogs/generic_LGPLv2
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/e2fsprogs/generic_MIT
+-rw-r--r-- root       root            44569 ./usr/share/licenses/e2fsprogs/NOTICE
+-rw-r--r-- root       root              949 ./usr/share/licenses/e2fsprogs/ss.h
+-rw-r--r-- root       root             1601 ./usr/share/licenses/e2fsprogs/uuid.h.in

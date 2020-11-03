@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./lib
+drwxr-xr-x root       root             4096 ./lib/modules
+drwxr-xr-x root       root             4096 ./lib/modules/4.14.0-xilinx-v2018.3
+drwxr-xr-x root       root             4096 ./lib/modules/4.14.0-xilinx-v2018.3/extra
+drwxr-xr-x root       root             4096 ./lib/modules/4.14.0-xilinx-v2018.3/extra/al5d
+-rw-r--r-- root       root            16832 ./lib/modules/4.14.0-xilinx-v2018.3/extra/al5d/al5d.ko

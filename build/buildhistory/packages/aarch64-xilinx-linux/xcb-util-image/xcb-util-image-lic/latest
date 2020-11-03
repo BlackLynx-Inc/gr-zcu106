@@ -1,0 +1,9 @@
+PV = 0.4.0
+PR = r0
+PKG = libxcb-image-lic
+RPROVIDES = xcb-util-image-lic (=0.4.0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3779
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xcb-util-image/generic_MIT /usr/share/licenses/xcb-util-image/xcb_image.c /usr/share/licenses/xcb-util-image/xcb_image.h

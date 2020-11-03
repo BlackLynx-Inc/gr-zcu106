@@ -1,0 +1,1 @@
+#!/bin/sh\nif true && [ -z "$D" -a -x "/etc/init.d/gpsd" ]; then\n\t/etc/init.d/gpsd stop || :\nfi\n

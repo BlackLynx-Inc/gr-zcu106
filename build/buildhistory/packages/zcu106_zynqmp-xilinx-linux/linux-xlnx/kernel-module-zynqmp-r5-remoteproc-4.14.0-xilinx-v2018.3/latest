@@ -1,0 +1,9 @@
+PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
+PR = r0
+PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
+RPROVIDES = kernel-module-zynqmp-r5-remoteproc
+RDEPENDS = kernel-4.14.0-xilinx-v2018.3
+RRECOMMENDS = 
+PKGSIZE = 16832
+FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/remoteproc/zynqmp_r5_remoteproc.ko /etc/modules-load.d/zynqmp_r5_remoteproc.conf /etc/modprobe.d/zynqmp_r5_remoteproc.conf
+FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/remoteproc/zynqmp_r5_remoteproc.ko

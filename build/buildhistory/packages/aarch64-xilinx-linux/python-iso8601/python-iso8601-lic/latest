@@ -1,0 +1,8 @@
+PV = 0.1.12
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2145
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-iso8601/LICENSE /usr/share/licenses/python-iso8601/generic_MIT

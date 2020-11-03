@@ -1,0 +1,4 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+lrwxrwxrwx root       root               34 ./usr/lib/libgnuradio-filter-3.8git.so -> libgnuradio-filter-3.8git.so.0.0.0
+lrwxrwxrwx root       root               34 ./usr/lib/libgnuradio-filter.so -> libgnuradio-filter-3.8git.so.0.0.0

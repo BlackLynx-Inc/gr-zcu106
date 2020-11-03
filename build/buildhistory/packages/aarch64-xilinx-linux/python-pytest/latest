@@ -1,0 +1,5 @@
+PV = 3.2.2
+PR = r0
+DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-pytest-lic python-pytest-dbg python-pytest-staticdev python-pytest-dev python-pytest-doc python-pytest-locale python-pytest
+LAYER = meta-python

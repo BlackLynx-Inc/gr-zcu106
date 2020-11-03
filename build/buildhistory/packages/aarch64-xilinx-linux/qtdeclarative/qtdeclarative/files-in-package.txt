@@ -1,0 +1,17 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+-rwxr-xr-x root       root          3649224 ./usr/lib/libQt5Qml.so.5.9.6
+lrwxrwxrwx root       root               18 ./usr/lib/libQt5Qml.so.5.9 -> libQt5Qml.so.5.9.6
+lrwxrwxrwx root       root               18 ./usr/lib/libQt5Qml.so.5 -> libQt5Qml.so.5.9.6
+-rwxr-xr-x root       root           525800 ./usr/lib/libQt5QuickParticles.so.5.9.6
+lrwxrwxrwx root       root               29 ./usr/lib/libQt5QuickParticles.so.5.9 -> libQt5QuickParticles.so.5.9.6
+lrwxrwxrwx root       root               29 ./usr/lib/libQt5QuickParticles.so.5 -> libQt5QuickParticles.so.5.9.6
+-rwxr-xr-x root       root          3900320 ./usr/lib/libQt5Quick.so.5.9.6
+lrwxrwxrwx root       root               20 ./usr/lib/libQt5Quick.so.5.9 -> libQt5Quick.so.5.9.6
+lrwxrwxrwx root       root               20 ./usr/lib/libQt5Quick.so.5 -> libQt5Quick.so.5.9.6
+-rwxr-xr-x root       root           144272 ./usr/lib/libQt5QuickTest.so.5.9.6
+lrwxrwxrwx root       root               24 ./usr/lib/libQt5QuickTest.so.5.9 -> libQt5QuickTest.so.5.9.6
+lrwxrwxrwx root       root               24 ./usr/lib/libQt5QuickTest.so.5 -> libQt5QuickTest.so.5.9.6
+-rwxr-xr-x root       root            65400 ./usr/lib/libQt5QuickWidgets.so.5.9.6
+lrwxrwxrwx root       root               27 ./usr/lib/libQt5QuickWidgets.so.5.9 -> libQt5QuickWidgets.so.5.9.6
+lrwxrwxrwx root       root               27 ./usr/lib/libQt5QuickWidgets.so.5 -> libQt5QuickWidgets.so.5.9.6

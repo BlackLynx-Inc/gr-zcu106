@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/kbproto
+-rw-r--r-- root       root             1172 ./usr/share/licenses/kbproto/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/kbproto/generic_MIT-style
+-rw-r--r-- root       root             1293 ./usr/share/licenses/kbproto/XKBproto.h

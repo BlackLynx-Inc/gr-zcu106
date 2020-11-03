@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libxfixes
+-rw-r--r-- root       root             2232 ./usr/share/licenses/libxfixes/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/libxfixes/generic_MIT-style

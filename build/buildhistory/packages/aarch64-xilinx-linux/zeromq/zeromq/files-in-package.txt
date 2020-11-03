@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+-rwxr-xr-x root       root             6168 ./usr/bin/curve_keygen
+drwxr-xr-x root       root             4096 ./usr/lib
+-rwxr-xr-x root       root           404560 ./usr/lib/libzmq.so.5.0.2
+lrwxrwxrwx root       root               15 ./usr/lib/libzmq.so.5 -> libzmq.so.5.0.2

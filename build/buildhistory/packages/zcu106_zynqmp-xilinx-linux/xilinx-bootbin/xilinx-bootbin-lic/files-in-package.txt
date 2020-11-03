@@ -1,0 +1,5 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xilinx-bootbin
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/xilinx-bootbin/generic_BSD

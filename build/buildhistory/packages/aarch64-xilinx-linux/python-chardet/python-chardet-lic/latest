@@ -1,0 +1,8 @@
+PV = 3.0.4
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 52310
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-chardet/LICENSE /usr/share/licenses/python-chardet/generic_LGPL-2.1

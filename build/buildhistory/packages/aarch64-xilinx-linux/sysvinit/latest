@@ -1,0 +1,5 @@
+PV = 2.88dsf
+PR = r14
+DEPENDS = base-passwd update-rc.d-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives
+PACKAGES = sysvinit-lic sysvinit-pidof sysvinit-sulogin sysvinit-dbg sysvinit-staticdev sysvinit-dev sysvinit-doc sysvinit-locale sysvinit
+LAYER = core

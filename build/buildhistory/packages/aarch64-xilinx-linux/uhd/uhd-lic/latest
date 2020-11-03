@@ -1,0 +1,8 @@
+PV = 3.10.2.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 35490
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/uhd/LICENSE /usr/share/licenses/uhd/generic_GPLv3

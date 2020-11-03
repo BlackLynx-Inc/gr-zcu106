@@ -1,0 +1,1 @@
+#!/bin/sh\n\tupdate-alternatives --remove  brctl /usr/sbin/brctl.bridge-utils\n

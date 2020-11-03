@@ -1,0 +1,8 @@
+PV = git
+PR = r0
+RPROVIDES = 
+RDEPENDS = libomxil-xlnx (= git-r0)
+RRECOMMENDS = glibc-dev kernel-module-vcu-dev libgcc-dev libstdc++-dev libvcu-xlnx-dev
+PKGSIZE = 369521
+FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/libomxil-xlnx/*.la /lib/*.la
+FILELIST = /usr/include/vcu-omx-il/OMX_Allegro.h /usr/include/vcu-omx-il/OMX_Audio.h /usr/include/vcu-omx-il/OMX_Component.h /usr/include/vcu-omx-il/OMX_ComponentAlg.h /usr/include/vcu-omx-il/OMX_ComponentExt.h /usr/include/vcu-omx-il/OMX_ContentPipe.h /usr/include/vcu-omx-il/OMX_Core.h /usr/include/vcu-omx-il/OMX_CoreAlg.h /usr/include/vcu-omx-il/OMX_CoreExt.h /usr/include/vcu-omx-il/OMX_IVCommon.h /usr/include/vcu-omx-il/OMX_IVCommonAlg.h /usr/include/vcu-omx-il/OMX_Image.h /usr/include/vcu-omx-il/OMX_ImageExt.h /usr/include/vcu-omx-il/OMX_Index.h /usr/include/vcu-omx-il/OMX_IndexAlg.h /usr/include/vcu-omx-il/OMX_IndexExt.h /usr/include/vcu-omx-il/OMX_Other.h /usr/include/vcu-omx-il/OMX_Types.h /usr/include/vcu-omx-il/OMX_Video.h /usr/include/vcu-omx-il/OMX_VideoAlg.h /usr/include/vcu-omx-il/OMX_VideoExt.h /usr/include/vcu-omx-il/OMX_VideoHEVCAndroid.h /usr/lib/libOMX.allegro.core.so /usr/lib/libOMX.allegro.video_decoder.so /usr/lib/libOMX.allegro.video_encoder.so

@@ -1,0 +1,9 @@
+PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
+PR = r0
+PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
+RPROVIDES = kernel-module-xen-scsifront
+RDEPENDS = kernel-4.14.0-xilinx-v2018.3
+RRECOMMENDS = 
+PKGSIZE = 24848
+FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/scsi/xen-scsifront.ko /etc/modules-load.d/xen-scsifront.conf /etc/modprobe.d/xen-scsifront.conf
+FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/scsi/xen-scsifront.ko

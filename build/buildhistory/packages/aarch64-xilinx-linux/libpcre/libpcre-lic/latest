@@ -1,0 +1,8 @@
+PV = 8.41
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 4681
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libpcre/LICENCE /usr/share/licenses/libpcre/generic_BSD

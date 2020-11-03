@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/gnome-desktop-testing
+-rw-r--r-- root       root            25292 ./usr/share/licenses/gnome-desktop-testing/COPYING
+-rw-rw-r-- root       root            24925 ./usr/share/licenses/gnome-desktop-testing/generic_LGPLv2
+-rw-r--r-- root       root              874 ./usr/share/licenses/gnome-desktop-testing/gnome-desktop-testing-runner.c

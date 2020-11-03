@@ -1,0 +1,5 @@
+PV = 1.24.1
+PR = r0
+DEPENDS = initscripts kern-tools-native update-rc.d virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives
+PACKAGES = busybox-lic busybox-inetd busybox-ptest busybox-httpd busybox-udhcpd busybox-udhcpc busybox-syslog busybox-mdev busybox-hwclock busybox-dbg busybox-staticdev busybox-dev busybox-doc busybox-locale busybox
+LAYER = core

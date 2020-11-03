@@ -1,0 +1,15 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/qt5
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/echoplugin
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/echoplugin/plugins
+-rwxr-xr-x root       root            10304 ./usr/share/qt5/examples/widgets/tools/echoplugin/plugins/libechoplugin.so
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/plugandpaint
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/plugandpaint/plugins
+-rwxr-xr-x root       root            18648 ./usr/share/qt5/examples/widgets/tools/plugandpaint/plugins/libpnp_extrafilters.so
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/styleplugin
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/styleplugin/styles
+-rwxr-xr-x root       root            18824 ./usr/share/qt5/examples/widgets/tools/styleplugin/styles/libsimplestyleplugin.so

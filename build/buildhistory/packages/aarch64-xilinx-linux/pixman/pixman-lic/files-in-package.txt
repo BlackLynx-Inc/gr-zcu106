@@ -1,0 +1,10 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/pixman
+-rw-r--r-- root       root             2087 ./usr/share/licenses/pixman/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/pixman/generic_MIT
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/pixman/generic_MIT-style
+-rw-rw-r-- root       root               52 ./usr/share/licenses/pixman/generic_PD
+-rw-r--r-- root       root             1219 ./usr/share/licenses/pixman/pixman-arm-neon-asm.h
+-rw-r--r-- root       root             1219 ./usr/share/licenses/pixman/pixman-matrix.c

@@ -1,0 +1,13 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/qt5
+drwxr-xr-x root       root             4096 ./usr/lib/qt5/mkspecs
+drwxr-xr-x root       root             4096 ./usr/lib/qt5/mkspecs/modules
+-rw-r--r-- root       root             1016 ./usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri
+-rw-r--r-- root       root              590 ./usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
+-rw-r--r-- root       root              551 ./usr/lib/qt5/mkspecs/modules/qt_lib_designer_private.pri
+-rw-r--r-- root       root              468 ./usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
+-rw-r--r-- root       root              459 ./usr/lib/qt5/mkspecs/modules/qt_lib_help_private.pri
+-rw-r--r-- root       root              533 ./usr/lib/qt5/mkspecs/modules/qt_lib_uiplugin.pri
+-rw-r--r-- root       root              532 ./usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
+-rw-r--r-- root       root              504 ./usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri

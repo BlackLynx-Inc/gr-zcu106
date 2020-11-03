@@ -1,0 +1,16 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/iso8601
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info
+-rw-r--r-- root       root                1 ./usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/dependency_links.txt
+-rw-r--r-- root       root             9048 ./usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/PKG-INFO
+-rw-r--r-- root       root              265 ./usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/SOURCES.txt
+-rw-r--r-- root       root                8 ./usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/top_level.txt
+-rw-r--r-- root       root               23 ./usr/lib/python2.7/site-packages/iso8601/__init__.py
+-rw-r--r-- root       root              177 ./usr/lib/python2.7/site-packages/iso8601/__init__.pyc
+-rw-r--r-- root       root             6670 ./usr/lib/python2.7/site-packages/iso8601/iso8601.py
+-rw-r--r-- root       root             7987 ./usr/lib/python2.7/site-packages/iso8601/iso8601.pyc
+-rw-r--r-- root       root             7802 ./usr/lib/python2.7/site-packages/iso8601/test_iso8601.py
+-rw-r--r-- root       root             7303 ./usr/lib/python2.7/site-packages/iso8601/test_iso8601.pyc

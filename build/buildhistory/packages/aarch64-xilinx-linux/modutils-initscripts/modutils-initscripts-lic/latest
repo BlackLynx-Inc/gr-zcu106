@@ -1,0 +1,8 @@
+PV = 1.0
+PR = r7
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 66
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/modutils-initscripts/LICENSE /usr/share/licenses/modutils-initscripts/generic_PD

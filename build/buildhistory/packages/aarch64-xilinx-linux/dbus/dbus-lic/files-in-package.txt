@@ -1,0 +1,8 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/dbus
+-rw-r--r-- root       root            29176 ./usr/share/licenses/dbus/COPYING
+-rw-r--r-- root       root              779 ./usr/share/licenses/dbus/dbus.h
+-rw-rw-r-- root       root             9014 ./usr/share/licenses/dbus/generic_AFL-2
+-rw-rw-r-- root       root            17611 ./usr/share/licenses/dbus/generic_GPLv2

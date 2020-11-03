@@ -1,0 +1,29 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/include
+drwxr-xr-x root       root             4096 ./usr/include/vcu-omx-il
+-rw-r--r-- root       root             1630 ./usr/include/vcu-omx-il/OMX_Allegro.h
+-rw-r--r-- root       root            75601 ./usr/include/vcu-omx-il/OMX_Audio.h
+-rw-r--r-- root       root             3206 ./usr/include/vcu-omx-il/OMX_ComponentAlg.h
+-rw-r--r-- root       root             2079 ./usr/include/vcu-omx-il/OMX_ComponentExt.h
+-rw-r--r-- root       root            22306 ./usr/include/vcu-omx-il/OMX_Component.h
+-rw-r--r-- root       root             9003 ./usr/include/vcu-omx-il/OMX_ContentPipe.h
+-rw-r--r-- root       root             2242 ./usr/include/vcu-omx-il/OMX_CoreAlg.h
+-rw-r--r-- root       root             2808 ./usr/include/vcu-omx-il/OMX_CoreExt.h
+-rw-r--r-- root       root            68218 ./usr/include/vcu-omx-il/OMX_Core.h
+-rw-r--r-- root       root             1984 ./usr/include/vcu-omx-il/OMX_ImageExt.h
+-rw-r--r-- root       root            12896 ./usr/include/vcu-omx-il/OMX_Image.h
+-rw-r--r-- root       root             6450 ./usr/include/vcu-omx-il/OMX_IndexAlg.h
+-rw-r--r-- root       root             3732 ./usr/include/vcu-omx-il/OMX_IndexExt.h
+-rw-r--r-- root       root            17505 ./usr/include/vcu-omx-il/OMX_Index.h
+-rw-r--r-- root       root             4398 ./usr/include/vcu-omx-il/OMX_IVCommonAlg.h
+-rw-r--r-- root       root            30987 ./usr/include/vcu-omx-il/OMX_IVCommon.h
+-rw-r--r-- root       root            17636 ./usr/include/vcu-omx-il/OMX_Other.h
+-rw-r--r-- root       root            12579 ./usr/include/vcu-omx-il/OMX_Types.h
+-rw-r--r-- root       root            23661 ./usr/include/vcu-omx-il/OMX_VideoAlg.h
+-rw-r--r-- root       root             4024 ./usr/include/vcu-omx-il/OMX_VideoExt.h
+-rw-r--r-- root       root            42097 ./usr/include/vcu-omx-il/OMX_Video.h
+-rw-r--r-- root       root             4377 ./usr/include/vcu-omx-il/OMX_VideoHEVCAndroid.h
+drwxr-xr-x root       root             4096 ./usr/lib
+lrwxrwxrwx root       root               28 ./usr/lib/libOMX.allegro.core.so -> libOMX.allegro.core.so.1.1.2
+lrwxrwxrwx root       root               37 ./usr/lib/libOMX.allegro.video_decoder.so -> libOMX.allegro.video_decoder.so.1.1.2
+lrwxrwxrwx root       root               37 ./usr/lib/libOMX.allegro.video_encoder.so -> libOMX.allegro.video_encoder.so.1.1.2

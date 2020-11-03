@@ -1,0 +1,5 @@
+drwxr-xr-x root       root             4096 ./boot
+lrwxrwxrwx root       root               73 ./boot/u-boot.bin -> u-boot-zcu106-zynqmp-v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70-r0.bin
+lrwxrwxrwx root       root               73 ./boot/u-boot.elf -> u-boot-zcu106-zynqmp-v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70-r0.elf
+-rw-r--r-- root       root           845496 ./boot/u-boot-zcu106-zynqmp-v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70-r0.bin
+-rw-r--r-- root       root           911824 ./boot/u-boot-zcu106-zynqmp-v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70-r0.elf

@@ -1,0 +1,8 @@
+PV = 2017.75
+PR = r0
+RPROVIDES = 
+RDEPENDS = dropbear openssh-sftp-server
+RRECOMMENDS = 
+PKGSIZE = 28
+FILES = /usr/libexec/sftp-server
+FILELIST = /usr/libexec/sftp-server

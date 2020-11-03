@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/zeromq
+-rw-r--r-- root       root             8504 ./usr/share/licenses/zeromq/COPYING.LESSER
+-rw-rw-r-- root       root             7468 ./usr/share/licenses/zeromq/generic_LGPLv3

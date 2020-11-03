@@ -1,0 +1,8 @@
+PV = 2017.75
+PR = r0
+RPROVIDES = ssh sshd
+RDEPENDS = glibc (>= 2.26) libpam (>= 1.3.0) libpam-runtime pam-plugin-deny pam-plugin-permit pam-plugin-unix update-alternatives-opkg zlib (>= 1.2.11)
+RRECOMMENDS = dropbear-lic update-rc.d
+PKGSIZE = 253126
+FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/dropbear /usr/lib/dropbear/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
+FILELIST = /etc/init.d/dropbear /etc/pam.d/dropbear /usr/bin/dbclient /usr/sbin/dropbear /usr/sbin/dropbearconvert /usr/sbin/dropbearkey /usr/sbin/dropbearmulti

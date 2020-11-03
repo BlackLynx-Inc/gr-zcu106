@@ -1,0 +1,9 @@
+PV = v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70
+PR = r0
+PKGV = v2018.01-xilinx-v2018.3+git0+d8fc4b3b70
+RPROVIDES = 
+RDEPENDS = u-boot-xlnx-dev (= v2018.01-xilinx-v2018.3+git0+d8fc4b3b70-r0)
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/lib/*.a /lib/*.a /usr/lib/u-boot-xlnx/*.a
+FILELIST = 

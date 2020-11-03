@@ -1,0 +1,8 @@
+PV = 2.4.47
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 63294
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/attr/COPYING /usr/share/licenses/attr/attr.c /usr/share/licenses/attr/generic_GPLv2 /usr/share/licenses/attr/generic_LGPLv2.1 /usr/share/licenses/attr/libattr.c

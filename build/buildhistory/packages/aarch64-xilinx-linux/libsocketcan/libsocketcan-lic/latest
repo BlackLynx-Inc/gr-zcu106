@@ -1,0 +1,8 @@
+PV = 0.0.10
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 26658
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libsocketcan/generic_LGPLv2.1 /usr/share/licenses/libsocketcan/libsocketcan.c

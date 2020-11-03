@@ -1,0 +1,9 @@
+PV = 7.0
+PR = r0
+PKG = libreadline-lic
+RPROVIDES = readline-lic (=7.0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 69841
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/readline/COPYING /usr/share/licenses/readline/generic_GPLv3

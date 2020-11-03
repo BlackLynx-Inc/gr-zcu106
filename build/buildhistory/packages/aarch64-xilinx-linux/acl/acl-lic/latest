@@ -1,0 +1,8 @@
+PV = 2.2.52
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 88562
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/acl/COPYING /usr/share/licenses/acl/COPYING.LGPL /usr/share/licenses/acl/generic_GPLv2 /usr/share/licenses/acl/generic_LGPLv2.1

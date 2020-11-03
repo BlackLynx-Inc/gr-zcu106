@@ -1,0 +1,11 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/bc
+-rw-r--r-- root       root             1306 ./usr/share/licenses/bc/bcdefs.h
+-rw-r--r-- root       root            17992 ./usr/share/licenses/bc/COPYING
+-rw-r--r-- root       root            26532 ./usr/share/licenses/bc/COPYING.LIB
+-rw-r--r-- root       root              906 ./usr/share/licenses/bc/dc.h
+-rw-rw-r-- root       root            17611 ./usr/share/licenses/bc/generic_GPLv2
+-rw-rw-r-- root       root            25878 ./usr/share/licenses/bc/generic_LGPLv2.1
+-rw-r--r-- root       root             1228 ./usr/share/licenses/bc/number.c

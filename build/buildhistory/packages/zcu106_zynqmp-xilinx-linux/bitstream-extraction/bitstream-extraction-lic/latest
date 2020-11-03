@@ -1,0 +1,8 @@
+PV = git
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1080
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/bitstream-extraction/MIT /usr/share/licenses/bitstream-extraction/generic_MIT

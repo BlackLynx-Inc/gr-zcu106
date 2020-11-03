@@ -1,0 +1,12 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+drwxr-xr-x root       root             4096 ./usr/bin/qt5
+-rwxr-xr-x root       root             6344 ./usr/bin/qt5/fixqt4headers.pl
+-rwxr-xr-x root       root          1002264 ./usr/bin/qt5/moc
+-rwxr-xr-x root       root          1159520 ./usr/bin/qt5/qdbuscpp2xml
+-rwxr-xr-x root       root          1110288 ./usr/bin/qt5/qdbusxml2cpp
+-rwxr-xr-x root       root           862928 ./usr/bin/qt5/qlalr
+-rwxr-xr-x root       root          2538760 ./usr/bin/qt5/qmake
+-rwxr-xr-x root       root           907976 ./usr/bin/qt5/rcc
+-rwxr-xr-x root       root            49240 ./usr/bin/qt5/syncqt.pl
+-rwxr-xr-x root       root          1317600 ./usr/bin/qt5/uic

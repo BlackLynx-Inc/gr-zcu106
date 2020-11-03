@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/renderproto
+-rw-r--r-- root       root             1096 ./usr/share/licenses/renderproto/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/renderproto/generic_MIT-style
+-rw-r--r-- root       root             1156 ./usr/share/licenses/renderproto/renderproto.h

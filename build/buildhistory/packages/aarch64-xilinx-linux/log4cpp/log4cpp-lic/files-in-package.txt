@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/log4cpp
+-rw-r--r-- root       root            26430 ./usr/share/licenses/log4cpp/COPYING
+-rw-rw-r-- root       root            25878 ./usr/share/licenses/log4cpp/generic_LGPLv2.1

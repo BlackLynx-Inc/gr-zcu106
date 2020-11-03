@@ -1,0 +1,8 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xcb-util-renderutil
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xcb-util-renderutil/generic_MIT
+-rw-r--r-- root       root             1348 ./usr/share/licenses/xcb-util-renderutil/glyph.c
+-rw-r--r-- root       root             1157 ./usr/share/licenses/xcb-util-renderutil/util.c
+-rw-r--r-- root       root             1350 ./usr/share/licenses/xcb-util-renderutil/xcb_renderutil.h

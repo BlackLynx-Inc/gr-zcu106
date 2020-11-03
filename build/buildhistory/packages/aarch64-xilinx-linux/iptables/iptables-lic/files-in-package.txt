@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/iptables
+-rw-r--r-- root       root            18092 ./usr/share/licenses/iptables/COPYING
+-rw-rw-r-- root       root            17611 ./usr/share/licenses/iptables/generic_GPLv2
+-rw-r--r-- root       root              697 ./usr/share/licenses/iptables/iptables.c

@@ -1,0 +1,9 @@
+PV = 6.0+20171125
+PR = r0
+PKG = libpanelw5
+RPROVIDES = ncurses-libpanelw (=6.0+20171125)
+RDEPENDS = glibc (>= 2.26) ncurses-libncursesw (>= 6.0+20171125) ncurses-libtinfo (>= 6.0+20171125)
+RRECOMMENDS = 
+PKGSIZE = 14096
+FILES = /usr/lib/libpanelw.so.5 /usr/lib/libpanelw.so.5.9
+FILELIST = /usr/lib/libpanelw.so.5 /usr/lib/libpanelw.so.5.9

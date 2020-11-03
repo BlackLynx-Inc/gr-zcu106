@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./etc
+drwxr-xr-x root       root             4096 ./etc/gnuradio
+drwxr-xr-x root       root             4096 ./etc/gnuradio/conf.d
+-rw-r--r-- root       root              736 ./etc/gnuradio/conf.d/gr_log_default.conf
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+-rwxr-xr-x root       root             2190 ./usr/bin/polar_channel_construction

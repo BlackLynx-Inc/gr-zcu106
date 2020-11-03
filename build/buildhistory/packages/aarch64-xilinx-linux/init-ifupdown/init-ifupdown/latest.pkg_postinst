@@ -1,0 +1,1 @@
+#!/bin/sh\nif true && type update-rc.d >/dev/null 2>/dev/null; then\n\tif [ -n "$D" ]; then\n\t\tOPT="-r $D"\n\telse\n\t\tOPT="-s"\n\tfi\n\tupdate-rc.d $OPT networking start 01 2 3 4 5 . stop 80 0 6 1 .\nfi\n

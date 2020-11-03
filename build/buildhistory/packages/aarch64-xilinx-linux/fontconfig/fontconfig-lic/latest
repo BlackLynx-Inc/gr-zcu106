@@ -1,0 +1,9 @@
+PV = 2.12.4
+PR = r0
+PKG = libfontconfig-lic
+RPROVIDES = fontconfig-lic (=2.12.4)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 5448
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/fontconfig/COPYING /usr/share/licenses/fontconfig/fccache.c /usr/share/licenses/fontconfig/fcfreetype.c /usr/share/licenses/fontconfig/generic_MIT /usr/share/licenses/fontconfig/generic_MIT-style /usr/share/licenses/fontconfig/generic_PD

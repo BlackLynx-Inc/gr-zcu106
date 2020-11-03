@@ -1,0 +1,5 @@
+PV = 1.7.0+gitAUTOINC+48eead4cbb
+PR = r0
+DEPENDS = initscripts openssl update-rc.d util-linux virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = tcf-agent-lic tcf-agent-dbg tcf-agent-staticdev tcf-agent-dev tcf-agent-doc tcf-agent-locale tcf-agent
+LAYER = core

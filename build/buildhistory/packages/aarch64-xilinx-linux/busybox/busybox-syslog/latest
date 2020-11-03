@@ -1,0 +1,9 @@
+PV = 1.24.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = update-rc.d
+RCONFLICTS = rsyslog sysklogd syslog-ng
+PKGSIZE = 2435
+FILES = /etc/init.d/syslog* /etc/syslog-startup.conf* /etc/syslog.conf* /lib/systemd/system/syslog.service /etc/default/busybox-syslog
+FILELIST = /etc/init.d/syslog /etc/syslog-startup.conf /etc/syslog.conf

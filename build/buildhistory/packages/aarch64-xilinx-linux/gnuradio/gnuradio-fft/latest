@@ -1,0 +1,9 @@
+PV = 3.8.0+gitAUTOINC+d78f7fcd0d
+PR = r0
+PKGV = 3.8.0+git0+d78f7fcd0d
+RPROVIDES = 
+RDEPENDS = boost-system (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-fft (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libpython2 (>= 2.7.13) libstdc++ (>= 7.3.0) log4cpp (>= 1.1.2)
+RRECOMMENDS = 
+PKGSIZE = 748500
+FILES = /usr/lib/python2.7/site-packages/gnuradio/fft /usr/share/gnuradio/fft
+FILELIST = /usr/lib/python2.7/site-packages/gnuradio/fft/__init__.py /usr/lib/python2.7/site-packages/gnuradio/fft/__init__.pyc /usr/lib/python2.7/site-packages/gnuradio/fft/__init__.pyo /usr/lib/python2.7/site-packages/gnuradio/fft/_fft_swig.so /usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.py /usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.pyc /usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.pyo /usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.py /usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.pyc /usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.pyo

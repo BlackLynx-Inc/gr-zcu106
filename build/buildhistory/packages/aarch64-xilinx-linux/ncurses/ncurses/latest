@@ -1,0 +1,8 @@
+PV = 6.0+20171125
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) ncurses-libtinfo (>= 6.0+20171125)
+RRECOMMENDS = ncurses-lic
+PKGSIZE = 37918
+FILES = /usr/bin/tput /usr/bin/tset /usr/bin/ncurses5-config /usr/bin/ncursesw5-config /usr/bin/ncurses6-config /usr/bin/ncursesw6-config /usr/share/tabset
+FILELIST = /usr/bin/tput /usr/bin/tset /usr/share/tabset/std /usr/share/tabset/stdcrt /usr/share/tabset/vt100 /usr/share/tabset/vt300

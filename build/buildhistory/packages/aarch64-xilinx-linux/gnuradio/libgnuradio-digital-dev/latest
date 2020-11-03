@@ -1,0 +1,10 @@
+PV = 3.8.0+gitAUTOINC+d78f7fcd0d
+PR = r0
+PKG = libgnuradio-digital-3.8git-dev
+PKGV = 3.8.0+git0+d78f7fcd0d
+RPROVIDES = libgnuradio-digital-dev (=3.8.0+git0+d78f7fcd0d)
+RDEPENDS = gnuradio-dev libgnuradio-digital
+RRECOMMENDS = alsa-lib-dev boost-dev boost-system-dev cppunit-dev cppzmq-dev fftw-dev glibc-dev gsl-dev libgcc-dev libgnuradio-analog-dev libgnuradio-blocks-dev libgnuradio-filter-dev libgnuradio-pmt-dev libgnuradio-runtime-dev libstdc++-dev log4cpp-dev python-cheetah-dev python-dev python-numpy-dev python-pyqt5-dev python-pyzmq-dev qtbase-dev qwt-qt5-dev uhd-dev volk-dev
+PKGSIZE = 70
+FILES = /usr/lib/libgnuradio-digital-3.8git.so /usr/lib/libgnuradio-digital.so /usr/lib/libgnuradio-digital.so
+FILELIST = /usr/lib/libgnuradio-digital-3.8git.so /usr/lib/libgnuradio-digital.so

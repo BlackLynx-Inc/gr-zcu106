@@ -1,0 +1,16 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/gnuradio
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/gnuradio/fft
+-rw-r--r-- root       root            55138 ./usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.py
+-rw-r--r-- root       root           113714 ./usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.pyc
+-rw-r--r-- root       root           113714 ./usr/lib/python2.7/site-packages/gnuradio/fft/fft_swig.pyo
+-rwxr-xr-x root       root           442400 ./usr/lib/python2.7/site-packages/gnuradio/fft/_fft_swig.so
+-rw-r--r-- root       root             1057 ./usr/lib/python2.7/site-packages/gnuradio/fft/__init__.py
+-rw-r--r-- root       root              626 ./usr/lib/python2.7/site-packages/gnuradio/fft/__init__.pyc
+-rw-r--r-- root       root              626 ./usr/lib/python2.7/site-packages/gnuradio/fft/__init__.pyo
+-rw-r--r-- root       root             5551 ./usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.py
+-rw-r--r-- root       root             7837 ./usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.pyc
+-rw-r--r-- root       root             7837 ./usr/lib/python2.7/site-packages/gnuradio/fft/logpwrfft.pyo

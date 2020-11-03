@@ -1,0 +1,8 @@
+PV = 0.3.6
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2846
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-pyasn1/LICENSE.rst /usr/share/licenses/python-pyasn1/generic_BSD-2-Clause

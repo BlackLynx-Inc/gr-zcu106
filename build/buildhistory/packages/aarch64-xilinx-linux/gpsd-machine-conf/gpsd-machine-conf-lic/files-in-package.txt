@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/gpsd-machine-conf
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/gpsd-machine-conf/BSD
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/gpsd-machine-conf/generic_BSD

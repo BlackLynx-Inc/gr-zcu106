@@ -1,0 +1,9 @@
+PE = 1
+PV = 1.1.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2258
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libxdmcp/COPYING /usr/share/licenses/libxdmcp/generic_MIT-style

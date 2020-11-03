@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xtrans
+-rw-r--r-- root       root             6232 ./usr/share/licenses/xtrans/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xtrans/generic_MIT
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xtrans/generic_MIT-style

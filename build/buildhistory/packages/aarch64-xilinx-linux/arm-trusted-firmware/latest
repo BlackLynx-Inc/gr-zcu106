@@ -1,0 +1,5 @@
+PV = 1.5-xilinx-v2018.3+gitAUTOINC+08560c36ea
+PR = r0
+DEPENDS = u-boot-mkimage-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = arm-trusted-firmware-lic arm-trusted-firmware-dbg arm-trusted-firmware-staticdev arm-trusted-firmware-dev arm-trusted-firmware-doc arm-trusted-firmware-locale arm-trusted-firmware
+LAYER = xilinx

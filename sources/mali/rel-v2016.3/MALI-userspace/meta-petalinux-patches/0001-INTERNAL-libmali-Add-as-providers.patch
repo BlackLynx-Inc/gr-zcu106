@@ -1,0 +1,25 @@
+From b5677f48a916a60bb23ac5d650cb5f6d1966c305 Mon Sep 17 00:00:00 2001
+From: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+Date: Sat, 26 Nov 2016 21:23:49 -0800
+Subject: [PATCH] [INTERNAL]libmali: Add as providers
+
+Signed-off-by: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+---
+ conf/machine/zynqmp-generic.conf | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/conf/machine/zynqmp-generic.conf b/conf/machine/zynqmp-generic.conf
+index 1069989..804a990 100644
+--- a/conf/machine/zynqmp-generic.conf
++++ b/conf/machine/zynqmp-generic.conf
+@@ -7,3 +7,7 @@ require conf/machine/include/tune-zynqmp.inc
+ MACHINE_FEATURES = "rtc ext2 ext3 vfat usbhost"
+ 
+ PREFERRED_PROVIDER_virtual/kernel="linux-dummy"
++
++PREFERRED_PROVIDER_virtual/libgles1="libmali-xlnx"
++PREFERRED_PROVIDER_virtual/libgles2="libmali-xlnx"
++PREFERRED_PROVIDER_virtual/egl="libmali-xlnx"
+-- 
+2.1.4
+

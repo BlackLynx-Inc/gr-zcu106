@@ -1,0 +1,8 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/mpfr
+-rw-r--r-- root       root            35147 ./usr/share/licenses/mpfr/COPYING
+-rw-r--r-- root       root             7639 ./usr/share/licenses/mpfr/COPYING.LESSER
+-rw-rw-r-- root       root            34694 ./usr/share/licenses/mpfr/generic_GPLv3
+-rw-rw-r-- root       root             7468 ./usr/share/licenses/mpfr/generic_LGPLv3

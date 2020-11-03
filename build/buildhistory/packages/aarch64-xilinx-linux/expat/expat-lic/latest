@@ -1,0 +1,9 @@
+PV = 2.2.3
+PR = r0
+PKG = libexpat-lic
+RPROVIDES = expat-lic (=2.2.3)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2224
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/expat/COPYING /usr/share/licenses/expat/generic_MIT

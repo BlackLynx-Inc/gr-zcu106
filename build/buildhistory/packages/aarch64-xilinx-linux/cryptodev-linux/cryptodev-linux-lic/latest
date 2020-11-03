@@ -1,0 +1,8 @@
+PV = 1.9
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 35703
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/cryptodev-linux/COPYING /usr/share/licenses/cryptodev-linux/generic_GPLv2

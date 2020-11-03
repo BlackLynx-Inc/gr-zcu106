@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/glproto
+-rw-r--r-- root       root             1483 ./usr/share/licenses/glproto/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/glproto/generic_MIT
+-rw-r--r-- root       root             1567 ./usr/share/licenses/glproto/glxproto.h

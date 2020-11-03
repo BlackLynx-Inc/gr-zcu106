@@ -1,0 +1,9 @@
+PE = 1
+PV = 1.3.5
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 7312
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xtrans/COPYING /usr/share/licenses/xtrans/generic_MIT /usr/share/licenses/xtrans/generic_MIT-style

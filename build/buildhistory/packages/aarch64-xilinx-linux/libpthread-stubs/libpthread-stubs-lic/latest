@@ -1,0 +1,8 @@
+PV = 0.4
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2326
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libpthread-stubs/COPYING /usr/share/licenses/libpthread-stubs/generic_MIT

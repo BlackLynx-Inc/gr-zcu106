@@ -1,0 +1,10 @@
+PV = 1.10.20
+PR = r0
+PKG = dbus-1
+RPROVIDES = dbus (=1.10.20) dbus-x11
+RDEPENDS = base-files base-passwd dbus-lib (>= 1.10.20) expat (>= 2.2.3) glibc (>= 2.26) initd-functions libx11 (>= 1.6.5) shadow
+RRECOMMENDS = dbus-lic update-rc.d
+RREPLACES = dbus-x11
+PKGSIZE = 343930
+FILES = /usr/bin/dbus-daemon* /usr/bin/dbus-uuidgen /usr/bin/dbus-cleanup-sockets /usr/bin/dbus-send /usr/bin/dbus-monitor /usr/bin/dbus-launch /usr/bin/dbus-run-session /usr/bin/dbus-update-activation-environment /usr/libexec/dbus* /etc /var /usr/share/dbus-1/services /usr/share/dbus-1/system-services /usr/share/dbus-1/session.d /usr/share/dbus-1/session.conf /usr/share/dbus-1/system.d /usr/share/dbus-1/system.conf /lib/systemd/system /usr/lib/systemd/user
+FILELIST = /etc/dbus-1/session.conf /etc/dbus-1/system.conf /etc/default/volatiles/99_dbus /etc/init.d/dbus-1 /usr/bin/dbus-cleanup-sockets /usr/bin/dbus-daemon /usr/bin/dbus-launch /usr/bin/dbus-monitor /usr/bin/dbus-run-session /usr/bin/dbus-send /usr/bin/dbus-update-activation-environment /usr/bin/dbus-uuidgen /usr/libexec/dbus-daemon-launch-helper /usr/share/dbus-1/session.conf /usr/share/dbus-1/system.conf

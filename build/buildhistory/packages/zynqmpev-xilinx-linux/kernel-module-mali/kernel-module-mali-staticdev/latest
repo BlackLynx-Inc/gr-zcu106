@@ -1,0 +1,8 @@
+PV = r8p0-01rel0
+PR = r0
+RPROVIDES = 
+RDEPENDS = kernel-module-mali-dev (= r8p0-01rel0-r0)
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/lib/*.a /lib/*.a /usr/lib/kernel-module-mali/*.a
+FILELIST = 

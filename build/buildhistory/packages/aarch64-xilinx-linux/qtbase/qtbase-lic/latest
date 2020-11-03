@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+9c50112304
+PR = r0
+PKGV = 5.9.6+git0+9c50112304
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 313456
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/qtbase/LGPL_EXCEPTION.txt /usr/share/licenses/qtbase/LICENSE.FDL /usr/share/licenses/qtbase/LICENSE.GPL2 /usr/share/licenses/qtbase/LICENSE.GPL3 /usr/share/licenses/qtbase/LICENSE.GPL3-EXCEPT /usr/share/licenses/qtbase/LICENSE.GPLv3 /usr/share/licenses/qtbase/LICENSE.LGPL3 /usr/share/licenses/qtbase/LICENSE.LGPLv21 /usr/share/licenses/qtbase/LICENSE.LGPLv3 /usr/share/licenses/qtbase/generic_BSD /usr/share/licenses/qtbase/generic_GFDL-1.3 /usr/share/licenses/qtbase/generic_GPL-2.0 /usr/share/licenses/qtbase/generic_GPL-3.0 /usr/share/licenses/qtbase/generic_LGPL-3.0 /usr/share/licenses/qtbase/generic_The-Qt-Company-Commercial /usr/share/licenses/qtbase/generic_The-Qt-Company-GPL-Exception-1.0

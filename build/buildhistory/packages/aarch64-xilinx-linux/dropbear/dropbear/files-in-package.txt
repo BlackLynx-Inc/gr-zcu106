@@ -1,0 +1,16 @@
+drwxr-xr-x root       root             4096 ./etc
+drwxr-xr-x root       root             4096 ./etc/default
+drwxr-xr-x root       root             4096 ./etc/dropbear
+drwxr-xr-x root       root             4096 ./etc/init.d
+-rwxr-xr-x root       root             2168 ./etc/init.d/dropbear
+drwxr-xr-x root       root             4096 ./etc/pam.d
+-rw-r--r-- root       root               74 ./etc/pam.d/dropbear
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+lrwxrwxrwx root       root               23 ./usr/bin/dbclient -> /usr/sbin/dropbearmulti
+drwxr-xr-x root       root             4096 ./usr/sbin
+lrwxrwxrwx root       root               15 ./usr/sbin/dropbearconvert -> ./dropbearmulti
+lrwxrwxrwx root       root               15 ./usr/sbin/dropbear -> ./dropbearmulti
+lrwxrwxrwx root       root               15 ./usr/sbin/dropbearkey -> ./dropbearmulti
+-rwxr-xr-x root       root           250816 ./usr/sbin/dropbearmulti
+drwxr-xr-x root       root             4096 ./var

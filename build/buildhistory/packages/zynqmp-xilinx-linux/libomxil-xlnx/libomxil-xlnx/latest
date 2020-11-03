@@ -1,0 +1,8 @@
+PV = git
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) kernel-module-vcu libgcc (>= 7.3.0) libstdc++ (>= 7.3.0) libvcu-xlnx (>= git)
+RRECOMMENDS = libomxil-xlnx-lic
+PKGSIZE = 1230510
+FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/libomxil-xlnx /usr/lib/libomxil-xlnx/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
+FILELIST = /usr/bin/omx_decoder /usr/bin/omx_encoder /usr/lib/libOMX.allegro.core.so.1 /usr/lib/libOMX.allegro.core.so.1.1.2 /usr/lib/libOMX.allegro.video_decoder.so.1 /usr/lib/libOMX.allegro.video_decoder.so.1.1.2 /usr/lib/libOMX.allegro.video_encoder.so.1 /usr/lib/libOMX.allegro.video_encoder.so.1.1.2

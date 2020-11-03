@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./etc
+drwxr-xr-x root       root             4096 ./etc/init.d
+-rwxr-xr-x root       root             1614 ./etc/init.d/tcf-agent
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/sbin
+-rwxr-xr-x root       root           762440 ./usr/sbin/tcf-agent
+-rwxr-xr-x root       root           156296 ./usr/sbin/tcf-client

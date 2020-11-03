@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+7a28db8f5b
+PR = r0
+PKG = libqt5svg-examples-dbg
+PKGV = 5.9.6+git0+7a28db8f5b
+RPROVIDES = qtsvg-examples-dbg (=5.9.6+git0+7a28db8f5b)
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg libstdc++-dbg qtbase-dbg qtsvg-dbg zlib-dbg
+PKGSIZE = 0
+FILES = /usr/share/qt5/examples/.debug /usr/share/qt5/examples/*/.debug /usr/share/qt5/examples/*/*/.debug /usr/share/qt5/examples/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/*/*/.debug
+FILELIST = 

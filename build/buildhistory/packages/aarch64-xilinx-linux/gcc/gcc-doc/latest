@@ -1,0 +1,8 @@
+PV = 7.3.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2367541
+FILES = /usr/share/info /usr/share/man /usr/lib/gcc/aarch64-xilinx-linux/7.3.0/include/README
+FILELIST = /usr/share/man/man1/aarch64-xilinx-linux-cpp.1 /usr/share/man/man1/aarch64-xilinx-linux-g++.1 /usr/share/man/man1/aarch64-xilinx-linux-gcc.1 /usr/share/man/man1/aarch64-xilinx-linux-gcov-dump.1 /usr/share/man/man1/aarch64-xilinx-linux-gcov-tool.1 /usr/share/man/man1/aarch64-xilinx-linux-gcov.1

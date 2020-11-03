@@ -1,0 +1,8 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages
+-rw-r--r-- root       root           100108 ./usr/lib/python2.7/site-packages/sipconfig.py
+-rw-r--r-- root       root             6041 ./usr/lib/python2.7/site-packages/sipdistutils.py
+-rw-r--r-- root       root             2801 ./usr/lib/python2.7/site-packages/sip.pyi
+-rwxr-xr-x root       root           123672 ./usr/lib/python2.7/site-packages/sip.so

@@ -1,0 +1,8 @@
+PV = 9.0.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 28048
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-pip/LICENSE.txt /usr/share/licenses/python-pip/generic_LGPL-2.1 /usr/share/licenses/python-pip/generic_MIT

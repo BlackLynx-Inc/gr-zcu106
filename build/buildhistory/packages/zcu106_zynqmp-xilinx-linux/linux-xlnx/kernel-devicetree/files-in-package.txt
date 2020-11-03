@@ -1,0 +1,3 @@
+drwxr-xr-x root       root             4096 ./boot
+lrwxrwxrwx root       root               22 ./boot/devicetree-Image-zynqmp-zcu106-revA.dtb -> zynqmp-zcu106-revA.dtb
+-rw-r--r-- root       root            37695 ./boot/zynqmp-zcu106-revA.dtb

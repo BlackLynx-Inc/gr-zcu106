@@ -1,0 +1,5 @@
+PV = 4.1.0
+PR = r0
+DEPENDS = libxml2 libxslt python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-lxml-lic python-lxml-dbg python-lxml-staticdev python-lxml-dev python-lxml-doc python-lxml-locale python-lxml
+LAYER = meta-python

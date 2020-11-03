@@ -1,0 +1,8 @@
+PV = 1.1.4.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) libasound (>= 1.1.4.1)
+RRECOMMENDS = 
+PKGSIZE = 27376
+FILES = /usr/bin/*
+FILELIST = /usr/bin/aserver

@@ -1,0 +1,8 @@
+PV = 1.0
+PR = r17
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1080
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/packagegroup-core-boot/generic_MIT

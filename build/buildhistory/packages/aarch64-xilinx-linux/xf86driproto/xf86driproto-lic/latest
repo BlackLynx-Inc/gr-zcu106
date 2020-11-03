@@ -1,0 +1,9 @@
+PE = 1
+PV = 2.1.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3763
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xf86driproto/COPYING /usr/share/licenses/xf86driproto/generic_MIT /usr/share/licenses/xf86driproto/xf86driproto.h

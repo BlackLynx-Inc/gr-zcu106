@@ -1,0 +1,9 @@
+PV = r8p0-01rel0
+PR = r0
+PKG = libmali-dbg
+RPROVIDES = libmali-xlnx-dbg (=r8p0-01rel0)
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg libdrm-dbg libx11-dbg libxdamage-dbg libxext-dbg libxfixes-dbg
+PKGSIZE = 0
+FILES = /usr/lib/debug /usr/src/debug
+FILELIST = 

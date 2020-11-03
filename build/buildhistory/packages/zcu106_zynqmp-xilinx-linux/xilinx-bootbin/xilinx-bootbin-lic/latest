@@ -1,0 +1,8 @@
+PV = 1.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1499
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xilinx-bootbin/generic_BSD

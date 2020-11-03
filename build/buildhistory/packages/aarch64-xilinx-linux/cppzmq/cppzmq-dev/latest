@@ -1,0 +1,9 @@
+PV = 4.1.5+gitAUTOINC+68a7b09cfc
+PR = r0
+PKGV = 4.1.5+git0+68a7b09cfc
+RPROVIDES = 
+RDEPENDS = zeromq-dev
+RRECOMMENDS = zeromq-dev
+PKGSIZE = 23259
+FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/cppzmq/*.la /lib/*.la
+FILELIST = /usr/include/zmq.hpp

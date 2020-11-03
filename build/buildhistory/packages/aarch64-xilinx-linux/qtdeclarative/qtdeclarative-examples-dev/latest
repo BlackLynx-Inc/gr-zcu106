@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+283a900c4e
+PR = r0
+PKGV = 5.9.6+git0+283a900c4e
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304) qtdeclarative (>= 5.9.6+git0+283a900c4e)
+RRECOMMENDS = glibc-dev libstdc++-dev qtbase-dev qtdeclarative-dev qtxmlpatterns-dev
+PKGSIZE = 131520
+FILES = /usr/share/qt5/examples/*.so /usr/share/qt5/examples/*/*.so /usr/share/qt5/examples/*/*/*.so /usr/share/qt5/examples/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*/*/*.so
+FILELIST = /usr/share/qt5/examples/qml/qmlextensionplugins/imports/TimeExample/libqmlqtimeexampleplugin.so /usr/share/qt5/examples/qml/tutorials/extending-qml/chapter6-plugins/Charts/libchartsplugin.so /usr/share/qt5/examples/quick/customitems/painteditem/TextBalloonPlugin/libqmltextballoonplugin.so /usr/share/qt5/examples/quick/imageprovider/ImageProviderCore/libqmlimageproviderplugin.so /usr/share/qt5/examples/quick/imageresponseprovider/ImageResponseProviderCore/libqmlimageresponseproviderplugin.so

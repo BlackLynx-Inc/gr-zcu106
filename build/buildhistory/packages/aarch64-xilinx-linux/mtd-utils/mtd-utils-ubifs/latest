@@ -1,0 +1,8 @@
+PV = 2.0.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) lzo (>= 2.10) util-linux-libuuid (>= 2.30) zlib (>= 1.2.11)
+RRECOMMENDS = 
+PKGSIZE = 401912
+FILES = /usr/sbin/mkfs.ubifs /usr/sbin/ubi*
+FILELIST = /usr/sbin/mkfs.ubifs /usr/sbin/ubiattach /usr/sbin/ubiblock /usr/sbin/ubicrc32 /usr/sbin/ubidetach /usr/sbin/ubiformat /usr/sbin/ubimkvol /usr/sbin/ubinfo /usr/sbin/ubinize /usr/sbin/ubirename /usr/sbin/ubirmvol /usr/sbin/ubirsvol /usr/sbin/ubiupdatevol

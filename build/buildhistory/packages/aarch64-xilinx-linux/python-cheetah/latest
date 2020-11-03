@@ -1,0 +1,5 @@
+PV = 2.4.4
+PR = r3
+DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-cheetah-lic python-cheetah-dbg python-cheetah-staticdev python-cheetah-dev python-cheetah-doc python-cheetah-locale python-cheetah
+LAYER = meta-python

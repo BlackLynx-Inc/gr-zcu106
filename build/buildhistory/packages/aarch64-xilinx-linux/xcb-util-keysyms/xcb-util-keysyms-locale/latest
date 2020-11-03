@@ -1,0 +1,9 @@
+PV = 0.4.0
+PR = r0
+PKG = libxcb-keysyms-locale
+RPROVIDES = xcb-util-keysyms-locale (=0.4.0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/share/locale
+FILELIST = 

@@ -1,0 +1,8 @@
+PV = 3.16
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3304
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/gpsd/COPYING /usr/share/licenses/gpsd/generic_BSD

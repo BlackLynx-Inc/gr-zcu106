@@ -1,0 +1,5 @@
+PV = 2.26
+PR = r0
+DEPENDS = autoconf-native automake-native bison-native gnu-config-native gperf-native libgcc-initial libtool-native linux-libc-headers texinfo-native virtual/aarch64-xilinx-linux-gcc-initial virtual/aarch64-xilinx-linux-libc-initial
+PACKAGES = glibc-lic glibc-dbg catchsegv sln nscd ldd tzcode glibc-thread-db glibc-pic libcidn libmemusage libsegfault glibc-pcprofile libsotruss glibc glibc-utils glibc-extra-nss glibc-dev glibc-staticdev glibc-doc
+LAYER = core

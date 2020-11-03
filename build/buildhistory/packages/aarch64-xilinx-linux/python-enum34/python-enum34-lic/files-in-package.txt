@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/python-enum34
+-rw-rw-r-- root       root             1468 ./usr/share/licenses/python-enum34/generic_BSD-3-Clause
+-rw-r--r-- root       root             1508 ./usr/share/licenses/python-enum34/LICENSE

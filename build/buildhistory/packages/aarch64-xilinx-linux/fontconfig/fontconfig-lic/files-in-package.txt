@@ -1,0 +1,10 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/fontconfig
+-rw-r--r-- root       root             1313 ./usr/share/licenses/fontconfig/COPYING
+-rw-r--r-- root       root              703 ./usr/share/licenses/fontconfig/fccache.c
+-rw-r--r-- root       root             2300 ./usr/share/licenses/fontconfig/fcfreetype.c
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/fontconfig/generic_MIT
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/fontconfig/generic_MIT-style
+-rw-rw-r-- root       root               52 ./usr/share/licenses/fontconfig/generic_PD

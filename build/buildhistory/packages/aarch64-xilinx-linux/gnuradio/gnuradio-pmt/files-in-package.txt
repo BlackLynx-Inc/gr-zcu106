@@ -1,0 +1,15 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/pmt
+-rw-r--r-- root       root             1997 ./usr/lib/python2.7/site-packages/pmt/__init__.py
+-rw-r--r-- root       root             1480 ./usr/lib/python2.7/site-packages/pmt/__init__.pyc
+-rw-r--r-- root       root             1480 ./usr/lib/python2.7/site-packages/pmt/__init__.pyo
+-rw-r--r-- root       root           109521 ./usr/lib/python2.7/site-packages/pmt/pmt_swig.py
+-rw-r--r-- root       root           233985 ./usr/lib/python2.7/site-packages/pmt/pmt_swig.pyc
+-rw-r--r-- root       root           233985 ./usr/lib/python2.7/site-packages/pmt/pmt_swig.pyo
+-rwxr-xr-x root       root          1025560 ./usr/lib/python2.7/site-packages/pmt/_pmt_swig.so
+-rw-r--r-- root       root             5711 ./usr/lib/python2.7/site-packages/pmt/pmt_to_python.py
+-rw-r--r-- root       root             9209 ./usr/lib/python2.7/site-packages/pmt/pmt_to_python.pyc
+-rw-r--r-- root       root             9209 ./usr/lib/python2.7/site-packages/pmt/pmt_to_python.pyo

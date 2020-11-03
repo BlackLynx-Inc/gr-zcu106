@@ -1,0 +1,8 @@
+PV = r8p0-01rel0
+PR = r0
+RPROVIDES = 
+RDEPENDS = kernel-module-mali-4.14.0-xilinx-v2018.3
+RRECOMMENDS = kernel-module-mali-lic
+PKGSIZE = 0
+FILES = 
+FILELIST = 

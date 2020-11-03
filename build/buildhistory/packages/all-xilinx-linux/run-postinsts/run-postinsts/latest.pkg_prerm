@@ -1,0 +1,1 @@
+#!/bin/sh\nif true && [ -z "$D" -a -x "/etc/init.d/run-postinsts" ]; then\n\t/etc/init.d/run-postinsts stop || :\nfi\n

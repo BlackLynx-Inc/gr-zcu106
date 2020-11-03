@@ -1,0 +1,1 @@
+#!/bin/sh\n\tupdate-alternatives --remove  which.1 /usr/share/man/man1/which.1.which\n

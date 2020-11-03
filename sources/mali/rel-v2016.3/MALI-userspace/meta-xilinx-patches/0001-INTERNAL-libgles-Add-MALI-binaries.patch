@@ -1,0 +1,179 @@
+From c6feb923bc9b6b97b502138c4627c9ddd26597b2 Mon Sep 17 00:00:00 2001
+From: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+Date: Sat, 26 Nov 2016 21:16:09 -0800
+Subject: [PATCH] libgles: Add MALI binaries
+
+Signed-off-by: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+---
+ recipes-graphics/libgles/files/egl.pc        | 12 +++++
+ recipes-graphics/libgles/files/glesv1.pc     | 12 +++++
+ recipes-graphics/libgles/files/glesv1_cm.pc  | 12 +++++
+ recipes-graphics/libgles/files/glesv2.pc     | 12 +++++
+ recipes-graphics/libgles/libmali-xlnx_git.bb | 67 ++++++++++++++++++++++++++++
+ recipes-graphics/mesa/mesa_%.bbappend        |  4 ++
+ 6 files changed, 119 insertions(+)
+ create mode 100644 recipes-graphics/libgles/files/egl.pc
+ create mode 100644 recipes-graphics/libgles/files/glesv1.pc
+ create mode 100644 recipes-graphics/libgles/files/glesv1_cm.pc
+ create mode 100644 recipes-graphics/libgles/files/glesv2.pc
+ create mode 100644 recipes-graphics/libgles/libmali-xlnx_git.bb
+ create mode 100644 recipes-graphics/mesa/mesa_%.bbappend
+
+diff --git a/recipes-graphics/libgles/files/egl.pc b/recipes-graphics/libgles/files/egl.pc
+new file mode 100644
+index 0000000..21b1bb7
+--- /dev/null
++++ b/recipes-graphics/libgles/files/egl.pc
+@@ -0,0 +1,12 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=/usr/lib
++includedir=/usr/include
++
++Name: egl
++Description: MALI EGL library
++Requires.private:
++Version: r5p1
++Libs: -L${libdir} -lEGL
++Libs.private: -lm -lpthread -ldl
++Cflags: -I${includedir}
+diff --git a/recipes-graphics/libgles/files/glesv1.pc b/recipes-graphics/libgles/files/glesv1.pc
+new file mode 100644
+index 0000000..ed8b2bf
+--- /dev/null
++++ b/recipes-graphics/libgles/files/glesv1.pc
+@@ -0,0 +1,12 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=/usr/lib
++includedir=/usr/include
++
++Name: glesv1
++Description: MALI OpenGL ES 1.1 library
++Requires.private:
++Version: r5p1
++Libs: -L${libdir} -lGLESv1_CM
++Libs.private: -lm -lpthread -ldl
++Cflags: -I${includedir}
+diff --git a/recipes-graphics/libgles/files/glesv1_cm.pc b/recipes-graphics/libgles/files/glesv1_cm.pc
+new file mode 100644
+index 0000000..d0a16ba
+--- /dev/null
++++ b/recipes-graphics/libgles/files/glesv1_cm.pc
+@@ -0,0 +1,12 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=/usr/lib
++includedir=/usr/include
++
++Name: gles_cm
++Description: Mali OpenGL ES 1.1 CM library
++Requires.private:
++Version: r5p1
++Libs: -L${libdir} -lGLESv1_CM
++Libs.private: -lm -lpthread -ldl
++Cflags: -I${includedir}
+diff --git a/recipes-graphics/libgles/files/glesv2.pc b/recipes-graphics/libgles/files/glesv2.pc
+new file mode 100644
+index 0000000..f65d649
+--- /dev/null
++++ b/recipes-graphics/libgles/files/glesv2.pc
+@@ -0,0 +1,12 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=/usr/lib
++includedir=/usr/include
++
++Name: glesv2
++Description: MALI OpenGL ES 2.0 library
++Requires.private:
++Version: r5p1
++Libs: -L${libdir} -lGLESv2
++Libs.private: -lm -lpthread -ldl
++Cflags: -I${includedir}
+diff --git a/recipes-graphics/libgles/libmali-xlnx_git.bb b/recipes-graphics/libgles/libmali-xlnx_git.bb
+new file mode 100644
+index 0000000..60f516a
+--- /dev/null
++++ b/recipes-graphics/libgles/libmali-xlnx_git.bb
+@@ -0,0 +1,67 @@
++DESCRIPTION = "libGLES for ZynqMP with Mali 400"
++
++LICENSE = "Proprietary"
++LIC_FILES_CHKSUM = "file://README.md;md5=d5750ae6496dd931669b454b5aaae2cd"
++
++PROVIDES += "virtual/libgles1 virtual/libgles2 virtual/egl"
++RPROVIDES_${PN} += "libGLESv2.so libEGL.so libGLESv1_CM.so libMali.so"
++
++FILESEXTRAPATHS_append := " \
++                ${THISDIR}/files: \
++                ${THISDIR}/r5p1-01rel0: "
++
++PV = "r5p1-01rel0"
++SRC_URI = " \
++    file://r5p1-01rel0.tar \
++    file://egl.pc \
++    file://glesv1_cm.pc \
++    file://glesv1.pc \
++    file://glesv2.pc \
++    "
++
++COMPATIBLE_MACHINE = "(-)"
++COMPATIBLE_MACHINE_zynqmp = "(.*)"
++
++S = "${WORKDIR}/${PV}"
++
++X11RDEPENDS = "libxdamage libxext libx11 libdrm libxau libxcb libxdmcp libxfixes"
++RDEPENDS_${PN} = " \
++    mali-modules \
++    ${@base_contains('DISTRO_FEATURES', 'x11', '${X11RDEPENDS}', '', d)}    \
++    "
++
++EGL_TYPE = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11',  \
++            bb.utils.contains('DISTRO_FEATURES', 'fbdev',  'fbdev', '', d), d)}"
++
++do_install() {
++    # install headers
++    install -d -m 0655 ${D}${includedir}/EGL
++    install -m 0644 ${S}/${EGL_TYPE}/usr/include/EGL/*.h ${D}${includedir}/EGL/
++    install -d -m 0655 ${D}${includedir}/GLES
++    install -m 0644 ${S}/${EGL_TYPE}/usr/include/GLES/*.h ${D}${includedir}/GLES/
++    install -d -m 0655 ${D}${includedir}/GLES2
++    install -m 0644 ${S}/${EGL_TYPE}/usr/include/GLES2/*.h ${D}${includedir}/GLES2/
++    install -d -m 0655 ${D}${includedir}/KHR
++    install -m 0644 ${S}/${EGL_TYPE}/usr/include/KHR/*.h ${D}${includedir}/KHR/
++
++    install -d ${D}${libdir}/pkgconfig
++    install -m 0644 ${WORKDIR}/egl.pc ${D}${libdir}/pkgconfig/egl.pc
++    install -m 0644 ${WORKDIR}/glesv2.pc ${D}${libdir}/pkgconfig/glesv2.pc
++    install -m 0644 ${WORKDIR}/glesv1.pc ${D}${libdir}/pkgconfig/glesv1.pc
++    install -m 0644 ${WORKDIR}/glesv1_cm.pc ${D}${libdir}/pkgconfig/glesv1_cm.pc
++
++    install -d ${D}${libdir}
++    cp -a ${S}/${EGL_TYPE}/usr/lib/*.so* ${D}${libdir}
++    if [ ${EGL_TYPE} = "fbdev" ]; then
++        sed -i -e 's/^#if defined(MESA_EGL_NO_X11_HEADERS) || 0$/#if defined(MESA_EGL_NO_X11_HEADERS) || 1/' ${D}${includedir}/EGL/eglplatform.h
++    fi
++}
++
++# Inhibit warnings about files being stripped
++INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
++INHIBIT_PACKAGE_STRIP = "1"
++INHIBIT_SYSROOT_STRIP = "1"
++
++# These libraries shouldn't get installed in world builds unless something
++# explicitly depends upon them.
++EXCLUDE_FROM_WORLD = "1"
+diff --git a/recipes-graphics/mesa/mesa_%.bbappend b/recipes-graphics/mesa/mesa_%.bbappend
+new file mode 100644
+index 0000000..198d74c
+--- /dev/null
++++ b/recipes-graphics/mesa/mesa_%.bbappend
+@@ -0,0 +1,4 @@
++PACKAGECONFIG_remove_zynqmp = "egl gles"
++
++PROVIDES_remove_zynqmp = "virtual/libgles1 virtual/libgles2 virtual/egl"
++
+-- 
+2.1.4
+

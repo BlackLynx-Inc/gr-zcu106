@@ -1,0 +1,8 @@
+PV = 1.0.0
+PR = r0
+RPROVIDES = kernel-module-allegro
+RDEPENDS = kernel-4.14.0-xilinx-v2018.3 kernel-module-xlnx-vcu-4.14.0-xilinx-v2018.3
+RRECOMMENDS = 
+PKGSIZE = 54072
+FILES = /lib/modules/4.14.0-xilinx-v2018.3/extra/common/allegro.ko /etc/modules-load.d/allegro.conf /etc/modprobe.d/allegro.conf
+FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/extra/common/allegro.ko

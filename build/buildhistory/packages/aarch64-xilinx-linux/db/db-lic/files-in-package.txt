@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/db
+-rw-rw-r-- root       root             4923 ./usr/share/licenses/db/generic_Sleepycat
+-rw-r--r-- root       root             7310 ./usr/share/licenses/db/LICENSE

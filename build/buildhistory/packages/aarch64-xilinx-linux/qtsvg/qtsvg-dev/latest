@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+7a28db8f5b
+PR = r0
+PKG = libqt5svg-dev
+PKGV = 5.9.6+git0+7a28db8f5b
+RPROVIDES = qtsvg-dev (=5.9.6+git0+7a28db8f5b)
+RDEPENDS = qtsvg (= 5.9.6+git0+7a28db8f5b-r0)
+RRECOMMENDS = glibc-dev libstdc++-dev qtbase-dev qtsvg qtsvg-mkspecs qtsvg-qmldesigner zlib-dev
+PKGSIZE = 81352
+FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/qtsvg/*.la /lib/*.la /usr/lib/lib*.so /usr/lib/pkgconfig /usr/lib/cmake/* /usr/lib/*.prl /usr/lib/*.la /usr/include/qt5/*
+FILELIST = /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvgfont_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvggraphics_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvghandler_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvgnode_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvgstructure_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvgstyle_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qsvgtinydocument_p.h /usr/include/qt5/QtSvg/5.9.6/QtSvg/private/qtsvgglobal_p.h /usr/include/qt5/QtSvg/QGraphicsSvgItem /usr/include/qt5/QtSvg/QSvgGenerator /usr/include/qt5/QtSvg/QSvgRenderer /usr/include/qt5/QtSvg/QSvgWidget /usr/include/qt5/QtSvg/QtSvg /usr/include/qt5/QtSvg/QtSvgDepends /usr/include/qt5/QtSvg/QtSvgVersion /usr/include/qt5/QtSvg/qgraphicssvgitem.h /usr/include/qt5/QtSvg/qsvggenerator.h /usr/include/qt5/QtSvg/qsvgrenderer.h /usr/include/qt5/QtSvg/qsvgwidget.h /usr/include/qt5/QtSvg/qtsvgglobal.h /usr/include/qt5/QtSvg/qtsvgversion.h /usr/lib/cmake/Qt5Svg/Qt5SvgConfig.cmake /usr/lib/cmake/Qt5Svg/Qt5SvgConfigVersion.cmake /usr/lib/cmake/Qt5Svg/Qt5Svg_QSvgIconPlugin.cmake /usr/lib/cmake/Qt5Svg/Qt5Svg_QSvgPlugin.cmake /usr/lib/libQt5Svg.prl /usr/lib/libQt5Svg.so /usr/lib/pkgconfig/Qt5Svg.pc

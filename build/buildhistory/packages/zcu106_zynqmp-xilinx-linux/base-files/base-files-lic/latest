@@ -1,0 +1,8 @@
+PV = 3.0.14
+PR = r89
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 35603
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/base-files/GPL-2 /usr/share/licenses/base-files/generic_GPLv2

@@ -24,6 +24,6 @@ Deploy Instructions
 3. Insert SD card in ZC106 card
 4. Power up ZCU106 card.
 5. Once board is up and running, Halt at u-boot and run below command.
-ZynqMP> mmc dev 0 && mmcinfo && load mmc 0:1 0x80000 Image && load mmc 0:1 0x4000000 system.dtb && load mmc 0:1 0x6000000 rootfs.cpio.gz.u-boot &&
+ZynqMP> mmc dev 0 && mmcinfo && load mmc 0:1 0x80000 Image && load mmc 0:1 0x4000000 system.dtb && load mmc 0:1 0x6000000 rootfs.cpio.gz.u-boot && booti 0x80000 0x6000000 0x4000000
 
 6. Board should boot correctly after this.

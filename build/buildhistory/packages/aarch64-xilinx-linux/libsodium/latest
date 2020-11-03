@@ -1,0 +1,5 @@
+PV = 1.0.11
+PR = r0
+DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = libsodium-lic libsodium-dbg libsodium-staticdev libsodium-dev libsodium-doc libsodium-locale libsodium
+LAYER = openembedded-layer

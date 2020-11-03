@@ -1,0 +1,8 @@
+PV = 2.6
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 17138
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-idna/LICENSE.rst /usr/share/licenses/python-idna/generic_BSD-3-Clause /usr/share/licenses/python-idna/generic_Python-2.0 /usr/share/licenses/python-idna/generic_Unicode

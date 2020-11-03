@@ -1,0 +1,9 @@
+PV = 0.3.9
+PR = r0
+PKG = libxcb-render-util-dbg
+RPROVIDES = xcb-util-renderutil-dbg (=0.3.9)
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg libxcb-dbg libxcb-render-dbg
+PKGSIZE = 61427
+FILES = /usr/lib/debug /usr/src/debug
+FILELIST = /usr/lib/.debug/libxcb-render-util.so.0.0.0 /usr/src/debug/xcb-util-renderutil/0.3.9-r0/xcb-util-renderutil-0.3.9/renderutil/cache.c /usr/src/debug/xcb-util-renderutil/0.3.9-r0/xcb-util-renderutil-0.3.9/renderutil/glyph.c /usr/src/debug/xcb-util-renderutil/0.3.9-r0/xcb-util-renderutil-0.3.9/renderutil/util.c /usr/src/debug/xcb-util-renderutil/0.3.9-r0/xcb-util-renderutil-0.3.9/renderutil/xcb_renderutil.h

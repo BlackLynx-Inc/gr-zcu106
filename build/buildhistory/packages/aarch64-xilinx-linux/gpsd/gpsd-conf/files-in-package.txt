@@ -1,0 +1,5 @@
+drwxr-xr-x root       root             4096 ./etc
+drwxr-xr-x root       root             4096 ./etc/default
+-rw-r--r-- root       root              142 ./etc/default/gpsd.default
+drwxr-xr-x root       root             4096 ./etc/init.d
+-rwxr-xr-x root       root             3203 ./etc/init.d/gpsd

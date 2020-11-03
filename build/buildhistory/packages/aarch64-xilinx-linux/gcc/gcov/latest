@@ -1,0 +1,8 @@
+PV = 7.3.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26)
+RRECOMMENDS = 
+PKGSIZE = 1477104
+FILES = /usr/bin/aarch64-xilinx-linux-gcov* /usr/bin/aarch64-xilinx-linux-gcov-tool*
+FILELIST = /usr/bin/aarch64-xilinx-linux-gcov /usr/bin/aarch64-xilinx-linux-gcov-dump /usr/bin/aarch64-xilinx-linux-gcov-tool

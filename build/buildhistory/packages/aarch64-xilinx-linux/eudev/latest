@@ -1,0 +1,5 @@
+PV = 3.2.2
+PR = r0
+DEPENDS = autoconf-native automake-native glib-2.0 glib-2.0-native gnu-config-native gperf-native initscripts kmod libtool-cross libtool-native libxslt-native pkgconfig-native update-rc.d util-linux virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = eudev-lic eudev-hwdb libudev eudev-dbg eudev-staticdev eudev-dev eudev-doc eudev-locale eudev
+LAYER = core

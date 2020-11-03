@@ -1,0 +1,8 @@
+PV = git
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1909
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libvcu-xlnx/LICENSE.md /usr/share/licenses/libvcu-xlnx/generic_Proprietary

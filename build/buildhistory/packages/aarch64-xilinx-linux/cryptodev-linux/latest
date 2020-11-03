@@ -1,0 +1,5 @@
+PV = 1.9
+PR = r0
+DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = cryptodev-linux-lic cryptodev-linux-dbg cryptodev-linux-staticdev cryptodev-linux-dev cryptodev-linux-doc cryptodev-linux-locale cryptodev-linux
+LAYER = core

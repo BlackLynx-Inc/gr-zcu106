@@ -1,0 +1,15 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/Cheetah
+drwxr-xr-x root       root             4096 ./usr/lib/python2.7/site-packages/Cheetah/.debug
+-rwxr-xr-x root       root            42008 ./usr/lib/python2.7/site-packages/Cheetah/.debug/_namemapper.so
+drwxr-xr-x root       root             4096 ./usr/src
+drwxr-xr-x root       root             4096 ./usr/src/debug
+drwxr-xr-x root       root             4096 ./usr/src/debug/python-cheetah
+drwxr-xr-x root       root             4096 ./usr/src/debug/python-cheetah/2.4.4-r3
+drwxr-xr-x root       root             4096 ./usr/src/debug/python-cheetah/2.4.4-r3/Cheetah-2.4.4
+drwxr-xr-x root       root             4096 ./usr/src/debug/python-cheetah/2.4.4-r3/Cheetah-2.4.4/cheetah
+drwxr-xr-x root       root             4096 ./usr/src/debug/python-cheetah/2.4.4-r3/Cheetah-2.4.4/cheetah/c
+-rw-r--r-- root       root            13706 ./usr/src/debug/python-cheetah/2.4.4-r3/Cheetah-2.4.4/cheetah/c/_namemapper.c

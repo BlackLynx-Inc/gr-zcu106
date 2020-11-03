@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libevdev
+-rw-r--r-- root       root             1510 ./usr/share/licenses/libevdev/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/libevdev/generic_MIT-X
+-rw-r--r-- root       root             1190 ./usr/share/licenses/libevdev/libevdev.h

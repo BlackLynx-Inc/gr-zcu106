@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/python-cryptography-vectors
+-rw-rw-r-- root       root            11360 ./usr/share/licenses/python-cryptography-vectors/generic_Apache-2.0
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/python-cryptography-vectors/generic_BSD
+-rw-r--r-- root       root              197 ./usr/share/licenses/python-cryptography-vectors/LICENSE

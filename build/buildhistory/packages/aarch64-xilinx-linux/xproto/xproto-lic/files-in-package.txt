@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xproto
+-rw-r--r-- root       root             5276 ./usr/share/licenses/xproto/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xproto/generic_MIT
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xproto/generic_MIT-style

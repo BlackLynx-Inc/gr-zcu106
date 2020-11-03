@@ -1,0 +1,8 @@
+PV = 2.26
+PR = r0
+RPROVIDES = 
+RDEPENDS = glibc-localedata-ne-np
+RRECOMMENDS = 
+PKGSIZE = 5843
+FILES = /usr/share/i18n/locales/the_NP
+FILELIST = /usr/share/i18n/locales/the_NP

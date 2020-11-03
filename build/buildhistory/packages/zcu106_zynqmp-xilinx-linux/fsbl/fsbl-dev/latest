@@ -1,0 +1,9 @@
+PV = 2018.3+gitAUTOINC+56f3da2afb
+PR = r0
+PKGV = 2018.3+git0+56f3da2afb
+RPROVIDES = 
+RDEPENDS = fsbl (= 2018.3+git0+56f3da2afb-r0)
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/fsbl/*.la /lib/*.la
+FILELIST = 

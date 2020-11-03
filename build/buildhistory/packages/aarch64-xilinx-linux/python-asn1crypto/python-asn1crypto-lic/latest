@@ -1,0 +1,8 @@
+PV = 0.23.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 12435
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-asn1crypto/LICENSE /usr/share/licenses/python-asn1crypto/generic_Apache-2.0

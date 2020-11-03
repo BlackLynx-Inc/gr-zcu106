@@ -1,0 +1,9 @@
+PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
+PR = r0
+PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
+RPROVIDES = kernel-module-mtd-torturetest
+RDEPENDS = kernel-4.14.0-xilinx-v2018.3
+RRECOMMENDS = 
+PKGSIZE = 19440
+FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/mtd/tests/mtd_torturetest.ko /etc/modules-load.d/mtd_torturetest.conf /etc/modprobe.d/mtd_torturetest.conf
+FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/mtd/tests/mtd_torturetest.ko

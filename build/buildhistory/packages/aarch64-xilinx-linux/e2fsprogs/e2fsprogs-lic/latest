@@ -1,0 +1,8 @@
+PV = 1.43.5
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 94614
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/e2fsprogs/COPYING /usr/share/licenses/e2fsprogs/NOTICE /usr/share/licenses/e2fsprogs/e2p.h /usr/share/licenses/e2fsprogs/et_name.c /usr/share/licenses/e2fsprogs/ext2fs.h /usr/share/licenses/e2fsprogs/generic_BSD /usr/share/licenses/e2fsprogs/generic_GPLv2 /usr/share/licenses/e2fsprogs/generic_LGPLv2 /usr/share/licenses/e2fsprogs/generic_MIT /usr/share/licenses/e2fsprogs/ss.h /usr/share/licenses/e2fsprogs/uuid.h.in

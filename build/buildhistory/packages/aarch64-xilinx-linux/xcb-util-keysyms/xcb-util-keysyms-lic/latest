@@ -1,0 +1,9 @@
+PV = 0.4.0
+PR = r0
+PKG = libxcb-keysyms-lic
+RPROVIDES = xcb-util-keysyms-lic (=0.4.0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2623
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xcb-util-keysyms/generic_MIT /usr/share/licenses/xcb-util-keysyms/keysyms.c

@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+c9eeabc7a7
+PR = r0
+PKGV = 5.9.6+git0+c9eeabc7a7
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) libgcc (>= 7.3.0) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304)
+RRECOMMENDS = ptest-runner
+PKGSIZE = 50607
+FILES = /usr/lib/qttools/ptest
+FILELIST = /usr/lib/qttools/ptest/run-ptest /usr/lib/qttools/ptest/tst_qtattributionsscanner /usr/lib/qttools/ptest/tst_tdiag

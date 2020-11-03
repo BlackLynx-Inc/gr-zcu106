@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+-rwxr-xr-x root       root            31232 ./usr/bin/volk-config-info
+-rwxr-xr-x root       root             5274 ./usr/bin/volk_modtool
+-rwxr-xr-x root       root           172648 ./usr/bin/volk_profile
+drwxr-xr-x root       root             4096 ./usr/lib
+-rwxr-xr-x root       root           374896 ./usr/lib/libvolk.so.1.4.1git

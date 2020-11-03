@@ -1,0 +1,8 @@
+PV = 2.0.3
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 13230
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-cryptography/LICENSE /usr/share/licenses/python-cryptography/generic_Apache-2.0 /usr/share/licenses/python-cryptography/generic_BSD

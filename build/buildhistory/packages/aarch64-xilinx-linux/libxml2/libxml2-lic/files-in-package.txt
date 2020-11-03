@@ -1,0 +1,9 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libxml2
+-rw-r--r-- root       root             1289 ./usr/share/licenses/libxml2/Copyright
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/libxml2/generic_MIT
+-rw-r--r-- root       root              569 ./usr/share/licenses/libxml2/hash.c
+-rw-r--r-- root       root              568 ./usr/share/licenses/libxml2/list.c
+-rw-r--r-- root       root              564 ./usr/share/licenses/libxml2/trio.c

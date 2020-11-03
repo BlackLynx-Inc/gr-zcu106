@@ -1,0 +1,16 @@
+Setup Yocto
+1.	Create a new project directory
+2.	Cd <new project directory>
+3.	repo init -u git://github.com/Xilinx/yocto-manifests -b rel-v2018.1
+4.	repo sync
+5.	repo start rel-v2018.1 --all
+6.	source setupsdk
+7.	Copy downloads-mali.tar somewhere accessible.
+	tar -xvf ea-downloads-mali.tar
+	Under the downloads-mali folder you should see:
+	$ ls downloads-mali/
+	git2_gitenterprise.xilinx.com.Graphics.mali400-xlnx-userspace.git.tar.gz
+8.	Copy git2_gitenterprise.xilinx.com.Graphics.mali400-xlnx-userspace.git.tar.gz to build/downloads of Yocto build
+
+MALI binaries will be built on egl/gles1/gles2 dependencies
+

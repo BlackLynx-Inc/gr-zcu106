@@ -1,0 +1,8 @@
+PV = 2017.7.27.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1879
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-certifi/LICENSE /usr/share/licenses/python-certifi/generic_ISC

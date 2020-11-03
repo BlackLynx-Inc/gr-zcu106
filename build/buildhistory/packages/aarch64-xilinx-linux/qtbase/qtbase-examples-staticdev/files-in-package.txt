@@ -1,0 +1,9 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/qt5
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/plugandpaint
+drwxr-xr-x root       root             4096 ./usr/share/qt5/examples/widgets/tools/plugandpaint/plugins
+-rw-r--r-- root       root          1967278 ./usr/share/qt5/examples/widgets/tools/plugandpaint/plugins/libpnp_basictools.a

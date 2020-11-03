@@ -1,0 +1,9 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+drwxr-xr-x root       root             4096 ./usr/bin/.debug
+-rwxr-xr-x root       root            92512 ./usr/bin/.debug/ctrlsw_decoder
+-rwxr-xr-x root       root           501504 ./usr/bin/.debug/ctrlsw_encoder
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxr-xr-x root       root             4096 ./usr/lib/.debug
+-rwxr-xr-x root       root            39848 ./usr/lib/.debug/liballegro_decode.so.0.9.0
+-rwxr-xr-x root       root            36288 ./usr/lib/.debug/liballegro_encode.so.0.9.0

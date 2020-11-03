@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+PKG = libqt5xmlpatterns-ptest
+PKGV = 5.9.6+git0+4dcae15a5a
+RPROVIDES = qtxmlpatterns-ptest (=5.9.6+git0+4dcae15a5a)
+RDEPENDS = 
+RRECOMMENDS = ptest-runner
+PKGSIZE = 20061643
+FILES = /usr/lib/qtxmlpatterns/ptest
+FILELIST = /usr/lib/qtxmlpatterns/ptest/run-ptest /usr/lib/qtxmlpatterns/ptest/tst_checkxmlfiles /usr/lib/qtxmlpatterns/ptest/tst_list /usr/lib/qtxmlpatterns/ptest/tst_patternistexamplefiletree /usr/lib/qtxmlpatterns/ptest/tst_patternistexamples /usr/lib/qtxmlpatterns/ptest/tst_patternistheaders /usr/lib/qtxmlpatterns/ptest/tst_qabstractmessagehandler /usr/lib/qtxmlpatterns/ptest/tst_qabstracturiresolver /usr/lib/qtxmlpatterns/ptest/tst_qabstractxmlforwarditerator /usr/lib/qtxmlpatterns/ptest/tst_qabstractxmlnodemodel /usr/lib/qtxmlpatterns/ptest/tst_qabstractxmlreceiver /usr/lib/qtxmlpatterns/ptest/tst_qapplicationargumentparser /usr/lib/qtxmlpatterns/ptest/tst_qautoptr /usr/lib/qtxmlpatterns/ptest/tst_qsimplexmlnodemodel /usr/lib/qtxmlpatterns/ptest/tst_qsourcelocation /usr/lib/qtxmlpatterns/ptest/tst_qxmlformatter /usr/lib/qtxmlpatterns/ptest/tst_qxmlitem /usr/lib/qtxmlpatterns/ptest/tst_qxmlname /usr/lib/qtxmlpatterns/ptest/tst_qxmlnamepool /usr/lib/qtxmlpatterns/ptest/tst_qxmlnodemodelindex /usr/lib/qtxmlpatterns/ptest/tst_qxmlquery /usr/lib/qtxmlpatterns/ptest/tst_qxmlresultitems /usr/lib/qtxmlpatterns/ptest/tst_qxmlschema /usr/lib/qtxmlpatterns/ptest/tst_qxmlschemavalidator /usr/lib/qtxmlpatterns/ptest/tst_qxmlserializer /usr/lib/qtxmlpatterns/ptest/tst_xmlpatterns /usr/lib/qtxmlpatterns/ptest/tst_xmlpatternsschema /usr/lib/qtxmlpatterns/ptest/tst_xmlpatternsvalidator

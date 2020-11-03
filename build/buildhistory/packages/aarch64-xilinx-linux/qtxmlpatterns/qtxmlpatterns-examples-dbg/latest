@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+PKG = libqt5xmlpatterns-examples-dbg
+PKGV = 5.9.6+git0+4dcae15a5a
+RPROVIDES = qtxmlpatterns-examples-dbg (=5.9.6+git0+4dcae15a5a)
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg libgcc-dbg libstdc++-dbg qtbase-dbg qtxmlpatterns-dbg
+PKGSIZE = 0
+FILES = /usr/share/qt5/examples/.debug /usr/share/qt5/examples/*/.debug /usr/share/qt5/examples/*/*/.debug /usr/share/qt5/examples/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/*/.debug /usr/share/qt5/examples/*/*/*/*/*/*/*/.debug
+FILELIST = 

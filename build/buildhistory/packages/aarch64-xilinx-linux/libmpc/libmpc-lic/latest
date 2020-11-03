@@ -1,0 +1,8 @@
+PV = 1.0.3
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 15119
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libmpc/COPYING.LESSER /usr/share/licenses/libmpc/generic_LGPLv3

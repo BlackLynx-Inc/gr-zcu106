@@ -1,0 +1,5 @@
+PV = 1.1.2
+PR = r0
+DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native pkgconfig-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = log4cpp-lic log4cpp-dbg log4cpp-staticdev log4cpp-dev log4cpp-doc log4cpp-locale log4cpp
+LAYER = openembedded-layer

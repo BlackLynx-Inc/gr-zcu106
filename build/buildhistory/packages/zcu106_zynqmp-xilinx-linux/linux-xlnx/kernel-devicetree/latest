@@ -1,0 +1,9 @@
+PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
+PR = r0
+PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 37717
+FILES = /boot/*.dtb /boot/*.dtbo
+FILELIST = /boot/devicetree-Image-zynqmp-zcu106-revA.dtb /boot/zynqmp-zcu106-revA.dtb

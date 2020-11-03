@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+PKG = libqt5xmlpatterns-lic
+PKGV = 5.9.6+git0+4dcae15a5a
+RPROVIDES = qtxmlpatterns-lic (=5.9.6+git0+4dcae15a5a)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 242813
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/qtxmlpatterns/LGPL_EXCEPTION.txt /usr/share/licenses/qtxmlpatterns/LICENSE.FDL /usr/share/licenses/qtxmlpatterns/LICENSE.GPL2 /usr/share/licenses/qtxmlpatterns/LICENSE.GPL3 /usr/share/licenses/qtxmlpatterns/LICENSE.GPL3-EXCEPT /usr/share/licenses/qtxmlpatterns/LICENSE.LGPL3 /usr/share/licenses/qtxmlpatterns/generic_BSD /usr/share/licenses/qtxmlpatterns/generic_GFDL-1.3 /usr/share/licenses/qtxmlpatterns/generic_GPL-2.0 /usr/share/licenses/qtxmlpatterns/generic_GPL-3.0 /usr/share/licenses/qtxmlpatterns/generic_LGPL-3.0 /usr/share/licenses/qtxmlpatterns/generic_The-Qt-Company-Commercial /usr/share/licenses/qtxmlpatterns/generic_The-Qt-Company-GPL-Exception-1.0

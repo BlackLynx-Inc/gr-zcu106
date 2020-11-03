@@ -1,0 +1,9 @@
+PE = 1
+PV = 5.3.28
+PR = r1
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 12233
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/db/LICENSE /usr/share/licenses/db/generic_Sleepycat

@@ -1,0 +1,9 @@
+PV = 0.3.9
+PR = r0
+PKG = libxcb-render-util-staticdev
+RPROVIDES = xcb-util-renderutil-staticdev (=0.3.9)
+RDEPENDS = xcb-util-renderutil-dev (= 0.3.9-r0)
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/lib/*.a /lib/*.a /usr/lib/xcb-util-renderutil/*.a
+FILELIST = 

@@ -1,0 +1,5 @@
+PV = 2.0.3
+PR = r0
+DEPENDS = python python-cryptography python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-cryptography-vectors-lic python-cryptography-vectors-dbg python-cryptography-vectors-staticdev python-cryptography-vectors-dev python-cryptography-vectors-doc python-cryptography-vectors-locale python-cryptography-vectors
+LAYER = meta-python

@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xf86driproto
+-rw-r--r-- root       root             1187 ./usr/share/licenses/xf86driproto/COPYING
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xf86driproto/generic_MIT
+-rw-r--r-- root       root             1496 ./usr/share/licenses/xf86driproto/xf86driproto.h

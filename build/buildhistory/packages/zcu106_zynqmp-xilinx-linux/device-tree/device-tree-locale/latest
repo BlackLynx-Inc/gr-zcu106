@@ -1,0 +1,9 @@
+PV = xilinx+gitAUTOINC+b7466bbeee
+PR = r0
+PKGV = xilinx+git0+b7466bbeee
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/share/locale
+FILELIST = 

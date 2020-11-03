@@ -1,0 +1,8 @@
+PV = r8p0-01rel0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 18455
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/kernel-module-mali/generic_GPLv2 /usr/share/licenses/kernel-module-mali/mali_kernel_license.h

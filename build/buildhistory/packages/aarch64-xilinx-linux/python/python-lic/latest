@@ -1,0 +1,8 @@
+PV = 2.7.13
+PR = r1
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 22562
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python/LICENSE /usr/share/licenses/python/generic_PSFv2

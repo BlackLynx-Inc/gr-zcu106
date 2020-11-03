@@ -1,0 +1,4 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+-rwxr-xr-x root       root           273624 ./usr/lib/libsodium.so.18.1.1
+lrwxrwxrwx root       root               19 ./usr/lib/libsodium.so.18 -> libsodium.so.18.1.1

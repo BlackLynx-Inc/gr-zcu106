@@ -1,0 +1,8 @@
+PV = 1.10.20
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 56580
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/dbus/COPYING /usr/share/licenses/dbus/dbus.h /usr/share/licenses/dbus/generic_AFL-2 /usr/share/licenses/dbus/generic_GPLv2

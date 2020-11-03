@@ -1,0 +1,5 @@
+PV = r8p0-01rel0
+PR = r0
+DEPENDS = pkgconfig-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = kernel-module-mali-lic kernel-module-mali-dbg kernel-module-mali-staticdev kernel-module-mali-dev kernel-module-mali-doc kernel-module-mali-locale kernel-module-mali kernel-module-mali-4.14.0-xilinx-v2018.3
+LAYER = xilinx

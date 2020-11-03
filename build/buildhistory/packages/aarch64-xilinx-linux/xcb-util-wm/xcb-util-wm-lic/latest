@@ -1,0 +1,8 @@
+PV = 0.4.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 6881
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/xcb-util-wm/ewmh.c.m4 /usr/share/licenses/xcb-util-wm/generic_MIT /usr/share/licenses/xcb-util-wm/icccm.c /usr/share/licenses/xcb-util-wm/xcb_ewmh.h.m4 /usr/share/licenses/xcb-util-wm/xcb_icccm.h

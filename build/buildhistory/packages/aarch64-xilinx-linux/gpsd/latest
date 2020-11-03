@@ -1,0 +1,5 @@
+PV = 3.16
+PR = r0
+DEPENDS = bluez5 chrpath-replacement-native dbus dbus-glib initscripts libusb1 ncurses pps-tools python python-native python-scons-native update-rc.d virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives
+PACKAGES = gpsd-lic libgps libgpsd python-pygps-dbg python-pygps gpsd-udev gpsd-conf gpsd-gpsctl gps-utils gpsd-dbg gpsd-staticdev gpsd-dev gpsd-doc gpsd-locale gpsd
+LAYER = openembedded-layer

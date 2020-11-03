@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libpcre
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/libpcre/generic_BSD
+-rw-r--r-- root       root             3182 ./usr/share/licenses/libpcre/LICENCE

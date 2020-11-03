@@ -1,0 +1,9 @@
+PV = 3.1.5
+PR = r0
+PKG = libmpfr-lic
+RPROVIDES = mpfr-lic (=3.1.5)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 84948
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/mpfr/COPYING /usr/share/licenses/mpfr/COPYING.LESSER /usr/share/licenses/mpfr/generic_GPLv3 /usr/share/licenses/mpfr/generic_LGPLv3

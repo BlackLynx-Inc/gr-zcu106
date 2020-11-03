@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+9c50112304
+PR = r0
+PKGV = 5.9.6+git0+9c50112304
+RPROVIDES = 
+RDEPENDS = qtbase-dev (= 5.9.6+git0+9c50112304-r0)
+RRECOMMENDS = 
+PKGSIZE = 141545194
+FILES = /usr/lib/*.a /lib/*.a /usr/lib/qtbase/*.a /usr/lib/*.a
+FILELIST = /usr/lib/libQt5AccessibilitySupport.a /usr/lib/libQt5Bootstrap.a /usr/lib/libQt5DeviceDiscoverySupport.a /usr/lib/libQt5EglSupport.a /usr/lib/libQt5EventDispatcherSupport.a /usr/lib/libQt5FbSupport.a /usr/lib/libQt5FontDatabaseSupport.a /usr/lib/libQt5InputSupport.a /usr/lib/libQt5OpenGLExtensions.a /usr/lib/libQt5PlatformCompositorSupport.a /usr/lib/libQt5ServiceSupport.a /usr/lib/libQt5ThemeSupport.a

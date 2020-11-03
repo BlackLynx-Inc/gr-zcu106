@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+PKG = libqt5xmlpatterns-tools
+PKGV = 5.9.6+git0+4dcae15a5a
+RPROVIDES = qtxmlpatterns-tools (=5.9.6+git0+4dcae15a5a)
+RDEPENDS = glibc (>= 2.26) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304) qtxmlpatterns (>= 5.9.6+git0+4dcae15a5a)
+RRECOMMENDS = 
+PKGSIZE = 66528
+FILES = /usr/bin/qt5/*
+FILELIST = /usr/bin/qt5/xmlpatterns /usr/bin/qt5/xmlpatternsvalidator

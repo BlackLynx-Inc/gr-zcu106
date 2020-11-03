@@ -1,0 +1,8 @@
+PV = 2.25
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 39350
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libcap/License /usr/share/licenses/libcap/generic_BSD /usr/share/licenses/libcap/generic_GPLv2

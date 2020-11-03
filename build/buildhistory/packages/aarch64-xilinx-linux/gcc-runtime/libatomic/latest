@@ -1,0 +1,9 @@
+PV = 7.3.0
+PR = r0
+PKG = libatomic1
+RPROVIDES = libatomic (=7.3.0)
+RDEPENDS = glibc (>= 2.26)
+RRECOMMENDS = 
+PKGSIZE = 18314
+FILES = /usr/lib/libatomic.so.*
+FILELIST = /usr/lib/libatomic.so.1 /usr/lib/libatomic.so.1.2.0

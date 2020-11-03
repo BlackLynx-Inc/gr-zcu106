@@ -1,0 +1,8 @@
+PV = 0.3.5
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 36422
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/opkg-utils/COPYING /usr/share/licenses/opkg-utils/generic_GPLv2 /usr/share/licenses/opkg-utils/opkg.py

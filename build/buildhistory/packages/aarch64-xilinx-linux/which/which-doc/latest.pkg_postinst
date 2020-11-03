@@ -1,0 +1,1 @@
+#!/bin/sh\n\tupdate-alternatives --install /usr/share/man/man1/which.1 which.1 /usr/share/man/man1/which.1.which 100\n

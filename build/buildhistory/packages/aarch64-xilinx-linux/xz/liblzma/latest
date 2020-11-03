@@ -1,0 +1,9 @@
+PV = 5.2.3
+PR = r0
+PKG = liblzma5
+RPROVIDES = liblzma (=5.2.3)
+RDEPENDS = glibc (>= 2.26)
+RRECOMMENDS = 
+PKGSIZE = 133656
+FILES = /usr/lib/liblzma*.so.*
+FILELIST = /usr/lib/liblzma.so.5 /usr/lib/liblzma.so.5.2.3

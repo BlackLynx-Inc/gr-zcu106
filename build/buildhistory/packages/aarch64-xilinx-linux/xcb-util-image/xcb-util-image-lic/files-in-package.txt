@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/xcb-util-image
+-rw-rw-r-- root       root             1080 ./usr/share/licenses/xcb-util-image/generic_MIT
+-rw-r--r-- root       root             1349 ./usr/share/licenses/xcb-util-image/xcb_image.c
+-rw-r--r-- root       root             1350 ./usr/share/licenses/xcb-util-image/xcb_image.h

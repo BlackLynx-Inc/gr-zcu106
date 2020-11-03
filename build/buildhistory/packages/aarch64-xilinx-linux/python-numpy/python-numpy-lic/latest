@@ -1,0 +1,8 @@
+PV = 1.13.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3011
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-numpy/LICENSE.txt /usr/share/licenses/python-numpy/generic_BSD-3-Clause

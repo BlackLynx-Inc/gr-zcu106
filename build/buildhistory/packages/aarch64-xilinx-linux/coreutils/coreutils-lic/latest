@@ -1,0 +1,8 @@
+PV = 8.27
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 70416
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/coreutils/COPYING /usr/share/licenses/coreutils/generic_GPLv3 /usr/share/licenses/coreutils/ls.c

@@ -1,0 +1,1 @@
+#!/bin/sh\nif true && [ -z "$D" -a -x "/etc/init.d/bluetooth" ]; then\n\t/etc/init.d/bluetooth stop || :\nfi\n

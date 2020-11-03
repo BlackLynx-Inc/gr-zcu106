@@ -1,0 +1,8 @@
+PV = 1.0.18
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 12368
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-ipaddress/LICENSE /usr/share/licenses/python-ipaddress/generic_Python-2.0

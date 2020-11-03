@@ -1,0 +1,8 @@
+PV = 7.3.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = libgcc-dev
+PKGSIZE = 0
+FILES = /usr/lib/gcc/aarch64-xilinx-linux/7.3.0/include/quadmath* /usr/lib/libquadmath*.so /usr/lib/libquadmath.la
+FILELIST = 

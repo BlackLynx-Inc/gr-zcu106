@@ -1,0 +1,8 @@
+PV = 2.9.5
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 52420
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/cracklib/COPYING.LIB /usr/share/licenses/cracklib/generic_LGPLv2.1

@@ -1,0 +1,9 @@
+PV = 1.13
+PR = r0
+PKG = libgdbm-locale-uk
+RPROVIDES = gdbm-locale gdbm-locale-uk (=1.13) uk-translation
+RDEPENDS = 
+RRECOMMENDS = virtual-locale-uk
+PKGSIZE = 20854
+FILES = /usr/share/locale/uk
+FILELIST = /usr/share/locale/uk/LC_MESSAGES/gdbm.mo

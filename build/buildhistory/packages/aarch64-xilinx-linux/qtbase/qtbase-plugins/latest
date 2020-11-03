@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+9c50112304
+PR = r0
+PKGV = 5.9.6+git0+9c50112304
+RPROVIDES = 
+RDEPENDS = fontconfig (>= 2.12.4) freetype (>= 2.8) glib-2.0 (>= 2.52.3) glibc (>= 2.26) libinput (>= 1.8.1) libjpeg-turbo (>= 1.5.2) libmali-xlnx (>= r8p0-01rel0) libstdc++ (>= 7.3.0) libudev (>= 3.2.2) libx11 (>= 1.6.5) libx11-xcb (>= 1.6.5) libxcb (>= 1.12) libxkbcommon (>= 0.7.1) qtbase (>= 5.9.6+git0+9c50112304)
+RRECOMMENDS = libx11-locale
+PKGSIZE = 2228720
+FILES = /usr/lib/qt5/plugins/*/*.so /usr/lib/qt5/plugins/*/*/*.so /usr/lib/qt5/plugins/*/*/*/*.so
+FILELIST = /usr/lib/qt5/plugins/bearer/libqconnmanbearer.so /usr/lib/qt5/plugins/bearer/libqgenericbearer.so /usr/lib/qt5/plugins/bearer/libqnmbearer.so /usr/lib/qt5/plugins/egldeviceintegrations/libqeglfs-emu-integration.so /usr/lib/qt5/plugins/egldeviceintegrations/libqeglfs-mali-integration.so /usr/lib/qt5/plugins/egldeviceintegrations/libqeglfs-x11-integration.so /usr/lib/qt5/plugins/generic/libqevdevkeyboardplugin.so /usr/lib/qt5/plugins/generic/libqevdevmouseplugin.so /usr/lib/qt5/plugins/generic/libqevdevtabletplugin.so /usr/lib/qt5/plugins/generic/libqevdevtouchplugin.so /usr/lib/qt5/plugins/generic/libqlibinputplugin.so /usr/lib/qt5/plugins/generic/libqtuiotouchplugin.so /usr/lib/qt5/plugins/imageformats/libqjpeg.so /usr/lib/qt5/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so /usr/lib/qt5/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so /usr/lib/qt5/plugins/platforms/libqeglfs.so /usr/lib/qt5/plugins/platforms/libqlinuxfb.so /usr/lib/qt5/plugins/platforms/libqminimal.so /usr/lib/qt5/plugins/platforms/libqminimalegl.so /usr/lib/qt5/plugins/platforms/libqoffscreen.so /usr/lib/qt5/plugins/platforms/libqvnc.so /usr/lib/qt5/plugins/platforms/libqxcb.so /usr/lib/qt5/plugins/xcbglintegrations/libqxcb-egl-integration.so

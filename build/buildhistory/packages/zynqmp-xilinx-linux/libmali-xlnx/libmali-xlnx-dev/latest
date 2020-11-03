@@ -1,0 +1,9 @@
+PV = r8p0-01rel0
+PR = r0
+PKG = libmali-dev
+RPROVIDES = libmali-xlnx-dev (=r8p0-01rel0)
+RDEPENDS = libmali-xlnx (= r8p0-01rel0-r0)
+RRECOMMENDS = glibc-dev kernel-module-mali-dev libdrm-dev libx11-dev libxdamage-dev libxext-dev libxfixes-dev
+PKGSIZE = 296870
+FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/libmali-xlnx/*.la /lib/*.la
+FILELIST = /usr/include/EGL/egl.h /usr/include/EGL/eglext.h /usr/include/EGL/eglplatform.h /usr/include/GLES/gl.h /usr/include/GLES/glext.h /usr/include/GLES/glplatform.h /usr/include/GLES2/gl2.h /usr/include/GLES2/gl2ext.h /usr/include/GLES2/gl2platform.h /usr/include/KHR/khrplatform.h /usr/lib/libEGL.so /usr/lib/libGLESv1_CM.so /usr/lib/libGLESv2.so /usr/lib/libMali.so /usr/lib/libgbm.so /usr/lib/libwayland-egl.so /usr/lib/pkgconfig/egl.pc /usr/lib/pkgconfig/glesv1.pc /usr/lib/pkgconfig/glesv1_cm.pc /usr/lib/pkgconfig/glesv2.pc

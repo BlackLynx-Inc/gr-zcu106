@@ -1,0 +1,5 @@
+PV = git
+PR = r0
+DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/hdf virtual/libc
+PACKAGES = bitstream-extraction-lic bitstream-extraction-dbg bitstream-extraction-staticdev bitstream-extraction-dev bitstream-extraction-doc bitstream-extraction-locale bitstream-extraction
+LAYER = xilinx-tools

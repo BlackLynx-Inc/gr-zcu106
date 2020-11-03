@@ -1,0 +1,1 @@
+#!/bin/sh\nif true && type update-rc.d >/dev/null 2>/dev/null; then\n\tif [ -n "$D" ]; then\n\t\tOPT="-f -r $D"\n\telse\n\t\tOPT="-f"\n\tfi\n\tupdate-rc.d $OPT hwclock.sh remove\nfi\n

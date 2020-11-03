@@ -1,0 +1,34 @@
+zcu106-zynqmp: petalinux-image-minimal configured for petalinux 2018.3
+
+Build Configuration:
+BB_VERSION           = "1.36.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-xilinx-linux"
+MACHINE              = "zcu106-zynqmp"
+DISTRO               = "petalinux"
+DISTRO_VERSION       = "2018.3"
+TUNE_FEATURES        = "aarch64"
+TARGET_FPU           = ""
+meta                 
+meta-poky            = "HEAD:3be15ed93e52d797250ad90467760eb1fd7eca56"
+meta-perl            
+meta-python          
+meta-filesystems     
+meta-gnome           
+meta-multimedia      
+meta-networking      
+meta-webserver       
+meta-xfce            
+meta-initramfs       
+meta-oe              = "HEAD:83fbd5d5d605de13f47263fab680d910375e1f95"
+meta-browser         = "HEAD:c5ff301787ef76eec57ca500ec9d1ccf0f74b488"
+meta-qt5             = "HEAD:f7e16aeeaa58cd7cc166f16d8537a8b3627e0397"
+meta-xilinx-bsp      
+meta-xilinx-contrib  = "HEAD:7922f16dfa5308fb5419a80f513bb07c0384f95e"
+meta-xilinx-tools    = "HEAD:b286943d7d468e9ff10b9f9662767e8c71f104d1"
+meta-petalinux       = "HEAD:254edec8368c3d30676135365734abe06e596881"
+meta-virtualization  = "HEAD:df7b7937b9c91eeea05665c0b69ddcf435cddbcb"
+meta-openamp         = "HEAD:fb5fbc77fa5595ed291b886abe9555a91e67d241"
+meta-sdr             = "rocko-gr-next:e078e3d158a8018cf493c9a331cfa259cdf90ee9"
+

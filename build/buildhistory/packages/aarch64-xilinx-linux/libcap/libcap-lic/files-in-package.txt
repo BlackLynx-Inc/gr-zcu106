@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libcap
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/libcap/generic_BSD
+-rw-rw-r-- root       root            17611 ./usr/share/licenses/libcap/generic_GPLv2
+-rw-r--r-- root       root            20240 ./usr/share/licenses/libcap/License

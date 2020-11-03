@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/m4
+-rw-r--r-- root       root            35147 ./usr/share/licenses/m4/COPYING.0
+-rw-r--r-- root       root              379 ./usr/share/licenses/m4/COPYING.1
+-rw-rw-r-- root       root            34694 ./usr/share/licenses/m4/generic_GPLv3

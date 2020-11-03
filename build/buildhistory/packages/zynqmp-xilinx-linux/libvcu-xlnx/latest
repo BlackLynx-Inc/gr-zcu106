@@ -1,0 +1,5 @@
+PV = git
+PR = r0
+DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = libvcu-xlnx-lic libvcu-xlnx-dbg libvcu-xlnx-staticdev libvcu-xlnx-dev libvcu-xlnx-doc libvcu-xlnx-locale libvcu-xlnx
+LAYER = xilinx

@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/tcf-agent
+-rw-r--r-- root       root             2354 ./usr/share/licenses/tcf-agent/edl-v10.html
+-rw-rw-r-- root       root             1568 ./usr/share/licenses/tcf-agent/generic_EDL-1.0
+-rw-rw-r-- root       root            11234 ./usr/share/licenses/tcf-agent/generic_EPL-1.0

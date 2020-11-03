@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+7a28db8f5b
+PR = r0
+PKG = libqt5svg5
+PKGV = 5.9.6+git0+7a28db8f5b
+RPROVIDES = qtsvg (=5.9.6+git0+7a28db8f5b)
+RDEPENDS = glibc (>= 2.26) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304) zlib (>= 1.2.11)
+RRECOMMENDS = qtsvg-lic qtsvg-plugins qtsvg-qmlplugins
+PKGSIZE = 323108
+FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/qtsvg /usr/lib/qtsvg/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /usr/lib/lib*.so.* /usr/lib/qt5/libexec
+FILELIST = /usr/lib/libQt5Svg.so.5 /usr/lib/libQt5Svg.so.5.9 /usr/lib/libQt5Svg.so.5.9.6

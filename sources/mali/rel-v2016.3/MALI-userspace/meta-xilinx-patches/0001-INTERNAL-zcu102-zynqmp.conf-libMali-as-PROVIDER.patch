@@ -1,0 +1,25 @@
+From 5017e69c779c6eba89c6547a72a65f43fa432ef7 Mon Sep 17 00:00:00 2001
+From: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+Date: Thu, 19 May 2016 11:08:48 -0700
+Subject: [PATCH] [INTERNAL] zcu102-zynqmp.conf: libMali as PROVIDER
+
+Signed-off-by: Manjukumar Matha <manjukumar.harthikote-matha@xilinx.com>
+---
+ conf/machine/zcu102-zynqmp.conf | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/conf/machine/zcu102-zynqmp.conf b/conf/machine/zcu102-zynqmp.conf
+index 29793df..cf4f004 100644
+--- a/conf/machine/zcu102-zynqmp.conf
++++ b/conf/machine/zcu102-zynqmp.conf
+@@ -17,3 +17,7 @@ KERNEL_DEVICETREE = "xilinx/zynqmp-zcu102-revB.dtb"
+ 
+ PREFERRED_PROVIDER_virtual/kernel ?= "linux-xlnx"
+ PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot-xlnx"
++
++PREFERRED_PROVIDER_virtual/libgles1 = "libmali-xlnx"
++PREFERRED_PROVIDER_virtual/libgles2 = "libmali-xlnx"
++PREFERRED_PROVIDER_virtual/egl = "libmali-xlnx"
+-- 
+2.7.4
+

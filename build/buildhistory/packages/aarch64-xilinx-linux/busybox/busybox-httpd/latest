@@ -1,0 +1,8 @@
+PV = 1.24.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = update-rc.d
+PKGSIZE = 747
+FILES = /etc/init.d/busybox-httpd /srv/www
+FILELIST = /etc/init.d/busybox-httpd

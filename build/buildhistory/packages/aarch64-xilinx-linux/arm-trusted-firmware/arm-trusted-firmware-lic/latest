@@ -1,0 +1,9 @@
+PV = 1.5-xilinx-v2018.3+gitAUTOINC+08560c36ea
+PR = r0
+PKGV = 1.5-xilinx-v2018.3+git0+08560c36ea
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3297
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/arm-trusted-firmware/generic_BSD /usr/share/licenses/arm-trusted-firmware/license.rst

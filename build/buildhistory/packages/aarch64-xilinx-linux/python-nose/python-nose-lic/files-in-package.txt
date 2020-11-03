@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/python-nose
+-rw-rw-r-- root       root            25878 ./usr/share/licenses/python-nose/generic_LGPLv2.1
+-rw-r--r-- root       root            26432 ./usr/share/licenses/python-nose/lgpl.txt

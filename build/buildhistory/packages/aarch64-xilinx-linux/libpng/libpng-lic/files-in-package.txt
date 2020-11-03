@@ -1,0 +1,7 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/libpng
+-rw-rw-r-- root       root             4201 ./usr/share/licenses/libpng/generic_Libpng
+-rw-r--r-- root       root             4985 ./usr/share/licenses/libpng/LICENSE
+-rw-r--r-- root       root             5750 ./usr/share/licenses/libpng/png.h

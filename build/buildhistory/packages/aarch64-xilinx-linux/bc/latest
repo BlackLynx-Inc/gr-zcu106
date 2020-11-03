@@ -1,0 +1,5 @@
+PV = 1.06
+PR = r3
+DEPENDS = autoconf-native automake-native flex gnu-config-native libtool-cross libtool-native texinfo-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives
+PACKAGES = bc-lic bc-dbg bc-staticdev bc-dev bc-doc bc-locale bc
+LAYER = core

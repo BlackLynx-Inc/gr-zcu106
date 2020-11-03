@@ -1,0 +1,13 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/glib-2.0
+-rw-r--r-- root       root            25292 ./usr/share/licenses/glib-2.0/COPYING.0
+-rw-r--r-- root       root             1698 ./usr/share/licenses/glib-2.0/COPYING.1
+-rw-r--r-- root       root               95 ./usr/share/licenses/glib-2.0/COPYING.2
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/glib-2.0/generic_BSD
+-rw-rw-r-- root       root            24925 ./usr/share/licenses/glib-2.0/generic_LGPLv2
+-rw-rw-r-- root       root               52 ./usr/share/licenses/glib-2.0/generic_PD
+-rw-r--r-- root       root              671 ./usr/share/licenses/glib-2.0/glib.h
+-rw-r--r-- root       root              671 ./usr/share/licenses/glib-2.0/gmodule.h
+-rw-r--r-- root       root             1473 ./usr/share/licenses/glib-2.0/pcre.h

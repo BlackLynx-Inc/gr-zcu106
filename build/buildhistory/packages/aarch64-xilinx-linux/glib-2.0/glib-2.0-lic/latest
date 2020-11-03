@@ -1,0 +1,10 @@
+PE = 1
+PV = 2.52.3
+PR = r0
+PKG = libglib-2.0-lic
+RPROVIDES = glib-2.0-lic (=2.52.3)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 56376
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/glib-2.0/COPYING.0 /usr/share/licenses/glib-2.0/COPYING.1 /usr/share/licenses/glib-2.0/COPYING.2 /usr/share/licenses/glib-2.0/generic_BSD /usr/share/licenses/glib-2.0/generic_LGPLv2 /usr/share/licenses/glib-2.0/generic_PD /usr/share/licenses/glib-2.0/glib.h /usr/share/licenses/glib-2.0/gmodule.h /usr/share/licenses/glib-2.0/pcre.h

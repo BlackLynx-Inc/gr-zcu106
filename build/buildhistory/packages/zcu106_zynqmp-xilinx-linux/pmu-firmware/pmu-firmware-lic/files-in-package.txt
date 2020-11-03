@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/pmu-firmware
+-rw-rw-r-- root       root             1499 ./usr/share/licenses/pmu-firmware/generic_BSD
+-rwxr-xr-x root       root          1035259 ./usr/share/licenses/pmu-firmware/license.txt

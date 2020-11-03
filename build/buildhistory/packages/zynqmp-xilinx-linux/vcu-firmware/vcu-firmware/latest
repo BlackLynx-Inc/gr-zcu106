@@ -1,0 +1,9 @@
+PV = 1.0.0+gitAUTOINC+d01951905e
+PR = r0
+PKGV = 1.0.0+git0+d01951905e
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = vcu-firmware-lic
+PKGSIZE = 197644
+FILES = /lib/firmware/*
+FILELIST = /lib/firmware/al5d.fw /lib/firmware/al5d_b.fw /lib/firmware/al5e.fw /lib/firmware/al5e_b.fw

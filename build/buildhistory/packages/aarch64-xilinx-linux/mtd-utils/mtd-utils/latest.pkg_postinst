@@ -1,0 +1,1 @@
+#!/bin/sh\n\tupdate-alternatives --install /usr/sbin/flash_eraseall flash_eraseall /usr/sbin/flash_eraseall.mtd-utils 100\n

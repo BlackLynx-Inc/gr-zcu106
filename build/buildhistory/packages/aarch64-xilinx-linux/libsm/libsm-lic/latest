@@ -1,0 +1,9 @@
+PE = 1
+PV = 1.2.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3345
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libsm/COPYING /usr/share/licenses/libsm/generic_MIT-style

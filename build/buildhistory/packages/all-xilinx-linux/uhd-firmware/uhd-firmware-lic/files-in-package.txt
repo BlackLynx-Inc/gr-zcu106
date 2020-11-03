@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/uhd-firmware
+-rw-rw-r-- root       root            34694 ./usr/share/licenses/uhd-firmware/generic_GPLv3
+-rw-r--r-- root       root              796 ./usr/share/licenses/uhd-firmware/LICENSE

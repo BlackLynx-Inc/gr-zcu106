@@ -1,0 +1,8 @@
+PV = 3.10.2.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = boost-filesystem (>= 1.64.0) boost-program-options (>= 1.64.0) boost-system (>= 1.64.0) boost-thread (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libstdc++ (>= 7.3.0) ncurses-libncurses (>= 6.0+20171125) ncurses-libtinfo (>= 6.0+20171125) uhd (>= 3.10.2.0)
+RRECOMMENDS = 
+PKGSIZE = 3559728
+FILES = /usr/lib/uhd/examples/*
+FILELIST = /usr/lib/uhd/examples/benchmark_rate /usr/lib/uhd/examples/gpio /usr/lib/uhd/examples/latency_test /usr/lib/uhd/examples/network_relay /usr/lib/uhd/examples/rx_ascii_art_dft /usr/lib/uhd/examples/rx_multi_samples /usr/lib/uhd/examples/rx_samples_c /usr/lib/uhd/examples/rx_samples_to_file /usr/lib/uhd/examples/rx_samples_to_udp /usr/lib/uhd/examples/rx_timed_samples /usr/lib/uhd/examples/sync_to_gps /usr/lib/uhd/examples/test_clock_synch /usr/lib/uhd/examples/test_dboard_coercion /usr/lib/uhd/examples/test_messages /usr/lib/uhd/examples/test_pps_input /usr/lib/uhd/examples/test_timed_commands /usr/lib/uhd/examples/twinrx_freq_hopping /usr/lib/uhd/examples/tx_bursts /usr/lib/uhd/examples/tx_samples_c /usr/lib/uhd/examples/tx_samples_from_file /usr/lib/uhd/examples/tx_timed_samples /usr/lib/uhd/examples/tx_waveforms /usr/lib/uhd/examples/txrx_loopback_to_file

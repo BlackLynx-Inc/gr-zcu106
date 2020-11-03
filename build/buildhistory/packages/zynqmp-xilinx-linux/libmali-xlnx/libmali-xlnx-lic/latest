@@ -1,0 +1,9 @@
+PV = r8p0-01rel0
+PR = r0
+PKG = libmali-lic
+RPROVIDES = libmali-xlnx-lic (=r8p0-01rel0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 718
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libmali-xlnx/README.md /usr/share/licenses/libmali-xlnx/generic_Proprietary

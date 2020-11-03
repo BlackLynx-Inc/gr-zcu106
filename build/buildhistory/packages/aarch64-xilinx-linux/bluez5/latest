@@ -1,0 +1,5 @@
+PV = 5.46
+PR = r0
+DEPENDS = autoconf-native automake-native dbus-glib glib-2.0 gnu-config-native initscripts libcheck libical libtool-cross libtool-native pkgconfig-native readline udev update-rc.d virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = bluez5-lic bluez5-testtools bluez5-obex bluez5-noinst-tools bluez5-ptest bluez5-dbg bluez5-staticdev bluez5-dev bluez5-doc bluez5-locale bluez5
+LAYER = core

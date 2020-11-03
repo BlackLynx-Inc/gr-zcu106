@@ -1,0 +1,5 @@
+PV = 1.4.34
+PR = r0
+DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-py-lic python-py-dbg python-py-staticdev python-py-dev python-py-doc python-py-locale python-py
+LAYER = meta-python

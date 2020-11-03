@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/lib
+drwxrwxr-x root       root             4096 ./usr/lib/python
+drwxrwxr-x root       root             4096 ./usr/lib/python/ptest
+-rw-r--r-- root       root            53876 ./usr/lib/python/ptest/Makefile
+-rwxr-xr-x root       root              392 ./usr/lib/python/ptest/run-ptest

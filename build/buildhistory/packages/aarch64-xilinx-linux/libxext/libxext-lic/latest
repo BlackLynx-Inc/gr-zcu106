@@ -1,0 +1,9 @@
+PE = 1
+PV = 1.3.3
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 11412
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libxext/COPYING /usr/share/licenses/libxext/generic_MIT-style

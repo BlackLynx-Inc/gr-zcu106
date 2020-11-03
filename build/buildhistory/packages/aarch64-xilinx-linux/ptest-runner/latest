@@ -1,0 +1,5 @@
+PV = 2.1+gitAUTOINC+8a93832dad
+PR = r0
+DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = ptest-runner-lic ptest-runner-dbg ptest-runner-staticdev ptest-runner-dev ptest-runner-doc ptest-runner-locale ptest-runner
+LAYER = core

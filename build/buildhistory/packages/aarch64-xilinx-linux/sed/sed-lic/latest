@@ -1,0 +1,8 @@
+PV = 4.2.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 70598
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/sed/COPYING /usr/share/licenses/sed/generic_GPLv3 /usr/share/licenses/sed/sed.h

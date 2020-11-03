@@ -1,0 +1,9 @@
+PV = r8p0-01rel0
+PR = r0
+PKG = libmali-locale
+RPROVIDES = libmali-xlnx-locale (=r8p0-01rel0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 0
+FILES = /usr/share/locale
+FILELIST = 

@@ -1,0 +1,8 @@
+PV = 3.2.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 61476
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/eudev/COPYING /usr/share/licenses/eudev/generic_GPLv2.0 /usr/share/licenses/eudev/generic_LGPL-2.1

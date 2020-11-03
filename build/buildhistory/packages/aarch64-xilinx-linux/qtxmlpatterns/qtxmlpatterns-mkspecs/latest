@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+4dcae15a5a
+PR = r0
+PKG = libqt5xmlpatterns-mkspecs
+PKGV = 5.9.6+git0+4dcae15a5a
+RPROVIDES = qtxmlpatterns-mkspecs (=5.9.6+git0+4dcae15a5a)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 1138
+FILES = /usr/lib/qt5/mkspecs
+FILELIST = /usr/lib/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri /usr/lib/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri

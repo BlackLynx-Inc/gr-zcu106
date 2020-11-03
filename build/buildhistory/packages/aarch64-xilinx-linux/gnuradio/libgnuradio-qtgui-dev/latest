@@ -1,0 +1,10 @@
+PV = 3.8.0+gitAUTOINC+d78f7fcd0d
+PR = r0
+PKG = libgnuradio-qtgui-3.8git-dev
+PKGV = 3.8.0+git0+d78f7fcd0d
+RPROVIDES = libgnuradio-qtgui-dev (=3.8.0+git0+d78f7fcd0d)
+RDEPENDS = gnuradio-dev libgnuradio-qtgui
+RRECOMMENDS = alsa-lib-dev boost-dev boost-system-dev cppunit-dev cppzmq-dev fftw-dev glibc-dev gsl-dev libgcc-dev libgnuradio-fft-dev libgnuradio-filter-dev libgnuradio-pmt-dev libgnuradio-runtime-dev libpython2-dev libstdc++-dev log4cpp-dev python-cheetah-dev python-dev python-numpy-dev python-pyqt5-dev python-pyzmq-dev qtbase-dev qwt-qt5-dev uhd-dev volk-dev
+PKGSIZE = 66
+FILES = /usr/lib/libgnuradio-qtgui-3.8git.so /usr/lib/libgnuradio-qtgui.so /usr/lib/libgnuradio-qtgui.so
+FILELIST = /usr/lib/libgnuradio-qtgui-3.8git.so /usr/lib/libgnuradio-qtgui.so

@@ -1,0 +1,8 @@
+PV = 4.12
+PR = r0
+RPROVIDES = 
+RDEPENDS = btrfs-tools-dev (= 4.12-r0)
+RRECOMMENDS = 
+PKGSIZE = 464392
+FILES = /usr/lib/*.a /lib/*.a /usr/lib/btrfs-tools/*.a
+FILELIST = /usr/lib/libbtrfs.a

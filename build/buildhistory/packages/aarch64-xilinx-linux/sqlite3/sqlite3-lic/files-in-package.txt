@@ -1,0 +1,6 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/share
+drwxr-xr-x root       root             4096 ./usr/share/licenses
+drwxr-xr-x root       root             4096 ./usr/share/licenses/sqlite3
+-rw-rw-r-- root       root               52 ./usr/share/licenses/sqlite3/generic_PD
+-rw-r--r-- root       root              368 ./usr/share/licenses/sqlite3/sqlite3.h

@@ -1,0 +1,10 @@
+PV = 3.8.0+gitAUTOINC+d78f7fcd0d
+PR = r0
+PKG = libgnuradio-blocks-3.8git0.0.0
+PKGV = 3.8.0+git0+d78f7fcd0d
+RPROVIDES = libgnuradio-blocks (=3.8.0+git0+d78f7fcd0d)
+RDEPENDS = boost-system (>= 1.64.0) boost-thread (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libstdc++ (>= 7.3.0) log4cpp (>= 1.1.2) volk (>= 1.5.0)
+RRECOMMENDS = 
+PKGSIZE = 2415482
+FILES = /usr/lib/libgnuradio-blocks-3.8git.so.0 /usr/lib/libgnuradio-blocks-3.8git.so.0.0.0
+FILELIST = /usr/lib/libgnuradio-blocks-3.8git.so.0 /usr/lib/libgnuradio-blocks-3.8git.so.0.0.0

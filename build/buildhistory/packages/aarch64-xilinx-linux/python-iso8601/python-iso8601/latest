@@ -1,0 +1,8 @@
+PV = 0.1.12
+PR = r0
+RPROVIDES = 
+RDEPENDS = python-core
+RRECOMMENDS = python-iso8601-lic
+PKGSIZE = 39284
+FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/python-iso8601 /usr/lib/python-iso8601/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /usr/lib/* /usr/lib/python2.7/*
+FILELIST = /usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/PKG-INFO /usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/SOURCES.txt /usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/dependency_links.txt /usr/lib/python2.7/site-packages/iso8601-0.1.12-py2.7.egg-info/top_level.txt /usr/lib/python2.7/site-packages/iso8601/__init__.py /usr/lib/python2.7/site-packages/iso8601/__init__.pyc /usr/lib/python2.7/site-packages/iso8601/iso8601.py /usr/lib/python2.7/site-packages/iso8601/iso8601.pyc /usr/lib/python2.7/site-packages/iso8601/test_iso8601.py /usr/lib/python2.7/site-packages/iso8601/test_iso8601.pyc

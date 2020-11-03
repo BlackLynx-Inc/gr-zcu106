@@ -1,0 +1,9 @@
+PE = 3
+PV = 3.20.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 420
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/sqlite3/generic_PD /usr/share/licenses/sqlite3/sqlite3.h

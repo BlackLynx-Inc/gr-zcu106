@@ -1,0 +1,8 @@
+PV = 2.4.4
+PR = r3
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 2063
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/python-cheetah/LICENSE /usr/share/licenses/python-cheetah/generic_MIT

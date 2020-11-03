@@ -1,0 +1,9 @@
+PV = 0.0.0+gitAUTOINC+0deb9c7e13
+PR = r0
+PKGV = 0.0.0+git0+0deb9c7e13
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg
+PKGSIZE = 90134
+FILES = /usr/lib/debug /usr/src/debug
+FILELIST = /usr/bin/.debug/ppsctl /usr/bin/.debug/ppstest /usr/bin/.debug/ppswatch /usr/src/debug/pps-tools/0.0.0+gitAUTOINC+0deb9c7e13-r0/git/ppsctl.c /usr/src/debug/pps-tools/0.0.0+gitAUTOINC+0deb9c7e13-r0/git/ppstest.c /usr/src/debug/pps-tools/0.0.0+gitAUTOINC+0deb9c7e13-r0/git/ppswatch.c /usr/src/debug/pps-tools/0.0.0+gitAUTOINC+0deb9c7e13-r0/git/timepps.h

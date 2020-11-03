@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+9c50112304
+PR = r0
+PKGV = 5.9.6+git0+9c50112304
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304)
+RRECOMMENDS = dbus-dev drm-dev fontconfig-dev freetype-dev glib-2.0-dev glibc-dev jpeg-dev libinput-dev libpng-dev libstdc++-dev libxcb-dev libxi-dev libxkbcommon-dev openssl-dev qtbase-dev udev-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev zlib-dev
+PKGSIZE = 47776
+FILES = /usr/share/qt5/examples/*.so /usr/share/qt5/examples/*/*.so /usr/share/qt5/examples/*/*/*.so /usr/share/qt5/examples/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*/*.so /usr/share/qt5/examples/*/*/*/*/*/*/*/*.so
+FILELIST = /usr/share/qt5/examples/widgets/tools/echoplugin/plugins/libechoplugin.so /usr/share/qt5/examples/widgets/tools/plugandpaint/plugins/libpnp_extrafilters.so /usr/share/qt5/examples/widgets/tools/styleplugin/styles/libsimplestyleplugin.so

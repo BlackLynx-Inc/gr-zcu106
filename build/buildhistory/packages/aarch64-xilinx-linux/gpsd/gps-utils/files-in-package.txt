@@ -1,0 +1,16 @@
+drwxr-xr-x root       root             4096 ./usr
+drwxr-xr-x root       root             4096 ./usr/bin
+-rwxr-xr-x root       root           129792 ./usr/bin/cgps
+-rwxr-xr-x root       root             2894 ./usr/bin/gegps
+-rwxr-xr-x root       root           125616 ./usr/bin/gps2udp
+-rwxr-xr-x root       root             4590 ./usr/bin/gpscat
+-rwxr-xr-x root       root           571360 ./usr/bin/gpsdecode
+-rwxr-xr-x root       root             7995 ./usr/bin/gpsfake
+-rwxr-xr-x root       root           582536 ./usr/bin/gpsmon
+-rwxr-xr-x root       root           125648 ./usr/bin/gpspipe
+-rwx------ root       root            17868 ./usr/bin/gpsprof
+-rwxr-xr-x root       root           125624 ./usr/bin/gpxlogger
+-rwxr-xr-x root       root           125608 ./usr/bin/lcdgps
+-rwxr-xr-x root       root            10280 ./usr/bin/ntpshmmon
+-rwxr-xr-x root       root            33931 ./usr/bin/xgps
+-rwxr-xr-x root       root            26850 ./usr/bin/xgpsspeed

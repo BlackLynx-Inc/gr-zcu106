@@ -1,0 +1,5 @@
+PV = 5.8.2
+PR = r0
+DEPENDS = python python-native qtbase qtbase-native sip sip-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
+PACKAGES = python-pyqt5-lic python-pyqt5-dbg python-pyqt5-staticdev python-pyqt5-dev python-pyqt5-doc python-pyqt5-locale python-pyqt5
+LAYER = qt5-layer

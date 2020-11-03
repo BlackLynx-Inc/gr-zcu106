@@ -1,0 +1,9 @@
+PV = 5.9.6+gitAUTOINC+283a900c4e
+PR = r0
+PKGV = 5.9.6+git0+283a900c4e
+RPROVIDES = 
+RDEPENDS = glibc (>= 2.26) libgcc (>= 7.3.0) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304) qtdeclarative (>= 5.9.6+git0+283a900c4e)
+RRECOMMENDS = 
+PKGSIZE = 4498496
+FILES = /usr/bin/qt5/*
+FILELIST = /usr/bin/qt5/qml /usr/bin/qt5/qmlcachegen /usr/bin/qt5/qmleasing /usr/bin/qt5/qmlimportscanner /usr/bin/qt5/qmllint /usr/bin/qt5/qmlmin /usr/bin/qt5/qmlplugindump /usr/bin/qt5/qmlscene /usr/bin/qt5/qmltestrunner

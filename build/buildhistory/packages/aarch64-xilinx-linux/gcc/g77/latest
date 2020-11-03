@@ -1,0 +1,8 @@
+PV = 7.3.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = libg2c libg2c-dev
+PKGSIZE = 0
+FILES = /usr/bin/aarch64-xilinx-linux-g77 /usr/libexec/gcc/aarch64-xilinx-linux/7.3.0/f771
+FILELIST = 

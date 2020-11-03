@@ -1,0 +1,9 @@
+PE = 1
+PV = 2.3.2
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 6559
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/inputproto/COPYING /usr/share/licenses/inputproto/XI2proto.h /usr/share/licenses/inputproto/generic_MIT /usr/share/licenses/inputproto/generic_MIT-style

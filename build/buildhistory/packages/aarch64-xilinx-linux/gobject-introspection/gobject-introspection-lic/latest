@@ -1,0 +1,8 @@
+PV = 1.52.1
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 45735
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/gobject-introspection/COPYING /usr/share/licenses/gobject-introspection/compiler.c /usr/share/licenses/gobject-introspection/generic_GPLv2 /usr/share/licenses/gobject-introspection/generic_LGPLv2 /usr/share/licenses/gobject-introspection/giregisteredtypeinfo.c /usr/share/licenses/gobject-introspection/sourcescanner.c

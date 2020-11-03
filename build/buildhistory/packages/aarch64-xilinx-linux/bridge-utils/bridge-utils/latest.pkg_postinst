@@ -1,0 +1,1 @@
+#!/bin/sh\n\tupdate-alternatives --install /usr/sbin/brctl brctl /usr/sbin/brctl.bridge-utils 100\n

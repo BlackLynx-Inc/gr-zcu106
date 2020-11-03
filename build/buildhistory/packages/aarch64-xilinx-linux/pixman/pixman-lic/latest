@@ -1,0 +1,10 @@
+PE = 1
+PV = 0.34.0
+PR = r0
+PKG = libpixman-1-lic
+RPROVIDES = pixman-lic (=0.34.0)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 5657
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/pixman/COPYING /usr/share/licenses/pixman/generic_MIT /usr/share/licenses/pixman/generic_MIT-style /usr/share/licenses/pixman/generic_PD /usr/share/licenses/pixman/pixman-arm-neon-asm.h /usr/share/licenses/pixman/pixman-matrix.c

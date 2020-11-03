@@ -1,0 +1,8 @@
+PV = 1.5.7
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 3780
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libevdev/COPYING /usr/share/licenses/libevdev/generic_MIT-X /usr/share/licenses/libevdev/libevdev.h

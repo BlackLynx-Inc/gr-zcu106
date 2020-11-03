@@ -1,0 +1,8 @@
+PV = 1.15
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 69841
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/gsl/COPYING /usr/share/licenses/gsl/generic_GPLv3

@@ -1,0 +1,10 @@
+PV = 5.9.6+gitAUTOINC+7a28db8f5b
+PR = r0
+PKG = libqt5svg-mkspecs
+PKGV = 5.9.6+git0+7a28db8f5b
+RPROVIDES = qtsvg-mkspecs (=5.9.6+git0+7a28db8f5b)
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 887
+FILES = /usr/lib/qt5/mkspecs
+FILELIST = /usr/lib/qt5/mkspecs/modules/qt_lib_svg.pri /usr/lib/qt5/mkspecs/modules/qt_lib_svg_private.pri

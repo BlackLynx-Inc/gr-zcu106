@@ -1,0 +1,8 @@
+PV = 14.7.0
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = glibc-dbg zeromq-dbg
+PKGSIZE = 3467934
+FILES = /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug /usr/lib/debug /usr/src/debug
+FILELIST = /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/_device.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/_poll.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/_version.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/constants.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/context.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/error.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/message.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/socket.so /usr/lib/python2.7/site-packages/zmq/backend/cython/.debug/utils.so /usr/lib/python2.7/site-packages/zmq/devices/.debug/monitoredqueue.so /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/_device.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/_poll.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/_version.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/constants.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/context.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/error.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/message.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/socket.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/backend/cython/utils.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/devices/monitoredqueue.c /usr/src/debug/python-pyzmq/14.7.0-r0/pyzmq-14.7.0/zmq/utils/ipcmaxlen.h

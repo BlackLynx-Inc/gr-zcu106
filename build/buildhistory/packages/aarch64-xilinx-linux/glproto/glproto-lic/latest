@@ -1,0 +1,9 @@
+PE = 1
+PV = 1.4.17
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 4130
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/glproto/COPYING /usr/share/licenses/glproto/generic_MIT /usr/share/licenses/glproto/glxproto.h

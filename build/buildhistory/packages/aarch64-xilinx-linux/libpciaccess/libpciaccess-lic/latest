@@ -1,0 +1,8 @@
+PV = 0.13.5
+PR = r0
+RPROVIDES = 
+RDEPENDS = 
+RRECOMMENDS = 
+PKGSIZE = 5925
+FILES = /usr/share/licenses/
+FILELIST = /usr/share/licenses/libpciaccess/COPYING /usr/share/licenses/libpciaccess/generic_MIT /usr/share/licenses/libpciaccess/generic_MIT-style

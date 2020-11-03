@@ -1,0 +1,11 @@
+PV = r8p0-01rel0
+PR = r0
+PKG = libmali8
+RPROVIDES = libegl libgbm libgles1 libgles2 libglesv1-cm1 libglesv2-2 libmali-xlnx (=r8p0-01rel0)
+RDEPENDS = glibc (>= 2.26) kernel-module-mali libdrm (>= 2.4.83) libx11 (>= 1.6.5) libxdamage (>= 1.1.4) libxext (>= 1.3.3) libxfixes (>= 5.0.3)
+RRECOMMENDS = libmali-xlnx-lic
+RREPLACES = libegl libgbm libgles1 libgles2 libglesv1-cm1 libglesv2-2
+RCONFLICTS = libegl libgbm libgles1 libgles2 libglesv1-cm1 libglesv2-2
+PKGSIZE = 12666632
+FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/libmali-xlnx /usr/lib/libmali-xlnx/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /usr/lib/*
+FILELIST = /usr/lib/libEGL.so.1 /usr/lib/libEGL.so.1.4 /usr/lib/libGLESv1_CM.so.1 /usr/lib/libGLESv1_CM.so.1.1 /usr/lib/libGLESv2.so.2 /usr/lib/libGLESv2.so.2.0 /usr/lib/libMali.so.8 /usr/lib/libMali.so.8.0 /usr/lib/libgbm.so.1 /usr/lib/x11/libMali.so.8.0

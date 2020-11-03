@@ -1,0 +1,9 @@
+PV = 3.8.0+gitAUTOINC+d78f7fcd0d
+PR = r0
+PKGV = 3.8.0+git0+d78f7fcd0d
+RPROVIDES = 
+RDEPENDS = boost-system (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-zeromq (>= 3.8.0+git0+d78f7fcd0d) libpython2 (>= 2.7.13) libstdc++ (>= 7.3.0) log4cpp (>= 1.1.2) python-pyzmq
+RRECOMMENDS = 
+PKGSIZE = 1976617
+FILES = /usr/share/gnuradio/zeromq /usr/lib/python2.7/site-packages/gnuradio/zeromq
+FILELIST = /usr/lib/python2.7/site-packages/gnuradio/zeromq/__init__.py /usr/lib/python2.7/site-packages/gnuradio/zeromq/__init__.pyc /usr/lib/python2.7/site-packages/gnuradio/zeromq/__init__.pyo /usr/lib/python2.7/site-packages/gnuradio/zeromq/_zeromq_swig.so /usr/lib/python2.7/site-packages/gnuradio/zeromq/probe_manager.py /usr/lib/python2.7/site-packages/gnuradio/zeromq/probe_manager.pyc /usr/lib/python2.7/site-packages/gnuradio/zeromq/probe_manager.pyo /usr/lib/python2.7/site-packages/gnuradio/zeromq/rpc_manager.py /usr/lib/python2.7/site-packages/gnuradio/zeromq/rpc_manager.pyc /usr/lib/python2.7/site-packages/gnuradio/zeromq/rpc_manager.pyo /usr/lib/python2.7/site-packages/gnuradio/zeromq/zeromq_swig.py /usr/lib/python2.7/site-packages/gnuradio/zeromq/zeromq_swig.pyc /usr/lib/python2.7/site-packages/gnuradio/zeromq/zeromq_swig.pyo
