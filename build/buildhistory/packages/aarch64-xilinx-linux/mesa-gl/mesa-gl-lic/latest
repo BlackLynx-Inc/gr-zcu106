@@ -1,9 +1,0 @@
-PE = 2
-PV = 17.1.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4972
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/mesa-gl/generic_MIT /usr/share/licenses/mesa-gl/license.html

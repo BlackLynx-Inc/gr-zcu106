@@ -1,9 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/freetype
--rw-r--r-- root       root             6742 ./usr/share/licenses/freetype/FTL.TXT
--rw-rw-r-- root       root             6746 ./usr/share/licenses/freetype/generic_FreeType
--rw-rw-r-- root       root            17611 ./usr/share/licenses/freetype/generic_GPLv2
--rw-r--r-- root       root            17994 ./usr/share/licenses/freetype/GPLv2.TXT
--rw-r--r-- root       root             1743 ./usr/share/licenses/freetype/LICENSE.TXT

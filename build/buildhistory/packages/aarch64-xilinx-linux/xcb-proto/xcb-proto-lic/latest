@@ -1,8 +1,0 @@
-PV = 1.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3762
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/xcb-proto/COPYING /usr/share/licenses/xcb-proto/dri2.xml /usr/share/licenses/xcb-proto/generic_MIT

@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --remove  hwclock /sbin/hwclock.util-linux\n

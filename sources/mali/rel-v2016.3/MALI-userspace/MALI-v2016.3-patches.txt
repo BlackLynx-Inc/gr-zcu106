@@ -1,8 +1,0 @@
-1) git clone according to the release manifest files 
-repo init -u git://github.com/Xilinx/yocto-manifests.git -m meta-petalinux.xml -b rel-v2016.3
-
-2) Apply patches to appropriate layers as indicated by the name (meta-petalinux and meta-xilinx)
-
-3) Download the rel-v2016.3 MALI binaries from Xilinx
-
-4) Copy the MALI tar (r5p1-01rel0.tar) file to meta-xilinx/recipes-graphics/libgles/files

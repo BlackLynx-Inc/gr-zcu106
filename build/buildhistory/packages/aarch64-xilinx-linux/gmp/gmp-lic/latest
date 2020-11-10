@@ -1,9 +1,0 @@
-PV = 6.1.2
-PR = r0
-PKG = libgmp-lic
-RPROVIDES = gmp-lic (=6.1.2)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 85957
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/gmp/COPYING /usr/share/licenses/gmp/COPYING.LESSERv3 /usr/share/licenses/gmp/COPYINGv2 /usr/share/licenses/gmp/generic_GPLv2 /usr/share/licenses/gmp/generic_LGPLv3

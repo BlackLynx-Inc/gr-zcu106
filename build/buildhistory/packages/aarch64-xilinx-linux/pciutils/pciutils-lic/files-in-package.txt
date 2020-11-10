@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/pciutils
--rw-r--r-- root       root            17987 ./usr/share/licenses/pciutils/COPYING
--rw-rw-r-- root       root            17611 ./usr/share/licenses/pciutils/generic_GPLv2

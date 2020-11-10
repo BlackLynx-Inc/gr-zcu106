@@ -1,9 +1,0 @@
-PV = xilinx+gitAUTOINC+b7466bbeee
-PR = r0
-PKGV = xilinx+git0+b7466bbeee
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 18346
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/device-tree/generic_GPLv2 /usr/share/licenses/device-tree/xadcps.mdd

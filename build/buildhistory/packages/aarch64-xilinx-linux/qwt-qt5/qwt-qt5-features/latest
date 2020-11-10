@@ -1,9 +1,0 @@
-PV = 6.1.3
-PR = r0
-PKG = libqwt-features
-RPROVIDES = qwt-qt5-features (=6.1.3)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 9989
-FILES = /usr/features
-FILELIST = /usr/features/qwt.prf /usr/features/qwtconfig.pri /usr/features/qwtfunctions.pri

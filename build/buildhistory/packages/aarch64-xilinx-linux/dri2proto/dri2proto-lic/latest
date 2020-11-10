@@ -1,8 +1,0 @@
-PV = 2.8
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4208
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/dri2proto/COPYING /usr/share/licenses/dri2proto/dri2proto.h /usr/share/licenses/dri2proto/generic_MIT

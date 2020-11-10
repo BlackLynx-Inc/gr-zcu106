@@ -1,8 +1,0 @@
-PV = 1.0.4
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52408
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libmnl/COPYING /usr/share/licenses/libmnl/generic_LGPLv2.1

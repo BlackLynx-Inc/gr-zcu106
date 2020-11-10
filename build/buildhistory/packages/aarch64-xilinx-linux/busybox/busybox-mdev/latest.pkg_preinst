@@ -1,1 +1,0 @@
-#!/bin/sh\nif true && [ -z "$D" -a -f "/etc/init.d/mdev" ]; then\n\t/etc/init.d/mdev stop || :\nfi\nif true && type update-rc.d >/dev/null 2>/dev/null; then\n\tif [ -n "$D" ]; then\n\t\tOPT="-f -r $D"\n\telse\n\t\tOPT="-f"\n\tfi\n\tupdate-rc.d $OPT mdev remove\nfi\n

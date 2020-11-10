@@ -1,5 +1,0 @@
-PV = 1.0
-PR = r0
-DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = xilinx-bootbin-lic xilinx-bootbin-dbg xilinx-bootbin-staticdev xilinx-bootbin-dev xilinx-bootbin-doc xilinx-bootbin-locale xilinx-bootbin
-LAYER = xilinx-tools

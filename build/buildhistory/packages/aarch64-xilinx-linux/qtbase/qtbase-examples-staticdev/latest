@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+9c50112304
-PR = r0
-PKGV = 5.9.6+git0+9c50112304
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 1967278
-FILES = /usr/share/qt5/examples/*.a /usr/share/qt5/examples/*/*.a /usr/share/qt5/examples/*/*/*.a /usr/share/qt5/examples/*/*/*/*.a /usr/share/qt5/examples/*/*/*/*/*.a /usr/share/qt5/examples/*/*/*/*/*/*.a /usr/share/qt5/examples/*/*/*/*/*/*/*.a /usr/share/qt5/examples/*/*/*/*/*/*/*/*.a
-FILELIST = /usr/share/qt5/examples/widgets/tools/plugandpaint/plugins/libpnp_basictools.a

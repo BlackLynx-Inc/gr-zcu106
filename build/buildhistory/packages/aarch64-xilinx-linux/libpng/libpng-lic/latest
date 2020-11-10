@@ -1,9 +1,0 @@
-PV = 1.6.31
-PR = r0
-PKG = libpng16-lic
-RPROVIDES = libpng-lic (=1.6.31)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 14936
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libpng/LICENSE /usr/share/licenses/libpng/generic_Libpng /usr/share/licenses/libpng/png.h

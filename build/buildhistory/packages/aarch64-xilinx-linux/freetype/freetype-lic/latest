@@ -1,9 +1,0 @@
-PV = 2.8
-PR = r0
-PKG = libfreetype-lic
-RPROVIDES = freetype-lic (=2.8)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 50836
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/freetype/FTL.TXT /usr/share/licenses/freetype/GPLv2.TXT /usr/share/licenses/freetype/LICENSE.TXT /usr/share/licenses/freetype/generic_FreeType /usr/share/licenses/freetype/generic_GPLv2

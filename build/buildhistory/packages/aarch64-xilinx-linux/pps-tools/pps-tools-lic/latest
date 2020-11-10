@@ -1,9 +1,0 @@
-PV = 0.0.0+gitAUTOINC+0deb9c7e13
-PR = r0
-PKGV = 0.0.0+git0+0deb9c7e13
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35598
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/pps-tools/COPYING /usr/share/licenses/pps-tools/generic_GPLv2

@@ -1,5 +1,0 @@
-PV = 2.0.3
-PR = r0
-DEPENDS = python python-asn1crypto python-cffi python-cffi-native python-distribute-native python-enum34 python-native python-native python-six virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = python-cryptography-lic python-cryptography-ptest python-cryptography-dbg python-cryptography-staticdev python-cryptography-dev python-cryptography-doc python-cryptography-locale python-cryptography
-LAYER = meta-python

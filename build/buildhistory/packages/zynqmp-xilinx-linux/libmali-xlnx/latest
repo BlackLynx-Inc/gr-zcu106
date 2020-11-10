@@ -1,5 +1,0 @@
-PV = r8p0-01rel0
-PR = r0
-DEPENDS = libdrm libxdamage libxext libxfixes virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/libx11
-PACKAGES = libmali-xlnx-lic libmali-xlnx-dbg libmali-xlnx-staticdev libmali-xlnx-dev libmali-xlnx-doc libmali-xlnx-locale libmali-xlnx
-LAYER = xilinx

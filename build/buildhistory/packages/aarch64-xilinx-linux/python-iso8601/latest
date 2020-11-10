@@ -1,5 +1,0 @@
-PV = 0.1.12
-PR = r0
-DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = python-iso8601-lic python-iso8601-dbg python-iso8601-staticdev python-iso8601-dev python-iso8601-doc python-iso8601-locale python-iso8601
-LAYER = meta-python

@@ -1,9 +1,0 @@
-PV = 1.0.21
-PR = r0
-PKG = libusb-1.0-staticdev
-RPROVIDES = libusb1-staticdev (=1.0.21)
-RDEPENDS = libusb1-dev (= 1.0.21-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/libusb1/*.a
-FILELIST = 

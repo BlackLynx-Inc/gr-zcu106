@@ -1,8 +1,0 @@
-PV = 2.26
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 43489
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/glibc-locale/GPL-2.0 /usr/share/licenses/glibc-locale/LGPL-2.1 /usr/share/licenses/glibc-locale/generic_GPLv2 /usr/share/licenses/glibc-locale/generic_LGPLv2.1

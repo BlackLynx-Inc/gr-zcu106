@@ -1,5 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/features
--rw-r--r-- root       root             7017 ./usr/features/qwtconfig.pri
--rw-r--r-- root       root             2220 ./usr/features/qwtfunctions.pri
--rw-r--r-- root       root              752 ./usr/features/qwt.prf

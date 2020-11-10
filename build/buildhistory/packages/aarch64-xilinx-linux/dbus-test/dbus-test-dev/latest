@@ -1,8 +1,0 @@
-PV = 1.10.20
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = bash-dev dbus-dev dbus-lib-dev expat-dev glib-2.0-dev glibc-dev make-dev
-PKGSIZE = 0
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/dbus-test/*.la /lib/*.la
-FILELIST = 

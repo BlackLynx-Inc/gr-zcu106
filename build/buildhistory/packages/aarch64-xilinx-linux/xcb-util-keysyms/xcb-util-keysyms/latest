@@ -1,9 +1,0 @@
-PV = 0.4.0
-PR = r0
-PKG = libxcb-keysyms1
-RPROVIDES = xcb-util-keysyms (=0.4.0)
-RDEPENDS = glibc (>= 2.26) libxcb (>= 1.12)
-RRECOMMENDS = xcb-util-keysyms-lic
-PKGSIZE = 10023
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/xcb-util-keysyms /usr/lib/xcb-util-keysyms/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/lib/libxcb-keysyms.so.1 /usr/lib/libxcb-keysyms.so.1.0.0

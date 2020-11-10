@@ -1,8 +1,0 @@
-PV = 4.1.6
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) libgcc (>= 7.3.0) libsodium (>= 1.0.11) libstdc++ (>= 7.3.0)
-RRECOMMENDS = zeromq-lic
-PKGSIZE = 410743
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/zeromq /usr/lib/zeromq/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/bin/curve_keygen /usr/lib/libzmq.so.5 /usr/lib/libzmq.so.5.0.2

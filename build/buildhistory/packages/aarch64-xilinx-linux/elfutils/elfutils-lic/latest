@@ -1,8 +1,0 @@
-PV = 0.170
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 70286
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/elfutils/COPYING /usr/share/licenses/elfutils/generic_Elfutils-Exception /usr/share/licenses/elfutils/generic_GPLv3

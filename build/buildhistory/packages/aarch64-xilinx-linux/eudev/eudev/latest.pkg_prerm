@@ -1,1 +1,0 @@
-#!/bin/sh\nif true && [ -z "$D" -a -x "/etc/init.d/udev" ]; then\n\t/etc/init.d/udev stop || :\nfi\n

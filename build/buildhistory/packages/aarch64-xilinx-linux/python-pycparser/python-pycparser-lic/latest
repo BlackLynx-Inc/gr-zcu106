@@ -1,8 +1,0 @@
-PV = 2.18
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3004
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-pycparser/LICENSE /usr/share/licenses/python-pycparser/generic_BSD-3-Clause

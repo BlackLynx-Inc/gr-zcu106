@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/icu
--rw-rw-r-- root       root             1668 ./usr/share/licenses/icu/generic_ICU
--rw-r--r-- root       root            19442 ./usr/share/licenses/icu/LICENSE

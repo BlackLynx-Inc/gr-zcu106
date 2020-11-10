@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/cppunit
--rw-r--r-- root       root            26430 ./usr/share/licenses/cppunit/COPYING
--rw-rw-r-- root       root            25878 ./usr/share/licenses/cppunit/generic_LGPL-2.1

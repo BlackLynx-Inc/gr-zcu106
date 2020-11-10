@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/glibc-locale
--rw-rw-r-- root       root            17611 ./usr/share/licenses/glibc-locale/generic_GPLv2
--rw-rw-r-- root       root            25878 ./usr/share/licenses/glibc-locale/generic_LGPLv2.1
--rw-rw-r-- root       root            17611 ./usr/share/licenses/glibc-locale/GPL-2.0
--rw-rw-r-- root       root            25878 ./usr/share/licenses/glibc-locale/LGPL-2.1

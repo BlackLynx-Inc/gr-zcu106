@@ -1,8 +1,0 @@
-PV = 2.4.6
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 88111
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libtool/COPYING /usr/share/licenses/libtool/COPYING.LIB /usr/share/licenses/libtool/generic_GPLv2 /usr/share/licenses/libtool/generic_LGPLv2.1

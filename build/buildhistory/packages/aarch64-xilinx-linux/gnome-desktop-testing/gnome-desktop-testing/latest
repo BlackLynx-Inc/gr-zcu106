@@ -1,8 +1,0 @@
-PV = 2014.1
-PR = r1
-RPROVIDES = 
-RDEPENDS = glib-2.0 (>= 2.52.3) glibc (>= 2.26)
-RRECOMMENDS = gnome-desktop-testing-lic
-PKGSIZE = 71848
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/gnome-desktop-testing /usr/lib/gnome-desktop-testing/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/bin/gnome-desktop-testing-runner /usr/lib/gnome-desktop-testing/libgsystem.so

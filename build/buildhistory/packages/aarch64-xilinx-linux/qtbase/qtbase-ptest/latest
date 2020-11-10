@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+9c50112304
-PR = r0
-PKGV = 5.9.6+git0+9c50112304
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = ptest-runner
-PKGSIZE = 71
-FILES = /usr/lib/qtbase/ptest
-FILELIST = /usr/lib/qtbase/ptest/run-ptest

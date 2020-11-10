@@ -1,4 +1,0 @@
-SANITY_VERSION 1
-TMPDIR /home/ryftuser/chintan/darpa/yocto_gnuradio/zcu-106-build
-SSTATE_DIR /home/ryftuser/chintan/darpa/yocto_gnuradio/build/sstate-cache
-NATIVELSBSTRING ubuntu-16.04

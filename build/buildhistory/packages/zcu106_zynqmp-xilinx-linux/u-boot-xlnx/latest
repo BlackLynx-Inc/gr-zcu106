@@ -1,5 +1,0 @@
-PV = v2018.01-xilinx-v2018.3+gitAUTOINC+d8fc4b3b70
-PR = r0
-DEPENDS = bc-native dtc-native kern-tools-native openssl-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/dtb virtual/libc
-PACKAGES = u-boot-xlnx-lic u-boot-xlnx-dbg u-boot-xlnx-staticdev u-boot-xlnx-dev u-boot-xlnx-doc u-boot-xlnx-locale u-boot-xlnx
-LAYER = xilinx

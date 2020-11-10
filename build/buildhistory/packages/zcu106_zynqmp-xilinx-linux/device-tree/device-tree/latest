@@ -1,9 +1,0 @@
-PV = xilinx+gitAUTOINC+b7466bbeee
-PR = r0
-PKGV = xilinx+git0+b7466bbeee
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = device-tree-lic
-PKGSIZE = 44742
-FILES = /boot/devicetree/*.dtb /boot/devicetree/*.dtbo
-FILELIST = /boot/devicetree/system-top.dtb

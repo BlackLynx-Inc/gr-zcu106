@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/cracklib
--rw-r--r-- root       root            26542 ./usr/share/licenses/cracklib/COPYING.LIB
--rw-rw-r-- root       root            25878 ./usr/share/licenses/cracklib/generic_LGPLv2.1

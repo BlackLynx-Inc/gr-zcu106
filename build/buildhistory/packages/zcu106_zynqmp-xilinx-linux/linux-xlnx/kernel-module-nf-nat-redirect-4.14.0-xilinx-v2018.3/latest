@@ -1,9 +1,0 @@
-PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
-PR = r0
-PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
-RPROVIDES = kernel-module-nf-nat-redirect
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3 kernel-module-nf-nat-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 4880
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/net/netfilter/nf_nat_redirect.ko /etc/modules-load.d/nf_nat_redirect.conf /etc/modprobe.d/nf_nat_redirect.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/net/netfilter/nf_nat_redirect.ko

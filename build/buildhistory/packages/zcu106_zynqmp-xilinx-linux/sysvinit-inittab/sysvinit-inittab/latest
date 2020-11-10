@@ -1,8 +1,0 @@
-PV = 2.88dsf
-PR = r10
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = sysvinit-inittab-lic
-PKGSIZE = 1304
-FILES = /etc/inittab /bin/start_getty
-FILELIST = /bin/start_getty /etc/inittab

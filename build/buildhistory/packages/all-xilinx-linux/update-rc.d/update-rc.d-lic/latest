@@ -1,8 +1,0 @@
-PV = 0.7
-PR = r5
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 18140
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/update-rc.d/generic_GPLv2 /usr/share/licenses/update-rc.d/update-rc.d

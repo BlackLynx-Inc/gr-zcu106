@@ -1,9 +1,0 @@
-PV = 1.7.0+gitAUTOINC+48eead4cbb
-PR = r0
-PKGV = 1.7.0+git0+48eead4cbb
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 15156
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/tcf-agent/edl-v10.html /usr/share/licenses/tcf-agent/generic_EDL-1.0 /usr/share/licenses/tcf-agent/generic_EPL-1.0

@@ -1,9 +1,0 @@
-PV = 0.108
-PR = r0
-PKG = libdbus-glib-1-lic
-RPROVIDES = dbus-glib-lic (=0.108)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 56457
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/dbus-glib/COPYING /usr/share/licenses/dbus-glib/dbus-glib.h /usr/share/licenses/dbus-glib/generic_AFL-2 /usr/share/licenses/dbus-glib/generic_GPLv2

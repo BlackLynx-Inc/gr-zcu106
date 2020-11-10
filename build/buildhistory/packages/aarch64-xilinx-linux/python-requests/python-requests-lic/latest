@@ -1,8 +1,0 @@
-PV = 2.18.4
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 11941
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-requests/LICENSE /usr/share/licenses/python-requests/generic_Apache-2.0

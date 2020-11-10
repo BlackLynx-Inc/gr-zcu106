@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --remove  which /usr/bin/which.which\n

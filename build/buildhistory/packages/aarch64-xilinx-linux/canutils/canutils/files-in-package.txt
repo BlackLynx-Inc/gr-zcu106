@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/bin
--rwxr-xr-x root       root            10344 ./usr/bin/candump
--rwxr-xr-x root       root            10280 ./usr/bin/canecho
--rwxr-xr-x root       root            10272 ./usr/bin/cansend
--rwxr-xr-x root       root            10304 ./usr/bin/cansequence
-drwxr-xr-x root       root             4096 ./usr/sbin
--rwxr-xr-x root       root            14568 ./usr/sbin/canconfig

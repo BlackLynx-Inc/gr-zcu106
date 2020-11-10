@@ -1,9 +1,0 @@
-PV = 6.1.3
-PR = r0
-PKG = libqwt-lic
-RPROVIDES = qwt-qt5-lic (=6.1.3)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 55892
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/qwt-qt5/COPYING /usr/share/licenses/qwt-qt5/generic_QWTv1.0

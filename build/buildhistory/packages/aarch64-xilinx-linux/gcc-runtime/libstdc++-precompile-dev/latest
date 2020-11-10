@@ -1,8 +1,0 @@
-PV = 7.3.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = libgcc-dev
-PKGSIZE = 0
-FILES = /usr/include/c++/aarch64-xilinx-linux/bits/*.gch
-FILELIST = 

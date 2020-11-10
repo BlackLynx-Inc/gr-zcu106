@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 264914
-FILES = /usr/bin/gr_plot* /usr/bin/grcc /usr/bin/gr_read_file_metadata /usr/lib/python2.7/site-packages/gnuradio/plot_data* /usr/lib/python2.7/site-packages/gnuradio/plot_fft_base* /usr/lib/python2.7/site-packages/gnuradio/plot_psd_base* /usr/lib/python2.7/site-packages/gnuradio/pyqt_filter* /usr/lib/python2.7/site-packages/gnuradio/pyqt_plot*
-FILELIST = /usr/bin/gr_plot_char /usr/bin/gr_plot_const /usr/bin/gr_plot_fft /usr/bin/gr_plot_fft_c /usr/bin/gr_plot_fft_f /usr/bin/gr_plot_float /usr/bin/gr_plot_int /usr/bin/gr_plot_iq /usr/bin/gr_plot_psd /usr/bin/gr_plot_psd_c /usr/bin/gr_plot_psd_f /usr/bin/gr_plot_qt /usr/bin/gr_plot_short /usr/bin/gr_read_file_metadata /usr/bin/grcc /usr/lib/python2.7/site-packages/gnuradio/plot_data.py /usr/lib/python2.7/site-packages/gnuradio/plot_data.pyc /usr/lib/python2.7/site-packages/gnuradio/plot_data.pyo /usr/lib/python2.7/site-packages/gnuradio/plot_fft_base.py /usr/lib/python2.7/site-packages/gnuradio/plot_fft_base.pyc /usr/lib/python2.7/site-packages/gnuradio/plot_fft_base.pyo /usr/lib/python2.7/site-packages/gnuradio/plot_psd_base.py /usr/lib/python2.7/site-packages/gnuradio/plot_psd_base.pyc /usr/lib/python2.7/site-packages/gnuradio/plot_psd_base.pyo /usr/lib/python2.7/site-packages/gnuradio/pyqt_filter.py /usr/lib/python2.7/site-packages/gnuradio/pyqt_filter.pyc /usr/lib/python2.7/site-packages/gnuradio/pyqt_filter.pyo /usr/lib/python2.7/site-packages/gnuradio/pyqt_plot.py /usr/lib/python2.7/site-packages/gnuradio/pyqt_plot.pyc /usr/lib/python2.7/site-packages/gnuradio/pyqt_plot.pyo

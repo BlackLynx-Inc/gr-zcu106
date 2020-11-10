@@ -1,8 +1,0 @@
-PV = 2.26
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = 
-PKGSIZE = 10200
-FILES = /lib/libSegFault*
-FILELIST = /lib/libSegFault.so

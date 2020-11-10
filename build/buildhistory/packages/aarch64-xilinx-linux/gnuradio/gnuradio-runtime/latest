@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = boost-program-options (>= 1.64.0) boost-system (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libstdc++ (>= 7.3.0)
-RRECOMMENDS = 
-PKGSIZE = 177456
-FILES = /etc/gnuradio/conf.d/gnuradio-runtime.conf /usr/bin/gnuradio-config-info /usr/lib/python2.7/site-packages/gnuradio/eng_* /usr/lib/python2.7/site-packages/gnuradio/__init__* /usr/lib/python2.7/site-packages/gnuradio/gr_unittest* /usr/lib/python2.7/site-packages/gnuradio/gr_xmlrunner*
-FILELIST = /etc/gnuradio/conf.d/gnuradio-runtime.conf /usr/bin/gnuradio-config-info /usr/lib/python2.7/site-packages/gnuradio/__init__.py /usr/lib/python2.7/site-packages/gnuradio/__init__.pyc /usr/lib/python2.7/site-packages/gnuradio/__init__.pyo /usr/lib/python2.7/site-packages/gnuradio/eng_arg.py /usr/lib/python2.7/site-packages/gnuradio/eng_arg.pyc /usr/lib/python2.7/site-packages/gnuradio/eng_arg.pyo /usr/lib/python2.7/site-packages/gnuradio/eng_notation.py /usr/lib/python2.7/site-packages/gnuradio/eng_notation.pyc /usr/lib/python2.7/site-packages/gnuradio/eng_notation.pyo /usr/lib/python2.7/site-packages/gnuradio/eng_option.py /usr/lib/python2.7/site-packages/gnuradio/eng_option.pyc /usr/lib/python2.7/site-packages/gnuradio/eng_option.pyo /usr/lib/python2.7/site-packages/gnuradio/gr_unittest.py /usr/lib/python2.7/site-packages/gnuradio/gr_unittest.pyc /usr/lib/python2.7/site-packages/gnuradio/gr_unittest.pyo /usr/lib/python2.7/site-packages/gnuradio/gr_xmlrunner.py /usr/lib/python2.7/site-packages/gnuradio/gr_xmlrunner.pyc /usr/lib/python2.7/site-packages/gnuradio/gr_xmlrunner.pyo

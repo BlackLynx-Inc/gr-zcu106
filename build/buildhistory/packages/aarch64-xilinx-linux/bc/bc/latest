@@ -1,8 +1,0 @@
-PV = 1.06
-PR = r3
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) update-alternatives-opkg
-RRECOMMENDS = bc-lic
-PKGSIZE = 103360
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/bc /usr/lib/bc/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/bin/bc /usr/bin/dc.bc

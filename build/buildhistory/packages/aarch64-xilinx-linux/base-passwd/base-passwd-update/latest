@@ -1,8 +1,0 @@
-PV = 3.5.29
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = 
-PKGSIZE = 23936
-FILES = /usr/sbin/* /usr/share/base-passwd
-FILELIST = /usr/sbin/update-passwd /usr/share/base-passwd/group.master /usr/share/base-passwd/passwd.master

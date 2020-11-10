@@ -1,9 +1,0 @@
-PV = 1.13
-PR = r0
-PKG = libgdbm-lic
-RPROVIDES = gdbm-lic (=1.13)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 69766
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/gdbm/COPYING /usr/share/licenses/gdbm/generic_GPLv3

@@ -1,8 +1,0 @@
-PV = 1.3.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52310
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-nose/generic_LGPLv2.1 /usr/share/licenses/python-nose/lgpl.txt

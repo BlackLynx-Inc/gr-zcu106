@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 25810
-FILES = /usr/share/doc /usr/share/man /usr/share/info /usr/share/gtk-doc /usr/share/gnome/help
-FILELIST = /usr/share/doc/gnuradio-3.8git/README.analog /usr/share/doc/gnuradio-3.8git/README.audio /usr/share/doc/gnuradio-3.8git/README.blocks /usr/share/doc/gnuradio-3.8git/README.channels /usr/share/doc/gnuradio-3.8git/README.digital /usr/share/doc/gnuradio-3.8git/README.fec /usr/share/doc/gnuradio-3.8git/README.fft /usr/share/doc/gnuradio-3.8git/README.filter /usr/share/doc/gnuradio-3.8git/README.hacking /usr/share/doc/gnuradio-3.8git/README.md /usr/share/doc/gnuradio-3.8git/README.qtgui /usr/share/doc/gnuradio-3.8git/README.uhd /usr/share/doc/gnuradio-3.8git/xml/test_tcm.py.xml /usr/share/doc/gnuradio-3.8git/xml/test_viterbi_equalization1.py.xml

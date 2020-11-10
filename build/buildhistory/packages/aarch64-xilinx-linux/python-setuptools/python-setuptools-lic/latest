@@ -1,8 +1,0 @@
-PV = 36.2.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2158
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-setuptools/LICENSE /usr/share/licenses/python-setuptools/generic_MIT

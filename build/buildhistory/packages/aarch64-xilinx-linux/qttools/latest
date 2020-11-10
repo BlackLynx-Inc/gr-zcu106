@@ -1,5 +1,0 @@
-PV = 5.9.6+gitAUTOINC+c9eeabc7a7
-PR = r0
-DEPENDS = qtbase qtbase-native qtdeclarative qtxmlpatterns virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = qttools-lic qttools-ptest qttools-qmlplugins-dbg qttools-tools-dbg qttools-plugins-dbg qttools-qmldesigner qttools-qmlplugins qttools-tools qttools-plugins qttools-mkspecs qttools-examples-dev qttools-examples-staticdev qttools-examples-dbg qttools-examples qttools-dbg qttools-staticdev qttools-dev qttools-doc qttools-locale qttools
-LAYER = qt5-layer

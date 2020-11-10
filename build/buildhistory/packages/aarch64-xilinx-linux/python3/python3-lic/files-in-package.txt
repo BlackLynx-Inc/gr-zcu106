@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python3
--rw-rw-r-- root       root             9795 ./usr/share/licenses/python3/generic_PSFv2
--rw-r--r-- root       root            12773 ./usr/share/licenses/python3/LICENSE

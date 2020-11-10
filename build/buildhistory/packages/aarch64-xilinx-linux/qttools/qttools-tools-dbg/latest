@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+c9eeabc7a7
-PR = r0
-PKGV = 5.9.6+git0+c9eeabc7a7
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = glibc-dbg libgcc-dbg libstdc++-dbg qtbase-dbg qtdeclarative-dbg qttools-dbg
-PKGSIZE = 0
-FILES = /usr/bin/qt5/.debug
-FILELIST = 

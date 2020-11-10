@@ -1,2 +1,0 @@
-drwxr-xr-x root       root             4096 ./boot
--rw-r--r-- root       root        219990976 ./boot/vmlinux-4.14.0-xilinx-v2018.3

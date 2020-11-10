@@ -1,8 +1,0 @@
-PV = 3.2.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-pytest (= 3.2.2-r0)
-RRECOMMENDS = python-argparse-dev python-debugger-dev python-dev python-json-dev python-py-dev python-setuptools-dev
-PKGSIZE = 0
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/python-pytest/*.la /lib/*.la /usr/share/pkgconfig /usr/lib/pkgconfig /usr/lib/python2.7/site-packages/*.la
-FILELIST = 

@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/lib
-drwxr-xr-x root       root             4096 ./usr/lib/qt5
-drwxr-xr-x root       root             4096 ./usr/lib/qt5/plugins
-drwxr-xr-x root       root             4096 ./usr/lib/qt5/plugins/iconengines
--rwxr-xr-x root       root            35496 ./usr/lib/qt5/plugins/iconengines/libqsvgicon.so
-drwxr-xr-x root       root             4096 ./usr/lib/qt5/plugins/imageformats
--rwxr-xr-x root       root            23056 ./usr/lib/qt5/plugins/imageformats/libqsvg.so

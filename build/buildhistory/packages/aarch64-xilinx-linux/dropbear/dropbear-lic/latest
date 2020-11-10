@@ -1,8 +1,0 @@
-PV = 2017.75
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 9992
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/dropbear/LICENSE /usr/share/licenses/dropbear/generic_BSD-2-Clause /usr/share/licenses/dropbear/generic_BSD-3-Clause /usr/share/licenses/dropbear/generic_MIT /usr/share/licenses/dropbear/generic_PD

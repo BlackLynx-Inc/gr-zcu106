@@ -1,8 +1,0 @@
-PV = 2.21
-PR = r3
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 70612
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/which/COPYING /usr/share/licenses/which/generic_GPLv3 /usr/share/licenses/which/which.c

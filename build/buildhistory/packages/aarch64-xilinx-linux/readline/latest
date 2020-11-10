@@ -1,5 +1,0 @@
-PV = 7.0
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native ncurses texinfo-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = readline-lic readline-dbg readline-staticdev readline-dev readline-doc readline-locale readline
-LAYER = core

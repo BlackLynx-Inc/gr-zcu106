@@ -1,8 +1,0 @@
-PV = 1.24.1
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = update-rc.d
-PKGSIZE = 2887
-FILES = /etc/init.d/mdev /etc/mdev.conf /etc/mdev/*
-FILELIST = /etc/init.d/mdev /etc/mdev.conf /etc/mdev/find-touchscreen.sh /etc/mdev/mdev-mount.sh

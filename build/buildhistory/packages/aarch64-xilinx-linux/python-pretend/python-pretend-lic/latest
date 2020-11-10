@@ -1,8 +1,0 @@
-PV = 1.0.8
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3037
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-pretend/LICENSE.rst /usr/share/licenses/python-pretend/generic_BSD

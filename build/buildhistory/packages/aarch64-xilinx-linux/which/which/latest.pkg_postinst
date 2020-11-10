@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --install /usr/bin/which which /usr/bin/which.which 100\n

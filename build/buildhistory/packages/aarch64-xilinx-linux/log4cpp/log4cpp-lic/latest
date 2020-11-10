@@ -1,8 +1,0 @@
-PV = 1.1.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52308
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/log4cpp/COPYING /usr/share/licenses/log4cpp/generic_LGPLv2.1

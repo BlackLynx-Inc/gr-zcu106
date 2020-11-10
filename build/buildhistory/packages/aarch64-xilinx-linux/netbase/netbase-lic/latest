@@ -1,9 +1,0 @@
-PE = 1
-PV = 5.4
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 18146
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/netbase/copyright /usr/share/licenses/netbase/generic_GPLv2

@@ -1,9 +1,0 @@
-PE = 1
-PV = 1.0.8
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2228
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxau/COPYING /usr/share/licenses/libxau/generic_MIT-style

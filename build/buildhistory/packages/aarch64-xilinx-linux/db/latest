@@ -1,6 +1,0 @@
-PE = 1
-PV = 5.3.28
-PR = r1
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = db-lic db-cxx db-dbg db-staticdev db-dev db-doc db-locale db-bin db
-LAYER = core

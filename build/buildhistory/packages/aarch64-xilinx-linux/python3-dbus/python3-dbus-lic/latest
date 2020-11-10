@@ -1,8 +1,0 @@
-PV = 1.2.4
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2356
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python3-dbus/COPYING /usr/share/licenses/python3-dbus/generic_MIT

@@ -1,5 +1,0 @@
-PV = 6.1.3
-PR = r0
-DEPENDS = qtbase qtbase-native qtsvg qttools virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = qwt-qt5-lic qwt-qt5-examples qwt-qt5-features qwt-qt5-plugins qwt-qt5-dbg qwt-qt5-staticdev qwt-qt5-dev qwt-qt5-doc qwt-qt5-locale qwt-qt5
-LAYER = qt5-layer

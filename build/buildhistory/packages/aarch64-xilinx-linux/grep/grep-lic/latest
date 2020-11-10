@@ -1,8 +1,0 @@
-PV = 3.1
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 69842
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/grep/COPYING /usr/share/licenses/grep/generic_GPLv3

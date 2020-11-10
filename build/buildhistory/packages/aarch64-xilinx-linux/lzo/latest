@@ -1,5 +1,0 @@
-PV = 2.10
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = lzo-lic lzo-ptest lzo-dbg lzo-staticdev lzo-dev lzo-doc lzo-locale lzo
-LAYER = core

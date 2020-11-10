@@ -1,8 +1,0 @@
-PV = 1.10.20
-PR = r0
-RPROVIDES = 
-RDEPENDS = dbus-dev (= 1.10.20-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/dbus/*.a
-FILELIST = 

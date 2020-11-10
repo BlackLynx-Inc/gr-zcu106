@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --remove  grep /bin/grep.grep\n\tupdate-alternatives --remove  egrep /bin/egrep.grep\n\tupdate-alternatives --remove  fgrep /bin/fgrep.grep\n

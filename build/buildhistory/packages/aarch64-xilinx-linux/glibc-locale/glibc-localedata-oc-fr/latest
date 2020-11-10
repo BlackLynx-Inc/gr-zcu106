@@ -1,8 +1,0 @@
-PV = 2.26
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc-localedata-en-dk glibc-localedata-fr-fr glibc-localedata-i18n glibc-localedata-translit-combining
-RRECOMMENDS = 
-PKGSIZE = 4327
-FILES = /usr/share/i18n/locales/oc_FR
-FILELIST = /usr/share/i18n/locales/oc_FR

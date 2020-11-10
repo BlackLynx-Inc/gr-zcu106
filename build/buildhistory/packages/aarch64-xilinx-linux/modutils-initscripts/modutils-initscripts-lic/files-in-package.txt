@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/modutils-initscripts
--rw-rw-r-- root       root               52 ./usr/share/licenses/modutils-initscripts/generic_PD
--rw-rw-r-- root       root               14 ./usr/share/licenses/modutils-initscripts/LICENSE

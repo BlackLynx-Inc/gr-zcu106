@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/libsodium
--rw-rw-r-- root       root              831 ./usr/share/licenses/libsodium/generic_ISC
--rw-r--r-- root       root              823 ./usr/share/licenses/libsodium/LICENSE

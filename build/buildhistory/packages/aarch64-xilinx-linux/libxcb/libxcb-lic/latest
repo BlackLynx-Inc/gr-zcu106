@@ -1,8 +1,0 @@
-PV = 1.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2417
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxcb/COPYING /usr/share/licenses/libxcb/generic_MIT

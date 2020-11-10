@@ -1,8 +1,0 @@
-PV = git
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = bitstream-extraction-lic
-PKGSIZE = 19315769
-FILES = /boot/bitstream/*.bit /boot/bitstream/*.mmi
-FILELIST = /boot/bitstream/design_1_wrapper.bit /boot/bitstream/design_1_wrapper.mmi

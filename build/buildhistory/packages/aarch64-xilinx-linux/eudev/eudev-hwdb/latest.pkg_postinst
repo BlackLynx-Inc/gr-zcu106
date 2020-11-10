@@ -1,1 +1,0 @@
-    if test -n "$D"; then\n        PSEUDO_UNLOAD=1 qemu-aarch64 -r 3.14  -L $D -E LD_LIBRARY_PATH=$D/usr/lib:$D/lib $D/usr/bin/udevadm hwdb --update --root $D\n        chown root:root $D/etc/udev/hwdb.bin\n    else\n        udevadm hwdb --update\n    fi\n

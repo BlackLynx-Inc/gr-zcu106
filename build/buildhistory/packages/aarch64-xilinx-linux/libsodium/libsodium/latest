@@ -1,9 +1,0 @@
-PV = 1.0.11
-PR = r0
-PKG = libsodium18
-RPROVIDES = libsodium (=1.0.11)
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = libsodium-lic
-PKGSIZE = 273643
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/libsodium /usr/lib/libsodium/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/lib/libsodium.so.18 /usr/lib/libsodium.so.18.1.1

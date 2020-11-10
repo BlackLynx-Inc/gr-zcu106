@@ -1,8 +1,0 @@
-PV = 1.0.0
-PR = r0
-RPROVIDES = kernel-module-al5d
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3 kernel-module-allegro-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 16832
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/extra/al5d/al5d.ko /etc/modules-load.d/al5d.conf /etc/modprobe.d/al5d.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/extra/al5d/al5d.ko

@@ -1,8 +1,0 @@
-PV = 0.23.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-asn1crypto-dev (= 0.23.0-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/python-asn1crypto/*.a /usr/lib/python2.7/site-packages/*.a
-FILELIST = 

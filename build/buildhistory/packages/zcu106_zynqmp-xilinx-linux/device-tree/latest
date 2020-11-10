@@ -1,5 +1,0 @@
-PV = xilinx+gitAUTOINC+b7466bbeee
-PR = r0
-DEPENDS = dtc-native python3-native python3-pyyaml-native
-PACKAGES = device-tree-lic device-tree-dbg device-tree-staticdev device-tree-dev device-tree-doc device-tree-locale device-tree
-LAYER = xilinx

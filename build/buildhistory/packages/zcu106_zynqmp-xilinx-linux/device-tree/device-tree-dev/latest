@@ -1,9 +1,0 @@
-PV = xilinx+gitAUTOINC+b7466bbeee
-PR = r0
-PKGV = xilinx+git0+b7466bbeee
-RPROVIDES = 
-RDEPENDS = device-tree (= xilinx+git0+b7466bbeee-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/device-tree/*.la /lib/*.la
-FILELIST = 

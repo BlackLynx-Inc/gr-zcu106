@@ -1,8 +1,0 @@
-PV = 4.19.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = 
-PKGSIZE = 232622
-FILES = /usr/lib/python2.7/site-packages/
-FILELIST = /usr/lib/python2.7/site-packages/sip.pyi /usr/lib/python2.7/site-packages/sip.so /usr/lib/python2.7/site-packages/sipconfig.py /usr/lib/python2.7/site-packages/sipdistutils.py

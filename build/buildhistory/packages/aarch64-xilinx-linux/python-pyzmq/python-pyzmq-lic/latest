@@ -1,8 +1,0 @@
-PV = 14.7.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3095
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-pyzmq/COPYING.BSD /usr/share/licenses/python-pyzmq/generic_BSD

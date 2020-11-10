@@ -1,5 +1,0 @@
-drwxr-xr-x root       root             4096 ./etc
-drwxr-xr-x root       root             4096 ./etc/init.d
--rwxr-xr-x root       root              747 ./etc/init.d/busybox-httpd
-drwxr-xr-x root       root             4096 ./srv
-drwxr-xr-x root       root             4096 ./srv/www

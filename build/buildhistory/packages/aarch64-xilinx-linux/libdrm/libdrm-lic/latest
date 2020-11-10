@@ -1,8 +1,0 @@
-PV = 2.4.83
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2354
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libdrm/generic_MIT /usr/share/licenses/libdrm/xf86drm.c

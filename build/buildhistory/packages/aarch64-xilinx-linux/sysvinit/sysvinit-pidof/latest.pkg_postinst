@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --install /bin/pidof pidof /bin/pidof.sysvinit 200\n

@@ -1,9 +1,0 @@
-PV = 0.4.0
-PR = r0
-PKG = libxcb-image-dbg
-RPROVIDES = xcb-util-image-dbg (=0.4.0)
-RDEPENDS = 
-RRECOMMENDS = glibc-dbg libxcb-dbg libxcb-shm-dbg xcb-util-dbg
-PKGSIZE = 103843
-FILES = /usr/lib/debug /usr/src/debug
-FILELIST = /usr/lib/.debug/libxcb-image.so.0.0.0 /usr/src/debug/xcb-util-image/0.4.0-r0/xcb-util-image-0.4.0/image/xcb_bitops.h /usr/src/debug/xcb-util-image/0.4.0-r0/xcb-util-image-0.4.0/image/xcb_image.c /usr/src/debug/xcb-util-image/0.4.0-r0/xcb-util-image-0.4.0/image/xcb_image.h

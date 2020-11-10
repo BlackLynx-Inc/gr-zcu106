@@ -1,8 +1,0 @@
-PV = 17.3.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-pyopenssl
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/python2.7/site-packages/OpenSSL/test
-FILELIST = 

@@ -1,8 +1,0 @@
-PV = 0.10.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52405
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libcheck/COPYING.LESSER /usr/share/licenses/libcheck/generic_LGPLv2.1

@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --install /etc/default/gpsd gpsd-defaults /etc/default/gpsd.default 10\n

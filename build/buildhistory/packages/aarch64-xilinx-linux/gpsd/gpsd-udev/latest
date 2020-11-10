@@ -1,8 +1,0 @@
-PV = 3.16
-PR = r0
-RPROVIDES = 
-RDEPENDS = gpsd-conf udev
-RRECOMMENDS = 
-PKGSIZE = 4555
-FILES = /lib/udev /etc/udev/*
-FILELIST = /etc/udev/rules.d/60-gpsd.rules /lib/udev/gpsd.hotplug

@@ -1,8 +1,0 @@
-PV = 4.2.1
-PR = r3
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2115
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/shadow-securetty/COPYING.MIT /usr/share/licenses/shadow-securetty/generic_MIT

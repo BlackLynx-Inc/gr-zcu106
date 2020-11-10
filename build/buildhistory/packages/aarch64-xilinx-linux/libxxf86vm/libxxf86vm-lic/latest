@@ -1,9 +1,0 @@
-PE = 1
-PV = 1.1.4
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2360
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxxf86vm/COPYING /usr/share/licenses/libxxf86vm/generic_MIT

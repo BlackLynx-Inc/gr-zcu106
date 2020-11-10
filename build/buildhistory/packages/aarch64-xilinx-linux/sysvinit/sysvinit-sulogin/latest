@@ -1,8 +1,0 @@
-PV = 2.88dsf
-PR = r14
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) update-alternatives-opkg
-RRECOMMENDS = 
-PKGSIZE = 14664
-FILES = /sbin/sulogin.sysvinit
-FILELIST = /sbin/sulogin.sysvinit

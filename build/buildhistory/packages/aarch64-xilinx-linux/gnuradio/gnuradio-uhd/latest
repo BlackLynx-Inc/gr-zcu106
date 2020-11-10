@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = boost-system (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-uhd (>= 3.8.0+git0+d78f7fcd0d) libpython2 (>= 2.7.13) libstdc++ (>= 7.3.0) log4cpp (>= 1.1.2) uhd (>= 3.10.2.0)
-RRECOMMENDS = 
-PKGSIZE = 2269078
-FILES = /usr/bin/uhd* /usr/share/gnuradio/uhd /usr/lib/python2.7/site-packages/gnuradio/uhd
-FILELIST = /usr/bin/uhd_fft /usr/bin/uhd_rx_cfile /usr/bin/uhd_rx_nogui /usr/bin/uhd_siggen /usr/bin/uhd_siggen_gui /usr/lib/python2.7/site-packages/gnuradio/uhd/__init__.py /usr/lib/python2.7/site-packages/gnuradio/uhd/__init__.pyc /usr/lib/python2.7/site-packages/gnuradio/uhd/__init__.pyo /usr/lib/python2.7/site-packages/gnuradio/uhd/_uhd_swig.so /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_app.py /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_app.pyc /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_app.pyo /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_siggen_base.py /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_siggen_base.pyc /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_siggen_base.pyo /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_swig.py /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_swig.pyc /usr/lib/python2.7/site-packages/gnuradio/uhd/uhd_swig.pyo

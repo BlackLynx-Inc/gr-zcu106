@@ -1,8 +1,0 @@
-PV = 2.0.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 36370
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/mtd-utils/COPYING /usr/share/licenses/mtd-utils/common.h /usr/share/licenses/mtd-utils/generic_GPLv2

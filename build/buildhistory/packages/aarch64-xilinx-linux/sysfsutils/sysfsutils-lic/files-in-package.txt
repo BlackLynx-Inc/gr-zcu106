@@ -1,9 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/sysfsutils
--rw-r--r-- root       root              359 ./usr/share/licenses/sysfsutils/COPYING
--rw-rw-r-- root       root            17611 ./usr/share/licenses/sysfsutils/generic_GPLv2
--rw-rw-r-- root       root            25878 ./usr/share/licenses/sysfsutils/generic_LGPLv2.1
--rw-r--r-- root       root            16446 ./usr/share/licenses/sysfsutils/GPL
--rw-r--r-- root       root            26617 ./usr/share/licenses/sysfsutils/LGPL

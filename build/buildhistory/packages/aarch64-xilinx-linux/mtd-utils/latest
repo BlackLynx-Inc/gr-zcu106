@@ -1,5 +1,0 @@
-PV = 2.0.0
-PR = r0
-DEPENDS = acl autoconf-native automake-native e2fsprogs gnu-config-native libtool-cross libtool-native lzo pkgconfig-native util-linux virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives zlib
-PACKAGES = mtd-utils-lic mtd-utils-jffs2 mtd-utils-ubifs mtd-utils-misc mtd-utils-dbg mtd-utils-staticdev mtd-utils-dev mtd-utils-doc mtd-utils-locale mtd-utils
-LAYER = core

@@ -1,1 +1,0 @@
-\t# remove syslog\n\tif test "x$D" = "x"; then\n\t\tif test "$1" = "upgrade" -o "$1" = "remove"; then\n\t\t\t/etc/init.d/syslog stop || :\n\t\tfi\n\tfi\nif true && [ -z "$D" -a -x "/etc/init.d/syslog" ]; then\n\t/etc/init.d/syslog stop || :\nfi\n

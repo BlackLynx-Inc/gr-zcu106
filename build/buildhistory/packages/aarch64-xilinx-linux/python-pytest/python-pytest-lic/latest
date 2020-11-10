@@ -1,8 +1,0 @@
-PV = 3.2.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2176
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-pytest/LICENSE /usr/share/licenses/python-pytest/generic_MIT

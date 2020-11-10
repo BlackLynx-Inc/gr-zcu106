@@ -1,8 +1,0 @@
-PV = 1.10.0
-PR = r2
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 50266
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python3-pycairo/COPYING /usr/share/licenses/python3-pycairo/COPYING.LESSER /usr/share/licenses/python3-pycairo/generic_LGPLv3

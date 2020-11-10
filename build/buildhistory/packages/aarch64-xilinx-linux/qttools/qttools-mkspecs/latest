@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+c9eeabc7a7
-PR = r0
-PKGV = 5.9.6+git0+c9eeabc7a7
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4653
-FILES = /usr/lib/qt5/mkspecs
-FILELIST = /usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri /usr/lib/qt5/mkspecs/modules/qt_lib_designer_private.pri /usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri /usr/lib/qt5/mkspecs/modules/qt_lib_help.pri /usr/lib/qt5/mkspecs/modules/qt_lib_help_private.pri /usr/lib/qt5/mkspecs/modules/qt_lib_uiplugin.pri /usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri /usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri

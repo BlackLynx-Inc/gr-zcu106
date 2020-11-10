@@ -1,8 +1,0 @@
-PV = 3.3.12
-PR = r0
-RPROVIDES = pl-translation procps-locale
-RDEPENDS = 
-RRECOMMENDS = virtual-locale-pl
-PKGSIZE = 85137
-FILES = /usr/share/locale/pl
-FILELIST = /usr/share/locale/pl/LC_MESSAGES/procps-ng.mo

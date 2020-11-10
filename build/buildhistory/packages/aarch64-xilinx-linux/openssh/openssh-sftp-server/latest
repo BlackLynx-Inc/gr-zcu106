@@ -1,8 +1,0 @@
-PV = 7.5p1
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = 
-PKGSIZE = 85064
-FILES = /usr/libexec/sftp-server
-FILELIST = /usr/libexec/sftp-server

@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --remove  sed /bin/sed.sed\n

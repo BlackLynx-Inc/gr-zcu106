@@ -1,1 +1,0 @@
-#!/bin/sh\nif true && [ -z "$D" -a -x "/etc/init.d/dbus-1" ]; then\n\t/etc/init.d/dbus-1 stop || :\nfi\n

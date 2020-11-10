@@ -1,5 +1,0 @@
-PV = 2.18.4
-PR = r0
-DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = python-requests-lic python-requests-dbg python-requests-staticdev python-requests-dev python-requests-doc python-requests-locale python-requests
-LAYER = meta-python

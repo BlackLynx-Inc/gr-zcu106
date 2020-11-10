@@ -1,5 +1,0 @@
-PV = 4.19.2
-PR = r0
-DEPENDS = python virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = sip-lic sip-dbg sip-staticdev sip-dev sip-doc sip-locale sip python-sip
-LAYER = openembedded-layer

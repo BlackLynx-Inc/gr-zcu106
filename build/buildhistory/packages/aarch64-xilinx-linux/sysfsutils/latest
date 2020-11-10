@@ -1,5 +1,0 @@
-PV = 2.1.0
-PR = r5
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = sysfsutils-lic libsysfs sysfsutils-dbg sysfsutils-staticdev sysfsutils-dev sysfsutils-doc sysfsutils-locale sysfsutils
-LAYER = core

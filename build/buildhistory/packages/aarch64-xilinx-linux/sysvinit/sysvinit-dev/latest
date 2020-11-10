@@ -1,8 +1,0 @@
-PV = 2.88dsf
-PR = r14
-RPROVIDES = 
-RDEPENDS = sysvinit (= 2.88dsf-r14)
-RRECOMMENDS = base-passwd-dev glibc-dev initd-functions-dev sysvinit-inittab-dev sysvinit-pidof-dev update-alternatives-opkg-dev
-PKGSIZE = 2505
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/sysvinit/*.la /lib/*.la
-FILELIST = /usr/include/initreq.h

@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/dri2proto
--rw-r--r-- root       root             1519 ./usr/share/licenses/dri2proto/COPYING
--rw-r--r-- root       root             1609 ./usr/share/licenses/dri2proto/dri2proto.h
--rw-rw-r-- root       root             1080 ./usr/share/licenses/dri2proto/generic_MIT

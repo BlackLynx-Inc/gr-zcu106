@@ -1,9 +1,0 @@
-PV = 2018.3+gitAUTOINC+56f3da2afb
-PR = r0
-PKGV = 2018.3+git0+56f3da2afb
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = fsbl-lic
-PKGSIZE = 127040
-FILES = /boot/fsbl.elf
-FILELIST = /boot/fsbl.elf

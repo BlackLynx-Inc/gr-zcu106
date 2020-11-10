@@ -1,8 +1,0 @@
-PV = 7.3.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) gmp (>= 6.1.2) libmpc (>= 1.0.3) mpfr (>= 3.1.5) zlib (>= 1.2.11)
-RRECOMMENDS = 
-PKGSIZE = 16644121
-FILES = /usr/bin/aarch64-xilinx-linux-cpp* /lib/cpp /usr/libexec/gcc/aarch64-xilinx-linux/7.3.0/cc1
-FILELIST = /lib/cpp /usr/bin/aarch64-xilinx-linux-cpp /usr/libexec/gcc/aarch64-xilinx-linux/7.3.0/cc1

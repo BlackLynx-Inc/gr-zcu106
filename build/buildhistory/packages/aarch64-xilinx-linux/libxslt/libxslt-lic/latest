@@ -1,8 +1,0 @@
-PV = 1.1.29
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4048
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxslt/Copyright /usr/share/licenses/libxslt/generic_MIT

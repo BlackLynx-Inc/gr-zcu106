@@ -1,8 +1,0 @@
-PV = 3.16
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = bluez5-dbg dbus-lib-dbg glibc-dbg libstdc++-dbg libusb1-dbg ncurses-libncurses-dbg ncurses-libtinfo-dbg
-PKGSIZE = 0
-FILES = /usr/lib/python*/site-packages/gps/.debug
-FILELIST = 

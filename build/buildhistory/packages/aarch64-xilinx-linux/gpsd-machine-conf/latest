@@ -1,5 +1,0 @@
-PV = 1.0
-PR = r0
-DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = gpsd-machine-conf-lic gpsd-machine-conf-dbg gpsd-machine-conf-staticdev gpsd-machine-conf-dev gpsd-machine-conf-doc gpsd-machine-conf-locale gpsd-machine-conf
-LAYER = openembedded-layer

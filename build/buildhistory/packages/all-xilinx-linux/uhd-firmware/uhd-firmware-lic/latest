@@ -1,9 +1,0 @@
-PE = 1
-PV = 003.010.002.000
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35490
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/uhd-firmware/LICENSE /usr/share/licenses/uhd-firmware/generic_GPLv3

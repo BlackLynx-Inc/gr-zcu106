@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/bin
--rwxr-xr-x root       root             6680 ./usr/bin/log4cpp-config
-drwxr-xr-x root       root             4096 ./usr/lib
--rwxr-xr-x root       root           258424 ./usr/lib/liblog4cpp.so.5.0.6
-lrwxrwxrwx root       root               19 ./usr/lib/liblog4cpp.so.5 -> liblog4cpp.so.5.0.6

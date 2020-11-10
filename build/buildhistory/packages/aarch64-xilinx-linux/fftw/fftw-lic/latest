@@ -1,8 +1,0 @@
-PV = 3.3.6
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35613
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/fftw/COPYING /usr/share/licenses/fftw/generic_GPLv2

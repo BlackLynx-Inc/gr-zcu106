@@ -1,5 +1,0 @@
-PV = 1.5.0
-PR = r0
-DEPENDS = boost cmake-native pkgconfig-native python-mako-native python-native python-six-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = volk-lic volk-dbg volk-staticdev volk-dev volk-doc volk-locale volk volk-modtool
-LAYER = sdr-layer

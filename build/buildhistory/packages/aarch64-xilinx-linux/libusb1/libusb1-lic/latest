@@ -1,9 +1,0 @@
-PV = 1.0.21
-PR = r0
-PKG = libusb-1.0-lic
-RPROVIDES = libusb1-lic (=1.0.21)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52314
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libusb1/COPYING /usr/share/licenses/libusb1/generic_LGPLv2.1

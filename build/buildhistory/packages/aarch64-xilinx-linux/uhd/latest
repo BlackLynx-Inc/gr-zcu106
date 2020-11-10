@@ -1,5 +1,0 @@
-PV = 3.10.2.0
-PR = r0
-DEPENDS = boost cmake-native git-native gpsd libusb1 libusb1 libusb1 ncurses python-mako-native python-native python-requests udev uhd-firmware virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = uhd-lic uhd-tests uhd-examples uhd-e1xx uhd-dbg uhd-staticdev uhd-dev uhd-doc uhd-locale uhd
-LAYER = sdr-layer

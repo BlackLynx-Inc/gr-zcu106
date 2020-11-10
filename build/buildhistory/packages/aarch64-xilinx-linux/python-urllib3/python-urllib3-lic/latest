@@ -1,8 +1,0 @@
-PV = 1.22
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2255
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-urllib3/LICENSE.txt /usr/share/licenses/python-urllib3/generic_MIT

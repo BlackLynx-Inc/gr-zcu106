@@ -1,8 +1,0 @@
-PV = 1.5.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 53379
-FILES = /usr/bin/volk_modtool /usr/lib/python2.7/site-packages/volk_modtool
-FILELIST = /usr/lib/python2.7/site-packages/volk_modtool/__init__.py /usr/lib/python2.7/site-packages/volk_modtool/__init__.pyc /usr/lib/python2.7/site-packages/volk_modtool/__init__.pyo /usr/lib/python2.7/site-packages/volk_modtool/cfg.py /usr/lib/python2.7/site-packages/volk_modtool/cfg.pyc /usr/lib/python2.7/site-packages/volk_modtool/cfg.pyo /usr/lib/python2.7/site-packages/volk_modtool/volk_modtool_generate.py /usr/lib/python2.7/site-packages/volk_modtool/volk_modtool_generate.pyc /usr/lib/python2.7/site-packages/volk_modtool/volk_modtool_generate.pyo

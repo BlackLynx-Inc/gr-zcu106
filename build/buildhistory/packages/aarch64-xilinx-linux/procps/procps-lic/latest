@@ -1,8 +1,0 @@
-PV = 3.3.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 86009
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/procps/COPYING /usr/share/licenses/procps/COPYING.LIB /usr/share/licenses/procps/generic_GPLv2 /usr/share/licenses/procps/generic_LGPLv2

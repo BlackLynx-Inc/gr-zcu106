@@ -1,8 +1,0 @@
-PV = 3.2.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-pytest-dev (= 3.2.2-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/python-pytest/*.a /usr/lib/python2.7/site-packages/*.a
-FILELIST = 

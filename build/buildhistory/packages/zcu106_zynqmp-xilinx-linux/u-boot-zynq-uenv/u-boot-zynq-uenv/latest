@@ -1,8 +1,0 @@
-PV = 1.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = u-boot-zynq-uenv-lic
-PKGSIZE = 480
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/u-boot-zynq-uenv /usr/lib/u-boot-zynq-uenv/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /boot/uEnv.txt
-FILELIST = /boot/uEnv.txt

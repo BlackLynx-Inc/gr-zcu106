@@ -1,5 +1,0 @@
-PV = 5.9.6+gitAUTOINC+9c50112304
-PR = r0
-DEPENDS = dbus drm fontconfig freetype glib-2.0 jpeg libinput libpng libxcb libxi libxkbcommon libxkbcommon openssl qtbase-native udev virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/egl virtual/libc virtual/libgl virtual/libgles2 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm zlib
-PACKAGES = qtbase-lic qtbase-ptest qtbase-qmlplugins-dbg qtbase-tools-dbg qtbase-plugins-dbg qtbase-qmldesigner qtbase-qmlplugins qtbase-tools qtbase-plugins qtbase-mkspecs qtbase-examples-dev qtbase-examples-staticdev qtbase-examples-dbg qtbase-examples qtbase-dbg qtbase-staticdev qtbase-dev qtbase-doc qtbase-locale qtbase
-LAYER = qt5-layer

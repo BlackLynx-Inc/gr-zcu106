@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-ndg-httpsclient
--rw-rw-r-- root       root             1499 ./usr/share/licenses/python-ndg-httpsclient/generic_BSD
--rw-r--r-- root       root              314 ./usr/share/licenses/python-ndg-httpsclient/MANIFEST.in

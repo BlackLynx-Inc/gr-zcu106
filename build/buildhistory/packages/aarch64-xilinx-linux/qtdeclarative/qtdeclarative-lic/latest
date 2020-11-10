@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+283a900c4e
-PR = r0
-PKGV = 5.9.6+git0+283a900c4e
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 241617
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/qtdeclarative/LICENSE.FDL /usr/share/licenses/qtdeclarative/LICENSE.GPL2 /usr/share/licenses/qtdeclarative/LICENSE.GPL3 /usr/share/licenses/qtdeclarative/LICENSE.GPL3-EXCEPT /usr/share/licenses/qtdeclarative/LICENSE.LGPL3 /usr/share/licenses/qtdeclarative/generic_BSD /usr/share/licenses/qtdeclarative/generic_GFDL-1.3 /usr/share/licenses/qtdeclarative/generic_GPL-2.0 /usr/share/licenses/qtdeclarative/generic_GPL-3.0 /usr/share/licenses/qtdeclarative/generic_LGPL-3.0 /usr/share/licenses/qtdeclarative/generic_The-Qt-Company-Commercial /usr/share/licenses/qtdeclarative/generic_The-Qt-Company-GPL-Exception-1.0

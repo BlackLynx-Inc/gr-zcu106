@@ -1,9 +1,0 @@
-PE = 1
-PV = 1.7.9
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 6582
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxi/COPYING /usr/share/licenses/libxi/XIGetDevFocus.c /usr/share/licenses/libxi/generic_MIT /usr/share/licenses/libxi/generic_MIT-style

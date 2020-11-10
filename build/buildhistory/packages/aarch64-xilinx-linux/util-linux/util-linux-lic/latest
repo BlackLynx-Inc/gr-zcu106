@@ -1,8 +1,0 @@
-PV = 2.30
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 112041
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/util-linux/COPYING.0 /usr/share/licenses/util-linux/COPYING.1 /usr/share/licenses/util-linux/COPYING.2 /usr/share/licenses/util-linux/COPYING.BSD-3 /usr/share/licenses/util-linux/COPYING.GPLv2 /usr/share/licenses/util-linux/COPYING.LGPLv2.1 /usr/share/licenses/util-linux/COPYING.UCB /usr/share/licenses/util-linux/README.licensing /usr/share/licenses/util-linux/generic_BSD /usr/share/licenses/util-linux/generic_GPLv2 /usr/share/licenses/util-linux/generic_LGPLv2.1

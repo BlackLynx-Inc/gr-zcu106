@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-certifi
--rw-rw-r-- root       root              831 ./usr/share/licenses/python-certifi/generic_ISC
--rw-r--r-- root       root             1048 ./usr/share/licenses/python-certifi/LICENSE

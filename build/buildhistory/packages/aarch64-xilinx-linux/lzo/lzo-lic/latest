@@ -1,9 +1,0 @@
-PV = 2.10
-PR = r0
-PKG = liblzo2-lic
-RPROVIDES = lzo-lic (=2.10)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 36639
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/lzo/COPYING /usr/share/licenses/lzo/generic_GPLv2 /usr/share/licenses/lzo/lzo_init.c

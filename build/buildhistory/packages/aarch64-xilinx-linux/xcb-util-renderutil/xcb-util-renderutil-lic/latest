@@ -1,9 +1,0 @@
-PV = 0.3.9
-PR = r0
-PKG = libxcb-render-util-lic
-RPROVIDES = xcb-util-renderutil-lic (=0.3.9)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4935
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/xcb-util-renderutil/generic_MIT /usr/share/licenses/xcb-util-renderutil/glyph.c /usr/share/licenses/xcb-util-renderutil/util.c /usr/share/licenses/xcb-util-renderutil/xcb_renderutil.h

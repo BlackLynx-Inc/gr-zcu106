@@ -1,6 +1,0 @@
-PE = 1
-PV = 003.010.002.000
-PR = r0
-DEPENDS = 
-PACKAGES = uhd-firmware-lic uhd-firmware
-LAYER = sdr-layer

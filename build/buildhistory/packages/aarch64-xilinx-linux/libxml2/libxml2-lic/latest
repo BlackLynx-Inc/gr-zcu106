@@ -1,8 +1,0 @@
-PV = 2.9.5
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4070
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxml2/Copyright /usr/share/licenses/libxml2/generic_MIT /usr/share/licenses/libxml2/hash.c /usr/share/licenses/libxml2/list.c /usr/share/licenses/libxml2/trio.c

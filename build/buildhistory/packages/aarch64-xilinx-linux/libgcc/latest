@@ -1,5 +1,0 @@
-PV = 7.3.0
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-native texinfo-native virtual/aarch64-xilinx-linux-g++ virtual/aarch64-xilinx-linux-gcc
-PACKAGES = libgcc-lic libgcc libgcc-dev libgcc-dbg
-LAYER = core

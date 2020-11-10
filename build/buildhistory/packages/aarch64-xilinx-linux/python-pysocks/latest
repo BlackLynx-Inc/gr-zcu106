@@ -1,5 +1,0 @@
-PV = 1.6.7
-PR = r0
-DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = python-pysocks-lic python-pysocks-dbg python-pysocks-staticdev python-pysocks-dev python-pysocks-doc python-pysocks-locale python-pysocks
-LAYER = meta-python

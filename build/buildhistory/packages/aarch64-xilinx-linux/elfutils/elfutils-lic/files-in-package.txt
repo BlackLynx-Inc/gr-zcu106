@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/elfutils
--rw-r--r-- root       root            35147 ./usr/share/licenses/elfutils/COPYING
--rw-rw-r-- root       root              445 ./usr/share/licenses/elfutils/generic_Elfutils-Exception
--rw-rw-r-- root       root            34694 ./usr/share/licenses/elfutils/generic_GPLv3

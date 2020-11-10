@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/uhd
--rw-rw-r-- root       root            34694 ./usr/share/licenses/uhd/generic_GPLv3
--rw------- root       root              796 ./usr/share/licenses/uhd/LICENSE

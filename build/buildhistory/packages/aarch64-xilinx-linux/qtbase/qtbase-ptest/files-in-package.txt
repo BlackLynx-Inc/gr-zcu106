@@ -1,5 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/lib
-drwxrwxr-x root       root             4096 ./usr/lib/qtbase
-drwxrwxr-x root       root             4096 ./usr/lib/qtbase/ptest
--rwxr-xr-x root       root               71 ./usr/lib/qtbase/ptest/run-ptest

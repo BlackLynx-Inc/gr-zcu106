@@ -1,1 +1,0 @@
-#!/bin/sh\n\tupdate-alternatives --install /bin/grep grep /bin/grep.grep 100\n\tupdate-alternatives --install /bin/egrep egrep /bin/egrep.grep 100\n\tupdate-alternatives --install /bin/fgrep fgrep /bin/fgrep.grep 100\n

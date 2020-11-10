@@ -1,9 +1,0 @@
-PV = 1.7.0+gitAUTOINC+48eead4cbb
-PR = r0
-PKGV = 1.7.0+git0+48eead4cbb
-RPROVIDES = 
-RDEPENDS = bash glibc (>= 2.26) initd-functions libcrypto (>= 1.0.2o) libssl (>= 1.0.2o) util-linux-libuuid (>= 2.30)
-RRECOMMENDS = tcf-agent-lic update-rc.d
-PKGSIZE = 920350
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/tcf-agent /usr/lib/tcf-agent/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /etc/init.d/tcf-agent /usr/sbin/tcf-agent /usr/sbin/tcf-client

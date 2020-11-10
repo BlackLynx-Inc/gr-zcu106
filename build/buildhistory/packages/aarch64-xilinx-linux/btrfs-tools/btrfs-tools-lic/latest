@@ -1,8 +1,0 @@
-PV = 4.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35623
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/btrfs-tools/COPYING /usr/share/licenses/btrfs-tools/generic_GPLv2

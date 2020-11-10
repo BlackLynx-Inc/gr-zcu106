@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/flex
--rw-r--r-- root       root             1855 ./usr/share/licenses/flex/COPYING
--rw-rw-r-- root       root             1499 ./usr/share/licenses/flex/generic_BSD

@@ -1,8 +1,0 @@
-PV = 5.46
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 88897
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/bluez5/COPYING /usr/share/licenses/bluez5/COPYING.LIB /usr/share/licenses/bluez5/generic_GPLv2 /usr/share/licenses/bluez5/generic_LGPLv2.1 /usr/share/licenses/bluez5/main.c

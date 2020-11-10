@@ -1,9 +1,0 @@
-PV = 0.4.0
-PR = r0
-PKG = libxcb-util-lic
-RPROVIDES = xcb-util-lic (=0.4.0)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 4001
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/xcb-util/generic_MIT /usr/share/licenses/xcb-util/xcb_aux.c /usr/share/licenses/xcb-util/xcb_event.h

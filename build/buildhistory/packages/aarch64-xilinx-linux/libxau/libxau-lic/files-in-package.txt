@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/libxau
--rw-r--r-- root       root             1148 ./usr/share/licenses/libxau/COPYING
--rw-rw-r-- root       root             1080 ./usr/share/licenses/libxau/generic_MIT-style

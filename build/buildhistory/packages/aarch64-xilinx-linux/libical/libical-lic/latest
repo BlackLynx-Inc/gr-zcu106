@@ -1,8 +1,0 @@
-PV = 2.0.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 45238
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libical/COPYING /usr/share/licenses/libical/LICENSE /usr/share/licenses/libical/generic_LGPLv2.1 /usr/share/licenses/libical/generic_MPL-1

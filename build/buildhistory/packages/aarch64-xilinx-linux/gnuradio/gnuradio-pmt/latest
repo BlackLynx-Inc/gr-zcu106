@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libpython2 (>= 2.7.13) libstdc++ (>= 7.3.0)
-RRECOMMENDS = 
-PKGSIZE = 1632137
-FILES = /usr/share/pmt /usr/lib/python2.7/site-packages/pmt
-FILELIST = /usr/lib/python2.7/site-packages/pmt/__init__.py /usr/lib/python2.7/site-packages/pmt/__init__.pyc /usr/lib/python2.7/site-packages/pmt/__init__.pyo /usr/lib/python2.7/site-packages/pmt/_pmt_swig.so /usr/lib/python2.7/site-packages/pmt/pmt_swig.py /usr/lib/python2.7/site-packages/pmt/pmt_swig.pyc /usr/lib/python2.7/site-packages/pmt/pmt_swig.pyo /usr/lib/python2.7/site-packages/pmt/pmt_to_python.py /usr/lib/python2.7/site-packages/pmt/pmt_to_python.pyc /usr/lib/python2.7/site-packages/pmt/pmt_to_python.pyo

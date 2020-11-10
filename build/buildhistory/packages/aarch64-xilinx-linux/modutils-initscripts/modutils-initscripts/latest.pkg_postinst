@@ -1,1 +1,0 @@
-\tif false; then\n\t\tif [ -n "$D" ]; then\n\t\t\tOPTS="--root=$D"\n\t\tfi\n\t\tsystemctl $OPTS mask modutils.service\n\tfi\nif true && type update-rc.d >/dev/null 2>/dev/null; then\n\tif [ -n "$D" ]; then\n\t\tOPT="-r $D"\n\telse\n\t\tOPT="-s"\n\tfi\n\tupdate-rc.d $OPT modutils.sh start 05 S .\nfi\n

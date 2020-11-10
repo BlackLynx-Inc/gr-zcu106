@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/libjpeg-turbo
--rw-r--r-- root       root              448 ./usr/share/licenses/libjpeg-turbo/cdjpeg.h
--rw-r--r-- root       root              371 ./usr/share/licenses/libjpeg-turbo/djpeg.c
--rw-rw-r-- root       root             1468 ./usr/share/licenses/libjpeg-turbo/generic_BSD-3-Clause
--rw-r--r-- root       root              596 ./usr/share/licenses/libjpeg-turbo/jpeglib.h

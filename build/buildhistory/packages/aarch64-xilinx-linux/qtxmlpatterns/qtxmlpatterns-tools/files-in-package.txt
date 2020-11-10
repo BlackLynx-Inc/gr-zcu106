@@ -1,5 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/bin
-drwxr-xr-x root       root             4096 ./usr/bin/qt5
--rwxr-xr-x root       root            56240 ./usr/bin/qt5/xmlpatterns
--rwxr-xr-x root       root            10288 ./usr/bin/qt5/xmlpatternsvalidator

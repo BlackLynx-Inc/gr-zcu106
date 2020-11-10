@@ -1,9 +1,0 @@
-PV = 1.14.10
-PR = r0
-PKG = libcairo-lic
-RPROVIDES = cairo-lic (=1.14.10)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 80152
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/cairo/COPYING /usr/share/licenses/cairo/generic_GPLv3 /usr/share/licenses/cairo/generic_LGPLv2.1 /usr/share/licenses/cairo/generic_MPL-1

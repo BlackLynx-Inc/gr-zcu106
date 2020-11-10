@@ -1,8 +1,0 @@
-PV = 0.4.1
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = glibc-dbg libxcb-dbg
-PKGSIZE = 426525
-FILES = /usr/lib/debug /usr/src/debug
-FILELIST = /usr/lib/.debug/libxcb-ewmh.so.2.0.0 /usr/lib/.debug/libxcb-icccm.so.4.0.0 /usr/src/debug/xcb-util-wm/0.4.1-r0/build/ewmh/ewmh.c /usr/src/debug/xcb-util-wm/0.4.1-r0/build/ewmh/xcb_ewmh.h /usr/src/debug/xcb-util-wm/0.4.1-r0/xcb-util-wm-0.4.1/icccm/icccm.c /usr/src/debug/xcb-util-wm/0.4.1-r0/xcb-util-wm-0.4.1/icccm/xcb_icccm.h

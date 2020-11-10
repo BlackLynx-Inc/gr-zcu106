@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/make
--rw-r--r-- root       root            35147 ./usr/share/licenses/make/COPYING
--rw-r--r-- root       root            25263 ./usr/share/licenses/make/COPYING.LIB
--rw-rw-r-- root       root            34694 ./usr/share/licenses/make/generic_GPLv3
--rw-rw-r-- root       root            24925 ./usr/share/licenses/make/generic_LGPLv2

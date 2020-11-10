@@ -1,6 +1,0 @@
-PE = 1
-PV = 1.5.2
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native pkgconfig-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = libjpeg-turbo-lic jpeg-tools libturbojpeg libjpeg-turbo-dbg libjpeg-turbo-staticdev libjpeg-turbo-dev libjpeg-turbo-doc libjpeg-turbo-locale libjpeg-turbo
-LAYER = core

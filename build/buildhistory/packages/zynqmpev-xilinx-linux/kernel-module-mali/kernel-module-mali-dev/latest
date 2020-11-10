@@ -1,8 +1,0 @@
-PV = r8p0-01rel0
-PR = r0
-RPROVIDES = 
-RDEPENDS = kernel-module-mali (= r8p0-01rel0-r0)
-RRECOMMENDS = kernel-4.14.0-xilinx-v2018.3-dev kernel-module-mali-4.14.0-xilinx-v2018.3-dev
-PKGSIZE = 252
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/kernel-module-mali/*.la /lib/*.la
-FILELIST = /usr/include/kernel-module-mali/Module.symvers

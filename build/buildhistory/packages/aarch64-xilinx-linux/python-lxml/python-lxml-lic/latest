@@ -1,8 +1,0 @@
-PV = 4.1.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 53966
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-lxml/BSD.txt /usr/share/licenses/python-lxml/GPL.txt /usr/share/licenses/python-lxml/LICENSES.txt /usr/share/licenses/python-lxml/RNG2Schtrn.xsl /usr/share/licenses/python-lxml/elementtree.txt /usr/share/licenses/python-lxml/generic_BSD /usr/share/licenses/python-lxml/generic_GPLv2 /usr/share/licenses/python-lxml/generic_MIT /usr/share/licenses/python-lxml/generic_PSF /usr/share/licenses/python-lxml/iso-schematron.rng /usr/share/licenses/python-lxml/iso_schematron_message.xsl

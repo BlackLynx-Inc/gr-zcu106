@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = python-audio python-codecs python-compiler python-core python-difflib python-lang python-mmap python-netclient python-numpy python-pickle python-pkgutil python-pprint python-pydoc python-shell python-textutils python-threading
-RRECOMMENDS = gnuradio-analog gnuradio-audio gnuradio-blocks gnuradio-channels gnuradio-ctrlport gnuradio-digital gnuradio-doc gnuradio-examples gnuradio-fec gnuradio-fft gnuradio-filter gnuradio-gr gnuradio-gr-utils gnuradio-grc gnuradio-gru gnuradio-lic gnuradio-modtool gnuradio-noaa gnuradio-pager gnuradio-pmt gnuradio-qtgui gnuradio-runtime gnuradio-trellis gnuradio-uhd gnuradio-vocoder gnuradio-volk gnuradio-volk-modtool gnuradio-wavelet gnuradio-zeromq
-PKGSIZE = 2926
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/gnuradio /usr/lib/gnuradio/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /usr/lib/* /usr/lib/python2.7/* /usr/lib/python2.7/site-packages/gnuradio /etc/gnuradio
-FILELIST = /etc/gnuradio/conf.d/gr_log_default.conf /usr/bin/polar_channel_construction

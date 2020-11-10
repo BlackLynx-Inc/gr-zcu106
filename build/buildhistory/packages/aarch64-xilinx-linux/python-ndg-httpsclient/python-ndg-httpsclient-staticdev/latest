@@ -1,8 +1,0 @@
-PV = 0.4.3
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-ndg-httpsclient-dev (= 0.4.3-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/python-ndg-httpsclient/*.a /usr/lib/python2.7/site-packages/*.a
-FILELIST = 

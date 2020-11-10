@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/bin
--rwxr-xr-x root       root            23568 ./usr/bin/gnome-desktop-testing-runner
-drwxr-xr-x root       root             4096 ./usr/lib
-drwxr-xr-x root       root             4096 ./usr/lib/gnome-desktop-testing
--rwxr-xr-x root       root            48280 ./usr/lib/gnome-desktop-testing/libgsystem.so

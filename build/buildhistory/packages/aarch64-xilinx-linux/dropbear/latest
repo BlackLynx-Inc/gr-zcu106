@@ -1,5 +1,0 @@
-PV = 2017.75
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native initscripts libpam libtool-cross libtool-native update-rc.d virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc virtual/update-alternatives zlib
-PACKAGES = dropbear-lic dropbear-openssh-sftp-server dropbear-dbg dropbear-staticdev dropbear-dev dropbear-doc dropbear-locale dropbear
-LAYER = core

@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+c9eeabc7a7
-PR = r0
-PKGV = 5.9.6+git0+c9eeabc7a7
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) libstdc++ (>= 7.3.0) qtbase (>= 5.9.6+git0+9c50112304)
-RRECOMMENDS = qttools-lic qttools-plugins qttools-qmlplugins
-PKGSIZE = 7985806
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/qttools /usr/lib/qttools/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers /usr/lib/lib*.so.* /usr/lib/qt5/libexec
-FILELIST = /usr/lib/libQt5Designer.so.5 /usr/lib/libQt5Designer.so.5.9 /usr/lib/libQt5Designer.so.5.9.6 /usr/lib/libQt5DesignerComponents.so.5 /usr/lib/libQt5DesignerComponents.so.5.9 /usr/lib/libQt5DesignerComponents.so.5.9.6 /usr/lib/libQt5Help.so.5 /usr/lib/libQt5Help.so.5.9 /usr/lib/libQt5Help.so.5.9.6

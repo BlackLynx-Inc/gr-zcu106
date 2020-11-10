@@ -1,9 +1,0 @@
-PV = 1.2.11
-PR = r0
-PKG = libz-lic
-RPROVIDES = zlib-lic (=1.2.11)
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 1798
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/zlib/generic_Zlib /usr/share/licenses/zlib/zlib.h

@@ -1,1 +1,0 @@
-\tif [ -z "$D" ]; then\n\t\tif command -v systemd-tmpfiles >/dev/null; then\n\t\t\tsystemd-tmpfiles --create /etc/tmpfiles.d/nscd.conf\n\t\telif [ -e /etc/init.d/populate-volatile.sh ]; then\n\t\t\t/etc/init.d/populate-volatile.sh update\n\t\tfi\n\tfi\n

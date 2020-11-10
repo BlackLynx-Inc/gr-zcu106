@@ -1,1 +1,0 @@
-#!/bin/sh\nif true && type update-rc.d >/dev/null 2>/dev/null; then\n\tif [ -n "$D" ]; then\n\t\tOPT="-r $D"\n\telse\n\t\tOPT="-s"\n\tfi\n\tupdate-rc.d $OPT inetd.busybox start 65 S .\nfi\n

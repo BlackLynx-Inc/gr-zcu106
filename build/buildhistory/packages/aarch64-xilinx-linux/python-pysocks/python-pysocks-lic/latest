@@ -1,8 +1,0 @@
-PV = 1.6.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2900
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-pysocks/LICENSE /usr/share/licenses/python-pysocks/generic_BSD

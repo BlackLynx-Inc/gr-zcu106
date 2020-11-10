@@ -1,9 +1,0 @@
-PE = 2
-PV = 17.1.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = dri2proto-dev expat-dev glproto-dev libdrm-dev libxdamage-dev libxext-dev libxfixes-dev libxxf86vm-dev xf86driproto-dev zlib-dev
-PKGSIZE = 0
-FILES = /usr/lib/pkgconfig/wayland-egl.pc /usr/lib/libwayland-egl.*
-FILELIST = 

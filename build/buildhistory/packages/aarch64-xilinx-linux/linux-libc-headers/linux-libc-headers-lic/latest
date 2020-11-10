@@ -1,8 +1,0 @@
-PV = 4.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 36304
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/linux-libc-headers/COPYING /usr/share/licenses/linux-libc-headers/generic_GPLv2

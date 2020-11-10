@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python3-pygobject
--rw-r--r-- root       root            26440 ./usr/share/licenses/python3-pygobject/COPYING
--rw-rw-r-- root       root            25878 ./usr/share/licenses/python3-pygobject/generic_LGPLv2.1

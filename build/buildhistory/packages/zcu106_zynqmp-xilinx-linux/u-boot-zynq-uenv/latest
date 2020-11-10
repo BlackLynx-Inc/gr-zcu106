@@ -1,5 +1,0 @@
-PV = 1.0
-PR = r0
-DEPENDS = 
-PACKAGES = u-boot-zynq-uenv-lic u-boot-zynq-uenv-dbg u-boot-zynq-uenv-staticdev u-boot-zynq-uenv-dev u-boot-zynq-uenv-doc u-boot-zynq-uenv-locale u-boot-zynq-uenv
-LAYER = xilinx

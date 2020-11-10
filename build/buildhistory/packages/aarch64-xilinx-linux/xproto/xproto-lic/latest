@@ -1,9 +1,0 @@
-PE = 1
-PV = 7.0.31
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 6356
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/xproto/COPYING /usr/share/licenses/xproto/generic_MIT /usr/share/licenses/xproto/generic_MIT-style

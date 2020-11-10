@@ -1,8 +1,0 @@
-PV = 3.5.29
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35622
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/base-passwd/COPYING /usr/share/licenses/base-passwd/generic_GPLv2

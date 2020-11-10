@@ -1,8 +1,0 @@
-PV = 2.88dsf
-PR = r10
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 17611
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/sysvinit-inittab/GPL-2.0 /usr/share/licenses/sysvinit-inittab/generic_GPLv2

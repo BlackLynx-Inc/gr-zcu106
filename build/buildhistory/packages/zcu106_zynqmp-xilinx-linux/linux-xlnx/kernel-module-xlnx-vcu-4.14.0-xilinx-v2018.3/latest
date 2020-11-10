@@ -1,9 +1,0 @@
-PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
-PR = r0
-PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
-RPROVIDES = kernel-module-xlnx-vcu
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 12344
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/soc/xilinx/xlnx_vcu.ko /etc/modules-load.d/xlnx_vcu.conf /etc/modprobe.d/xlnx_vcu.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/soc/xilinx/xlnx_vcu.ko

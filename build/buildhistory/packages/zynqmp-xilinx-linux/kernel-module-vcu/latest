@@ -1,5 +1,0 @@
-PV = 1.0.0
-PR = r0
-DEPENDS = pkgconfig-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = kernel-module-vcu-lic kernel-module-vcu-dbg kernel-module-vcu-staticdev kernel-module-vcu-dev kernel-module-vcu-doc kernel-module-vcu-locale kernel-module-vcu kernel-module-al5d-4.14.0-xilinx-v2018.3 kernel-module-al5e-4.14.0-xilinx-v2018.3 kernel-module-allegro-4.14.0-xilinx-v2018.3
-LAYER = xilinx

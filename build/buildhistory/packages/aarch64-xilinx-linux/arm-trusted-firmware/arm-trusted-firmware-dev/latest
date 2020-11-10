@@ -1,9 +1,0 @@
-PV = 1.5-xilinx-v2018.3+gitAUTOINC+08560c36ea
-PR = r0
-PKGV = 1.5-xilinx-v2018.3+git0+08560c36ea
-RPROVIDES = 
-RDEPENDS = arm-trusted-firmware (= 1.5-xilinx-v2018.3+git0+08560c36ea-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/arm-trusted-firmware/*.la /lib/*.la
-FILELIST = 

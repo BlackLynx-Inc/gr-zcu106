@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/damageproto
--rw-r--r-- root       root             1187 ./usr/share/licenses/damageproto/COPYING
--rw-r--r-- root       root             1184 ./usr/share/licenses/damageproto/damagewire.h
--rw-rw-r-- root       root             1080 ./usr/share/licenses/damageproto/generic_MIT-style

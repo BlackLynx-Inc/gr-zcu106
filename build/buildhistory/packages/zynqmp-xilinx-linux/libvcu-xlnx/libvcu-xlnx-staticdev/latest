@@ -1,8 +1,0 @@
-PV = git
-PR = r0
-RPROVIDES = 
-RDEPENDS = libvcu-xlnx-dev (= git-r0)
-RRECOMMENDS = 
-PKGSIZE = 585330
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/libvcu-xlnx/*.a
-FILELIST = /usr/lib/liballegro_decode.a /usr/lib/liballegro_encode.a

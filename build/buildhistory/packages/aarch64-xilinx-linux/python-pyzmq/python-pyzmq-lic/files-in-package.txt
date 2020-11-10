@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-pyzmq
--rw-r--r-- root       root             1596 ./usr/share/licenses/python-pyzmq/COPYING.BSD
--rw-rw-r-- root       root             1499 ./usr/share/licenses/python-pyzmq/generic_BSD

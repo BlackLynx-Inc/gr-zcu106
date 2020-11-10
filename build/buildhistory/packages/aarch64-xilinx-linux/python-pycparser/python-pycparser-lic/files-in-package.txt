@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-pycparser
--rw-rw-r-- root       root             1468 ./usr/share/licenses/python-pycparser/generic_BSD-3-Clause
--rw-r--r-- root       root             1536 ./usr/share/licenses/python-pycparser/LICENSE

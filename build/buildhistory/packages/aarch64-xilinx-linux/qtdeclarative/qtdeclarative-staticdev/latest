@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+283a900c4e
-PR = r0
-PKGV = 5.9.6+git0+283a900c4e
-RPROVIDES = 
-RDEPENDS = qtdeclarative-dev (= 5.9.6+git0+283a900c4e-r0)
-RRECOMMENDS = 
-PKGSIZE = 52781132
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/qtdeclarative/*.a /usr/lib/*.a
-FILELIST = /usr/lib/libQt5QmlDevTools.a

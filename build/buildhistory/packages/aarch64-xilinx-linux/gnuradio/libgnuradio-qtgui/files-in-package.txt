@@ -1,4 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/lib
--rwxr-xr-x root       root          1374616 ./usr/lib/libgnuradio-qtgui-3.8git.so.0.0.0
-lrwxrwxrwx root       root               33 ./usr/lib/libgnuradio-qtgui-3.8git.so.0 -> libgnuradio-qtgui-3.8git.so.0.0.0

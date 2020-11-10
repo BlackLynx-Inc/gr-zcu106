@@ -1,8 +1,0 @@
-PV = 6.0+20171125
-PR = r0
-RPROVIDES = 
-RDEPENDS = ncurses-dev (= 6.0+20171125-r0)
-RRECOMMENDS = 
-PKGSIZE = 1735032
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/ncurses/*.a
-FILELIST = /usr/lib/libncurses++.a /usr/lib/libncurses++w.a

@@ -1,9 +1,0 @@
-PV = 1.5-xilinx-v2018.3+gitAUTOINC+08560c36ea
-PR = r0
-PKGV = 1.5-xilinx-v2018.3+git0+08560c36ea
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = arm-trusted-firmware-lic
-PKGSIZE = 0
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/arm-trusted-firmware /usr/lib/arm-trusted-firmware/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = 

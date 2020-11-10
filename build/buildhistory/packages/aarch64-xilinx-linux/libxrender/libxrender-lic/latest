@@ -1,9 +1,0 @@
-PE = 1
-PV = 0.9.10
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3244
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libxrender/COPYING /usr/share/licenses/libxrender/generic_MIT-style

@@ -1,8 +1,0 @@
-PV = 2.26
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc-localedata-da-dk glibc-localedata-i18n
-RRECOMMENDS = 
-PKGSIZE = 5587
-FILES = /usr/share/i18n/locales/kl_GL
-FILELIST = /usr/share/i18n/locales/kl_GL

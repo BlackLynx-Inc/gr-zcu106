@@ -1,1 +1,0 @@
-\trm -rf $D/usr/lib/opkg/alternatives\n\trmdir $D/usr/lib/opkg || true\n

@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/coreutils
--rw-r--r-- root       root            35147 ./usr/share/licenses/coreutils/COPYING
--rw-rw-r-- root       root            34694 ./usr/share/licenses/coreutils/generic_GPLv3
--rw-r--r-- root       root              575 ./usr/share/licenses/coreutils/ls.c

@@ -1,8 +1,0 @@
-PV = 2.30
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) util-linux-libuuid (>= 2.30)
-RRECOMMENDS = 
-PKGSIZE = 10328
-FILES = /usr/bin/uuidgen
-FILELIST = /usr/bin/uuidgen

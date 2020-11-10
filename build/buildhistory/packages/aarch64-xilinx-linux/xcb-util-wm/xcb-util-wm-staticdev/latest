@@ -1,8 +1,0 @@
-PV = 0.4.1
-PR = r0
-RPROVIDES = 
-RDEPENDS = xcb-util-wm-dev (= 0.4.1-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/xcb-util-wm/*.a
-FILELIST = 

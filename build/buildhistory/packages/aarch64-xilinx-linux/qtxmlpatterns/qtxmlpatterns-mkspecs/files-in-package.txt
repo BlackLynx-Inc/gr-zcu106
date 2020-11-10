@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/lib
-drwxr-xr-x root       root             4096 ./usr/lib/qt5
-drwxr-xr-x root       root             4096 ./usr/lib/qt5/mkspecs
-drwxr-xr-x root       root             4096 ./usr/lib/qt5/mkspecs/modules
--rw-r--r-- root       root              567 ./usr/lib/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri
--rw-r--r-- root       root              571 ./usr/lib/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri

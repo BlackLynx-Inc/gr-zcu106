@@ -1,8 +1,0 @@
-PV = 3.16
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = update-rc.d
-PKGSIZE = 3345
-FILES = /etc
-FILELIST = /etc/default/gpsd.default /etc/init.d/gpsd

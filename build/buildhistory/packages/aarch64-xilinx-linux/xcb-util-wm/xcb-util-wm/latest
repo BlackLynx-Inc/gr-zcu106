@@ -1,8 +1,0 @@
-PV = 0.4.1
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) libxcb (>= 1.12)
-RRECOMMENDS = xcb-util-wm-lic
-PKGSIZE = 61537
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/xcb-util-wm /usr/lib/xcb-util-wm/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/lib/libxcb-ewmh.so.2 /usr/lib/libxcb-ewmh.so.2.0.0 /usr/lib/libxcb-icccm.so.4 /usr/lib/libxcb-icccm.so.4.0.0

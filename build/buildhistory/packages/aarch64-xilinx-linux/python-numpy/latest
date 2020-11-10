@@ -1,5 +1,0 @@
-PV = 1.13.1
-PR = r0
-DEPENDS = python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = python-numpy-lic python-numpy-dbg python-numpy-staticdev python-numpy-dev python-numpy-doc python-numpy-locale python-numpy
-LAYER = core

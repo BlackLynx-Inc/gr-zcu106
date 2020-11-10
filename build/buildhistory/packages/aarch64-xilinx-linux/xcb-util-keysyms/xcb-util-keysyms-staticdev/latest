@@ -1,9 +1,0 @@
-PV = 0.4.0
-PR = r0
-PKG = libxcb-keysyms-staticdev
-RPROVIDES = xcb-util-keysyms-staticdev (=0.4.0)
-RDEPENDS = xcb-util-keysyms-dev (= 0.4.0-r0)
-RRECOMMENDS = 
-PKGSIZE = 0
-FILES = /usr/lib/*.a /lib/*.a /usr/lib/xcb-util-keysyms/*.a
-FILELIST = 

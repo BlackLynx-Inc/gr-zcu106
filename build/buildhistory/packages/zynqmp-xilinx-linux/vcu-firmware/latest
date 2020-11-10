@@ -1,5 +1,0 @@
-PV = 1.0.0+gitAUTOINC+d01951905e
-PR = r0
-DEPENDS = virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = vcu-firmware-lic vcu-firmware-dbg vcu-firmware-staticdev vcu-firmware-dev vcu-firmware-doc vcu-firmware-locale vcu-firmware
-LAYER = xilinx

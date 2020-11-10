@@ -1,8 +1,0 @@
-PV = 7.3.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = libquadmath libquadmath-dev
-PKGSIZE = 0
-FILES = /usr/bin/aarch64-xilinx-linux-gfortran /usr/libexec/gcc/aarch64-xilinx-linux/7.3.0/f951
-FILELIST = 

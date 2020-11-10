@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-pip
--rw-rw-r-- root       root            25878 ./usr/share/licenses/python-pip/generic_LGPL-2.1
--rw-rw-r-- root       root             1080 ./usr/share/licenses/python-pip/generic_MIT
--rw-r--r-- root       root             1090 ./usr/share/licenses/python-pip/LICENSE.txt

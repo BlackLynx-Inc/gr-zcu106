@@ -1,5 +1,0 @@
-PV = 1.13.2
-PR = r0
-DEPENDS = autoconf-native automake-native gnu-config-native libtool-cross libtool-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc
-PACKAGES = cppunit-lic cppunit-dbg cppunit-staticdev cppunit-dev cppunit-doc cppunit-locale cppunit
-LAYER = openembedded-layer

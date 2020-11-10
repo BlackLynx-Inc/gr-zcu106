@@ -1,6 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/python-iso8601
--rw-rw-r-- root       root             1080 ./usr/share/licenses/python-iso8601/generic_MIT
--rw-r--r-- root       root             1065 ./usr/share/licenses/python-iso8601/LICENSE

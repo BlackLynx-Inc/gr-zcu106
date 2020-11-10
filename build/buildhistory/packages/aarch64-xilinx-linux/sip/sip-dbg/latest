@@ -1,8 +1,0 @@
-PV = 4.19.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = glibc-dbg
-PKGSIZE = 2563013
-FILES = /usr/lib/debug /usr/src/debug /usr/lib/python2.7/site-packages/.debug
-FILELIST = /usr/bin/.debug/sip /usr/lib/python2.7/site-packages/.debug/sip.so /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/export.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/extracts.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/gencode.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/heap.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/main.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/parser.h /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/sip.h /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/transform.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/sipgen/type_hints.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/apiversions.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/array.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/array.h /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/bool.cpp /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/descriptors.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/objmap.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/qtlib.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/sip.h /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/sipint.h /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/siplib.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/threads.c /usr/src/debug/sip/4.19.2-r0/sip-4.19.2/siplib/voidptr.c

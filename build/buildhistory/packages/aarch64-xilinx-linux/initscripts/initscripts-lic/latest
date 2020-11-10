@@ -1,8 +1,0 @@
-PV = 1.0
-PR = r155
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35598
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/initscripts/COPYING /usr/share/licenses/initscripts/generic_GPLv2

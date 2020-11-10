@@ -1,8 +1,0 @@
-PV = 2.1.0
-PR = r5
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 86911
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/sysfsutils/COPYING /usr/share/licenses/sysfsutils/GPL /usr/share/licenses/sysfsutils/LGPL /usr/share/licenses/sysfsutils/generic_GPLv2 /usr/share/licenses/sysfsutils/generic_LGPLv2.1

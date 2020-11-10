@@ -1,8 +1,0 @@
-PV = 4.1.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = glibc-dbg libxml2-dbg libxslt-dbg
-PKGSIZE = 25513542
-FILES = /usr/lib/debug /usr/src/debug
-FILELIST = /usr/lib/python2.7/site-packages/lxml/.debug/_elementpath.so /usr/lib/python2.7/site-packages/lxml/.debug/builder.so /usr/lib/python2.7/site-packages/lxml/.debug/etree.so /usr/lib/python2.7/site-packages/lxml/.debug/objectify.so /usr/lib/python2.7/site-packages/lxml/html/.debug/clean.so /usr/lib/python2.7/site-packages/lxml/html/.debug/diff.so /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/_elementpath.c /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/builder.c /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/etree.c /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/etree.h /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/etree_api.h /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/html/clean.c /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/html/diff.c /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/includes/etree_defs.h /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/lxml_endian.h /usr/src/debug/python-lxml/4.1.0-r0/lxml-4.1.0/src/lxml/objectify.c

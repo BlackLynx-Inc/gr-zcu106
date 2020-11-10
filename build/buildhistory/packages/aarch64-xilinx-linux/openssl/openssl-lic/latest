@@ -1,8 +1,0 @@
-PV = 1.0.2o
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 12008
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/openssl/LICENSE /usr/share/licenses/openssl/generic_openssl

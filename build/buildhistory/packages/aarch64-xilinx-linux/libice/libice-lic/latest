@@ -1,9 +1,0 @@
-PE = 1
-PV = 1.0.9
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2249
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/libice/COPYING /usr/share/licenses/libice/generic_MIT-style

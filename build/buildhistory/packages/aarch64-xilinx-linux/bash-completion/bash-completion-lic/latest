@@ -1,8 +1,0 @@
-PV = 2.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 35598
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/bash-completion/COPYING /usr/share/licenses/bash-completion/generic_GPLv2

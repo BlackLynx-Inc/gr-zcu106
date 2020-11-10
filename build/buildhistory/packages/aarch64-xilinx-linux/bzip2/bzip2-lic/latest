@@ -1,8 +1,0 @@
-PV = 1.0.6
-PR = r5
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3412
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/bzip2/LICENSE /usr/share/licenses/bzip2/generic_bzip2

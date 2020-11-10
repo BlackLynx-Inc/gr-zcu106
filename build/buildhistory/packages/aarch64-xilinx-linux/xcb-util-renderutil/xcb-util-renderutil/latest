@@ -1,9 +1,0 @@
-PV = 0.3.9
-PR = r0
-PKG = libxcb-render-util0
-RPROVIDES = xcb-util-renderutil (=0.3.9)
-RDEPENDS = glibc (>= 2.26) libxcb (>= 1.12) libxcb-render (>= 1.12)
-RRECOMMENDS = xcb-util-renderutil-lic
-PKGSIZE = 14371
-FILES = /usr/bin/* /usr/sbin/* /usr/libexec/* /usr/lib/lib*.so.* /etc /com /var /bin/* /sbin/* /lib/*.so.* /lib/udev /usr/lib/udev /lib/udev /usr/lib/udev /usr/share/xcb-util-renderutil /usr/lib/xcb-util-renderutil/* /usr/share/pixmaps /usr/share/applications /usr/share/idl /usr/share/omf /usr/share/sounds /usr/lib/bonobo/servers
-FILELIST = /usr/lib/libxcb-render-util.so.0 /usr/lib/libxcb-render-util.so.0.0.0

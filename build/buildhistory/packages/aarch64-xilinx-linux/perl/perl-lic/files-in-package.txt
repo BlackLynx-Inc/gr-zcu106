@@ -1,8 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/perl
--r--r--r-- root       root             6321 ./usr/share/licenses/perl/Artistic
--r--r--r-- root       root            12632 ./usr/share/licenses/perl/Copying
--rw-rw-r-- root       root             4785 ./usr/share/licenses/perl/generic_Artistic-1.0
--rw-rw-r-- root       root            12647 ./usr/share/licenses/perl/generic_GPL-1.0

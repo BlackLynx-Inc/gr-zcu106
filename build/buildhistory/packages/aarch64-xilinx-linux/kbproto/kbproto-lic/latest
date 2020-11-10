@@ -1,9 +1,0 @@
-PE = 1
-PV = 1.0.7
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 3545
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/kbproto/COPYING /usr/share/licenses/kbproto/XKBproto.h /usr/share/licenses/kbproto/generic_MIT-style

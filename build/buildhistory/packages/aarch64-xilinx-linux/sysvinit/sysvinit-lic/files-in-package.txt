@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/share
-drwxr-xr-x root       root             4096 ./usr/share/licenses
-drwxr-xr-x root       root             4096 ./usr/share/licenses/sysvinit
--rw-r--r-- root       root            17987 ./usr/share/licenses/sysvinit/COPYING
--rw-r--r-- root       root              780 ./usr/share/licenses/sysvinit/COPYRIGHT
--rw-rw-r-- root       root            17611 ./usr/share/licenses/sysvinit/generic_GPLv2

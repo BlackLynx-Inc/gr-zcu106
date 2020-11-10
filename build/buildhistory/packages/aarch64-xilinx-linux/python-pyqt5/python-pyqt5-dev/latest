@@ -1,8 +1,0 @@
-PV = 5.8.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = python-pyqt5 (= 5.8.2-r0)
-RRECOMMENDS = glibc-dev libstdc++-dev python-core-dev python-dev python-sip-dev qtbase-dev sip-dev
-PKGSIZE = 0
-FILES = /usr/include /lib/lib*.so /usr/lib/lib*.so /usr/lib/*.la /usr/lib/*.o /usr/lib/pkgconfig /usr/share/pkgconfig /usr/share/aclocal /lib/*.o /usr/lib/python-pyqt5/*.la /lib/*.la
-FILELIST = 

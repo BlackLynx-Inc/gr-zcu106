@@ -1,9 +1,0 @@
-PV = 5.9.6+gitAUTOINC+9c50112304
-PR = r0
-PKGV = 5.9.6+git0+9c50112304
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = dbus-lib-dbg fontconfig-dbg freetype-dbg glib-2.0-dbg glibc-dbg libgcc-dbg libinput-dbg libjpeg-turbo-dbg libmali-xlnx-dbg libpng-dbg libstdc++-dbg libudev-dbg libx11-dbg libx11-xcb-dbg libxcb-dbg libxcb-randr-dbg libxcb-render-dbg libxcb-shape-dbg libxcb-shm-dbg libxcb-sync-dbg libxcb-xfixes-dbg libxcb-xinerama-dbg libxcb-xkb-dbg libxi-dbg libxkbcommon-dbg qtbase-dbg xcb-util-image-dbg xcb-util-keysyms-dbg xcb-util-renderutil-dbg xcb-util-wm-dbg zlib-dbg
-PKGSIZE = 0
-FILES = /usr/lib/qt5/plugins/*/.debug/* /usr/lib/qt5/plugins/*/*/.debug/* /usr/lib/qt5/plugins/*/*/*/.debug/*
-FILELIST = 

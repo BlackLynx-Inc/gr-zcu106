@@ -1,8 +1,0 @@
-PV = 7.3.0
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 128739
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/gcc/COPYING /usr/share/licenses/gcc/COPYING.LIB /usr/share/licenses/gcc/COPYING.RUNTIME /usr/share/licenses/gcc/COPYING3 /usr/share/licenses/gcc/COPYING3.LIB /usr/share/licenses/gcc/generic_GPL-3.0-with-GCC-exception /usr/share/licenses/gcc/generic_GPLv3

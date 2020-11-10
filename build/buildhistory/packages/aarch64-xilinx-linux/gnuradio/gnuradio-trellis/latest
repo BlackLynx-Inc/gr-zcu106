@@ -1,9 +1,0 @@
-PV = 3.8.0+gitAUTOINC+d78f7fcd0d
-PR = r0
-PKGV = 3.8.0+git0+d78f7fcd0d
-RPROVIDES = 
-RDEPENDS = boost-system (>= 1.64.0) glibc (>= 2.26) libgcc (>= 7.3.0) libgnuradio-digital (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-pmt (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-runtime (>= 3.8.0+git0+d78f7fcd0d) libgnuradio-trellis (>= 3.8.0+git0+d78f7fcd0d) libpython2 (>= 2.7.13) libstdc++ (>= 7.3.0) log4cpp (>= 1.1.2)
-RRECOMMENDS = 
-PKGSIZE = 12289665
-FILES = /usr/share/gnuradio/trellis /usr/lib/python2.7/site-packages/gnuradio/trellis
-FILELIST = /usr/lib/python2.7/site-packages/gnuradio/trellis/__init__.py /usr/lib/python2.7/site-packages/gnuradio/trellis/__init__.pyc /usr/lib/python2.7/site-packages/gnuradio/trellis/__init__.pyo /usr/lib/python2.7/site-packages/gnuradio/trellis/_trellis_swig0.so /usr/lib/python2.7/site-packages/gnuradio/trellis/_trellis_swig1.so /usr/lib/python2.7/site-packages/gnuradio/trellis/fsm_utils.py /usr/lib/python2.7/site-packages/gnuradio/trellis/fsm_utils.pyc /usr/lib/python2.7/site-packages/gnuradio/trellis/fsm_utils.pyo /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig.py /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig.pyc /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig.pyo /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig0.py /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig0.pyc /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig0.pyo /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig1.py /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig1.pyc /usr/lib/python2.7/site-packages/gnuradio/trellis/trellis_swig1.pyo

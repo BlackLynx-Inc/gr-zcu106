@@ -1,8 +1,0 @@
-PV = 1.0.0
-PR = r0
-RPROVIDES = kernel-module-al5e
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3 kernel-module-allegro-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 18936
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/extra/al5e/al5e.ko /etc/modules-load.d/al5e.conf /etc/modprobe.d/al5e.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/extra/al5e/al5e.ko

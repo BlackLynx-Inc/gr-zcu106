@@ -1,5 +1,0 @@
-PV = 14.7.0
-PR = r0
-DEPENDS = pkgconfig-native python python-distribute-native python-native python-native virtual/aarch64-xilinx-linux-compilerlibs virtual/aarch64-xilinx-linux-gcc virtual/libc zeromq
-PACKAGES = python-pyzmq-lic python-pyzmq-dbg python-pyzmq-staticdev python-pyzmq-dev python-pyzmq-doc python-pyzmq-locale python-pyzmq
-LAYER = meta-python

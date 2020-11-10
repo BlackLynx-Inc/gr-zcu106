@@ -1,7 +1,0 @@
-drwxr-xr-x root       root             4096 ./usr
-drwxr-xr-x root       root             4096 ./usr/lib
-drwxrwxr-x root       root             4096 ./usr/lib/qttools
-drwxrwxr-x root       root             4096 ./usr/lib/qttools/ptest
--rwxr-xr-x root       root               71 ./usr/lib/qttools/ptest/run-ptest
--rwxrwxr-x root       root            31504 ./usr/lib/qttools/ptest/tst_qtattributionsscanner
--rwxrwxr-x root       root            19032 ./usr/lib/qttools/ptest/tst_tdiag

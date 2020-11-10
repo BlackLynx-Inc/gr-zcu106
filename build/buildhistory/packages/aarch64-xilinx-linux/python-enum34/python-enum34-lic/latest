@@ -1,8 +1,0 @@
-PV = 1.1.6
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 2976
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/python-enum34/LICENSE /usr/share/licenses/python-enum34/generic_BSD-3-Clause

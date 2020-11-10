@@ -1,9 +1,0 @@
-PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
-PR = r0
-PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
-RPROVIDES = kernel-module-nf-defrag-ipv4
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 5976
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/net/ipv4/netfilter/nf_defrag_ipv4.ko /etc/modules-load.d/nf_defrag_ipv4.conf /etc/modprobe.d/nf_defrag_ipv4.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/net/ipv4/netfilter/nf_defrag_ipv4.ko

@@ -1,8 +1,0 @@
-PV = 2.30
-PR = r0
-RPROVIDES = 
-RDEPENDS = libpam
-RRECOMMENDS = 
-PKGSIZE = 2
-FILES = /usr/bin/su.util-linux /etc/pam.d/su-l
-FILELIST = /etc/pam.d/su-l

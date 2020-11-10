@@ -1,8 +1,0 @@
-PV = 2.30
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26)
-RRECOMMENDS = 
-PKGSIZE = 14560
-FILES = /sbin/switch_root.util-linux
-FILELIST = /sbin/switch_root.util-linux

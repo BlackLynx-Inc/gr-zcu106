@@ -1,8 +1,0 @@
-PV = 4.12
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = linux-libc-headers-dev (= 4.12-r0)
-PKGSIZE = 0
-FILES = /usr/lib/debug /usr/src/debug
-FILELIST = 

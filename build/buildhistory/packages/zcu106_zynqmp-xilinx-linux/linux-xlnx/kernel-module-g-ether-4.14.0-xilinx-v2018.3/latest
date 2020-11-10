@@ -1,9 +1,0 @@
-PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
-PR = r0
-PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
-RPROVIDES = kernel-module-g-ether
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3 kernel-module-usb-f-rndis-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 15168
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/usb/gadget/legacy/g_ether.ko /etc/modules-load.d/g_ether.conf /etc/modprobe.d/g_ether.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/usb/gadget/legacy/g_ether.ko

@@ -1,9 +1,0 @@
-PV = 4.14-xilinx-v2018.3+gitAUTOINC+eeab73d120
-PR = r0
-PKGV = 4.14-xilinx-v2018.3+git0+eeab73d120
-RPROVIDES = kernel-module-xen-netback
-RDEPENDS = kernel-4.14.0-xilinx-v2018.3
-RRECOMMENDS = 
-PKGSIZE = 79640
-FILES = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/net/xen-netback/xen-netback.ko /etc/modules-load.d/xen-netback.conf /etc/modprobe.d/xen-netback.conf
-FILELIST = /lib/modules/4.14.0-xilinx-v2018.3/kernel/drivers/net/xen-netback/xen-netback.ko

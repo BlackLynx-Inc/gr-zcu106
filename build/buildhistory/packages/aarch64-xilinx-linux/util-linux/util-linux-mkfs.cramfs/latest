@@ -1,8 +1,0 @@
-PV = 2.30
-PR = r0
-RPROVIDES = 
-RDEPENDS = glibc (>= 2.26) zlib (>= 1.2.11)
-RRECOMMENDS = 
-PKGSIZE = 31104
-FILES = /usr/sbin/mkfs.cramfs
-FILELIST = /usr/sbin/mkfs.cramfs

@@ -1,8 +1,0 @@
-PV = 1.13.2
-PR = r0
-RPROVIDES = 
-RDEPENDS = 
-RRECOMMENDS = 
-PKGSIZE = 52308
-FILES = /usr/share/licenses/
-FILELIST = /usr/share/licenses/cppunit/COPYING /usr/share/licenses/cppunit/generic_LGPL-2.1
