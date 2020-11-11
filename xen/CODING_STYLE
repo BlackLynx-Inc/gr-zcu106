@@ -1,0 +1,237 @@
+Coding Style for the Xen Hypervisor
+===================================
+
+The Xen coding style described below is the coding style used by the
+Xen hypervisor itself (xen/*) as well as various associated low-level
+libraries (e.g. tools/libxc/*).
+
+An exception is made for files which are imported from an external
+source. In these cases the prevailing coding style of the upstream
+source is generally used (commonly the Linux coding style).
+
+Other parts of the code base may use other coding styles, sometimes
+explicitly (e.g. tools/libxl/CODING_STYLE) but often implicitly (Linux
+coding style is fairly common). In general you should copy the style
+of the surrounding code. If you are unsure please ask.
+
+Indentation
+-----------
+
+Indenting uses spaces, not tabs - in contrast to Linux.  An indent
+level consists of four spaces.  Code within blocks is indented by one
+extra indent level.  The enclosing braces of a block are indented the
+same as the code _outside_ the block.  e.g.
+
+void fun(void)
+{
+    /* One level of indent. */
+
+    {
+        /* A second level of indent. */
+    }
+}
+
+White space
+-----------
+
+Space characters are used to spread out logical statements, such as in
+the condition of an if or while.  Spaces are placed between the
+keyword and the brackets surrounding the condition, between the
+brackets and the condition itself, and around binary operators (except
+the structure access operators, '.' and '->'). e.g.
+
+if ( (wibble & wombat) == 42 )
+{
+    ...
+
+There should be no trailing white space at the end of lines (including
+after the opening /* of a comment block).
+
+Line Length
+-----------
+
+Lines should be less than 80 characters in length.  Long lines should
+be split at sensible places and the trailing portions indented.
+
+User visible strings (e.g., printk() messages) should not be split so
+they can searched for more easily.
+
+Bracing
+-------
+
+Braces ('{' and '}') are usually placed on a line of their own, except
+for the do/while loop.  This is unlike the Linux coding style and
+unlike K&R.  do/while loops are an exception. e.g.:
+
+if ( condition )
+{
+    /* Do stuff. */
+}
+else
+{
+    /* Other stuff. */
+}
+
+while ( condition )
+{
+    /* Do stuff. */
+}
+
+do {
+    /* Do stuff. */
+} while ( condition );
+
+etc.
+
+Braces should be omitted for blocks with a single statement. e.g.,
+
+if ( condition )
+    single_statement();
+
+Types
+-----
+
+Use basic C types and C standard mandated typedef-s where possible (and
+with preference in this order).  This in particular means to avoid u8,
+u16, etc despite those types continuing to exist in our code base.
+Fixed width types should only be used when a fixed width quantity is
+meant (which for example may be a value read from or to be written to a
+register).
+
+Especially with pointer types, whenever the pointed to object is not
+(supposed to be) modified, qualify the pointed to type with "const".
+
+Comments
+--------
+
+Only C style /* ... */ comments are to be used.  C++ style // comments
+should not be used.  Multi-word comments should begin with a capital
+letter.  Comments containing a single sentence may end with a full
+stop; comments containing several sentences must have a full stop
+after each sentence.
+
+Multi-line comment blocks should start and end with comment markers on
+separate lines and each line should begin with a leading '*'.
+
+/*
+ * Example, multi-line comment block.
+ *
+ * Note beginning and end markers on separate lines and leading '*'.
+ */
+
+Emacs local variables
+---------------------
+
+A comment block containing local variables for emacs is permitted at
+the end of files.  It should be:
+
+/*
+ * Local variables:
+ * mode: C
+ * c-file-style: "BSD"
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * End:
+ */
+
+Handling unexpected conditions
+------------------------------
+
+GUIDELINES:
+
+Passing errors up the stack should be used when the caller is already
+expecting to handle errors, and the state when the error was
+discovered isn’t broken, or isn't too hard to fix.
+
+domain_crash() should be used when passing errors up the stack is too
+difficult, and/or when fixing up state of a guest is impractical, but
+where fixing up the state of Xen will allow Xen to continue running.
+This is particularly appropriate when the guest is exhibiting behavior
+well-behaved guests shouldn't.
+
+BUG_ON() should be used when you can’t pass errors up the stack, and
+either continuing or crashing the guest would likely cause an
+information leak or privilege escalation vulnerability.
+
+ASSERT() IS NOT AN ERROR HANDLING MECHANISM.  ASSERT is a way to move
+detection of a bug earlier in the programming cycle; it is a
+more-noticeable printk.  It should only be added after one of the
+other three error-handling mechanisms has been evaluated for
+reliability and security.
+
+RATIONALE:
+
+It's frequently the case that code is written with the assumption that
+certain conditions can never happen.  There are several possible
+actions programmers can take in these situations:
+
+* Programmers can simply not handle those cases in any way, other than
+perhaps to write a comment documenting what the assumption is.
+
+* Programmers can try to handle the case gracefully -- fixing up
+in-progress state and returning an error to the user.
+
+* Programmers can crash the guest.
+
+* Programmers can use ASSERT(), which will cause the check to be
+executed in DEBUG builds, and cause the hypervisor to crash if it's
+violated
+
+* Programmers can use BUG_ON(), which will cause the check to be
+executed in both DEBUG and non-DEBUG builds, and cause the hypervisor
+to crash if it's violated.
+
+In selecting which response to use, we want to achieve several goals:
+
+- To minimize risk of introducing security vulnerabilities,
+  particularly as the code evolves over time
+
+- To efficiently spend programmer time
+
+- To detect violations of assumptions as early as possible
+
+- To minimize the impact of bugs on production use cases
+
+The guidelines above attempt to balance these:
+
+- When the caller is expecting to handle errors, and there is no
+broken state at the time the unexpected condition is discovered, or
+when fixing the state is straightforward, then fixing up the state and
+returning an error is the most robust thing to do.  However, if the
+caller isn't expecting to handle errors, or if the state is difficult
+to fix, then returning an error may require extensive refactoring,
+which is not a good use of programmer time when they're certain that
+this condition cannot occur.
+
+- BUG_ON() will stop all hypervisor action immediately.  In situations
+where continuing might allow an attacker to escalate privilege, a
+BUG_ON() can change a privilege escalation or information leak into a
+denial-of-service (an improvement).  But in situations where
+continuing (say, returning an error) might be safe, then BUG_ON() can
+change a benign failure into denial-of-service (a degradation).
+
+- domain_crash() is similar to BUG_ON(), but with a more limited
+effect: it stops that domain immediately.  In situations where
+continuing might cause guest or hypervisor corruption, but destroying
+the guest allows the hypervisor to continue, this can change a more
+serious bug into a guest denial-of-service.  But in situations where
+returning an error might be safe, then domain_crash() can change a
+benign failure into a guest denial-of-service.
+
+- ASSERT() will stop the hypervisor during development, but allow
+hypervisor action to continue during production.  In situations where
+continuing will at worst result in a denial-of-service, and at best
+may have little effect other than perhaps quirky behavior, using an
+ASSERT() will allow violation of assumptions to be detected as soon as
+possible, while not causing undue degradation in production
+hypervisors.  However, in situations where continuing could cause
+privilege escalation or information leaks, using an ASSERT() can
+introduce security vulnerabilities.
+
+Note however that domain_crash() has its own traps: callers far up the
+call stack may not realize that the domain is now dying as a result of
+an innocuous-looking operation, particularly if somewhere on the
+callstack between the initial function call and the failure, no error
+is returned.  Using domain_crash() requires careful inspection and
+documentation of the code to make sure all callers at the stack handle
+a newly-dead domain gracefully.

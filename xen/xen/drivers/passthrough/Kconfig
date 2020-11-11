@@ -1,0 +1,30 @@
+
+config HAS_PASSTHROUGH
+	bool
+
+if ARM
+config ARM_SMMU
+	bool "ARM SMMUv1 and v2 driver"
+	default y
+	---help---
+	  Support for implementations of the ARM System MMU architecture
+	  versions 1 and 2.
+
+	  Say Y here if your SoC includes an IOMMU device implementing the
+	  ARM SMMU architecture.
+
+config IPMMU_VMSA
+	bool "Renesas IPMMU-VMSA found in R-Car Gen3 SoCs" if EXPERT = "y"
+	depends on ARM_64
+	---help---
+	  Support for implementations of the Renesas IPMMU-VMSA found
+	  in R-Car Gen3 SoCs.
+
+	  Say Y here if you are using newest R-Car Gen3 SoCs revisions
+	  (H3 ES3.0, M3-W+, etc) which IPMMU hardware supports stage 2
+	  translation table format and is able to use CPU's P2M table as is.
+
+endif
+
+config IOMMU_FORCE_PT_SHARE
+	bool

@@ -1,0 +1,39 @@
+How to enable early printk
+
+Early printk can only be enabled if CONFIG_DEBUG=y or in EXPERT mode. You
+may want to enable it if you are debugging code that executes before the
+console is initialized.
+
+Note that selecting this option will limit Xen to a single UART definition.
+Attempting to boot Xen image on a different platform *will not work*, so this
+option should not be enable for Xens that are intended to be portable.
+
+Select one of the "Early printk via * UART" in the choice possible for
+"Early printk" in the "Debugging options" of Kconfig. You will then need to
+set other options, which depends on the driver selected.
+
+CONFIG_EARLY_UART_BASE_ADDRESS is a mandatory argument, it is the base
+physical address of the UART to use.
+
+Other options depends on the driver selected:
+  - 8250
+    - CONFIG_EARLY_UART_8250_REG_SHIFT is, optionally, the left-shift to
+      apply to the register offsets within the uart.
+  - pl011
+    - CONFIG_EARLY_UART_PL011_BAUD_RATE is, optionally, a baud rate which
+      should be used to configure the UART at start of day.
+
+      If CONFIG_EARLY_UART_PL011_BAUD_RATE  is set to 0 then the code will
+      not try to initialize the UART, so that bootloader or firmware
+      settings can be used for maximum compatibility.
+  - scif
+    - CONFIG_EARLY_UART_SCIF_VERSION_* is, optionally, the interface version
+      of the UART. Default to version NONE.
+
+  - For all other uarts there are no additional options.
+
+As a convenience it is also possible to select from a list of
+predefined configurations available in the list of choice for "Early
+printk" for specific platform.
+
+By default early printk is disabled.
