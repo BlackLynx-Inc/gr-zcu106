@@ -1,0 +1,4 @@
+SANITY_VERSION 1
+TMPDIR /home/ryftuser/chintan/darpa/gr-zc106/build/zc-106-buildnew
+SSTATE_DIR /home/ryftuser/chintan/darpa/gr-zc106/build/sstate-cache
+NATIVELSBSTRING ubuntu-16.04
