@@ -1,4 +1,4 @@
-From ee219bf33cf52c7a7eab7c02823b2e4960392ce0 Mon Sep 17 00:00:00 2001
+From c39c68f73c86378897dbc6f59b48c2ced1eaa72f Mon Sep 17 00:00:00 2001
 From: Wenlin Kang <wenlin.kang@windriver.com>
 Date: Thu, 8 Sep 2016 12:18:13 +0800
 Subject: [PATCH] qtmultimedia: fix a conflicting declaration
@@ -67,7 +67,7 @@ index 00000000..24236976
 +
 +#endif
 diff --git a/src/plugins/videonode/imx6/qsgvivantevideomaterial.cpp b/src/plugins/videonode/imx6/qsgvivantevideomaterial.cpp
-index 465ccfa7..40e7592b 100644
+index e1468fe3..a77a9d6a 100644
 --- a/src/plugins/videonode/imx6/qsgvivantevideomaterial.cpp
 +++ b/src/plugins/videonode/imx6/qsgvivantevideomaterial.cpp
 @@ -37,8 +37,9 @@

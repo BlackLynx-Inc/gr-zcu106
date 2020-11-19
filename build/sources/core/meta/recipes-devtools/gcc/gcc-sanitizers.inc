@@ -45,6 +45,9 @@ INHIBIT_DEFAULT_DEPS = "1"
 ALLOW_EMPTY_${PN} = "1"
 DEPENDS = "gcc-runtime virtual/${TARGET_PREFIX}gcc"
 
+# used to fix ../../../../../../../../../work-shared/gcc-8.3.0-r0/gcc-8.3.0/libsanitizer/libbacktrace/../../libbacktrace/elf.c:772:21: error: 'st.st_mode' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+DEBUG_OPTIMIZATION_append = " -Wno-error"
+
 BBCLASSEXTEND = "nativesdk"
 
 PACKAGES = "${PN} ${PN}-dbg"
@@ -61,15 +64,19 @@ RDEPENDS_libubsan-dev += "${PN}"
 RDEPENDS_liblsan-dev += "${PN}"
 RDEPENDS_libtsan-dev += "${PN}"
 RRECOMMENDS_${PN} += "libasan libubsan"
-RRECOMMENDS_${PN}_append_x86-64 = " liblsan libtsan"
 RRECOMMENDS_${PN}_append_x86 = " liblsan"
+RRECOMMENDS_${PN}_append_x86-64 = " liblsan libtsan"
+RRECOMMENDS_${PN}_append_powerpc64 = " liblsan libtsan"
+RRECOMMENDS_${PN}_append_aarch64 = " liblsan libtsan"
 
 do_package_write_ipk[depends] += "virtual/${MLPREFIX}${TARGET_PREFIX}compilerlibs:do_packagedata"
 do_package_write_deb[depends] += "virtual/${MLPREFIX}${TARGET_PREFIX}compilerlibs:do_packagedata"
 do_package_write_rpm[depends] += "virtual/${MLPREFIX}${TARGET_PREFIX}compilerlibs:do_packagedata"
 
-# MIPS, aarch64, and SPARC are broken.
-COMPATIBLE_HOST = '(x86_64|i.86|powerpc|arm).*-linux'
+# Only x86, powerpc, sparc, s390, arm, and aarch64 are supported
+COMPATIBLE_HOST = '(x86_64|i.86|powerpc|sparc|s390|arm|aarch64).*-linux'
+# musl is currently broken entirely
+COMPATIBLE_HOST_libc-musl = 'null'
 
 FILES_libasan += "${libdir}/libasan.so.*"
 FILES_libasan-dev += "\
@@ -90,6 +97,7 @@ FILES_liblsan += "${libdir}/liblsan.so.*"
 FILES_liblsan-dev += "\
     ${libdir}/liblsan.so \
     ${libdir}/liblsan.la \
+    ${libdir}/liblsan_preinit.o \
 "
 FILES_liblsan-staticdev += "${libdir}/liblsan.a"
 

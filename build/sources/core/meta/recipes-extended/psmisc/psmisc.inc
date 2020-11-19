@@ -7,7 +7,7 @@ command sends a specified signal (SIGTERM if nothing is specified) to \
 processes identified by name.  The fuser command identifies the PIDs \
 of processes that are using specified files or filesystems."
 SECTION = "base"
-DEPENDS = "ncurses virtual/libintl"
+DEPENDS = "ncurses virtual/libintl gettext-native"
 LICENSE = "GPLv2"
 
 SRC_URI = "${SOURCEFORGE_MIRROR}/psmisc/psmisc-${PV}.tar.gz"
@@ -15,6 +15,15 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/psmisc/psmisc-${PV}.tar.gz"
 S = "${WORKDIR}/psmisc-${PV}"
 
 inherit autotools gettext
+
+# Upstream has a custom autogen.sh which invokes po/update-potfiles as they 
+# don't ship a po/POTFILES.in (which is silly).  Without that file gettext 
+# doesn't believe po/ is a gettext directory and won't generate po/Makefile.
+EXTRA_AUTORECONF_remove = "--exclude=autopoint"
+do_configure_prepend() {
+    ( cd ${S} && po/update-potfiles )
+}
+
 
 PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'ipv6', d)}"
 PACKAGECONFIG[ipv6] = "--enable-ipv6,--disable-ipv6,"

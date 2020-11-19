@@ -7,8 +7,8 @@ SECTION = "libs"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM ?= "file://LICENSE.md;md5=fe0b8a4beea8f0813b606d15a3df3d3c"
 
-REPO ?= "git://github.com/OpenAMP/libmetal.git;protocol=https"
-BRANCH ?= "master"
+REPO ?= "git://github.com/Xilinx/libmetal.git;protocol=https"
+BRANCH ?= "rel-v2020.1"
 
 # Sources, by default allow for the use of SRCREV pointing to orphaned tags/commits
 BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
@@ -24,15 +24,21 @@ PROVIDES = "libmetal"
 
 inherit pkgconfig cmake yocto-cmake-translation
 
+LIBMETAL_MACHINE_versal = "zynqmp"
+LIBMETAL_MACHINE ?= "${@get_cmake_machine(d.getVar('TARGET_OS'), d.getVar('TUNE_ARCH'), d.getVar('SOC_FAMILY'), d)}"
+
+PACKAGE_ARCH = "${SOC_FAMILY_ARCH}"
+
 EXTRA_OECMAKE = " \
 	-DLIB_INSTALL_DIR=${libdir} \
 	-DLIBEXEC_INSTALL_DIR=${libexecdir} \
-	-DMACHINE="${@get_cmake_machine(d.getVar('TARGET_OS'), d.getVar('TUNE_ARCH'), d.getVar('SOC_FAMILY'), d)}" \
+	-DMACHINE=${LIBMETAL_MACHINE} \
+	-DWITH_EXAMPLES=ON \
+	-DSOC_FAMILY="${SOC_FAMILY}" \
 	"
+ALLOW_EMPTY_${PN}-demos = "1"
 
-EXTRA_OECMAKE_append_zynqmp = "-DWITH_EXAMPLES=ON"
-
-PACKAGES_append_zynqmp += "${PN}-demos"
+PACKAGES_append += "${PN}-demos"
 
 FILES_${PN} = " \
     ${libdir}/*.so* \
@@ -40,9 +46,10 @@ FILES_${PN} = " \
 "
 FILES_${PN}-demos = " \
     ${bindir}/libmetal_* \
+    ${bindir}/*demo \
 "
 
-do_install_append_zynqmp () {
+do_install_append () {
 	# Only install the shared lib binaries
 	rm -rf ${D}/${bindir}/*-static
 
@@ -51,3 +58,4 @@ do_install_append_zynqmp () {
 		mv "${f}" "${newf}"
 	done
 }
+

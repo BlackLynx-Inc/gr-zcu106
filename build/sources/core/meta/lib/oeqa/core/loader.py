@@ -1,5 +1,8 @@
+#
 # Copyright (C) 2016 Intel Corporation
-# Released under the MIT license (see COPYING.MIT)
+#
+# SPDX-License-Identifier: MIT
+#
 
 import os
 import re
@@ -13,7 +16,7 @@ from oeqa.core.utils.test import getSuiteModules, getCaseID
 from oeqa.core.exception import OEQATestNotFound
 from oeqa.core.case import OETestCase
 from oeqa.core.decorator import decoratorClasses, OETestDecorator, \
-        OETestFilter, OETestDiscover
+        OETestDiscover
 
 # When loading tests, the unittest framework stores any exceptions and
 # displays them only when the run method is called.
@@ -24,7 +27,7 @@ from oeqa.core.decorator import decoratorClasses, OETestDecorator, \
 # Generate the function definition because this differ across python versions
 # Python >= 3.4.4 uses tree parameters instead four but for example Python 3.5.3
 # ueses four parameters so isn't incremental.
-_failed_test_args = inspect.getargspec(unittest.loader._make_failed_test).args
+_failed_test_args = inspect.getfullargspec(unittest.loader._make_failed_test).args
 exec("""def _make_failed_test(%s): raise exception""" % ', '.join(_failed_test_args))
 unittest.loader._make_failed_test = _make_failed_test
 
@@ -43,7 +46,9 @@ def _built_modules_dict(modules):
     for module in modules:
         # Assumption: package and module names do not contain upper case
         # characters, whereas class names do
-        m = re.match(r'^([^A-Z]+)(?:\.([A-Z][^.]*)(?:\.([^.]+))?)?$', module)
+        m = re.match(r'^(\w+)(?:\.(\w[^.]*)(?:\.([^.]+))?)?$', module, flags=re.ASCII)
+        if not m:
+            continue
 
         module_name, class_name, test_name = m.groups()
 
@@ -63,7 +68,7 @@ class OETestLoader(unittest.TestLoader):
             '_top_level_dir']
 
     def __init__(self, tc, module_paths, modules, tests, modules_required,
-            filters, *args, **kwargs):
+            *args, **kwargs):
         self.tc = tc
 
         self.modules = _built_modules_dict(modules)
@@ -71,13 +76,7 @@ class OETestLoader(unittest.TestLoader):
         self.tests = tests
         self.modules_required = modules_required
 
-        self.filters = filters
-        self.decorator_filters = [d for d in decoratorClasses if \
-                issubclass(d, OETestFilter)]
-        self._validateFilters(self.filters, self.decorator_filters)
-        self.used_filters = [d for d in self.decorator_filters
-                             for f in self.filters
-                             if f in d.attrs]
+        self.tags_filter = kwargs.get("tags_filter", None)
 
         if isinstance(module_paths, str):
             module_paths = [module_paths]
@@ -98,28 +97,6 @@ class OETestLoader(unittest.TestLoader):
         setattr(testCaseClass, 'tc', self.tc)
         setattr(testCaseClass, 'td', self.tc.td)
         setattr(testCaseClass, 'logger', self.tc.logger)
-
-    def _validateFilters(self, filters, decorator_filters):
-        # Validate if filter isn't empty
-        for key,value in filters.items():
-            if not value:
-                raise TypeError("Filter %s specified is empty" % key)
-
-        # Validate unique attributes
-        attr_filters = [attr for clss in decorator_filters \
-                                for attr in clss.attrs]
-        dup_attr = [attr for attr in attr_filters
-                    if attr_filters.count(attr) > 1]
-        if dup_attr:
-            raise TypeError('Detected duplicated attribute(s) %s in filter'
-                            ' decorators' % ' ,'.join(dup_attr))
-
-        # Validate if filter is supported
-        for f in filters:
-            if f not in attr_filters:
-                classes = ', '.join([d.__name__ for d in decorator_filters])
-                raise TypeError('Found "%s" filter but not declared in any of '
-                                '%s decorators' % (f, classes))
 
     def _registerTestCase(self, case):
         case_id = case.id()
@@ -155,7 +132,16 @@ class OETestLoader(unittest.TestLoader):
         class_name = case.__class__.__name__
         test_name = case._testMethodName
 
-        if self.modules:
+        # 'auto' is a reserved key word to run test cases automatically
+        # warn users if their test case belong to a module named 'auto'
+        if module_name_small == "auto":
+            bb.warn("'auto' is a reserved key word for TEST_SUITES. "
+                    "But test case '%s' is detected to belong to auto module. "
+                    "Please condier using a new name for your module." % str(case))
+
+        # check if case belongs to any specified module
+        # if 'auto' is specified, such check is skipped
+        if self.modules and not 'auto' in self.modules:
             module = None
             try:
                 module = self.modules[module_name_small]
@@ -174,19 +160,20 @@ class OETestLoader(unittest.TestLoader):
                         return True
 
         # Decorator filters
-        if self.filters and isinstance(case, OETestCase):
-            filters = self.filters.copy()
-            case_decorators = [cd for cd in case.decorators
-                               if cd.__class__ in self.used_filters]
+        if self.tags_filter is not None and callable(self.tags_filter):
+            alltags = set()
+            # pull tags from the case class
+            if hasattr(case, "__oeqa_testtags"):
+                for t in getattr(case, "__oeqa_testtags"):
+                    alltags.add(t)
+            # pull tags from the method itself
+            if hasattr(case, test_name):
+                method = getattr(case, test_name)
+                if hasattr(method, "__oeqa_testtags"):
+                    for t in getattr(method, "__oeqa_testtags"):
+                        alltags.add(t)
 
-            # Iterate over case decorators to check if needs to be filtered.
-            for cd in case_decorators:
-                if cd.filtrate(filters):
-                    return True
-
-            # Case is missing one or more decorators for all the filters
-            # being used, so filter test case.
-            if filters:
+            if self.tags_filter(alltags):
                 return True
 
         return False
@@ -245,7 +232,7 @@ class OETestLoader(unittest.TestLoader):
         for tcName in testCaseNames:
             case = self._getTestCase(testCaseClass, tcName)
             # Filer by case id
-            if not (self.tests and not 'all' in self.tests
+            if not (self.tests and not 'auto' in self.tests
                     and not getCaseID(case) in self.tests):
                 self._handleTestCaseDecorators(case)
 
@@ -309,14 +296,14 @@ class OETestLoader(unittest.TestLoader):
         module_name = module.__name__
 
         # Normal test modules are loaded if no modules were specified,
-        # if module is in the specified module list or if 'all' is in
+        # if module is in the specified module list or if 'auto' is in
         # module list.
         # Underscore modules are loaded only if specified in module list.
         load_module = True if not module_name.startswith('_') \
                               and (not self.modules \
                                    or module_name in self.modules \
                                    or module_name_small in self.modules \
-                                   or 'all' in self.modules) \
+                                   or 'auto' in self.modules) \
                            else False
 
         load_underscore = True if module_name.startswith('_') \

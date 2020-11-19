@@ -1,22 +1,21 @@
 inherit xsctbase
 
 EMBEDDEDSW_REPO ??= "git://github.com/Xilinx/embeddedsw.git;protocol=https"
-EMBEDDEDSW_BRANCH ??= "release-2018.3"
-EMBEDDEDSW_SRCREV ??= "56f3da2afbc817988c9a45b0b26a7fef2ac91706"
+EMBEDDEDSW_BRANCH ??= "release-2020.1"
+EMBEDDEDSW_SRCREV ??= "6cbb920f4de9e650dc361b8e487f139fd4c3c743"
 
 
-EMBEDDEDSW_BRANCHARG ?= "${@['nobranch=1', 'branch=${EMBEDDEDSW_BRANCH}'][d.getVar('EMBEDDEDSW_BRANCH', True) != '']}"
+EMBEDDEDSW_BRANCHARG ?= "${@['nobranch=1', 'branch=${EMBEDDEDSW_BRANCH}'][d.getVar('EMBEDDEDSW_BRANCH') != '']}"
 EMBEDDEDSW_SRCURI ?= "${EMBEDDEDSW_REPO};${EMBEDDEDSW_BRANCHARG}"
-EMBEDDEDSW_PV ?= "${XILINX_VER_MAIN}+git${SRCPV}"
 
 PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://license.txt;md5=71602ce1bc2917a9be07ceee6fab6711"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://license.txt;md5=8b565227e1264d677db8f841c2948cba"
 
 SRC_URI = "${EMBEDDEDSW_SRCURI}"
 SRCREV = "${EMBEDDEDSW_SRCREV}"
-PV = "${EMBEDDEDSW_PV}"
+PV = "${XILINX_VER_MAIN}+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 XSCTH_BASE_NAME ?= "${PN}${PKGE}-${PKGV}-${PKGR}-${MACHINE}-${DATETIME}"
@@ -27,7 +26,7 @@ SRC_URI_append = " file://app.tcl"
 XSCTH_SCRIPT ?= "${WORKDIR}/app.tcl"
 
 XSCTH_BUILD_DEBUG ?= "0"
-XSCTH_BUILD_CONFIG ?= "${@['Debug', 'Release'][d.getVar('XSCTH_BUILD_DEBUG', True) == "0"]}"
+XSCTH_BUILD_CONFIG ?= "${@['Debug', 'Release'][d.getVar('XSCTH_BUILD_DEBUG') == "0"]}"
 XSCTH_APP_COMPILER_FLAGS ?= ""
 
 SYSROOT_DIRS += "/boot"
@@ -43,7 +42,7 @@ do_compile() {
 }
 
 do_install() {
-    install -Dm 0644 ${B}/${XSCTH_PROJ}/${XSCTH_EXECUTABLE} ${D}/boot/${PN}.elf
+    install -Dm 0644 ${B}/${XSCTH_PROJ}/${XSCTH_EXECUTABLE} ${D}/boot/${PN}-${SRCPV}.elf
 }
 
 do_deploy() {
@@ -52,4 +51,4 @@ do_deploy() {
 }
 addtask do_deploy after do_compile
 
-FILES_${PN} = "/boot/${PN}.elf"
+FILES_${PN} = "/boot/${PN}-${SRCPV}.elf"

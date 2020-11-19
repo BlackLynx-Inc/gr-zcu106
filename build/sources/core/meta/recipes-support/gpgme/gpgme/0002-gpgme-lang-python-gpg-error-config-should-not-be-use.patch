@@ -1,65 +1,52 @@
-From fb165c9bd96aca8c9ee3e4509c9b6e35d238ad2e Mon Sep 17 00:00:00 2001
-From: Mark Hatle <mark.hatle@windriver.com>
-Date: Wed, 16 Aug 2017 02:02:47 -0400
-Subject: [PATCH 2/5] gpgme/lang/python: gpg-error-config should not be used.
+From 52f8fd2010b900c7d382a7c4e6c1a317d8160585 Mon Sep 17 00:00:00 2001
+From: Hongxu Jia <hongxu.jia@windriver.com>
+Date: Fri, 10 May 2019 14:30:36 +0800
+Subject: [PATCH 2/7] gpgme/lang/python: gpg-error-config should not be used
 
-gpg-error-config was modified by OE to always return an error.  So we want
-to find an alternative way to retrieve whatever it is we need.  It turns
-out that the system is just trying to find the path to the gpg-error.h, which
-we can pull in from the STAGING_INC environment.
+gpg-error-config was modified by OE to always return an error.
+So we want to find an alternative way to retrieve whatever it
+is we need.
 
 Upstream-Status: Inappropriate [changes are specific to OE]
 
 Signed-off-by: Mark Hatle <mark.hatle@windriver.com>
 
-Rebase to 1.9.0
+Rebase to 1.13.0
 
 Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
 ---
- lang/python/setup.py.in | 15 ++-------------
- 1 file changed, 2 insertions(+), 13 deletions(-)
+ lang/python/setup.py.in | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
 diff --git a/lang/python/setup.py.in b/lang/python/setup.py.in
-index bf4efa3..7c34487 100755
+index 9785a28..006216d 100755
 --- a/lang/python/setup.py.in
 +++ b/lang/python/setup.py.in
-@@ -24,7 +24,6 @@ import glob
- import subprocess
+@@ -30,7 +30,6 @@ import subprocess
+ import sys
  
  # Out-of-tree build of the gpg bindings.
--gpg_error_config = ["gpg-error-config"]
- gpgme_config_flags = ["--thread=pthread"]
- gpgme_config = ["gpgme-config"] + gpgme_config_flags
- gpgme_h = ""
-@@ -52,13 +51,6 @@ else:
-     devnull = open(os.devnull, "w")
+-gpg_error_config = ['gpg-error-config']
+ gpgme_config_flags = ['--thread=pthread']
+ gpgme_config = ['gpgme-config'] + gpgme_config_flags
+ gpgme_h = ''
+@@ -182,15 +181,9 @@ class BuildExtFirstHack(build):
  
- try:
--    subprocess.check_call(gpg_error_config + ['--version'],
--                          stdout=devnull)
--except:
--    sys.exit("Could not find gpg-error-config.  " +
--             "Please install the libgpg-error development package.")
--
--try:
-     subprocess.check_call(gpgme_config + ['--version'],
-                           stdout=devnull)
- except:
-@@ -81,12 +73,9 @@ if not (major > 1 or (major == 1 and minor >= 7)):
- if not gpgme_h:
-     gpgme_h = os.path.join(getconfig("prefix")[0], "include", "gpgme.h")
+     def _generate_errors_i(self):
  
--gpg_error_prefix = getconfig("prefix", config=gpg_error_config)[0]
--gpg_error_h = os.path.join(gpg_error_prefix, "include", "gpg-error.h")
-+gpg_error_h = os.path.join(os.getenv('STAGING_INCDIR'), "gpg-error.h")
- if not os.path.exists(gpg_error_h):
--    gpg_error_h = \
--        glob.glob(os.path.join(gpg_error_prefix, "include",
--                               "*", "gpg-error.h"))[0]
-+    sys.exit("gpg_error_h not found: %s" % gpg_error_h)
+-        try:
+-            subprocess.check_call(
+-                gpg_error_config + ['--version'], stdout=devnull)
+-        except:
+-            sys.exit('Could not find gpg-error-config.  ' +
+-                     'Please install the libgpg-error development package.')
  
- print("Building python gpg module using {} and {}.".format(gpgme_h, gpg_error_h))
+         gpg_error_content = self._read_header(
+-            'gpg-error.h', getconfig('cflags', config=gpg_error_config))
++            "gpg-error.h", os.environ.get('CFLAGS').split())
  
+         filter_re = re.compile(r'GPG_ERR_[^ ]* =')
+         rewrite_re = re.compile(r' *(.*) = .*')
 -- 
-2.8.1
+2.7.4
 

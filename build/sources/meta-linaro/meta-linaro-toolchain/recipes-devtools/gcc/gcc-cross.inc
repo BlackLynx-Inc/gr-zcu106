@@ -2,7 +2,7 @@ inherit cross
 
 INHIBIT_DEFAULT_DEPS = "1"
 EXTRADEPENDS = ""
-DEPENDS = "virtual/${TARGET_PREFIX}binutils virtual/${TARGET_PREFIX}libc-for-gcc ${EXTRADEPENDS} ${NATIVEDEPS}"
+DEPENDS = "virtual/${TARGET_PREFIX}binutils ${EXTRADEPENDS} ${NATIVEDEPS}"
 PROVIDES = "virtual/${TARGET_PREFIX}gcc virtual/${TARGET_PREFIX}g++"
 python () {
     if d.getVar("TARGET_OS").startswith("linux"):
@@ -28,13 +28,12 @@ EXTRA_OECONF_append_sh4 = " \
 "
 
 EXTRA_OECONF += "\
-    --with-mpfr=${STAGING_DIR_NATIVE}${prefix_native} \
     --with-system-zlib \
 "
 
-DEPENDS_remove_libc-baremetal := "virtual/${TARGET_PREFIX}libc-for-gcc"
 EXTRA_OECONF_append_libc-baremetal = " --without-headers"
 EXTRA_OECONF_remove_libc-baremetal = "--enable-threads=posix"
+EXTRA_OECONF_remove_libc-newlib = "--enable-threads=posix"
 
 EXTRA_OECONF_PATHS = "\
     --with-gxx-include-dir=/not/exist${target_includedir}/c++/${BINV} \
@@ -43,6 +42,12 @@ EXTRA_OECONF_PATHS = "\
 "
 
 ARCH_FLAGS_FOR_TARGET += "-isystem${STAGING_DIR_TARGET}${target_includedir}"
+
+
+do_configure_prepend () {
+	install -d ${RECIPE_SYSROOT}${target_includedir}
+	touch ${RECIPE_SYSROOT}${target_includedir}/limits.h
+}
 
 do_compile () {
 	export CC="${BUILD_CC}"
@@ -161,17 +166,19 @@ do_install () {
 
 	install -d ${D}${target_base_libdir}
 	install -d ${D}${target_libdir}
-    
+
 	# Link gfortran to g77 to satisfy not-so-smart configure or hard coded g77
 	# gfortran is fully backwards compatible. This is a safe and practical solution. 
-	ln -sf ${STAGING_DIR_NATIVE}${prefix_native}/bin/${TARGET_PREFIX}gfortran ${STAGING_DIR_NATIVE}${prefix_native}/bin/${TARGET_PREFIX}g77 || true
+	if [ -n "${@d.getVar('FORTRAN')}" ]; then
+		ln -sf ${STAGING_DIR_NATIVE}${prefix_native}/bin/${TARGET_PREFIX}gfortran ${STAGING_DIR_NATIVE}${prefix_native}/bin/${TARGET_PREFIX}g77 || true
+		fortsymlinks="g77 gfortran"
+	fi
 
-	
 	# Insert symlinks into libexec so when tools without a prefix are searched for, the correct ones are
 	# found. These need to be relative paths so they work in different locations.
 	dest=${D}${libexecdir}/gcc/${TARGET_SYS}/${BINV}/
 	install -d $dest
-	for t in ar as ld nm objcopy objdump ranlib strip g77 gcc cpp gfortran; do
+	for t in ar as ld ld.bfd ld.gold nm objcopy objdump ranlib strip gcc cpp $fortsymlinks; do
 		ln -sf ${BINRELPATH}/${TARGET_PREFIX}$t $dest$t
 		ln -sf ${BINRELPATH}/${TARGET_PREFIX}$t ${dest}${TARGET_PREFIX}$t
 	done
@@ -207,8 +214,8 @@ do_gcc_stash_builddir () {
 addtask do_gcc_stash_builddir after do_compile before do_install
 SSTATETASKS += "do_gcc_stash_builddir"
 do_gcc_stash_builddir[sstate-inputdirs] = "${BUILDDIRSTASH}"
-do_gcc_stash_builddir[sstate-outputdirs] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir${COMPILERINITIAL}-${TARGET_SYS}"
-do_gcc_stash_builddir[sstate-fixmedir] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir${COMPILERINITIAL}-${TARGET_SYS}"
+do_gcc_stash_builddir[sstate-outputdirs] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir-${TARGET_SYS}"
+do_gcc_stash_builddir[sstate-fixmedir] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir-${TARGET_SYS}"
 
 python do_gcc_stash_builddir_setscene () {
     sstate_setscene(d)

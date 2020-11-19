@@ -2,7 +2,7 @@ inherit cross
 
 INHIBIT_DEFAULT_DEPS = "1"
 EXTRADEPENDS = ""
-DEPENDS = "virtual/${TARGET_PREFIX}binutils virtual/${TARGET_PREFIX}libc-for-gcc ${EXTRADEPENDS} ${NATIVEDEPS}"
+DEPENDS = "virtual/${TARGET_PREFIX}binutils ${EXTRADEPENDS} ${NATIVEDEPS}"
 PROVIDES = "virtual/${TARGET_PREFIX}gcc virtual/${TARGET_PREFIX}g++"
 python () {
     if d.getVar("TARGET_OS").startswith("linux"):
@@ -28,13 +28,12 @@ EXTRA_OECONF_append_sh4 = " \
 "
 
 EXTRA_OECONF += "\
-    --with-mpfr=${STAGING_DIR_NATIVE}${prefix_native} \
     --with-system-zlib \
 "
 
-DEPENDS_remove_libc-baremetal := "virtual/${TARGET_PREFIX}libc-for-gcc"
 EXTRA_OECONF_append_libc-baremetal = " --without-headers"
 EXTRA_OECONF_remove_libc-baremetal = "--enable-threads=posix"
+EXTRA_OECONF_remove_libc-newlib = "--enable-threads=posix"
 
 EXTRA_OECONF_PATHS = "\
     --with-gxx-include-dir=/not/exist${target_includedir}/c++/${BINV} \
@@ -43,6 +42,12 @@ EXTRA_OECONF_PATHS = "\
 "
 
 ARCH_FLAGS_FOR_TARGET += "-isystem${STAGING_DIR_TARGET}${target_includedir}"
+
+
+do_configure_prepend () {
+	install -d ${RECIPE_SYSROOT}${target_includedir}
+	touch ${RECIPE_SYSROOT}${target_includedir}/limits.h
+}
 
 do_compile () {
 	export CC="${BUILD_CC}"
@@ -191,6 +196,8 @@ do_install () {
 	# We use libiberty from binutils
 	find ${D}${exec_prefix}/lib -name libiberty.a | xargs rm -f
 	find ${D}${exec_prefix}/lib -name libiberty.h | xargs rm -f
+
+	find ${D}${libdir}/gcc/${TARGET_SYS}/${BINV}/include-fixed -type f -not -name "README" -not -name limits.h -not -name syslimits.h | xargs rm -f
 }
 
 do_package[noexec] = "1"
@@ -199,18 +206,29 @@ do_package_write_ipk[noexec] = "1"
 do_package_write_rpm[noexec] = "1"
 do_package_write_deb[noexec] = "1"
 
-BUILDDIRSTASH = "${WORKDIR}/stashed-builddir"
+inherit chrpath
+
+python gcc_stash_builddir_fixrpaths() {
+    # rewrite rpaths, breaking hardlinks as required
+    process_dir("/", d.getVar("BUILDDIRSTASH"), d, break_hardlinks = True)
+}
+
+BUILDDIRSTASH = "${WORKDIR}/stashed-builddir/build"
 do_gcc_stash_builddir[dirs] = "${B}"
 do_gcc_stash_builddir[cleandirs] = "${BUILDDIRSTASH}"
+do_gcc_stash_builddir[postfuncs] += "gcc_stash_builddir_fixrpaths"
 do_gcc_stash_builddir () {
 	dest=${BUILDDIRSTASH}
 	hardlinkdir . $dest
+	# Makefile does move-if-change which can end up with 'timestamp' as file contents so break links to those files
+	rm $dest/gcc/include/*.h
+	cp gcc/include/*.h $dest/gcc/include/
 }
 addtask do_gcc_stash_builddir after do_compile before do_install
 SSTATETASKS += "do_gcc_stash_builddir"
 do_gcc_stash_builddir[sstate-inputdirs] = "${BUILDDIRSTASH}"
-do_gcc_stash_builddir[sstate-outputdirs] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir${COMPILERINITIAL}-${TARGET_SYS}"
-do_gcc_stash_builddir[sstate-fixmedir] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir${COMPILERINITIAL}-${TARGET_SYS}"
+do_gcc_stash_builddir[sstate-outputdirs] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir-${TARGET_SYS}"
+do_gcc_stash_builddir[sstate-fixmedir] = "${COMPONENTS_DIR}/${BUILD_ARCH}/gcc-stashed-builddir-${TARGET_SYS}"
 
 python do_gcc_stash_builddir_setscene () {
     sstate_setscene(d)

@@ -5,10 +5,10 @@ HOMEPAGE = "http://www.twistedmatrix.com"
 
 #twisted/topfiles/NEWS:655: - Relicensed: Now under the MIT license, rather than LGPL.
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=8a9c2fbfcba7d70504e3ba545e1820ed"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=1743f12d8b8f5aec625c0569a058f0a6"
 
-SRC_URI[md5sum] = "6dbedb918f0c7288a4c670f59393ecf8"
-SRC_URI[sha256sum] = "0da1a7e35d5fcae37bc9c7978970b5feb3bc82822155b8654ec63925c05af75c"
+SRC_URI[sha256sum] = "d5db93026568f60cacdc0615fcd21d46f694a6bfad0ef3ff53cde2b4bb85a39d"
+SRC_URI[md5sum] = "5e9296a952430d288cdcdc6ad9eb5ee8"
 
 PYPI_PACKAGE = "Twisted"
 PYPI_PACKAGE_EXT = "tar.bz2"
@@ -35,8 +35,11 @@ PACKAGES += "\
 "
 
 PACKAGES =+ "\
-    ${PN}-src \
     ${PN}-bin \
+"
+
+DEPENDS += " \
+    ${PYTHON_PN}-incremental-native \
 "
 
 RDEPENDS_${PN} = "\
@@ -45,9 +48,12 @@ RDEPENDS_${PN} = "\
     ${PN}-conch \
     ${PN}-mail \
     ${PN}-names \
+    ${PN}-pair \
+    ${PN}-protocols \
     ${PN}-runner \
     ${PN}-web \
     ${PN}-words \
+    ${PN}-zsh \
 "
 
 RDEPENDS_${PN}-core = "${PYTHON_PN}-core ${PYTHON_PN}-zopeinterface ${PYTHON_PN}-incremental ${PYTHON_PN}-constantly ${PYTHON_PN}-hyperlink ${PYTHON_PN}-automat"
@@ -235,9 +241,10 @@ FILES_${PN}-doc += " \
     ${libdir}/${PYTHON_DIR}/site-packages/twisted/python/_pydoctortemplates/ \
 "
 
-RDEPENDS_{PN}-src = "${PN}"
+RDEPENDS_${PN}-src = "${PN}"
 FILES_${PN}-src = " \
     ${libdir}/${PYTHON_DIR}/site-packages/twisted/*.py \
     ${libdir}/${PYTHON_DIR}/site-packages/twisted/*/*.py \
     ${libdir}/${PYTHON_DIR}/site-packages/twisted/*/*/*.py \
 "
+

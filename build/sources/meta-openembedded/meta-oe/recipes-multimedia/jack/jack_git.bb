@@ -14,17 +14,17 @@ LIC_FILES_CHKSUM = " \
 
 DEPENDS = "libsamplerate0 libsndfile1 readline"
 
-SRC_URI = "git://github.com/jackaudio/jack2.git \
-           file://0001-typecast-input-parameter-to-int-for-abs.patch \
-          "
-SRCREV = "2d1d323505585d406a7e64fb932953baefc5945e"
-PV = "1.9.10+git${SRCPV}"
+SRC_URI = "git://github.com/jackaudio/jack2.git"
+SRCREV = "37250ff470277f9947fbf3ba738f943053e30525"
+PV = "1.9.13"
 S = "${WORKDIR}/git"
 
 inherit waf pkgconfig
 
 PACKAGECONFIG ??= "alsa"
 PACKAGECONFIG[alsa] = "--alsa=yes,--alsa=no,alsa-lib"
+# --dbus only stops building jackd -> add --classic
+PACKAGECONFIG[dbus] = "--dbus --classic,,dbus"
 PACKAGECONFIG[opus] = "--opus=yes,--opus=no,libopus"
 
 # portaudio is for windows builds only
@@ -35,6 +35,11 @@ PACKAGES =+ "libjack jack-server jack-utils"
 RDEPENDS_jack-dev_remove = "${PN} (= ${EXTENDPKGV})"
 
 FILES_libjack = "${libdir}/*.so.* ${libdir}/jack/*.so"
-FILES_jack-server = "${bindir}/jackd"
+FILES_jack-server = " \
+    ${datadir}/dbus-1/services \
+    ${bindir}/jackdbus \
+    ${bindir}/jackd \
+"
 FILES_jack-utils = "${bindir}/*"
+
 FILES_${PN}-doc += " ${datadir}/jack-audio-connection-kit/reference/html/* "

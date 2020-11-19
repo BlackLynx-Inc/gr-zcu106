@@ -1,17 +1,18 @@
+Dependencies
+------------
 This layer depends on:
 
 URI: git://github.com/openembedded/oe-core.git
-branch: rocko
+branch: zeus
 revision: HEAD
 
 URI: git://github.com/openembedded/meta-oe.git
-branch: rocko
+branch: zeus
 revision: HEAD
 
-Send pull requests to openembedded-devel@lists.openembedded.org with '[meta-gnome][rocko]' in the subject'
+Send pull requests to openembedded-devel@lists.openembedded.org with '[meta-gnome][zeus]' in the subject'
 
 When sending single patches, please using something like:
-'git send-email -M -1 --to openembedded-devel@lists.openembedded.org --subject-prefix=meta-gnome][rocko][PATCH'
+'git send-email -M -1 --to openembedded-devel@lists.openembedded.org --subject-prefix=meta-gnome][zeus][PATCH'
 
-rocko Branch Maintainer:
-Armin Kuster <akuster808@gmail.com>
+zeus maintainer: Armin Kuster <akuster808@gmail.com>

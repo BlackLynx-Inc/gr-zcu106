@@ -1,5 +1,15 @@
+#
+# SPDX-License-Identifier: GPL-2.0-only
+#
 # This class should provide easy access to the different aspects of the
 # buildsystem such as layers, bitbake location, etc.
+#
+# SDK_LAYERS_EXCLUDE: Layers which will be excluded from SDK layers.
+# SDK_LAYERS_EXCLUDE_PATTERN: The simiar to SDK_LAYERS_EXCLUDE, this supports
+#                             python regular expression, use space as separator,
+#                              e.g.: ".*-downloads closed-.*"
+#
+
 import stat
 import shutil
 
@@ -23,15 +33,21 @@ class BuildSystem(object):
         self.context = context
         self.layerdirs = [os.path.abspath(pth) for pth in d.getVar('BBLAYERS').split()]
         self.layers_exclude = (d.getVar('SDK_LAYERS_EXCLUDE') or "").split()
+        self.layers_exclude_pattern = d.getVar('SDK_LAYERS_EXCLUDE_PATTERN')
 
     def copy_bitbake_and_layers(self, destdir, workspace_name=None):
+        import re
         # Copy in all metadata layers + bitbake (as repositories)
+        copied_corebase = None
         layers_copied = []
         bb.utils.mkdirhier(destdir)
         layers = list(self.layerdirs)
 
         corebase = os.path.abspath(self.d.getVar('COREBASE'))
         layers.append(corebase)
+        # Get relationship between TOPDIR and COREBASE
+        # Layers should respect it
+        corebase_relative = os.path.dirname(os.path.relpath(os.path.abspath(self.d.getVar('TOPDIR')), corebase))
         # The bitbake build system uses the meta-skeleton layer as a layout
         # for common recipies, e.g: the recipetool script to create kernel recipies
         # Add the meta-skeleton layer to be included as part of the eSDK installation
@@ -40,7 +56,16 @@ class BuildSystem(object):
         # Exclude layers
         for layer_exclude in self.layers_exclude:
             if layer_exclude in layers:
+                bb.note('Excluded %s from sdk layers since it is in SDK_LAYERS_EXCLUDE' % layer_exclude)
                 layers.remove(layer_exclude)
+
+        if self.layers_exclude_pattern:
+            layers_cp = layers[:]
+            for pattern in self.layers_exclude_pattern.split():
+                for layer in layers_cp:
+                    if re.match(pattern, layer):
+                        bb.note('Excluded %s from sdk layers since matched SDK_LAYERS_EXCLUDE_PATTERN' % layer)
+                        layers.remove(layer)
 
         workspace_newname = workspace_name
         if workspace_newname:
@@ -76,7 +101,10 @@ class BuildSystem(object):
             if corebase == os.path.dirname(layer):
                 layerdestpath += '/' + os.path.basename(corebase)
             else:
-                layer_relative = os.path.basename(corebase) + '/' + os.path.relpath(layer, corebase)
+                layer_relative = os.path.relpath(layer, corebase)
+                if os.path.dirname(layer_relative) == corebase_relative:
+                    layer_relative = os.path.dirname(corebase_relative) + '/' + layernewname
+                layer_relative = os.path.basename(corebase) + '/' + layer_relative
                 if os.path.dirname(layer_relative) != layernewname:
                     layerdestpath += '/' + os.path.dirname(layer_relative)
 
@@ -84,18 +112,19 @@ class BuildSystem(object):
 
             layer_relative = os.path.relpath(layerdestpath,
                                              destdir)
-            layers_copied.append(layer_relative)
-
             # Treat corebase as special since it typically will contain
             # build directories or other custom items.
             if corebase == layer:
+                copied_corebase = layer_relative
                 bb.utils.mkdirhier(layerdestpath)
                 for f in corebase_files:
                     f_basename = os.path.basename(f)
                     destname = os.path.join(layerdestpath, f_basename)
                     _smart_copy(f, destname)
             else:
-                if os.path.exists(layerdestpath):
+                layers_copied.append(layer_relative)
+
+                if os.path.exists(os.path.join(layerdestpath, 'conf/layer.conf')):
                     bb.note("Skipping layer %s, already handled" % layer)
                 else:
                     _smart_copy(layer, layerdestpath)
@@ -140,15 +169,15 @@ class BuildSystem(object):
                 layers_copied.remove(layer)
                 break
 
-        return layers_copied
+        return copied_corebase, layers_copied
 
 def generate_locked_sigs(sigfile, d):
     bb.utils.mkdirhier(os.path.dirname(sigfile))
     depd = d.getVar('BB_TASKDEPDATA', False)
-    tasks = ['%s.%s' % (v[2], v[1]) for v in depd.values()]
+    tasks = ['%s:%s' % (v[2], v[1]) for v in depd.values()]
     bb.parse.siggen.dump_lockedsigs(sigfile, tasks)
 
-def prune_lockedsigs(excluded_tasks, excluded_targets, lockedsigs, pruned_output):
+def prune_lockedsigs(excluded_tasks, excluded_targets, lockedsigs, onlynative, pruned_output):
     with open(lockedsigs, 'r') as infile:
         bb.utils.mkdirhier(os.path.dirname(pruned_output))
         with open(pruned_output, 'w') as f:
@@ -158,7 +187,11 @@ def prune_lockedsigs(excluded_tasks, excluded_targets, lockedsigs, pruned_output
                     if line.endswith('\\\n'):
                         splitval = line.strip().split(':')
                         if not splitval[1] in excluded_tasks and not splitval[0] in excluded_targets:
-                            f.write(line)
+                            if onlynative:
+                                if 'nativesdk' in splitval[0]:
+                                    f.write(line)
+                            else:
+                                f.write(line)
                     else:
                         f.write(line)
                         invalue = False

@@ -1,3 +1,7 @@
+#
+# SPDX-License-Identifier: GPL-2.0-only
+#
+
 import collections
 
 class ClassExtender(object):
@@ -19,6 +23,8 @@ class ClassExtender(object):
             subs = name.split("/", 1)[1]
             if not subs.startswith(self.extname):
                 return "virtual/" + self.extname + "-" + subs
+            return name
+        if name.startswith("/"):
             return name
         if not name.startswith(self.extname):
             return self.extname + "-" + name
@@ -114,7 +120,7 @@ class NativesdkClassExtender(ClassExtender):
     def map_depends(self, dep):
         if dep.startswith(self.extname):
             return dep
-        if dep.endswith(("-gcc-initial", "-gcc", "-g++")):
+        if dep.endswith(("-gcc", "-g++")):
             return dep + "-crosssdk"
         elif dep.endswith(("-native", "-native-runtime")) or ('nativesdk-' in dep) or ('-cross-' in dep) or ('-crosssdk-' in dep):
             return dep

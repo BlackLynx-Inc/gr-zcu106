@@ -1,4 +1,4 @@
-From af679853a45fe63f680c99e70416c8ac620d23b8 Mon Sep 17 00:00:00 2001
+From c005b7a4874f55df687ff22bc425551775581421 Mon Sep 17 00:00:00 2001
 From: Mark Asselstine <mark.asselstine@windriver.com>
 Date: Fri, 8 Sep 2017 15:02:14 -0400
 Subject: [PATCH] criu: Fix toolchain hardcode
@@ -9,6 +9,7 @@ be taken.
 Signed-off-by: Yang Shi <yang.shi@windriver.com>
 Signed-off-by: Jianchuan Wang <jianchuan.wang@windriver.com>
 Signed-off-by: Mark Asselstine <mark.asselstine@windriver.com>
+
 ---
  Makefile                       |  2 +-
  scripts/nmk/scripts/include.mk |  2 +-
@@ -32,7 +33,7 @@ diff --git a/scripts/nmk/scripts/include.mk b/scripts/nmk/scripts/include.mk
 index 04ccb3a..0d63bc7 100644
 --- a/scripts/nmk/scripts/include.mk
 +++ b/scripts/nmk/scripts/include.mk
-@@ -20,7 +20,7 @@ SUBARCH := $(shell uname -m | sed       \
+@@ -22,7 +22,7 @@ SUBARCH := $(shell uname -m | sed       \
                  -e s/aarch64.*/aarch64/)
  
  ARCH		?= $(SUBARCH)
@@ -45,17 +46,20 @@ diff --git a/scripts/nmk/scripts/tools.mk b/scripts/nmk/scripts/tools.mk
 index 56dba84..1698821 100644
 --- a/scripts/nmk/scripts/tools.mk
 +++ b/scripts/nmk/scripts/tools.mk
-@@ -2,30 +2,30 @@ ifndef ____nmk_defined__tools
+@@ -2,35 +2,35 @@ ifndef ____nmk_defined__tools
  
  #
  # System tools shorthands
 -RM		:= rm -f
 +RM		?= rm -f
  HOSTLD		?= ld
--LD		:= $(CROSS_COMPILE)$(HOSTLD)
-+LD		?= $(CROSS_COMPILE)$(HOSTLD)
+ ifeq ($(origin LD), default)
+ LD		:= $(CROSS_COMPILE)$(HOSTLD)
+ endif
  HOSTCC		?= gcc
--CC		:= $(CROSS_COMPILE)$(HOSTCC)
+ ifeq ($(origin CC), default)
+ CC		:= $(CROSS_COMPILE)$(HOSTCC)
+ endif
 -CPP		:= $(CC) -E
 -AS		:= $(CROSS_COMPILE)as
 -AR		:= $(CROSS_COMPILE)ar
@@ -67,10 +71,7 @@ index 56dba84..1698821 100644
 -MKDIR		:= mkdir -p
 -AWK		:= awk
 -PERL		:= perl
--PYTHON		:= python
--FIND		:= find
--SH		:= $(shell if [ -x "$$BASH" ]; then echo $$BASH;        \
-+CC		?= $(CROSS_COMPILE)$(HOSTCC)
+-FULL_PYTHON	:= $(shell which python2 2>/dev/null || which python3 2>/dev/null)
 +CPP		?= $(CC) -E
 +AS		?= $(CROSS_COMPILE)as
 +AR		?= $(CROSS_COMPILE)ar
@@ -82,7 +83,10 @@ index 56dba84..1698821 100644
 +MKDIR		?= mkdir -p
 +AWK		?= awk
 +PERL		?= perl
-+PYTHON		?= python
++FULL_PYTHON	?= $(shell which python2 2>/dev/null || which python3 2>/dev/null)
+ PYTHON		?= $(shell basename $(FULL_PYTHON))
+-FIND		:= find
+-SH		:= $(shell if [ -x "$$BASH" ]; then echo $$BASH;        \
 +FIND		?= find
 +SH		?= $(shell if [ -x "$$BASH" ]; then echo $$BASH;        \
                          else if [ -x /bin/bash ]; then echo /bin/bash;  \
@@ -96,6 +100,3 @@ index 56dba84..1698821 100644
  
  export RM HOSTLD LD HOSTCC CC CPP AS AR STRIP OBJCOPY OBJDUMP
  export NM SH MAKE MKDIR AWK PERL PYTHON SH CSCOPE
--- 
-2.7.4
-

@@ -11,7 +11,14 @@ S = "${WORKDIR}/git"
 PV = "${RUNC_VERSION}+git${SRCPV}"
 
 inherit go
-RRECOMMENDS_${PN} = "lxc docker"
+inherit goarch
+inherit pkgconfig
+
+PACKAGECONFIG ??= "static"
+PACKAGECONFIG[seccomp] = "seccomp,,libseccomp"
+# This PACKAGECONFIG serves the purpose of whether building runc as static or not
+PACKAGECONFIG[static] = ""
+
 PROVIDES += "virtual/runc"
 RPROVIDES_${PN} = "virtual/runc"
 
@@ -20,7 +27,7 @@ GO_IMPORT = "import"
 LIBCONTAINER_PACKAGE="github.com/opencontainers/runc/libcontainer"
 
 do_configure[noexec] = "1"
-EXTRA_OEMAKE="BUILDTAGS=''"
+EXTRA_OEMAKE="BUILDTAGS='${PACKAGECONFIG_CONFARGS}' GO=${GO}"
 
 do_compile() {
 	# Set GOPATH. See 'PACKAGERS.md'. Don't rely on
@@ -44,10 +51,16 @@ do_compile() {
 	export CGO_ENABLED="1"
 	export CGO_CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_TARGET}"
 	export CGO_LDFLAGS="${LDFLAGS} --sysroot=${STAGING_DIR_TARGET}"
+	export GO=${GO}
+
 	export CFLAGS=""
 	export LDFLAGS=""
 
-        oe_runmake static
+	if ${@bb.utils.contains('PACKAGECONFIG', 'static', 'true', 'false', d)}; then
+		oe_runmake static
+	else
+		oe_runmake runc
+	fi
 }
 
 do_install() {
@@ -57,4 +70,3 @@ do_install() {
 	ln -sf runc ${D}/${bindir}/docker-runc
 }
 
-INHIBIT_PACKAGE_STRIP = "1"

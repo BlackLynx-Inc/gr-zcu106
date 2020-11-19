@@ -2,7 +2,7 @@
 #
 # Get compressed frames from Camera, decode it and display it
 #
-# Copyright (C) 2017 Xilinx
+# Copyright (C) 2019 Xilinx
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -103,20 +103,16 @@ CameraToDisplay() {
 		INTERNAL_ENTROPY_BUFFERS="6"
 	fi
 
-	OMXH264ENC="omxh264enc num-slices=8 control-rate="low-latency" target-bitrate=$BIT_RATE prefetch-buffer=1"
-	OMXH265ENC="omxh265enc num-slices=8 control-rate="low-latency" target-bitrate=$BIT_RATE prefetch-buffer=1"
-	OMXH264DEC="$OMXH264DEC internal-entropy-buffers=$INTERNAL_ENTROPY_BUFFERS latency-mode="reduced-latency""
-	OMXH265DEC="$OMXH265DEC internal-entropy-buffers=$INTERNAL_ENTROPY_BUFFERS latency-mode="reduced-latency""
+	OMXH264DEC="$OMXH264DEC internal-entropy-buffers=$INTERNAL_ENTROPY_BUFFERS"
+	OMXH265DEC="$OMXH265DEC internal-entropy-buffers=$INTERNAL_ENTROPY_BUFFERS"
 
         case $CODEC_TYPE in
         "avc")
 		PARSER=$H264PARSE
-		ENCODER=$OMXH264ENC
 		DECODER=$OMXH264DEC
 		CAMERA_CAPS_ENC="video/x-h264,width=$WIDTH,height=$HEIGHT,framerate=30/1";;
 	"hevc")
 		PARSER=$H265PARSE
-		ENCODER=$OMXH265ENC
 		DECODER=$OMXH265DEC
 		CAMERA_CAPS_ENC="video/x-h265,width=$WIDTH,height=$HEIGHT,framerate=30/1";;
 	esac

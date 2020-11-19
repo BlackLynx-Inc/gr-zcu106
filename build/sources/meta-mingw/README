@@ -11,7 +11,7 @@ This layer depends on:
  layers: meta
  branch: master
 
-Layer Maintainer: Juro Bystricky <juro.bystricky@intel.com>
+Layer Maintainer: Joshua Watt <jpewhacker@gmail.com>
 
 Please send changes to the yocto mailing list with [meta-mingw] in the subject line,
 cc'ing the maintainer.

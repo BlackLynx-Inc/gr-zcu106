@@ -9,7 +9,9 @@ PROVIDES = "virtual/bitstream"
 
 PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 
-inherit xsctbit deploy
+inherit xsctbit deploy bootbin-component
+
+BOOTBIN_BIF_FRAGMENT_zynqmp = "destination_device=pl"
 
 XSCTH_MISC = "-hwpname ${XSCTH_PROJ}_hwproj -hdf_type ${HDF_EXT}"
 
@@ -17,6 +19,9 @@ do_compile[noexec] = "1"
 
 BITSTREAM_NAME ?= "download"
 BITSTREAM_NAME_microblaze ?= "system"
+
+BINARY_NAME = "${BITSTREAM_NAME}"
+BINARY_EXT = ".bit"
 
 BITSTREAM_BASE_NAME ?= "${BITSTREAM_NAME}-${MACHINE}-${DATETIME}"
 BITSTREAM_BASE_NAME[vardepsexclude] = "DATETIME"
@@ -31,6 +36,7 @@ do_install() {
     if [ -e ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.bit ]; then
         install -d ${D}/boot/bitstream/
         install -Dm 0644 ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.bit ${D}/boot/bitstream/
+        install -Dm 0644 ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.bit ${D}/boot/${BINARY_NAME}-${BINARY_ID}${BINARY_EXT}
     fi
 
     if [ -e ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.mmi ]; then
@@ -47,7 +53,7 @@ do_deploy() {
         touch ${DEPLOYDIR}/${BITSTREAM_NAME}-${MACHINE}.bit
     fi
 
-    #Microblaze hdf files contain mmi file which is required to generate download.bit, bin, and mcs files.
+    #Microblaze xsa files contain mmi file which is required to generate download.bit, bin, and mcs files.
     if [ -e ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.mmi ]; then
         install -Dm 0644 ${XSCTH_WS}/${XSCTH_PROJ}_hwproj/*.mmi ${DEPLOYDIR}/${MMI_BASE_NAME}.mmi
         ln -sf ${MMI_BASE_NAME}.mmi ${DEPLOYDIR}/${BITSTREAM_NAME}-${MACHINE}.mmi
@@ -56,4 +62,4 @@ do_deploy() {
 }
 addtask do_deploy after do_install
 
-FILES_${PN} = "/boot/bitstream/*.bit /boot/bitstream/*.mmi"
+FILES_${PN} += "/boot/bitstream/*.bit /boot/bitstream/*.mmi /boot/*.bit"

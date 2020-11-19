@@ -1,19 +1,22 @@
-From: Kurt Roeckx <kurt@roeckx.be>
-Subject: Make readelf -w output debug information on mips
-Bug-Debian: http://bugs.debian.org/662041
-Forwarded: not-needed
+From 7bdc83296865cf2b2a5615dbdb7ac0d441fb1849 Mon Sep 17 00:00:00 2001
+From: Hongxu Jia <hongxu.jia@windriver.com>
+Date: Wed, 21 Aug 2019 16:55:01 +0800
+Subject: [PATCH] mips_readelf_w
 
-Upstreams wants a change where this is handled by a hook that needs
-to be filled in by the backend for the arch.
+Upstream-Status: Pending [from debian]
 
-Upstream-Status: Backport [from debian]
+Rebase to 0.177
+
 Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
+---
+ src/readelf.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: b/src/readelf.c
-===================================================================
+diff --git a/src/readelf.c b/src/readelf.c
+index 2084fb1..5c02a9b 100644
 --- a/src/readelf.c
 +++ b/src/readelf.c
-@@ -8343,7 +8343,8 @@ print_debug (Dwfl_Module *dwflmod, Ebl *
+@@ -11256,7 +11256,8 @@ print_debug (Dwfl_Module *dwflmod, Ebl *ebl, GElf_Ehdr *ehdr)
        GElf_Shdr shdr_mem;
        GElf_Shdr *shdr = gelf_getshdr (scn, &shdr_mem);
  
@@ -23,3 +26,6 @@ Index: b/src/readelf.c
  	{
  	  static const struct
  	  {
+-- 
+2.7.4
+

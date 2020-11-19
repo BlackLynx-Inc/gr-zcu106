@@ -90,14 +90,15 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=44ac4678311254db62edf8fd39cb8124"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.\d+(\.\d+)*)"
 
-SRC_URI = "git://github.com/mmeeks/bootchart.git \
+SRC_URI = "git://github.com/xrmx/bootchart.git \
            file://bootchartd_stop.sh \
-           file://0001-Fixed-Missing-default-value-for-BOOTLOG_DEST.patch \
            file://0001-collector-Allocate-space-on-heap-for-chunks.patch \
+           file://0001-bootchart2-support-usrmerge.patch \
           "
 
 S = "${WORKDIR}/git"
-SRCREV = "48e0071048564c6af75ab969e842d6dec808da09"
+SRCREV = "331ada031f1d65f6d934d918f896e1c708c64bf7"
+PV .= "+git${SRCPV}"
 
 inherit systemd update-rc.d python3native update-alternatives
 
@@ -114,6 +115,8 @@ UPDATERCPN = "bootchartd-stop-initscript"
 INITSCRIPT_NAME = "bootchartd_stop.sh"
 INITSCRIPT_PARAMS = "start 99 2 3 4 5 ."
 
+EXTRA_OEMAKE = 'BASE_SBINDIR="${base_sbindir}"'
+
 do_compile_prepend () {
     export PY_LIBDIR="${libdir}/${PYTHON_DIR}"
     export BINDIR="${bindir}"
@@ -126,6 +129,8 @@ do_install () {
     export BINDIR="${bindir}"
     export DESTDIR="${D}"
     export LIBDIR="${base_libdir}"
+    export PKGLIBDIR="${base_libdir}/bootchart"
+    export SYSTEMD_UNIT_DIR="${systemd_unitdir}/system"
 
     oe_runmake install
     install -d ${D}${sysconfdir}/init.d
@@ -139,9 +144,9 @@ do_install () {
 
 PACKAGES =+ "pybootchartgui"
 FILES_pybootchartgui += "${PYTHON_SITEPACKAGES_DIR}/pybootchartgui ${bindir}/pybootchartgui"
-RDEPENDS_pybootchartgui = "python3-pycairo python3-compression python3-image python3-textutils python3-shell python3-compression python3-codecs"
+RDEPENDS_pybootchartgui = "python3-pycairo python3-compression python3-image python3-shell python3-compression python3-codecs"
 RDEPENDS_${PN}_class-target += "${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'sysvinit-pidof', 'procps', d)}"
-RDEPENDS_${PN}_class-target += "lsb"
+RDEPENDS_${PN}_class-target += "lsb-release"
 DEPENDS_append_class-native = " python3-pycairo-native"
 
 PACKAGES =+ "bootchartd-stop-initscript"

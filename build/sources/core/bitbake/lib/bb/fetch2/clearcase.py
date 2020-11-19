@@ -1,5 +1,3 @@
-# ex:ts=4:sw=4:sts=4:et
-# -*- tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 """
 BitBake 'Fetch' clearcase implementation
 
@@ -47,18 +45,7 @@ User credentials:
 """
 # Copyright (C) 2014 Siemens AG
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-2.0-only
 #
 
 import os
@@ -67,9 +54,10 @@ import shutil
 import bb
 from   bb.fetch2 import FetchMethod
 from   bb.fetch2 import FetchError
+from   bb.fetch2 import MissingParameterError
+from   bb.fetch2 import ParameterError
 from   bb.fetch2 import runfetchcmd
 from   bb.fetch2 import logger
-from   distutils import spawn
 
 class ClearCase(FetchMethod):
     """Class to fetch urls via 'clearcase'"""
@@ -93,7 +81,7 @@ class ClearCase(FetchMethod):
         if 'protocol' in ud.parm:
             ud.proto = ud.parm['protocol']
         if not ud.proto in ('http', 'https'):
-            raise fetch2.ParameterError("Invalid protocol type", ud.url)
+            raise ParameterError("Invalid protocol type", ud.url)
 
         ud.vob = ''
         if 'vob' in ud.parm:
@@ -107,7 +95,7 @@ class ClearCase(FetchMethod):
         else:
             ud.module = ""
 
-        ud.basecmd = d.getVar("FETCHCMD_ccrc") or spawn.find_executable("cleartool") or spawn.find_executable("rcleartool")
+        ud.basecmd = d.getVar("FETCHCMD_ccrc") or "/usr/bin/env cleartool || rcleartool"
 
         if d.getVar("SRCREV") == "INVALID":
           raise FetchError("Set a valid SRCREV for the clearcase fetcher in your recipe, e.g. SRCREV = \"/main/LATEST\" or any other label of your choice.")
@@ -157,18 +145,18 @@ class ClearCase(FetchMethod):
 
         basecmd = "%s %s" % (ud.basecmd, command)
 
-        if command is 'mkview':
+        if command == 'mkview':
             if not "rcleartool" in ud.basecmd:
                 # Cleartool needs a -snapshot view
                 options.append("-snapshot")
             options.append("-tag %s" % ud.viewname)
             options.append(ud.viewdir)
 
-        elif command is 'rmview':
+        elif command == 'rmview':
             options.append("-force")
             options.append("%s" % ud.viewdir)
 
-        elif command is 'setcs':
+        elif command == 'setcs':
             options.append("-overwrite")
             options.append(ud.configspecfile)
 

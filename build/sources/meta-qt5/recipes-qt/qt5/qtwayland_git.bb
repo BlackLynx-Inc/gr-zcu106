@@ -13,6 +13,8 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
+SRC_URI += "file://0001-tst_seatv4-Include-array.patch"
+
 PACKAGECONFIG ?= " \
     wayland-client \
     wayland-server \
@@ -32,22 +34,15 @@ PACKAGECONFIG[xcomposite-egl] = "-feature-xcomposite-egl,-no-feature-xcomposite-
 PACKAGECONFIG[xcomposite-glx] = "-feature-xcomposite-glx,-no-feature-xcomposite-glx,virtual/mesa"
 PACKAGECONFIG[wayland-egl] = "-feature-wayland-egl,-no-feature-wayland-egl,virtual/egl"
 PACKAGECONFIG[wayland-brcm] = "-feature-wayland-brcm,-no-feature-wayland-brcm,virtual/egl"
-PACKAGECONFIG[drm-egl-server] = "-feature-drm-egl-server,-no-feature-drm-egl-server,libdrm virtual/egl"
-PACKAGECONFIG[libhybris-egl-server] = "-feature-libhybris-egl-server,-no-feature-libhybris-egl-server,libhybris"
+PACKAGECONFIG[wayland-drm-egl-server-buffer] = "-feature-wayland-drm-egl-server-buffer,-no-feature-wayland-drm-egl-server-buffer,libdrm virtual/egl"
+PACKAGECONFIG[wayland-libhybris-egl-server-buffer] = "-feature-wayland-libhybris-egl-server-buffer,-no-feature-wayland-libhybris-egl-server-buffer,libhybris"
 
 EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "8c5999644c8a98dca74f7339c2c750dd063ae346"
-
-# Patches from https://github.com/meta-qt5/qtwayland/commits/b5.9
-# 5.9.meta-qt5.6
-# From https://bugreports.qt.io/browse/QTBUG-57767
-SRC_URI += " \
-    file://0001-fix-build-without-xkbcommon-evdev.patch \
-"
+SRCREV = "615aa208d131ab99e967725504fcb16fdda4ea83"
 
 BBCLASSEXTEND =+ "native nativesdk"
 
 # The same issue as in qtbase:
 # http://errors.yoctoproject.org/Errors/Details/152641/
-LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"

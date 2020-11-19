@@ -1,5 +1,7 @@
 # Copyright (C) 2017 Intel Corporation
-# Released under the MIT license (see COPYING.MIT)
+#
+# SPDX-License-Identifier: MIT
+#
 
 import glob
 import os
@@ -10,7 +12,7 @@ from checklayer.case import OECheckLayerTestCase
 class CommonCheckLayer(OECheckLayerTestCase):
     def test_readme(self):
         # The top-level README file may have a suffix (like README.rst or README.txt).
-        readme_files = glob.glob(os.path.join(self.tc.layer['path'], 'README*'))
+        readme_files = glob.glob(os.path.join(self.tc.layer['path'], '[Rr][Ee][Aa][Dd][Mm][Ee]*'))
         self.assertTrue(len(readme_files) > 0,
                         msg="Layer doesn't contains README file.")
 
@@ -51,3 +53,8 @@ class CommonCheckLayer(OECheckLayerTestCase):
         msg = compare_signatures(self.td['sigs'], curr_sigs)
         if msg is not None:
             self.fail('Adding layer %s changed signatures.\n%s' % (self.tc.layer['name'], msg))
+
+    def test_layerseries_compat(self):
+        for collection_name, collection_data in self.tc.layer['collections'].items():
+            self.assertTrue(collection_data['compat'], "Collection %s from layer %s does not set compatible oe-core versions via LAYERSERIES_COMPAT_collection." \
+                 % (collection_name, self.tc.layer['name']))

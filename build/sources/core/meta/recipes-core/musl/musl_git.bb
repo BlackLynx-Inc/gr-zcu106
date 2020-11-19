@@ -2,27 +2,34 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 require musl.inc
+inherit linuxloader
 
-SRCREV = "eb03bde2f24582874cb72b56c7811bf51da0c817"
+SRCREV = "2c2477da9a553c0b9b2fa18073a5dcdbe6d395af"
 
-PV = "1.1.18+git${SRCPV}"
+BASEVER = "1.1.23"
+
+PV = "${BASEVER}+git${SRCPV}"
 
 # mirror is at git://github.com/kraj/musl.git
 
 SRC_URI = "git://git.musl-libc.org/musl \
            file://0001-Make-dynamic-linker-a-relative-symlink-to-libc.patch \
+           file://0002-ldso-Use-syslibdir-and-libdir-as-default-pathes-to-l.patch \
+           file://0001-riscv-Define-sigcontext-again.patch \
           "
 
 S = "${WORKDIR}/git"
 
-PROVIDES += "virtual/libc virtual/${TARGET_PREFIX}libc-for-gcc virtual/libiconv virtual/libintl"
+PROVIDES += "virtual/libc virtual/libiconv virtual/libintl virtual/crypt"
 
 DEPENDS = "virtual/${TARGET_PREFIX}binutils \
-           virtual/${TARGET_PREFIX}gcc-initial \
+           virtual/${TARGET_PREFIX}gcc \
            libgcc-initial \
            linux-libc-headers \
            bsd-headers \
+           libssp-nonshared \
           "
+GLIBC_LDSO = "${@get_glibc_loader(d)}"
 
 export CROSS_COMPILE="${TARGET_PREFIX}"
 
@@ -57,15 +64,29 @@ do_install() {
 	oe_runmake install DESTDIR='${D}'
 
 	install -d ${D}${bindir}
-	rm -f ${D}${bindir}/ldd
+	rm -f ${D}${bindir}/ldd ${D}${GLIBC_LDSO}
 	lnr ${D}${libdir}/libc.so ${D}${bindir}/ldd
+	lnr ${D}${libdir}/libc.so ${D}${GLIBC_LDSO}
 	for l in crypt dl m pthread resolv rt util xnet
 	do
 		ln -sf libc.so ${D}${libdir}/lib$l.so
 	done
+	for i in libc.so.6 libcrypt.so.1 libdl.so.2 libm.so.6 libpthread.so.0 libresolv.so.2 librt.so.1 libutil.so.1; do
+		ln -sf libc.so ${D}${libdir}/$i
+	done
 }
 
-RDEPENDS_${PN}-dev += "linux-libc-headers-dev bsd-headers-dev"
+PACKAGES =+ "${PN}-glibc-compat"
+
+FILES_${PN}-glibc-compat += "\
+                ${libdir}/libc.so.6 ${libdir}/libcrypt.so.1 \
+                ${libdir}/libdl.so.2 ${libdir}/libm.so.6 \
+                ${libdir}/libpthread.so.0 ${libdir}/libresolv.so.2 \
+                ${libdir}/librt.so.1 ${libdir}/libutil.so.1 \
+                ${GLIBC_LDSO} \
+                "
+
+RDEPENDS_${PN}-dev += "linux-libc-headers-dev bsd-headers-dev libssp-nonshared-staticdev"
 RPROVIDES_${PN}-dev += "libc-dev virtual-libc-dev"
 RPROVIDES_${PN} += "ldd libsegfault rtld(GNU_HASH)"
 

@@ -1,22 +1,9 @@
-# ex:ts=4:sw=4:sts=4:et
-# -*- tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 #
 # BitBake Tests for utils.py
 #
 # Copyright (C) 2012 Richard Purdie
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-2.0-only
 #
 
 import unittest
@@ -41,6 +28,14 @@ class VerCmpString(unittest.TestCase):
         result = bb.utils.vercmp_string('1.0', '1.0+1.1-beta1')
         self.assertTrue(result < 0)
         result = bb.utils.vercmp_string('1.1', '1.0+1.1-beta1')
+        self.assertTrue(result > 0)
+        result = bb.utils.vercmp_string('1a', '1a1')
+        self.assertTrue(result < 0)
+        result = bb.utils.vercmp_string('1a1', '1a')
+        self.assertTrue(result > 0)
+        result = bb.utils.vercmp_string('1.', '1.1')
+        self.assertTrue(result < 0)
+        result = bb.utils.vercmp_string('1.1', '1.')
         self.assertTrue(result > 0)
 
     def test_explode_dep_versions(self):
@@ -108,6 +103,32 @@ class Path(unittest.TestCase):
             result = bb.utils._check_unsafe_delete_path(arg1)
             self.assertEqual(result, correctresult, '_check_unsafe_delete_path("%s") != %s' % (arg1, correctresult))
 
+class Checksum(unittest.TestCase):
+    filler = b"Shiver me timbers square-rigged spike Gold Road galleon bilge water boatswain wherry jack pirate. Mizzenmast rum lad Privateer jack salmagundi hang the jib piracy Pieces of Eight Corsair. Parrel marooned black spot yawl provost quarterdeck cable no prey, no pay spirits lateen sail."
+
+    def test_md5(self):
+        import hashlib
+        with tempfile.NamedTemporaryFile() as f:
+            f.write(self.filler)
+            f.flush()
+            checksum = bb.utils.md5_file(f.name)
+            self.assertEqual(checksum, "bd572cd5de30a785f4efcb6eaf5089e3")
+
+    def test_sha1(self):
+        import hashlib
+        with tempfile.NamedTemporaryFile() as f:
+            f.write(self.filler)
+            f.flush()
+            checksum = bb.utils.sha1_file(f.name)
+            self.assertEqual(checksum, "249eb8fd654732ea836d5e702d7aa567898eca71")
+
+    def test_sha256(self):
+        import hashlib
+        with tempfile.NamedTemporaryFile() as f:
+            f.write(self.filler)
+            f.flush()
+            checksum = bb.utils.sha256_file(f.name)
+            self.assertEqual(checksum, "fcfbae8bf6b721dbb9d2dc6a9334a58f2031a9a9b302999243f99da4d7f12d0f")
 
 class EditMetadataFile(unittest.TestCase):
     _origfile = """

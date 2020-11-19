@@ -1,10 +1,12 @@
 DESCRIPTION = "Python HTTP for Humans."
 HOMEPAGE = "http://python-requests.org"
 LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=979d6a23b143e13ea0e5e3aa81248820"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a8d5a1d1c2d53025e2282c511033f6f7"
 
-SRC_URI[md5sum] = "081412b2ef79bdc48229891af13f4d82"
-SRC_URI[sha256sum] = "9c443e7324ba5b85070c4a818ade28bfabedf16ea10206da1132edaa6dda237e"
+FILESEXTRAPATHS_prepend := "${THISDIR}/python-requests:"
+
+SRC_URI[md5sum] = "ee28bee2de76e9198fc41e48f3a7dd47"
+SRC_URI[sha256sum] = "11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4"
 
 inherit pypi
 
@@ -20,5 +22,7 @@ RDEPENDS_${PN} += " \
     ${PYTHON_PN}-chardet \
     ${PYTHON_PN}-idna \
 "
+
+CVE_PRODUCT = "requests"
 
 BBCLASSEXTEND = "native nativesdk"

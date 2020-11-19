@@ -29,12 +29,25 @@ toolchain_create_sdk_env_script_sdkmingw32 () {
 	echo "set OECORE_NATIVE_SYSROOT=$sdkpathnative" >> $script
 	echo 'set OECORE_TARGET_SYSROOT=%SDKTARGETSYSROOT%' >> $script
 	echo "set OECORE_ACLOCAL_OPTS=-I $sdkpathnative/usr/share/aclocal" >> $script
-	echo "set PYTHONHOME=$sdkpathnative$prefix" >> $script
+	echo 'set OECORE_BASELIB=${baselib}' >> $script
+	echo 'set OECORE_TARGET_ARCH=${TARGET_ARCH}' >> $script
+	echo 'set OECORE_TARGET_OS=${TARGET_OS}' >> $script
 
 	toolchain_shared_env_script
 
 	# Change unix '/' to Win32 '\'
 	sed -e 's,/,\\,g' -i $script
+
+	# set has some annoying properties:
+	# 1) If it is successful %ERRORLEVEL% is unchanged (as opposed to being set
+	#	 to 0 to indicate success)
+	# 2) Making an assignment like "set A=" is considered an error and sets
+	#	 %ERRORLEVEL% to 1.
+	#
+	# Practically, this means that if any of the set calls make an empty
+	# assignment that error will be propagated. To prevent this, a command is
+	# run to ensure that the "exit code" of this script is 0
+	echo "@%COMSPEC% /C exit 0 > NUL" >> $script
 
 	# Make the file windows friendly...
 	awk 'sub("$", "\r")' $script > $script.new

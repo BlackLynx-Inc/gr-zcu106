@@ -1,12 +1,12 @@
 FILES_${PN} += "${datadir}/icons/hicolor"
 
-DEPENDS += "${@['hicolor-icon-theme', '']['${BPN}' == 'hicolor-icon-theme']} gtk-icon-utils-native"
+DEPENDS +=" ${@['hicolor-icon-theme', '']['${BPN}' == 'hicolor-icon-theme']} gtk+3-native"
 
-PACKAGE_WRITE_DEPS += "gtk-icon-utils-native gdk-pixbuf-native"
+PACKAGE_WRITE_DEPS += "gtk+3-native gdk-pixbuf-native"
 
 gtk_icon_cache_postinst() {
 if [ "x$D" != "x" ]; then
-	$INTERCEPT_DIR/postinst_intercept update_icon_cache ${PKG} \
+	$INTERCEPT_DIR/postinst_intercept update_gtk_icon_cache ${PKG} \
 		mlprefix=${MLPREFIX} \
 		libdir_native=${libdir_native}
 else
@@ -24,7 +24,7 @@ fi
 
 gtk_icon_cache_postrm() {
 if [ "x$D" != "x" ]; then
-	$INTERCEPT_DIR/postinst_intercept update_icon_cache ${PKG} \
+	$INTERCEPT_DIR/postinst_intercept update_gtk_icon_cache ${PKG} \
 		mlprefix=${MLPREFIX} \
 		libdir=${libdir}
 else

@@ -75,11 +75,6 @@ syslinux_hddimg_install() {
 	syslinux ${IMGDEPLOYDIR}/${IMAGE_NAME}.hddimg
 }
 
-syslinux_hdddirect_install() {
-	DEST=$1
-	syslinux $DEST
-}
-
 python build_syslinux_cfg () {
     import copy
     import sys
@@ -173,8 +168,9 @@ python build_syslinux_cfg () {
         if not root:
             bb.fatal('SYSLINUX_ROOT not defined')
 
+        kernel = localdata.getVar('KERNEL_IMAGETYPE')
         for btype in btypes:
-            cfgfile.write('LABEL %s%s\nKERNEL /vmlinuz\n' % (btype[0], label))
+            cfgfile.write('LABEL %s%s\nKERNEL /%s\n' % (btype[0], label, kernel))
 
             exargs = d.getVar('SYSLINUX_KERNEL_ARGS')
             if exargs:

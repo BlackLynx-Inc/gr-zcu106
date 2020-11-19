@@ -1,5 +1,3 @@
-# ex:ts=4:sw=4:sts=4:et
-# -*- tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 """
 BitBake 'Data' implementations
 
@@ -22,22 +20,12 @@ the speed is more critical here.
 # Copyright (C) 2003, 2004  Chris Larson
 # Copyright (C) 2005        Holger Hans Peter Freyther
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-2.0-only
 #
 # Based on functions from the base bb module, Copyright 2003 Holger Schurig
 
 import sys, os, re
+import hashlib
 if sys.argv[0][-5:] == "pydoc":
     path = os.path.dirname(os.path.dirname(sys.argv[1]))
 else:
@@ -142,7 +130,7 @@ def emit_var(var, o=sys.__stdout__, d = init(), all=False):
         if all:
             oval = d.getVar(var, False)
         val = d.getVar(var)
-    except (KeyboardInterrupt, bb.build.FuncFailed):
+    except (KeyboardInterrupt):
         raise
     except Exception as exc:
         o.write('# expansion of %s threw %s: %s\n' % (var, exc.__class__.__name__, str(exc)))
@@ -283,14 +271,12 @@ def build_dependencies(key, keys, shelldeps, varflagsexcl, d):
     try:
         if key[-1] == ']':
             vf = key[:-1].split('[')
-            value = d.getVarFlag(vf[0], vf[1], False)
-            parser = d.expandWithRefs(value, key)
+            value, parser = d.getVarFlag(vf[0], vf[1], False, retparser=True)
             deps |= parser.references
             deps = deps | (keys & parser.execs)
             return deps, value
         varflags = d.getVarFlags(key, ["vardeps", "vardepvalue", "vardepsexclude", "exports", "postfuncs", "prefuncs", "lineno", "filename"]) or {}
         vardeps = varflags.get("vardeps")
-        value = d.getVarFlag(key, "_content", False)
 
         def handle_contains(value, contains, d):
             newvalue = ""
@@ -309,25 +295,34 @@ def build_dependencies(key, keys, shelldeps, varflagsexcl, d):
                 return newvalue
             return value + newvalue
 
+        def handle_remove(value, deps, removes, d):
+            for r in sorted(removes):
+                r2 = d.expandWithRefs(r, None)
+                value += "\n_remove of %s" % r
+                deps |= r2.references
+                deps = deps | (keys & r2.execs)
+            return value
+
         if "vardepvalue" in varflags:
-           value = varflags.get("vardepvalue")
+            value = varflags.get("vardepvalue")
         elif varflags.get("func"):
             if varflags.get("python"):
+                value = d.getVarFlag(key, "_content", False)
                 parser = bb.codeparser.PythonParser(key, logger)
-                if value and "\t" in value:
-                    logger.warning("Variable %s contains tabs, please remove these (%s)" % (key, d.getVar("FILE")))
                 parser.parse_python(value, filename=varflags.get("filename"), lineno=varflags.get("lineno"))
                 deps = deps | parser.references
                 deps = deps | (keys & parser.execs)
                 value = handle_contains(value, parser.contains, d)
             else:
-                parsedvar = d.expandWithRefs(value, key)
+                value, parsedvar = d.getVarFlag(key, "_content", False, retparser=True)
                 parser = bb.codeparser.ShellParser(key, logger)
                 parser.parse_shell(parsedvar.value)
                 deps = deps | shelldeps
                 deps = deps | parsedvar.references
                 deps = deps | (keys & parser.execs) | (keys & parsedvar.execs)
                 value = handle_contains(value, parsedvar.contains, d)
+                if hasattr(parsedvar, "removes"):
+                    value = handle_remove(value, deps, parsedvar.removes, d)
             if vardeps is None:
                 parser.log.flush()
             if "prefuncs" in varflags:
@@ -337,10 +332,12 @@ def build_dependencies(key, keys, shelldeps, varflagsexcl, d):
             if "exports" in varflags:
                 deps = deps | set(varflags["exports"].split())
         else:
-            parser = d.expandWithRefs(value, key)
+            value, parser = d.getVarFlag(key, "_content", False, retparser=True)
             deps |= parser.references
             deps = deps | (keys & parser.execs)
             value = handle_contains(value, parser.contains, d)
+            if hasattr(parser, "removes"):
+                value = handle_remove(value, deps, parser.removes, d)
 
         if "vardepvalueexclude" in varflags:
             exclude = varflags.get("vardepvalueexclude")
@@ -393,6 +390,43 @@ def generate_dependencies(d):
             newdeps -= seen
         #print "For %s: %s" % (task, str(deps[task]))
     return tasklist, deps, values
+
+def generate_dependency_hash(tasklist, gendeps, lookupcache, whitelist, fn):
+    taskdeps = {}
+    basehash = {}
+
+    for task in tasklist:
+        data = lookupcache[task]
+
+        if data is None:
+            bb.error("Task %s from %s seems to be empty?!" % (task, fn))
+            data = ''
+
+        gendeps[task] -= whitelist
+        newdeps = gendeps[task]
+        seen = set()
+        while newdeps:
+            nextdeps = newdeps
+            seen |= nextdeps
+            newdeps = set()
+            for dep in nextdeps:
+                if dep in whitelist:
+                    continue
+                gendeps[dep] -= whitelist
+                newdeps |= gendeps[dep]
+            newdeps -= seen
+
+        alldeps = sorted(seen)
+        for dep in alldeps:
+            data = data + dep
+            var = lookupcache[dep]
+            if var is not None:
+                data = data + str(var)
+        k = fn + ":" + task
+        basehash[k] = hashlib.sha256(data.encode("utf-8")).hexdigest()
+        taskdeps[task] = alldeps
+
+    return taskdeps, basehash
 
 def inherits_class(klass, d):
     val = d.getVar('__inherit_cache', False) or []

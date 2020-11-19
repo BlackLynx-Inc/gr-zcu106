@@ -7,26 +7,31 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=66493d54e65bfc12c7983ff2e884f37f"
 
 DEPENDS = "libjpeg-turbo mraa"
 
-SRCREV = "106b6c706268522ab0168a4ddb19e89ce832e084"
-PV = "1.3.0-git${SRCPV}"
+SRCREV = "5cf20df96c6b35c19d5b871ba4e319e96b4df72d"
+PV = "2.0.0+git${SRCPV}"
 
-SRC_URI = " \
-    git://github.com/intel-iot-devkit/${BPN}.git;protocol=http \
-    file://ads1x15-fixed-case-logic-in-getThresh-function.patch \
-"
+SRC_URI = "git://github.com/intel-iot-devkit/${BPN}.git;protocol=http \
+           file://0001-CMakeLists.txt-Use-SWIG_SUPPORT_FILES-to-find-the-li.patch \
+           file://0001-Use-stdint-types.patch \
+           "
 
 S = "${WORKDIR}/git"
 
 # Depends on mraa which only supports x86 and ARM for now
 COMPATIBLE_HOST = "(x86_64.*|i.86.*|aarch64.*|arm.*)-linux"
 
-inherit distutils3-base cmake
-
+inherit distutils3-base cmake pkgconfig
 
 # override this in local.conf to get needed bindings.
 # BINDINGS_pn-upm="python"
 # will result in only the python bindings being built/packaged.
-BINDINGS ??= "python ${@ 'nodejs' if oe.types.boolean(d.getVar('HAVE_NODEJS') or '0') else '' }"
+# Note: 'nodejs' is disabled by default because the bindings
+# generation currently fails with nodejs (>v7.x).
+BINDINGS ??= "python"
+
+# nodejs isn't available for armv4/armv5 architectures
+BINDINGS_armv4 ??= "python"
+BINDINGS_armv5 ??= "python"
 
 PACKAGECONFIG ??= "${@bb.utils.contains('PACKAGES', 'node-${PN}', 'nodejs', '', d)} \
  ${@bb.utils.contains('PACKAGES', '${PYTHON_PN}-${PN}', 'python', '', d)}"

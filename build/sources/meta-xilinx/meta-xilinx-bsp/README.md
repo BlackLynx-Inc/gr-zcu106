@@ -28,6 +28,8 @@ Boards/Machines supported by this layer:
   * [Digilent Zybo Linux BD](conf/machine/zybo-linux-bd-zynq7.conf) - `zybo-linux-bd-zynq7`
 * ZynqMP:
   * [Xilinx ZCU102](conf/machine/zcu102-zynqmp.conf) - `zcu102-zynqmp` (QEMU support)
+  * [Xilinx ZCU106](conf/machine/zcu106-zynqmp.conf) - `zcu106-zynqmp`
+  * [Xilinx ZCU104](conf/machine/zcu104-zynqmp.conf) - `zcu104-zynqmp`
 
 Additional information on Xilinx architectures can be found at:
 	http://www.xilinx.com/support/index.htm
@@ -44,8 +46,9 @@ the [meta-xilinx mailing list](https://lists.yoctoproject.org/listinfo/meta-xili
 
 Maintainers:
 
-	Nathan Rossi <nathan@nathanrossi.com>
 	Manjukumar Harthikote Matha <manjukumar.harthikote-matha@xilinx.com>
+	Sai Hari Chandana Kalluri <chandana.kalluri@xilinx.com>
+	Mark Hatle <mark.hatle@xilinx.com>
 
 Dependencies
 ============

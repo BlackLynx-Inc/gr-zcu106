@@ -6,6 +6,8 @@ SUMMARY = "Self-hosting"
 DESCRIPTION = "Packages required to run the build system"
 PR = "r13"
 
+PACKAGE_ARCH = "${TUNE_PKGARCH}"
+
 inherit packagegroup  distro_features_check
 # rdepends on libx11-dev
 REQUIRED_DISTRO_FEATURES = "x11"
@@ -37,7 +39,7 @@ RDEPENDS_packagegroup-self-hosted-host-tools = "\
     e2fsprogs-tune2fs \
     hdparm \
     iptables \
-    lsb \
+    lsb-release \
     mc \
     mc-fish \
     mc-helpers \
@@ -76,24 +78,26 @@ RDEPENDS_packagegroup-self-hosted-sdk = "\
     intltool \
     ldd \
     less \
-    libssp \
-    libssp-dev \
-    libssp-staticdev \
     libstdc++ \
     libstdc++-dev \
     libtool \
     make \
-    mktemp \
     perl-module-re \
     perl-module-text-wrap \
     pkgconfig \
     quilt \
     sed \
     "
-# glibc-utils: for rpcgen
+RDEPENDS_packagegroup-self-hosted-sdk_append_mingw32 = "\
+    libssp \
+    libssp-dev \
+    libssp-staticdev \
+    "
+# rpcsvc-proto: for rpcgen
 RDEPENDS_packagegroup-self-hosted-sdk_append_libc-glibc = "\
     glibc-gconv-ibm850 \
     glibc-utils \
+    rpcsvc-proto \
     "
 RDEPENDS_packagegroup-self-hosted-debug = " \
     gdb \
@@ -126,7 +130,6 @@ RDEPENDS_packagegroup-self-hosted-extended = "\
     libaio \
     libusb1 \
     libxml2 \
-    lrzsz \
     lsof \
     lzo \
     man \
@@ -136,7 +139,6 @@ RDEPENDS_packagegroup-self-hosted-extended = "\
     mtools \
     ncurses \
     ncurses-terminfo-base \
-    neon \
     nfs-utils \
     nfs-utils-client \
     openssl \
@@ -186,12 +188,9 @@ RDEPENDS_packagegroup-self-hosted-graphics = "\
     libgl-dev \
     libglu \
     libglu-dev \
-    libsdl \
-    libsdl-dev \
     libx11-dev \
     adwaita-icon-theme \
     xdg-utils \
-    epiphany \
     l3afpad \
     pcmanfm \
     vte \

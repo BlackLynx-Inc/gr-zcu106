@@ -13,6 +13,8 @@ S = "${WORKDIR}/git-${PV}"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=7c0d7ef03a7eb04ce795b0f60e68e7e1"
 
+CVE_PRODUCT = "git-scm:git"
+
 PACKAGECONFIG ??= ""
 PACKAGECONFIG[cvsserver] = ""
 PACKAGECONFIG[svn] = ""
@@ -52,13 +54,6 @@ perl_native_fixup () {
 	       -e 's#${libdir}/perl-native/#${libdir}/#' \
 	    ${@d.getVar("PERLTOOLS").replace(' /',d.getVar('D') + '/')}
 
-	# ${libdir} is not applicable here, perl-native files are always
-	# installed to /usr/lib on both 32/64 bits targets.
-
-	mkdir -p ${D}${libdir}
-	mv ${D}${exec_prefix}/lib/perl-native/perl ${D}${libdir}
-	rmdir -p ${D}${exec_prefix}/lib/perl-native || true
-
 	if [ ! "${@bb.utils.filter('PACKAGECONFIG', 'cvsserver', d)}" ]; then
 		# Only install the git cvsserver command if explicitly requested
 		# as it requires the DBI Perl module, which does not exist in
@@ -72,8 +67,7 @@ perl_native_fixup () {
 		# if explicitly requested as they require the SVN::Core Perl
 		# module, which does not exist in OE-Core.
 		rm -r ${D}${libexecdir}/git-core/git-svn \
-		      ${D}${libdir}/perl/site_perl/*/Git/SVN*
-		sed -i -e '/SVN/d' ${D}${libdir}/perl/site_perl/*/auto/Git/.packlist
+		      ${D}${datadir}/perl5/Git/SVN*
 	fi
 }
 
@@ -116,6 +110,7 @@ PERLTOOLS = " \
     ${datadir}/gitweb/gitweb.cgi \
     ${datadir}/git-core/templates/hooks/prepare-commit-msg.sample \
     ${datadir}/git-core/templates/hooks/pre-rebase.sample \
+    ${datadir}/git-core/templates/hooks/fsmonitor-watchman.sample \
 "
 
 # Git tools requiring perl
@@ -123,8 +118,9 @@ PACKAGES =+ "${PN}-perltools"
 FILES_${PN}-perltools += " \
     ${PERLTOOLS} \
     ${libdir}/perl \
-    ${datadir}/perl \
+    ${datadir}/perl5 \
 "
+
 RDEPENDS_${PN}-perltools = "${PN} perl perl-module-file-path findutils"
 
 # git-tk package with gitk and git-gui

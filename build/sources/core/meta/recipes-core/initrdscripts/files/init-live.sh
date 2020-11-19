@@ -28,17 +28,13 @@ udev_daemon() {
 _UDEV_DAEMON=`udev_daemon`
 
 early_setup() {
-    mkdir -p /proc
-    mkdir -p /sys
+    mkdir -p /proc /sys /run /var/run
     mount -t proc proc /proc
     mount -t sysfs sysfs /sys
     mount -t devtmpfs none /dev
 
     # support modular kernel
     modprobe isofs 2> /dev/null
-
-    mkdir -p /run
-    mkdir -p /var/run
 
     $_UDEV_DAEMON --daemon
     udevadm trigger --action=add
@@ -95,8 +91,11 @@ boot_live_root() {
     # Move the mount points of some filesystems over to
     # the corresponding directories under the real root filesystem.
     for dir in `awk '/\/dev.* \/run\/media/{print $2}' /proc/mounts`; do
-        mkdir -p  ${ROOT_MOUNT}/media/${dir##*/}
-        mount -n --move $dir ${ROOT_MOUNT}/media/${dir##*/}
+        # Parse any OCT or HEX encoded chars such as spaces
+        # in the mount points to actual ASCII chars
+        dir=`printf $dir`
+        mkdir -p "${ROOT_MOUNT}/media/${dir##*/}"
+        mount -n --move "$dir" "${ROOT_MOUNT}/media/${dir##*/}"
     done
     mount -n --move /proc ${ROOT_MOUNT}/proc
     mount -n --move /sys ${ROOT_MOUNT}/sys

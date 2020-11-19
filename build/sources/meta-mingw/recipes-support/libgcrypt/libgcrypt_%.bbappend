@@ -1,3 +1,4 @@
+EXTRA_OECONF_append_mingw32 = " --disable-amd64-as-feature-detection"
 
 # libcap does not support mingw32
 PACKAGECONFIG_remove_mingw32 = "capabilities"

@@ -1,4 +1,5 @@
 RDEPENDS_${PN}_remove = "${LTTNGMODULES} ${LTTNGTOOLS}"
-VALGRIND_microblazeel = ""
-LTTNGUST_microblazeel = ""
-PERF_microblazeel = ""
+RDEPENDS_${PN}_remove_microblaze = "systemtap icu"
+VALGRIND_microblaze = ""
+LTTNGUST_microblaze = ""
+PERF_microblaze = ""

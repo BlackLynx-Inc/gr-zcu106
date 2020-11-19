@@ -336,11 +336,11 @@ def check_path_length(filepath, pathname, limit):
     return ""
 
 def get_filesystem_id(path):
-    status, result = oe.utils.getstatusoutput("stat -f -c '%s' %s" % ("%t", path))
-    if status == 0:
-        return result
-    else:
-        bb.warn("Can't get the filesystem id of: %s" % path)
+    import subprocess
+    try:
+        return subprocess.check_output(["stat", "-f", "-c", "%t", path]).decode('utf-8').strip()
+    except subprocess.CalledProcessError:
+        bb.warn("Can't get filesystem id of: %s" % path)
         return None
 
 # Check that the path isn't located on nfs.
@@ -456,13 +456,32 @@ def check_sanity_validmachine(sanity_data):
 
     return messages
 
+# Patch before 2.7 can't handle all the features in git-style diffs.  Some
+# patches may incorrectly apply, and others won't apply at all.
+def check_patch_version(sanity_data):
+    from distutils.version import LooseVersion
+    import re, subprocess
+
+    try:
+        result = subprocess.check_output(["patch", "--version"], stderr=subprocess.STDOUT).decode('utf-8')
+        version = re.search(r"[0-9.]+", result.splitlines()[0]).group()
+        if LooseVersion(version) < LooseVersion("2.7"):
+            return "Your version of patch is older than 2.7 and has bugs which will break builds. Please install a newer version of patch.\n"
+        else:
+            return None
+    except subprocess.CalledProcessError as e:
+        return "Unable to execute patch --version, exit code %d:\n%s\n" % (e.returncode, e.output)
+
 # Unpatched versions of make 3.82 are known to be broken.  See GNU Savannah Bug 30612.
 # Use a modified reproducer from http://savannah.gnu.org/bugs/?30612 to validate.
 def check_make_version(sanity_data):
     from distutils.version import LooseVersion
-    status, result = oe.utils.getstatusoutput("make --version")
-    if status != 0:
-        return "Unable to execute make --version, exit code %s\n" % status
+    import subprocess
+
+    try:
+        result = subprocess.check_output(['make', '--version'], stderr=subprocess.STDOUT).decode('utf-8')
+    except subprocess.CalledProcessError as e:
+        return "Unable to execute make --version, exit code %d\n%s\n" % (e.returncode, e.output)
     version = result.split()[2]
     if LooseVersion(version) == LooseVersion("3.82"):
         # Construct a test file
@@ -477,31 +496,46 @@ def check_make_version(sanity_data):
         f.close()
 
         # Check if make 3.82 has been patched
-        status,result = oe.utils.getstatusoutput("make -f makefile_test")
-
-        os.remove("makefile_test")
-        if os.path.exists("makefile_test_a.c"):
-            os.remove("makefile_test_a.c")
-        if os.path.exists("makefile_test_b.c"):
-            os.remove("makefile_test_b.c")
-        if os.path.exists("makefile_test.a"):
-            os.remove("makefile_test.a")
-
-        if status != 0:
+        try:
+            subprocess.check_call(['make', '-f', 'makefile_test'])
+        except subprocess.CalledProcessError as e:
             return "Your version of make 3.82 is broken. Please revert to 3.81 or install a patched version.\n"
+        finally:
+            os.remove("makefile_test")
+            if os.path.exists("makefile_test_a.c"):
+                os.remove("makefile_test_a.c")
+            if os.path.exists("makefile_test_b.c"):
+                os.remove("makefile_test_b.c")
+            if os.path.exists("makefile_test.a"):
+                os.remove("makefile_test.a")
     return None
 
 
+# Check if we're running on WSL (Windows Subsystem for Linux). Its known not to
+# work but we should tell the user that upfront.
+def check_wsl(d):
+    with open("/proc/version", "r") as f:
+        verdata = f.readlines()
+    for l in verdata:
+        if "Microsoft" in l:
+            return "OpenEmbedded doesn't work under WSL at this time, sorry"
+    return None
+
 # Tar version 1.24 and onwards handle overwriting symlinks correctly
 # but earlier versions do not; this needs to work properly for sstate
+# Version 1.28 is needed so opkg-build works correctly when reproducibile builds are enabled
 def check_tar_version(sanity_data):
     from distutils.version import LooseVersion
-    status, result = oe.utils.getstatusoutput("tar --version")
-    if status != 0:
-        return "Unable to execute tar --version, exit code %s\n" % status
+    import subprocess
+    try:
+        result = subprocess.check_output(["tar", "--version"], stderr=subprocess.STDOUT).decode('utf-8')
+    except subprocess.CalledProcessError as e:
+        return "Unable to execute tar --version, exit code %d\n%s\n" % (e.returncode, e.output)
     version = result.split()[3]
     if LooseVersion(version) < LooseVersion("1.24"):
-        return "Your version of tar is older than 1.24 and has bugs which will break builds. Please install a newer version of tar.\n"
+        return "Your version of tar is older than 1.24 and has bugs which will break builds. Please install a newer version of tar (1.28+).\n"
+    if LooseVersion(version) < LooseVersion("1.28"):
+        return "Your version of tar is older than 1.28 and does not have the support needed to enable reproducible builds. Please install a newer version of tar (you could use the projects buildtools-tarball from our last release).\n"
     return None
 
 # We use git parameters and functionality only found in 1.7.8 or later
@@ -509,9 +543,11 @@ def check_tar_version(sanity_data):
 # The git fetcher also had workarounds for git < 1.7.9.2 which we've dropped
 def check_git_version(sanity_data):
     from distutils.version import LooseVersion
-    status, result = oe.utils.getstatusoutput("git --version 2> /dev/null")
-    if status != 0:
-        return "Unable to execute git --version, exit code %s\n" % status
+    import subprocess
+    try:
+        result = subprocess.check_output(["git", "--version"], stderr=subprocess.DEVNULL).decode('utf-8')
+    except subprocess.CalledProcessError as e:
+        return "Unable to execute git --version, exit code %d\n%s\n" % (e.returncode, e.output)
     version = result.split()[2]
     if LooseVersion(version) < LooseVersion("1.8.3.1"):
         return "Your version of git is older than 1.8.3.1 and has bugs which will break builds. Please install a newer version of git.\n"
@@ -519,13 +555,15 @@ def check_git_version(sanity_data):
 
 # Check the required perl modules which may not be installed by default
 def check_perl_modules(sanity_data):
+    import subprocess
     ret = ""
     modules = ( "Text::ParseWords", "Thread::Queue", "Data::Dumper" )
     errresult = ''
     for m in modules:
-        status, result = oe.utils.getstatusoutput("perl -e 'use %s'" % m)
-        if status != 0:
-            errresult += result
+        try:
+            subprocess.check_output(["perl", "-e", "use %s" % m])
+        except subprocess.CalledProcessError as e:
+            errresult += bytes.decode(e.output)
             ret += "%s " % m
     if ret:
         return "Required perl module(s) not found: %s\n\n%s\n" % (ret, errresult)
@@ -538,7 +576,7 @@ def sanity_check_conffiles(d):
         if check_conf_exists(conffile, d) and d.getVar(current_version) is not None and \
                 d.getVar(current_version) != d.getVar(required_version):
             try:
-                bb.build.exec_func(func, d, pythonexception=True)
+                bb.build.exec_func(func, d)
             except NotImplementedError as e:
                 bb.fatal(str(e))
             d.setVar("BB_INVALIDCONF", True)
@@ -596,9 +634,11 @@ def check_sanity_version_change(status, d):
     import stat
 
     status.addresult(check_make_version(d))
+    status.addresult(check_patch_version(d))
     status.addresult(check_tar_version(d))
     status.addresult(check_git_version(d))
     status.addresult(check_perl_modules(d))
+    status.addresult(check_wsl(d))
 
     missing = ""
 
@@ -692,7 +732,7 @@ def sanity_check_locale(d):
     try:
         locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
     except locale.Error:
-        raise_sanity_error("You system needs to support the en_US.UTF-8 locale.", d)
+        raise_sanity_error("Your system needs to support the en_US.UTF-8 locale.", d)
 
 def check_sanity_everybuild(status, d):
     import os, stat
@@ -760,6 +800,11 @@ def check_sanity_everybuild(status, d):
             status.addresult('Specified SDKMACHINE value is not valid\n')
         elif d.getVar('SDK_ARCH', False) == "${BUILD_ARCH}":
             status.addresult('SDKMACHINE is set, but SDK_ARCH has not been changed as a result - SDKMACHINE may have been set too late (e.g. in the distro configuration)\n')
+
+    # If SDK_VENDOR looks like "-my-sdk" then the triples are badly formed so fail early
+    sdkvendor = d.getVar("SDK_VENDOR")
+    if not (sdkvendor.startswith("-") and sdkvendor.count("-") == 1):
+        status.addresult("SDK_VENDOR should be of the form '-foosdk' with a single dash\n")
 
     check_supported_distro(d)
 
@@ -839,7 +884,7 @@ def check_sanity_everybuild(status, d):
         with open(checkfile, "r") as f:
             saved_tmpdir = f.read().strip()
             if (saved_tmpdir != tmpdir):
-                status.addresult("Error, TMPDIR has changed location. You need to either move it back to %s or rebuild\n" % saved_tmpdir)
+                status.addresult("Error, TMPDIR has changed location. You need to either move it back to %s or delete it and rebuild\n" % saved_tmpdir)
     else:
         bb.utils.mkdirhier(tmpdir)
         # Remove setuid, setgid and sticky bits from TMPDIR

@@ -13,7 +13,7 @@ before manipulating relocations so that these changes take effect.
 
 Signed-off-by: James Cowgill <james410@cowgill.org.uk>
 
-Upstream-Status: Backport [from debian]
+Upstream-Status: Pending [from debian]
 Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
 ---
  libelf/gelf_getrel.c      | 25 +++++++++++++++++++++++--
@@ -23,10 +23,10 @@ Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
  src/strip.c               | 17 +++++++++++++++++
  5 files changed, 101 insertions(+), 6 deletions(-)
 
-Index: b/libelf/gelf_getrel.c
+Index: elfutils-0.175/libelf/gelf_getrel.c
 ===================================================================
---- a/libelf/gelf_getrel.c
-+++ b/libelf/gelf_getrel.c
+--- elfutils-0.175.orig/libelf/gelf_getrel.c
++++ elfutils-0.175/libelf/gelf_getrel.c
 @@ -36,6 +36,7 @@
  
  #include "libelfP.h"
@@ -66,10 +66,10 @@ Index: b/libelf/gelf_getrel.c
      }
  
    rwlock_unlock (scn->elf->lock);
-Index: b/libelf/gelf_getrela.c
+Index: elfutils-0.175/libelf/gelf_getrela.c
 ===================================================================
---- a/libelf/gelf_getrela.c
-+++ b/libelf/gelf_getrela.c
+--- elfutils-0.175.orig/libelf/gelf_getrela.c
++++ elfutils-0.175/libelf/gelf_getrela.c
 @@ -36,6 +36,7 @@
  
  #include "libelfP.h"
@@ -109,10 +109,10 @@ Index: b/libelf/gelf_getrela.c
      }
  
    rwlock_unlock (scn->elf->lock);
-Index: b/libelf/gelf_update_rel.c
+Index: elfutils-0.175/libelf/gelf_update_rel.c
 ===================================================================
---- a/libelf/gelf_update_rel.c
-+++ b/libelf/gelf_update_rel.c
+--- elfutils-0.175.orig/libelf/gelf_update_rel.c
++++ elfutils-0.175/libelf/gelf_update_rel.c
 @@ -36,6 +36,7 @@
  
  #include "libelfP.h"
@@ -154,10 +154,10 @@ Index: b/libelf/gelf_update_rel.c
      }
  
    result = 1;
-Index: b/libelf/gelf_update_rela.c
+Index: elfutils-0.175/libelf/gelf_update_rela.c
 ===================================================================
---- a/libelf/gelf_update_rela.c
-+++ b/libelf/gelf_update_rela.c
+--- elfutils-0.175.orig/libelf/gelf_update_rela.c
++++ elfutils-0.175/libelf/gelf_update_rela.c
 @@ -36,6 +36,7 @@
  
  #include "libelfP.h"
@@ -199,11 +199,11 @@ Index: b/libelf/gelf_update_rela.c
      }
  
    result = 1;
-Index: b/src/strip.c
+Index: elfutils-0.175/src/strip.c
 ===================================================================
---- a/src/strip.c
-+++ b/src/strip.c
-@@ -532,6 +532,23 @@ handle_elf (int fd, Elf *elf, const char
+--- elfutils-0.175.orig/src/strip.c
++++ elfutils-0.175/src/strip.c
+@@ -1062,6 +1062,23 @@ handle_elf (int fd, Elf *elf, const char
        goto fail;
      }
  
@@ -225,5 +225,5 @@ Index: b/src/strip.c
 +    }
 +
    /* Copy over the old program header if needed.  */
-   if (ehdr->e_type != ET_REL)
-     for (cnt = 0; cnt < phnum; ++cnt)
+   if (phnum > 0)
+     {

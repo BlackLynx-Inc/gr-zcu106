@@ -81,23 +81,20 @@ RDEPENDS_packagegroup-core-full-cmdline-utils = "\
     gawk \
     gmp \
     grep \
+    less \
     makedevs \
     mc \
     mc-fish \
     mc-helpers \
     mc-helpers-perl \
-    mktemp \
     ncurses \
     net-tools \
-    pax \
-    popt \
     procps \
     psmisc \
     sed \
     tar \
     time \
     util-linux \
-    zlib \
     "
 
 RDEPENDS_packagegroup-core-full-cmdline-extended = "\
@@ -115,9 +112,6 @@ RDEPENDS_packagegroup-core-full-cmdline-dev-utils = "\
     patch \
     "
 
-VIRTUAL-RUNTIME_initscripts ?= "initscripts"
-VIRTUAL-RUNTIME_init_manager ?= "sysvinit"
-VIRTUAL-RUNTIME_login_manager ?= "busybox"
 VIRTUAL-RUNTIME_syslog ?= "sysklogd"
 RDEPENDS_packagegroup-core-full-cmdline-initscripts = "\
     ${VIRTUAL-RUNTIME_initscripts} \
@@ -128,31 +122,16 @@ RDEPENDS_packagegroup-core-full-cmdline-initscripts = "\
     "
 
 RDEPENDS_packagegroup-core-full-cmdline-multiuser = "\
+    bzip2 \
     cracklib \
     gzip \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'pam', 'libuser', '', d)} \
     shadow \
     sudo \
     "
 
 RDEPENDS_packagegroup-core-full-cmdline-sys-services = "\
     at \
-    bzip2 \
     cronie \
-    dbus \
-    dbus-glib \
-    elfutils \
-    gzip \
-    less \
-    libcap \
-    libevent \
     logrotate \
-    nfs-utils \
-    pciutils \
-    libpcre \
-    rpcbind \
-    sysfsutils \
-    tcp-wrappers \
-    tzdata \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'nfs', 'nfs-utils rpcbind', '', d)} \
     "
-

@@ -9,7 +9,6 @@ DEPENDS = "avahi"
 PR = "r7"
 
 SRC_URI = "http://0pointer.de/lennart/projects/nss-mdns/nss-mdns-${PV}.tar.gz \
-           file://0001-check-for-nss.h.patch \
            "
 
 SRC_URI[md5sum] = "03938f17646efbb50aa70ba5f99f51d7"
@@ -17,7 +16,11 @@ SRC_URI[sha256sum] = "1e683c2e7c3921814706d62fbbd3e9cbf493a75fa00255e0e715508d81
 
 S = "${WORKDIR}/nss-mdns-${PV}"
 
+localstatedir = "/"
+
 inherit autotools
+
+COMPATIBLE_HOST_libc-musl = 'null'
 
 EXTRA_OECONF = "--libdir=${base_libdir} --disable-lynx --enable-avahi"
 
@@ -28,13 +31,16 @@ DEBIANNAME_${PN} = "libnss-mdns"
 RDEPENDS_${PN} = "avahi-daemon"
 
 pkg_postinst_${PN} () {
-	sed -e '/^hosts:/s/\s*\<mdns\>//' \
-		-e 's/\(^hosts:.*\)\(\<files\>\)\(.*\)\(\<dns\>\)\(.*\)/\1\2 mdns4_minimal [NOTFOUND=return]\3\4 mdns\5/' \
-		-i $D${sysconfdir}/nsswitch.conf
+	sed '
+		/^hosts:/ !b
+		/\<mdns\(4\|6\)\?\(_minimal\)\?\>/ b
+		s/\([[:blank:]]\+\)dns\>/\1mdns4_minimal [NOTFOUND=return] dns/g
+		' -i $D${sysconfdir}/nsswitch.conf
 }
 
 pkg_prerm_${PN} () {
-	sed -e '/^hosts:/s/\s*\<mdns\>//' \
-		-e '/^hosts:/s/\s*mdns4_minimal\s\+\[NOTFOUND=return\]//' \
-		-i $D${sysconfdir}/nsswitch.conf
+	sed '
+		/^hosts:/ !b
+		s/[[:blank:]]\+mdns\(4\|6\)\?\(_minimal\( \[NOTFOUND=return\]\)\?\)\?//g
+		' -i $D${sysconfdir}/nsswitch.conf
 }

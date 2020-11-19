@@ -11,4 +11,4 @@ RUNTIMETARGET_remove_mingw32 = "libitm"
 # mingw builds
 RUNTIMETARGET_remove_mingw32 = "libmpx"
 
-DEPENDS_append_mingw32 = " pthreads-win32"
+DEPENDS_append_mingw32 = " nativesdk-mingw-w64-winpthreads"

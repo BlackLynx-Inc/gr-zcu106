@@ -1,4 +1,5 @@
-inherit core-image 
+inherit core-image
+require xsct-tarball-esdk.inc
 
 IMAGE_AUTOLOGIN ?= "1"
 
@@ -17,7 +18,7 @@ COMMON_INSTALL = " \
     tcf-agent \
     mtd-utils \
     bridge-utils \
-    canutils \
+    can-utils \
     pciutils \
     kernel-modules \
     "
@@ -28,7 +29,9 @@ IMAGE_INSTALL = " \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
-COMMON_INSTALL_append_zynqmp = " hellopm"
+COMMON_INSTALL_append_zynqmp = " hellopm haveged"
+COMMON_INSTALL_append_zynq = " haveged"
+COMMON_INSTALL_append_versal = " haveged"
 
 CORE_IMAGE_EXTRA_INSTALL_append_ultra96-zynqmp = " packagegroup-base-extended"
 
@@ -41,8 +44,6 @@ FEATURE_PACKAGES_petalinux-matchbox ?= "packagegroup-petalinux-matchbox"
 FEATURE_PACKAGES_petalinux-matchbox[optional] ?= "1"
 FEATURE_PACKAGES_petalinux-weston ?= "packagegroup-petalinux-weston"
 FEATURE_PACKAGES_petalinux-weston[optional] ?= "1"
-FEATURE_PACKAGES_petalinux-xfce ?= "packagegroup-petalinux-xfce"
-FEATURE_PACKAGES_petalinux-xfce[optional] ?= "1"
 FEATURE_PACKAGES_petalinux-self-hosted ?= "packagegroup-petalinux-self-hosted"
 FEATURE_PACKAGES_petalinux-self-hosted[optional] ?= "1"
 FEATURE_PACKAGES_petalinux-qt ?= "packagegroup-petalinux-qt"
@@ -85,3 +86,29 @@ FEATURE_PACKAGES_petalinux-96boards-sensors ?= "packagegroup-petalinux-96boards-
 FEATURE_PACKAGES_petalinux-96boards-sensors[optional] ?= "1"
 FEATURE_PACKAGES_fpga-manager ?= "fpga-manager-script fpga-manager-util"
 FEATURE_PACKAGES_fpga-manager[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-syscontroller ?= "packagegroup-petalinux-syscontroller"
+FEATURE_PACKAGES_petalinux-syscontroller[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-jupyter ?= "packagegroup-petalinux-jupyter"
+FEATURE_PACKAGES_petalinux-jupyter[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-xrt ?= "packagegroup-petalinux-xrt"
+FEATURE_PACKAGES_petalinux-xrt[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-pynq-bnn ?= "packagegroup-petalinux-pynq-bnn"
+FEATURE_PACKAGES_petalinux-pynq-bnn[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-pynq-96boardsoverlay ?= "packagegroup-petalinux-pynq-96boardsoverlay"
+FEATURE_PACKAGES_petalinux-pynq-96boardsoverlay[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-pynq ?= "packagegroup-petalinux-pynq"
+FEATURE_PACKAGES_petalinux-pynq[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-pynq-helloworld ?= "packagegroup-petalinux-pynq-helloworld"
+FEATURE_PACKAGES_petalinux-pynq-helloworld[optional] ?= "1"
+
+# Vitis AI is only built for zynqmp at this time, but allow
+# the FEATURE_PACKAGES to not error on no zynqmp systems
+VITISAI_PKGS = ""
+VITISAI_PKGS_zynqmp = "packagegroup-petalinux-vitisai"
+FEATURE_PACKAGES_petalinux-vitisai ?= "${VITISAI_PKGS}"
+FEATURE_PACKAGES_petalinux-vitisai[optional] ?= "1"
+
+FEATURE_PACKAGES_petalinux-updateboot ?= "packagegroup-petalinux-updateboot"
+FEATURE_PACKAGES_petalinux-updateboot[optional] ?= "1"
+FEATURE_PACKAGES_petalinux-ocicontainers ?= "packagegroup-petalinux-ocicontainers"
+FEATURE_PACKAGES_petalinux-ocicontainers[optional] ?= "1"

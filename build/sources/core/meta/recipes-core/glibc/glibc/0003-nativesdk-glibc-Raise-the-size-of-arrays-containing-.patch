@@ -1,7 +1,7 @@
-From 490a0eb4da1af726ea5d68e3efc0d18ba94c4054 Mon Sep 17 00:00:00 2001
+From 3aceb84e2bc0f796204fe059beede91179b1bc6e Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Wed, 18 Mar 2015 01:51:38 +0000
-Subject: [PATCH 03/25] nativesdk-glibc: Raise the size of arrays containing dl
+Subject: [PATCH 03/28] nativesdk-glibc: Raise the size of arrays containing dl
  paths
 
 This patch puts the dynamic loader path in the binaries, SYSTEM_DIRS strings
@@ -26,7 +26,7 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  7 files changed, 14 insertions(+), 10 deletions(-)
 
 diff --git a/elf/dl-cache.c b/elf/dl-cache.c
-index e9632da0b3..4de529d2cf 100644
+index d8d1e2344e..d2247bfc4f 100644
 --- a/elf/dl-cache.c
 +++ b/elf/dl-cache.c
 @@ -133,6 +133,10 @@ do									      \
@@ -38,14 +38,14 @@ index e9632da0b3..4de529d2cf 100644
 +
 +
  int
- internal_function
  _dl_cache_libcmp (const char *p1, const char *p2)
+ {
 diff --git a/elf/dl-load.c b/elf/dl-load.c
-index 19c1db9948..70c259b400 100644
+index c7a0fa58cb..4b87505d45 100644
 --- a/elf/dl-load.c
 +++ b/elf/dl-load.c
-@@ -106,8 +106,8 @@ static size_t max_capstrlen attribute_relro;
- /* Get the generated information about the trusted directories.  */
+@@ -110,8 +110,8 @@ static size_t max_capstrlen attribute_relro;
+    gen-trusted-dirs.awk.  */
  #include "trusted-dirs.h"
  
 -static const char system_dirs[] = SYSTEM_DIRS;
@@ -56,7 +56,7 @@ index 19c1db9948..70c259b400 100644
    SYSTEM_DIRS_LEN
  };
 diff --git a/elf/interp.c b/elf/interp.c
-index b6e8f04444..47c20415bc 100644
+index 243829f5f7..0e74241703 100644
 --- a/elf/interp.c
 +++ b/elf/interp.c
 @@ -18,5 +18,5 @@
@@ -67,7 +67,7 @@ index b6e8f04444..47c20415bc 100644
 +const char __invoke_dynamic_linker__[4096] __attribute__ ((section (".interp")))
    = RUNTIME_LINKER;
 diff --git a/elf/ldconfig.c b/elf/ldconfig.c
-index 99caf9e9bb..36ea5df5f1 100644
+index 3bc9e61891..6a23096435 100644
 --- a/elf/ldconfig.c
 +++ b/elf/ldconfig.c
 @@ -168,6 +168,9 @@ static struct argp argp =
@@ -81,10 +81,10 @@ index 99caf9e9bb..36ea5df5f1 100644
     a platform.  */
  static int
 diff --git a/elf/rtld.c b/elf/rtld.c
-index 65647fb1c8..cd8381cb33 100644
+index c9490ff694..3962373ebb 100644
 --- a/elf/rtld.c
 +++ b/elf/rtld.c
-@@ -128,6 +128,7 @@ dso_name_valid_for_suid (const char *p)
+@@ -173,6 +173,7 @@ dso_name_valid_for_suid (const char *p)
      }
    return *p != '\0';
  }
@@ -92,7 +92,7 @@ index 65647fb1c8..cd8381cb33 100644
  
  /* LD_AUDIT variable contents.  Must be processed before the
     audit_list below.  */
-@@ -999,12 +1000,12 @@ of this helper program; chances are you did not intend to run this program.\n\
+@@ -1220,13 +1221,13 @@ of this helper program; chances are you did not intend to run this program.\n\
    --list                list all dependencies and how they are resolved\n\
    --verify              verify that given object really is a dynamically linked\n\
  			object we can handle\n\
@@ -102,13 +102,14 @@ index 65647fb1c8..cd8381cb33 100644
  			variable LD_LIBRARY_PATH\n\
    --inhibit-rpath LIST  ignore RUNPATH and RPATH information in object names\n\
  			in LIST\n\
--  --audit LIST          use objects named in LIST as auditors\n");
-+  --audit LIST          use objects named in LIST as auditors\n", LD_SO_CACHE);
+   --audit LIST          use objects named in LIST as auditors\n\
+-  --preload LIST        preload objects named in LIST\n");
++  --preload LIST        preload objects named in LIST\n", LD_SO_CACHE);
  
        ++_dl_skip_args;
        --_dl_argc;
 diff --git a/iconv/gconv_conf.c b/iconv/gconv_conf.c
-index 5aa055de6e..b9a14b9bd3 100644
+index ae8937cba0..f321ee419e 100644
 --- a/iconv/gconv_conf.c
 +++ b/iconv/gconv_conf.c
 @@ -36,7 +36,7 @@
@@ -118,10 +119,10 @@ index 5aa055de6e..b9a14b9bd3 100644
 -static const char default_gconv_path[] = GCONV_PATH;
 +static char default_gconv_path[4096] __attribute__ ((section (".gccrelocprefix"))) = GCONV_PATH;
  
- /* The path elements, as determined by the __gconv_get_path function.
-    All path elements end in a slash.  */
+ /* Type to represent search path.  */
+ struct path_elem
 diff --git a/sysdeps/generic/dl-cache.h b/sysdeps/generic/dl-cache.h
-index 1f0b8f629d..acbe68399d 100644
+index bc8b40331d..b0fdd2144b 100644
 --- a/sysdeps/generic/dl-cache.h
 +++ b/sysdeps/generic/dl-cache.h
 @@ -27,10 +27,6 @@
@@ -136,5 +137,5 @@ index 1f0b8f629d..acbe68399d 100644
  # define add_system_dir(dir) add_dir (dir)
  #endif
 -- 
-2.13.2
+2.22.0
 

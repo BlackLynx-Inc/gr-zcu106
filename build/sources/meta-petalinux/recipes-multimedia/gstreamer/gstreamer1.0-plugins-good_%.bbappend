@@ -1,22 +1,22 @@
-BRANCH ?= "master-rel-1.12.2"
+BRANCH ?= "release-2020.1"
 REPO ?= "git://github.com/xilinx/gst-plugins-good.git;protocol=https"
 
-BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
+BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
 
-PV = "1.12.2+git${SRCPV}"
+PV = "1.16.0+git${SRCPV}"
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI_remove = " file://gtk-doc-tweaks.patch"
 SRC_URI = " \
     ${REPO};${BRANCHARG};name=base \
     git://anongit.freedesktop.org/gstreamer/common;destsuffix=git/common;name=common \
-    file://0001-gstrtpmp4gpay-set-dafault-value-for-MPEG4-without-co.patch \
-    file://avoid-including-sys-poll.h-directly.patch \
-    file://ensure-valid-sentinel-for-gst_structure_get.patch \
-    file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
-    file://0001-v4l2-Fix-4K-colorimetry.patch \
-    "
+    file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch;patchdir=common \
+    file://0001-gstreamer-use-a-patch-instead-of-sed-to-fix-gtk-doc.patch;patchdir=common \
+"
 
-SRCREV_base = "d2c7cf8d752de84c30f9675572037e0250cd3c6d"
-SRCREV_common = "48a5d85ebf4a0bad1c997c83100f710fe2154fbf"
+SRCREV_base = "9aa8f9b9f1b5de43fa8557485d23fcb42d77d95d"
+SRCREV_common = "f0c2dc9aadfa05bb5274c40da750104ecbb88cba"
 SRCREV_FORMAT = "base"
 
 S = "${WORKDIR}/git"

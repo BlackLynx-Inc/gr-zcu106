@@ -1,14 +1,14 @@
 Upstream-Status: Pending
 
-In some circumstances, gconf isn't able to save configurations 
-because ~/.config folder aka root_dir doesn't exist. 
+In some circumstances, gconf isn't able to save configurations
+because ~/.config folder aka root_dir doesn't exist.
 This issue was not seen before because ~/.config directory is shared
 between several packages and one of those packages usually creates it
 by the time gconf wants to use it.
 
 This patch makes sure that gconf creates the .config directory if it
 doesn't exist, along with the gconf directory inside it.
- 
+
 Signed-off-by: Jaewon Lee <jaewon.lee@xilinx.com>
 Signed-off-by: Alejandro Hernandez <alejandr@xilinx.com>
 

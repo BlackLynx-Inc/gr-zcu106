@@ -1,4 +1,4 @@
-PREMIRRORS_append = " \
+PREMIRRORS_prepend = " \
 cvs://.*/.*     ${SOURCE_MIRROR_URL} \n \
 svn://.*/.*     ${SOURCE_MIRROR_URL} \n \
 git://.*/.*     ${SOURCE_MIRROR_URL} \n \

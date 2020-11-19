@@ -1,3 +1,5 @@
+DEPENDS_append_mingw32 = " nativesdk-mingw-w64-winpthreads"
+
 FILES_${PN}_append_mingw32 = " ${bindir}/libgcc*.dll"
 FILES_${PN}-dev_append_mingw32 = " ${base_libdir}/libgcc*.a"
 

@@ -1,23 +1,10 @@
-# ex:ts=4:sw=4:sts=4:et
-# -*- tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 #
 # BitBake Tests for the Data Store (data.py/data_smart.py)
 #
 # Copyright (C) 2010 Chris Larson
 # Copyright (C) 2012 Richard Purdie
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-2.0-only
 #
 
 import unittest
@@ -281,7 +268,7 @@ class TestConcatOverride(unittest.TestCase):
     def test_remove(self):
         self.d.setVar("TEST", "${VAL} ${BAR}")
         self.d.setVar("TEST_remove", "val")
-        self.assertEqual(self.d.getVar("TEST"), "bar")
+        self.assertEqual(self.d.getVar("TEST"), " bar")
 
     def test_remove_cleared(self):
         self.d.setVar("TEST", "${VAL} ${BAR}")
@@ -300,7 +287,7 @@ class TestConcatOverride(unittest.TestCase):
         self.d.setVar("TEST", "${VAL} ${BAR}")
         self.d.setVar("TEST_remove", "val")
         self.d.setVar("TEST_TEST", "${TEST} ${TEST}")
-        self.assertEqual(self.d.getVar("TEST_TEST"), "bar bar")
+        self.assertEqual(self.d.getVar("TEST_TEST"), " bar  bar")
 
     def test_empty_remove(self):
         self.d.setVar("TEST", "")
@@ -311,13 +298,25 @@ class TestConcatOverride(unittest.TestCase):
         self.d.setVar("BAR", "Z")
         self.d.setVar("TEST", "${BAR}/X Y")
         self.d.setVar("TEST_remove", "${BAR}/X")
-        self.assertEqual(self.d.getVar("TEST"), "Y")
+        self.assertEqual(self.d.getVar("TEST"), " Y")
 
     def test_remove_expansion_items(self):
         self.d.setVar("TEST", "A B C D")
         self.d.setVar("BAR", "B D")
         self.d.setVar("TEST_remove", "${BAR}")
-        self.assertEqual(self.d.getVar("TEST"), "A C")
+        self.assertEqual(self.d.getVar("TEST"), "A  C ")
+
+    def test_remove_preserve_whitespace(self):
+        # When the removal isn't active, the original value should be preserved
+        self.d.setVar("TEST", " A B")
+        self.d.setVar("TEST_remove", "C")
+        self.assertEqual(self.d.getVar("TEST"), " A B")
+
+    def test_remove_preserve_whitespace2(self):
+        # When the removal is active preserve the whitespace
+        self.d.setVar("TEST", " A B")
+        self.d.setVar("TEST_remove", "B")
+        self.assertEqual(self.d.getVar("TEST"), " A ")
 
 class TestOverrides(unittest.TestCase):
     def setUp(self):
@@ -373,6 +372,37 @@ class TestOverrides(unittest.TestCase):
         self.d.setVar("TEST_foo", "testvalue4")
         self.d.setVar("OVERRIDES", "foo:bar:some_val")
         self.assertEqual(self.d.getVar("TEST"), "testvalue3")
+
+    def test_remove_with_override(self):
+        self.d.setVar("TEST_bar", "testvalue2")
+        self.d.setVar("TEST_some_val", "testvalue3 testvalue5")
+        self.d.setVar("TEST_some_val_remove", "testvalue3")
+        self.d.setVar("TEST_foo", "testvalue4")
+        self.d.setVar("OVERRIDES", "foo:bar:some_val")
+        self.assertEqual(self.d.getVar("TEST"), " testvalue5")
+
+    def test_append_and_override_1(self):
+        self.d.setVar("TEST_append", "testvalue2")
+        self.d.setVar("TEST_bar", "testvalue3")
+        self.assertEqual(self.d.getVar("TEST"), "testvalue3testvalue2")
+
+    def test_append_and_override_2(self):
+        self.d.setVar("TEST_append_bar", "testvalue2")
+        self.assertEqual(self.d.getVar("TEST"), "testvaluetestvalue2")
+
+    def test_append_and_override_3(self):
+        self.d.setVar("TEST_bar_append", "testvalue2")
+        self.assertEqual(self.d.getVar("TEST"), "testvalue2")
+
+    # Test an override with _<numeric> in it based on a real world OE issue
+    def test_underscore_override(self):
+        self.d.setVar("TARGET_ARCH", "x86_64")
+        self.d.setVar("PN", "test-${TARGET_ARCH}")
+        self.d.setVar("VERSION", "1")
+        self.d.setVar("VERSION_pn-test-${TARGET_ARCH}", "2")
+        self.d.setVar("OVERRIDES", "pn-${PN}")
+        bb.data.expandKeys(self.d)
+        self.assertEqual(self.d.getVar("VERSION"), "2")
 
 class TestKeyExpansion(unittest.TestCase):
     def setUp(self):
@@ -442,6 +472,54 @@ class Contains(unittest.TestCase):
         self.assertFalse(bb.utils.contains_any("SOMEFLAG", "x", True, False, self.d))
         self.assertFalse(bb.utils.contains_any("SOMEFLAG", "x y z", True, False, self.d))
 
+
+class TaskHash(unittest.TestCase):
+    def test_taskhashes(self):
+        def gettask_bashhash(taskname, d):
+            tasklist, gendeps, lookupcache = bb.data.generate_dependencies(d)
+            taskdeps, basehash = bb.data.generate_dependency_hash(tasklist, gendeps, lookupcache, set(), "somefile")
+            bb.warn(str(lookupcache))
+            return basehash["somefile:" + taskname]
+
+        d = bb.data.init()
+        d.setVar("__BBTASKS", ["mytask"])
+        d.setVar("__exportlist", [])
+        d.setVar("mytask", "${MYCOMMAND}")
+        d.setVar("MYCOMMAND", "${VAR}; foo; bar; exit 0")
+        d.setVar("VAR", "val")
+        orighash = gettask_bashhash("mytask", d)
+
+        # Changing a variable should change the hash
+        d.setVar("VAR", "val2")
+        nexthash = gettask_bashhash("mytask", d)
+        self.assertNotEqual(orighash, nexthash)
+
+        d.setVar("VAR", "val")
+        # Adding an inactive removal shouldn't change the hash
+        d.setVar("BAR", "notbar")
+        d.setVar("MYCOMMAND_remove", "${BAR}")
+        nexthash = gettask_bashhash("mytask", d)
+        self.assertEqual(orighash, nexthash)
+
+        # Adding an active removal should change the hash
+        d.setVar("BAR", "bar;")
+        nexthash = gettask_bashhash("mytask", d)
+        self.assertNotEqual(orighash, nexthash)
+
+        # Setup an inactive contains()
+        d.setVar("VAR", "${@bb.utils.contains('VAR2', 'A', 'val', '', d)}")
+        orighash = gettask_bashhash("mytask", d)
+
+        # Activate the contains() and the hash should change
+        d.setVar("VAR2", "A")
+        nexthash = gettask_bashhash("mytask", d)
+        self.assertNotEqual(orighash, nexthash)
+
+        # The contains should be inactive but even though VAR2 has a
+        # different value the hash should match the original
+        d.setVar("VAR2", "B")
+        nexthash = gettask_bashhash("mytask", d)
+        self.assertEqual(orighash, nexthash)
 
 class Serialize(unittest.TestCase):
 

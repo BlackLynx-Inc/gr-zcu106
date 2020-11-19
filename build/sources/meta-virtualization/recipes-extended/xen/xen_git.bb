@@ -1,9 +1,10 @@
 require xen.inc
 
-SRCREV ?= "9a6cc4f5c14b3d7542b7523f88a1b65464733d3a"
+SRCREV ?= "cb70a26f78848fe45f593f7ebc9cfaac760a791b"
 
-XEN_REL ?= "4.7"
-XEN_BRANCH ?= "staging-${XEN_REL}"
+XEN_REL = "4.13"
+XEN_BRANCH = "staging"
+FLASK_POLICY_FILE = "xenpolicy-${XEN_REL}-unstable"
 
 PV = "${XEN_REL}+git${SRCPV}"
 
@@ -11,6 +12,7 @@ S = "${WORKDIR}/git"
 
 SRC_URI = " \
     git://xenbits.xen.org/xen.git;branch=${XEN_BRANCH} \
+    file://0001-python-pygrub-pass-DISTUTILS-xen.4.12.patch \
     "
 
 DEFAULT_PREFERENCE = "-1"

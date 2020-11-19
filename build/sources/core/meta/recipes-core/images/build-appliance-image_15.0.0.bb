@@ -11,6 +11,8 @@ IMAGE_INSTALL = "packagegroup-core-boot packagegroup-core-ssh-openssh packagegro
 
 IMAGE_FEATURES += "x11-base package-management splash"
 
+QB_MEM = '${@bb.utils.contains("DISTRO_FEATURES", "opengl", "-m 512", "-m 256", d)}'
+
 # Ensure there's enough space to do a core-image-sato build, with rm_work enabled
 IMAGE_ROOTFS_EXTRA_SPACE = "41943040"
 
@@ -22,13 +24,14 @@ IMAGE_FSTYPES = "wic.vmdk"
 
 inherit core-image module-base setuptools3
 
-SRCREV ?= "78b61238f2a3eb18d97d31ac5d27bce9566438d2"
-SRC_URI = "git://git.yoctoproject.org/poky;branch=rocko \
+SRCREV ?= "cf0cefd53c5d4f72e26c74571a10e098996a1ff2"
+SRC_URI = "git://git.yoctoproject.org/poky;branch=zeus \
            file://Yocto_Build_Appliance.vmx \
            file://Yocto_Build_Appliance.vmxf \
            file://README_VirtualBox_Guest_Additions.txt \
            file://README_VirtualBox_Toaster.txt \
           "
+RECIPE_NO_UPDATE_REASON = "Recipe is recursive and handled as part of the release process"
 BA_INCLUDE_SOURCES ??= "0"
 
 IMAGE_CMD_ext4_append () {
@@ -59,8 +62,10 @@ fakeroot do_populate_poky_src () {
 	cp ${WORKDIR}/README_VirtualBox_Toaster.txt ${IMAGE_ROOTFS}/home/builder/
 
 	# Create a symlink, needed for out-of-tree kernel modules build
-	rm -f  ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build
-	lnr ${IMAGE_ROOTFS}${KERNEL_SRC_PATH} ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build
+	if [ ! -e ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build ]; then
+		rm -f  ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build
+		lnr ${IMAGE_ROOTFS}${KERNEL_SRC_PATH} ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build
+	fi
 
 	echo "INHERIT += \"rm_work\"" >> ${IMAGE_ROOTFS}/home/builder/poky/build/conf/auto.conf
 	echo "export LC_ALL=en_US.utf8" >> ${IMAGE_ROOTFS}/home/builder/.bashrc
@@ -77,7 +82,7 @@ fakeroot do_populate_poky_src () {
 	echo "# export ALL_PROXY=https://proxy.example.com:8080" >> ${IMAGE_ROOTFS}/home/builder/.bashrc
 	echo "# export ALL_PROXY=socks://socks.example.com:1080" >> ${IMAGE_ROOTFS}/home/builder/.bashrc
 
-	chown -R builder.builder ${IMAGE_ROOTFS}/home/builder/poky
+	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder/poky
 	chmod -R ug+rw ${IMAGE_ROOTFS}/home/builder/poky
 
 	# Assume we will need CDROM to install guest additions
@@ -105,8 +110,8 @@ fakeroot do_populate_poky_src () {
 	   pip3_install_params="${pip3_install_params} --proxy ${http_proxy}"
 	fi
 	pip3 install ${pip3_install_params}
-	chown -R builder.builder ${IMAGE_ROOTFS}/home/builder/.local
-	chown -R builder.builder ${IMAGE_ROOTFS}/home/builder/.cache
+	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder/.local
+	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder/.cache
 }
 
 IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "
@@ -114,9 +119,9 @@ IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "
 addtask rootfs after do_unpack
 
 python () {
-	# Ensure we run these usually noexec tasks
-	d.delVarFlag("do_fetch", "noexec")
-	d.delVarFlag("do_unpack", "noexec")
+    # Ensure we run these usually noexec tasks
+    d.delVarFlag("do_fetch", "noexec")
+    d.delVarFlag("do_unpack", "noexec")
 }
 
 create_bundle_files () {

@@ -13,11 +13,14 @@ def preferred_ml_updates(d):
 
     versions = []
     providers = []
+    rproviders = []
     for v in d.keys():
         if v.startswith("PREFERRED_VERSION_"):
             versions.append(v)
         if v.startswith("PREFERRED_PROVIDER_"):
             providers.append(v)
+        if v.startswith("PREFERRED_RPROVIDER_"):
+            rproviders.append(v)
 
     for v in versions:
         val = d.getVar(v, False)
@@ -91,7 +94,33 @@ def preferred_ml_updates(d):
         if prov != provexp and d.getVar(prov, False):
             d.renameVar(prov, provexp)
 
+    for prov in rproviders:
+        val = d.getVar(prov, False)
+        pkg = prov.replace("PREFERRED_RPROVIDER_", "")
+        for p in prefixes:
+            newval = p + "-" + val
+
+            # implement variable keys
+            localdata = bb.data.createCopy(d)
+            override = ":virtclass-multilib-" + p
+            localdata.setVar("OVERRIDES", localdata.getVar("OVERRIDES", False) + override)
+            newname = localdata.expand(prov)
+            if newname != prov and not d.getVar(newname, False):
+                d.setVar(newname, localdata.expand(newval))
+
+            # implement alternative multilib name
+            newname = localdata.expand("PREFERRED_RPROVIDER_" + p + "-" + pkg)
+            if not d.getVar(newname, False) and newval != None:
+                d.setVar(newname, localdata.expand(newval))
+        # Avoid future variable key expansion
+        provexp = d.expand(prov)
+        if prov != provexp and d.getVar(prov, False):
+            d.renameVar(prov, provexp)
+
     def translate_provide(prefix, prov):
+        # Really need to know if kernel modules class is inherited somehow
+        if prov == "lttng-modules":
+            return prov
         if not prov.startswith("virtual/"):
             return prefix + "-" + prov
         if prov == "virtual/kernel":
@@ -138,33 +167,40 @@ python multilib_virtclass_handler_global () {
     if variant:
         return
 
+    non_ml_recipes = d.getVar('NON_MULTILIB_RECIPES').split()
+
     if bb.data.inherits_class('kernel', e.data) or \
             bb.data.inherits_class('module-base', e.data) or \
-            (bb.data.inherits_class('allarch', e.data) and\
-             not bb.data.inherits_class('packagegroup', e.data)):
+            d.getVar('BPN') in non_ml_recipes:
+
+            # We need to avoid expanding KERNEL_VERSION which we can do by deleting it
+            # from a copy of the datastore
+            localdata = bb.data.createCopy(d)
+            localdata.delVar("KERNEL_VERSION")
+
             variants = (e.data.getVar("MULTILIB_VARIANTS") or "").split()
 
             import oe.classextend
             clsextends = []
             for variant in variants:
-                clsextends.append(oe.classextend.ClassExtender(variant, e.data))
+                clsextends.append(oe.classextend.ClassExtender(variant, localdata))
 
             # Process PROVIDES
-            origprovs = provs = e.data.getVar("PROVIDES") or ""
+            origprovs = provs = localdata.getVar("PROVIDES") or ""
             for clsextend in clsextends:
                 provs = provs + " " + clsextend.map_variable("PROVIDES", setvar=False)
             e.data.setVar("PROVIDES", provs)
 
             # Process RPROVIDES
-            origrprovs = rprovs = e.data.getVar("RPROVIDES") or ""
+            origrprovs = rprovs = localdata.getVar("RPROVIDES") or ""
             for clsextend in clsextends:
                 rprovs = rprovs + " " + clsextend.map_variable("RPROVIDES", setvar=False)
             if rprovs.strip():
                 e.data.setVar("RPROVIDES", rprovs)
 
-	    # Process RPROVIDES_${PN}...
+            # Process RPROVIDES_${PN}...
             for pkg in (e.data.getVar("PACKAGES") or "").split():
-                origrprovs = rprovs = e.data.getVar("RPROVIDES_%s" % pkg) or ""
+                origrprovs = rprovs = localdata.getVar("RPROVIDES_%s" % pkg) or ""
                 for clsextend in clsextends:
                     rprovs = rprovs + " " + clsextend.map_variable("RPROVIDES_%s" % pkg, setvar=False)
                     rprovs = rprovs + " " + clsextend.extname + "-" + pkg
@@ -172,5 +208,4 @@ python multilib_virtclass_handler_global () {
 }
 
 addhandler multilib_virtclass_handler_global
-multilib_virtclass_handler_global[eventmask] = "bb.event.RecipeParsed"
-
+multilib_virtclass_handler_global[eventmask] = "bb.event.RecipeTaskPreProcess"

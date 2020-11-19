@@ -9,14 +9,7 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 # Requires Ruby to work
 USE_RUBY = " \
-    qtquick1-dev \
-    qtquick1-mkspecs \
-    qtquick1-plugins \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtquick1-qmlplugins', '', d)} \
-    qttranslations-qtquick1 \
-    qtwebkit-dev \
-    qtwebkit-mkspecs \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtwebkit-qmlplugins', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtwebkit-dev', '', d)} \
 "
 
 # Requires Wayland to work
@@ -43,9 +36,12 @@ RDEPENDS_${PN} += " \
     qtbase-mkspecs \
     qtbase-plugins \
     qtbase-staticdev \
-    qttranslations-qt \
+    qtbase-tools \
     qttranslations-qtbase \
     qttranslations-qthelp \
+    qtcharts-dev \
+    qtcharts-mkspecs \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtcharts-qmlplugins', '', d)} \
     qtconnectivity-dev \
     qtconnectivity-mkspecs \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtconnectivity-qmlplugins', '', d)} \
@@ -55,7 +51,6 @@ RDEPENDS_${PN} += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtdeclarative-qmlplugins', '', d)} \
     qtdeclarative-tools \
     qtdeclarative-staticdev \
-    qttranslations-qmlviewer \
     qttranslations-qtdeclarative \
     qtenginio-dev \
     qtenginio-mkspecs \
@@ -68,6 +63,8 @@ RDEPENDS_${PN} += " \
     qtlocation-plugins \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtlocation-qmlplugins', '', d)} \
     qttranslations-qtlocation \
+    qtmqtt-dev \
+    qtmqtt-mkspecs \
     qtmultimedia-dev \
     qtmultimedia-mkspecs \
     qtmultimedia-plugins \

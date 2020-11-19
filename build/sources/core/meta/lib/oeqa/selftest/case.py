@@ -1,5 +1,8 @@
+#
 # Copyright (C) 2013-2017 Intel Corporation
-# Released under the MIT license (see COPYING.MIT)
+#
+# SPDX-License-Identifier: MIT
+#
 
 import sys
 import os
@@ -11,6 +14,8 @@ from unittest.util import safe_repr
 import oeqa.utils.ftools as ftools
 from oeqa.utils.commands import runCmd, bitbake, get_bb_var
 from oeqa.core.case import OETestCase
+
+import bb.utils
 
 class OESelftestTestCase(OETestCase):
     def __init__(self, methodName="runTest"):
@@ -167,7 +172,7 @@ to ensure accurate results.")
         if self._track_for_cleanup:
             for path in self._track_for_cleanup:
                 if os.path.isdir(path):
-                    shutil.rmtree(path)
+                    bb.utils.remove(path, recurse=True)
                 if os.path.isfile(path):
                     os.remove(path)
             self._track_for_cleanup = []
@@ -188,13 +193,20 @@ to ensure accurate results.")
         self.logger.debug("Adding path '%s' to be cleaned up when test is over" % path)
         self._track_for_cleanup.append(path)
 
-    def write_config(self, data):
-        """Write to <builddir>/conf/selftest.inc"""
+    def write_config(self, data, multiconfig=None):
+        """Write to config file"""
+        if multiconfig:
+            multiconfigdir = "%s/conf/multiconfig" % self.builddir
+            os.makedirs(multiconfigdir, exist_ok=True)
+            dest_path = '%s/%s.conf' % (multiconfigdir, multiconfig)
+            self.track_for_cleanup(dest_path)
+        else:
+            dest_path = self.testinc_path
 
-        self.logger.debug("Writing to: %s\n%s\n" % (self.testinc_path, data))
-        ftools.write_file(self.testinc_path, data)
+        self.logger.debug("Writing to: %s\n%s\n" % (dest_path, data))
+        ftools.write_file(dest_path, data)
 
-        if self.tc.custommachine and 'MACHINE' in data:
+        if not multiconfig and self.tc.custommachine and 'MACHINE' in data:
             machine = get_bb_var('MACHINE')
             self.logger.warning('MACHINE overridden: %s' % machine)
 
@@ -213,31 +225,31 @@ to ensure accurate results.")
         ftools.remove_from_file(self.testinc_path, data)
 
     def recipeinc(self, recipe):
-        """Return absolute path of meta-sefltest/recipes-test/<recipe>/test_recipe.inc"""
+        """Return absolute path of meta-selftest/recipes-test/<recipe>/test_recipe.inc"""
         return os.path.join(self.testlayer_path, 'recipes-test', recipe, 'test_recipe.inc')
 
     def write_recipeinc(self, recipe, data):
-        """Write to meta-sefltest/recipes-test/<recipe>/test_recipe.inc"""
+        """Write to meta-selftest/recipes-test/<recipe>/test_recipe.inc"""
         inc_file = self.recipeinc(recipe)
         self.logger.debug("Writing to: %s\n%s\n" % (inc_file, data))
         ftools.write_file(inc_file, data)
         return inc_file
 
     def append_recipeinc(self, recipe, data):
-        """Append data to meta-sefltest/recipes-test/<recipe>/test_recipe.inc"""
+        """Append data to meta-selftest/recipes-test/<recipe>/test_recipe.inc"""
         inc_file = self.recipeinc(recipe)
         self.logger.debug("Appending to: %s\n%s\n" % (inc_file, data))
         ftools.append_file(inc_file, data)
         return inc_file
 
     def remove_recipeinc(self, recipe, data):
-        """Remove data from meta-sefltest/recipes-test/<recipe>/test_recipe.inc"""
+        """Remove data from meta-selftest/recipes-test/<recipe>/test_recipe.inc"""
         inc_file = self.recipeinc(recipe)
         self.logger.debug("Removing from: %s\n%s\n" % (inc_file, data))
         ftools.remove_from_file(inc_file, data)
 
     def delete_recipeinc(self, recipe):
-        """Delete meta-sefltest/recipes-test/<recipe>/test_recipe.inc file"""
+        """Delete meta-selftest/recipes-test/<recipe>/test_recipe.inc file"""
         inc_file = self.recipeinc(recipe)
         self.logger.debug("Deleting file: %s" % inc_file)
         try:

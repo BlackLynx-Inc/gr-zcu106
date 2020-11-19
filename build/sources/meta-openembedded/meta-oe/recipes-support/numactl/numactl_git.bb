@@ -5,21 +5,20 @@ to run other programs with a specific NUMA policy and a libnuma to do \
 allocations with NUMA policy in applications."
 LICENSE = "GPL-2.0 & LGPL-2.1"
 SECTION = "apps"
-RDEPENDS_${PN} = "perl"
 
 inherit autotools-brokensep ptest
 
-LIC_FILES_CHKSUM = "file://README;beginline=19;endline=32;md5=5644cc3851cb2499f6c48e52fe198bd9"
+LIC_FILES_CHKSUM = "file://README.md;beginline=19;endline=32;md5=f8ff2391624f28e481299f3f677b21bb"
 
-SRCREV = "ea3a70681c2f523fe58e1d44527f478ca76db74e"
-PV = "2.0.11+git${SRCPV}"
+SRCREV = "5d9f16722e3df49dc618a9f361bd482559695db7"
+PV = "2.0.13+git${SRCPV}"
 
 SRC_URI = "git://github.com/numactl/numactl \
-    file://fix-null-pointer.patch \
     file://Fix-the-test-output-format.patch \
     file://Makefile \
     file://run-ptest \
     file://0001-define-run-test-target.patch \
+    file://0001-numademo-fix-error-on-32bit-system.patch \
 "
 
 S = "${WORKDIR}/git"

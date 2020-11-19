@@ -1,10 +1,3 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+require ${@bb.utils.contains('DISTRO_FEATURES', 'virtualization', '${BPN}_virtualization.inc', '', d)}
+require ${@bb.utils.contains('DISTRO_FEATURES', 'vmsep', '${BPN}_vmsep.inc', '', d)}
 
-SRC_URI += " \
-	    file://lspci.cfg \
-	    file://lsusb.cfg \
-	    file://mdev.cfg \
-	    file://mount-cifs.cfg \
-	    file://ps-extras.cfg \
-	    file://getopt.cfg \
-           "

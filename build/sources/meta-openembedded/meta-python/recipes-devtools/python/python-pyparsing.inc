@@ -1,10 +1,10 @@
 SUMMARY = "Python parsing module"
 HOMEPAGE = "http://pyparsing.wikispaces.com/"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=fb46329938e6bc829b256e37d5c1e31a"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=657a566233888513e1f07ba13e2f47f1"
 
-SRC_URI[md5sum] = "0214e42d63af850256962b6744c948d9"
-SRC_URI[sha256sum] = "0832bcf47acd283788593e7a0f542407bd9550a55a8a8435214a1960e04bcb04"
+SRC_URI[md5sum] = "46d02cbe0461fe0571d51649e6006ef5"
+SRC_URI[sha256sum] = "6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80"
 
 inherit pypi
 
@@ -18,4 +18,4 @@ RDEPENDS_${PN} += " \
     ${PYTHON_PN}-threading \
 "
 
-BBCLASSEXTEND = "native"
+BBCLASSEXTEND = "native nativesdk"

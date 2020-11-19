@@ -10,19 +10,11 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
-DEPENDS += "qtdeclarative"
-
-RDEPENDS_${PN}-dev = ""
+DEPENDS += "qtdeclarative qtdeclarative-native"
 
 FILES_${PN}-qmlplugins += " \
   ${OE_QMAKE_PATH_QML}/QtQuick/Controls/Shaders \
   ${OE_QMAKE_PATH_QML}/QtQuick/Dialogs/qml/icons.ttf \
 "
 
-# Patches from https://github.com/meta-qt5/qtquickcontrols/commits/b5.9
-# 5.9.meta-qt5.6
-SRC_URI += " \
-    file://0001-texteditor-fix-invalid-use-of-incomplete-type-class-.patch \
-"
-
-SRCREV = "ca6bba7163850222ea8b71dd7db9c70de56a0d4e"
+SRCREV = "9a5e84b8f9ca0eeda8170eb93c093f3ab25de988"

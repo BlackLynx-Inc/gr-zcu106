@@ -2,7 +2,7 @@ DESCRIPTION = "PetaLinux Qt additional supported packages"
 
 inherit packagegroup distro_features_check
 
-ANY_OF_DISTRO_FEATURES = "x11 fbdev opengl"
+ANY_OF_DISTRO_FEATURES = "x11 fbdev wayland"
 
 QT_EXTENDED_PACKAGES = " \
 	ruby \
@@ -10,13 +10,11 @@ QT_EXTENDED_PACKAGES = " \
 	qtbase-mkspecs \
 	qtbase-plugins \
 	qtsystems-mkspecs \
-	qttranslations-qt \
 	qttranslations-qtbase \
 	qttranslations-qthelp \
 	qtconnectivity-mkspecs \
 	qttranslations-qtconnectivity \
 	qtdeclarative-mkspecs \
-	qttranslations-qmlviewer \
 	qttranslations-qtdeclarative \
 	qtenginio-mkspecs \
 	qtimageformats-plugins \
@@ -36,6 +34,7 @@ QT_EXTENDED_PACKAGES = " \
 	qtxmlpatterns-mkspecs \
 	qttranslations-qtxmlpatterns \
 	qtwebkit-mkspecs \
-	qtx11extras \
+	${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'qtx11extras', '', d)} \
+	qtgraphicaleffects-qmlplugins \
 	"
 RDEPENDS_${PN} = "${QT_EXTENDED_PACKAGES}"

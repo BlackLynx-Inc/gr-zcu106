@@ -29,22 +29,52 @@ def pcbios(d):
 PCBIOS = "${@pcbios(d)}"
 PCBIOS_CLASS = "${@['','syslinux'][d.getVar('PCBIOS') == '1']}"
 
+# efi_populate_common DEST BOOTLOADER
+efi_populate_common() {
+        # DEST must be the root of the image so that EFIDIR is not
+        # nested under a top level directory.
+        DEST=$1
+
+        install -d ${DEST}${EFIDIR}
+
+        install -m 0644 ${DEPLOY_DIR_IMAGE}/$2-${EFI_BOOT_IMAGE} ${DEST}${EFIDIR}/${EFI_BOOT_IMAGE}
+        EFIPATH=$(echo "${EFIDIR}" | sed 's/\//\\/g')
+        printf 'fs0:%s\%s\n' "$EFIPATH" "${EFI_BOOT_IMAGE}" >${DEST}/startup.nsh
+}
+
+efi_iso_populate() {
+        iso_dir=$1
+        efi_populate $iso_dir
+        # Build a EFI directory to create efi.img
+        mkdir -p ${EFIIMGDIR}/${EFIDIR}
+        cp $iso_dir/${EFIDIR}/* ${EFIIMGDIR}${EFIDIR}
+        cp $iso_dir/${KERNEL_IMAGETYPE} ${EFIIMGDIR}
+
+        EFIPATH=$(echo "${EFIDIR}" | sed 's/\//\\/g')
+        printf 'fs0:%s\%s\n' "$EFIPATH" "${EFI_BOOT_IMAGE}" >${EFIIMGDIR}/startup.nsh
+
+        if [ -f "$iso_dir/initrd" ] ; then
+                cp $iso_dir/initrd ${EFIIMGDIR}
+        fi
+}
+
+efi_hddimg_populate() {
+	efi_populate $1
+}
+
 inherit ${EFI_CLASS}
 inherit ${PCBIOS_CLASS}
-
-KERNEL_IMAGETYPE ??= "bzImage"
-VM_DEFAULT_KERNEL ??= "${KERNEL_IMAGETYPE}"
 
 populate_kernel() {
 	dest=$1
 	install -d $dest
 
 	# Install bzImage, initrd, and rootfs.img in DEST for all loaders to use.
-	bbnote "Trying to install ${DEPLOY_DIR_IMAGE}/${VM_DEFAULT_KERNEL} as $dest/vmlinuz"
-	if [ -e ${DEPLOY_DIR_IMAGE}/${VM_DEFAULT_KERNEL} ]; then
-		install -m 0644 ${DEPLOY_DIR_IMAGE}/${VM_DEFAULT_KERNEL} $dest/vmlinuz
+	bbnote "Trying to install ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE} as $dest/${KERNEL_IMAGETYPE}"
+	if [ -e ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE} ]; then
+		install -m 0644 ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE} $dest/${KERNEL_IMAGETYPE}
 	else
-		bbwarn "${DEPLOY_DIR_IMAGE}/${VM_DEFAULT_KERNEL} doesn't exist"
+		bbwarn "${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE} doesn't exist"
 	fi
 
 	# initrd is made of concatenation of multiple filesystem images

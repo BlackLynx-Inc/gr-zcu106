@@ -13,10 +13,10 @@ DEPENDS = "\
           "
 
 SRC_URI = "git://github.com/opencontainers/image-tools.git \
-           file://0001-image-manifest-Recursively-remove-pre-existing-entri.patch \
-           file://0002-image-manifest-Split-unpackLayerEntry-into-its-own-f.patch"
+           file://0001-config-make-Config.User-mapping-errors-a-warning.patch \
+           file://0001-tool-respect-GO-and-GOBUILDFLAGS-when-building.patch"
 
-SRCREV = "4abe1a166f9be97e8e71b1bb4d7599cc29323011"
+SRCREV = "93db3b16e6738bf9b8bee47d86ac93be5340838b"
 PV = "0.2.0-dev+git${SRCPV}"
 GO_IMPORT = "import"
 
@@ -60,4 +60,4 @@ do_install() {
 	install ${S}/src/import/oci-image-tool ${D}/${sbindir}/
 }
 
-INSANE_SKIP_${PN} += "ldflags"
+INSANE_SKIP_${PN} += "ldflags textrel"

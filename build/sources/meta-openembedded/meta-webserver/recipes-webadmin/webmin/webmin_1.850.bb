@@ -24,6 +24,9 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/webadmin/webmin-${PV}.tar.gz \
 SRC_URI[md5sum] = "cd6ee98f73f9418562197675b952d81b"
 SRC_URI[sha256sum] = "c66caa9e4cb50d5447bc8aceb7989d2284dde060278f404b13e171c7ce1690e1"
 
+UPSTREAM_CHECK_URI = "http://www.webmin.com/download.html"
+UPSTREAM_CHECK_REGEX = "webmin-(?P<pver>\d+(\.\d+)+).tar.gz"
+
 inherit perlnative update-rc.d systemd
 
 do_configure() {
@@ -157,8 +160,8 @@ python populate_packages_prepend() {
         elif os.path.exists(themeinfo):
             themes.append(mod)
 
-    do_split_packages(d, wadir, '^(%s)$' % "|".join(modules), 'webmin-module-%s', 'Webmin module for %s', allow_dirs=True, prepend=True)
-    do_split_packages(d, wadir, '^(%s)$' % "|".join(themes), 'webmin-theme-%s', 'Webmin theme for %s', allow_dirs=True, prepend=True)
+    do_split_packages(d, wadir, '^(%s)$' % "|".join(modules), 'webmin-module-%s', 'Webmin module for %s', extra_depends='perl', allow_dirs=True, prepend=True)
+    do_split_packages(d, wadir, '^(%s)$' % "|".join(themes), 'webmin-theme-%s', 'Webmin theme for %s', extra_depends='perl', allow_dirs=True, prepend=True)
 }
 
 # Time-savers

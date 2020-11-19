@@ -1,10 +1,10 @@
 SUMMARY = "Python HTTP library with thread-safe connection pooling, file post support, sanity friendly, and more"
 HOMEPAGE = "https://github.com/shazow/urllib3"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=ea114851ad9a8c311aac8728a681a067"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=65715c2eb961313d71b297dd5a04f85e"
 
-SRC_URI[md5sum] = "0da7bed3fe94bf7dc59ae37885cc72f7"
-SRC_URI[sha256sum] = "cc44da8e1145637334317feebd728bd869a35285b93cbb4cca2577da7e62db4f"
+SRC_URI[md5sum] = "a7504a9fcb7ed4ffa482fe098c80b6d4"
+SRC_URI[sha256sum] = "9a107b99a5393caf59c7aa3c1249c16e6879447533d0887f4336dde834c7be86"
 
 RDEPENDS_${PN} += "\
     ${PYTHON_PN}-certifi \
@@ -15,5 +15,7 @@ RDEPENDS_${PN} += "\
     ${PYTHON_PN}-pyopenssl \
     ${PYTHON_PN}-threading \
 "
+
+CVE_PRODUCT = "urllib3"
 
 BBCLASSEXTEND = "native nativesdk"

@@ -19,7 +19,7 @@ Getting Started
 
 Download the Repo script:
 
-    $ curl -k https://storage.googleapis.com/git-repo-downloads/repo > repo
+    $ curl https://storage.googleapis.com/git-repo-downloads/repo > repo
 
 Make it executable:
 
@@ -42,15 +42,24 @@ Create an empty directory to hold your working files:
     $ mkdir -p $XILINX_SOURCES
     $ cd $XILINX_SOURCES
 
-To use the release branch, type:
+Tell Repo where to find the manifest:
 
-    $ repo init -u git://github.com/Xilinx/yocto-manifests.git -b rel-v2018.3
+    $ repo init -u git://gitenterprise.xilinx.com/Yocto/yocto-manifests.git
 
 A successful initialization will end with a message stating that Repo is
 initialized in your working directory. Your directory should now contain a
 .repo directory where repo control files such as the manifest are stored but
 you should not need to touch this directory.
 
+To test out a known stable yocto version (example: fido), type:
+
+    $ repo init -u git://gitenterprise.xilinx.com/Yocto/yocto-manifests.git -m meta-xilinx.xml -b fido
+    $ repo sync
+
+To get back to the latest master branch, type:
+
+    $ repo init -u git://gitenterprise.xilinx.com/Yocto/yocto-manifests.git -m meta-xilinx.xml -b master
+    $ repo sync
 
 To learn more about repo, look at http://source.android.com/source/version-control.html
 ***
@@ -73,9 +82,9 @@ Customize
 Sooner or later, you'll want to customize the Repo manifest to point at
 different repositories and branches or pull in additional meta-layers.
 
-Clone this repository (or fork it on github):
+Clone this repository (or fork it on gitenterprise):
 
-    $ git clone git://github.com/Xilinx/yocto-manifests.git
+    $ git clone git://gitenterprise.xilinx.com/Yocto/yocto-manifests.git
 
 Make your changes (and contribute them back if they are generally useful), and
 then re-initialize your repo client

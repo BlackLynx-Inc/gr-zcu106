@@ -16,7 +16,7 @@ DEPENDS += "bridge-utils openssl python3 perl python3-six-native coreutils-nativ
 RDEPENDS_${PN} += "util-linux-uuidgen util-linux-libuuid coreutils \
         python3 perl perl-module-strict ${PN}-switch \
         bash python3-twisted python3-six"
-RDEPENDS_${PN}-testcontroller = "${PN} lsb ${PN}-pki"
+RDEPENDS_${PN}-testcontroller = "${PN} ${PN}-pki"
 RDEPENDS_${PN}-switch = "${PN} openssl procps util-linux-uuidgen"
 RDEPENDS_${PN}-pki = "${PN}"
 RDEPENDS_${PN}-brcompat = "${PN} ${PN}-switch"
@@ -63,6 +63,8 @@ FILES_${PN}-switch = "\
 	${systemd_unitdir}/system/ovs-vswitchd.service \
 	${systemd_unitdir}/system/openvswitch.service \
 	${systemd_unitdir}/system/ovsdb-server.service \
+	${sysconfdir}/sysconfig/openvswitch \
+	${sysconfdir}/openvswitch/default.conf \
 	"
 
 # silence a warning
@@ -92,6 +94,14 @@ do_configure_prepend() {
 	CC=`echo '${CC}' | sed 's/-Wa,/-Xassembler /g'`
 }
 
+do_install_prepend() {
+	SERVICE_FILE="${S}/rhel/usr_lib_systemd_system_ovs-vswitchd.service"
+	${S}/build-aux/dpdkstrip.py \
+	    ${@bb.utils.contains('PACKAGECONFIG','dpdk','--dpdk','--nodpdk',d)} \
+	    < ${S}/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in \
+	    > ${SERVICE_FILE}
+}
+
 do_install_append() {
 	install -d ${D}/${sysconfdir}/default/
 	install -m 660 ${WORKDIR}/openvswitch-switch-setup ${D}/${sysconfdir}/default/openvswitch-switch
@@ -103,6 +113,14 @@ do_install_append() {
 	install -m 755 ${WORKDIR}/openvswitch-switch ${D}/${sysconfdir}/init.d/openvswitch-switch
 	true || rm -fr ${D}/${datadir}/${PN}/pki
 
+	install -d ${D}/${sysconfdir}/sysconfig
+	install -m 644 ${S}/rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template \
+		${D}/${sysconfdir}/sysconfig/openvswitch
+
+	install -d ${D}/${sysconfdir}/openvswitch
+	install -m 644 ${S}/rhel/etc_openvswitch_default.conf \
+		${D}/${sysconfdir}/openvswitch/default.conf
+
 	install -d ${D}/${systemd_unitdir}/system/
 	install -m 644 ${S}/rhel/usr_lib_systemd_system_ovs-vswitchd.service \
 		${D}/${systemd_unitdir}/system/ovs-vswitchd.service
@@ -111,27 +129,21 @@ do_install_append() {
 	install -m 644 ${S}/rhel/usr_lib_systemd_system_ovsdb-server.service \
 		${D}/${systemd_unitdir}/system/ovsdb-server.service
 
+	install -d ${D}/usr/share/openvswitch/scripts/
+	install -m 755 ${S}/rhel/usr_share_openvswitch_scripts_ovs-systemd-reload ${D}/usr/share/openvswitch/scripts/ovs-systemd-reload
+
 	oe_runmake modules_install INSTALL_MOD_PATH=${D}
 	install -d ${D}${libdir}/python${PYTHON_BASEVERSION}/site-packages
 	cp -r ${S}/python/ovstest/ ${D}${libdir}/python${PYTHON_BASEVERSION}/site-packages/
 }
 
-pkg_postinst_${PN}-pki () {
-	# can't do this offline
-	if [ "x$D" != "x" ]; then
-		exit 1
-	fi
+pkg_postinst_ontarget_${PN}-pki () {
 	if test ! -d $D/${datadir}/${PN}/pki; then
 		ovs-pki init --dir=$D/${datadir}/${PN}/pki
 	fi
 }
 
-pkg_postinst_${PN}-testcontroller () {
-	# can't do this offline
-	if [ "x$D" != "x" ]; then
-		exit 1
-	fi
-
+pkg_postinst_ontarget_${PN}-testcontroller () {
 	if test ! -d $D/${datadir}/${PN}/pki; then
 		ovs-pki init --dir=$D/${datadir}/${PN}/pki
 	fi

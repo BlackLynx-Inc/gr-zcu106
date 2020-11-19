@@ -43,8 +43,12 @@ do_install_append_class-nativesdk() {
 	create_wrapper ${D}/${bindir}/flex M4=${M4}
 }
 
+PACKAGES =+ "${PN}-libfl"
+
+FILES_${PN}-libfl = "${libdir}/libfl.so.* ${libdir}/libfl_pic.so.*"
+
 RDEPENDS_${PN} += "m4"
-RDEPENDS_${PN}-ptest += "bash gawk"
+RDEPENDS_${PN}-ptest += "bash gawk make"
 
 do_compile_ptest() {
 	oe_runmake -C ${B}/tests -f ${B}/tests/Makefile top_builddir=${B} INCLUDES=-I${S}/src buildtests
@@ -64,3 +68,6 @@ do_install_ptest() {
 	    -e 's/^builddir = \(.*\)/builddir = ./' -e 's/^top_builddir = \(.*\)/top_builddir = ./' \
 	    -i ${D}${PTEST_PATH}/Makefile
 }
+
+# Not Apache Flex, or Adobe Flex, or IBM Flex.
+CVE_PRODUCT = "flex_project:flex"

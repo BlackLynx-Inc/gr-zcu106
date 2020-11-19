@@ -8,6 +8,7 @@ DEPENDS = " \
     gdk-pixbuf-native \
     intltool-native \
     libxslt-native \
+    dbus-glib \
     gtk+ \
     babl \
     gegl \
@@ -24,7 +25,9 @@ DEPENDS = " \
 "
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxmu libxpm', '', d)}"
 
-inherit gnome gtk-doc
+inherit distro_features_check gnomebase gtk-icon-cache gtk-doc
+
+REQUIRED_DISTRO_FEATURES = "x11"
 
 SRC_URI = "http://ftp.gimp.org/pub/gimp/v2.8/gimp-${PV}.tar.bz2 \
            file://0001-configure-ac-do-not-check-for-freetype-config.patch \

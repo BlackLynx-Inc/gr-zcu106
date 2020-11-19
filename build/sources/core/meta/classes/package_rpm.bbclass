@@ -36,7 +36,7 @@ def write_rpm_perfiledata(srcname, d):
     pkgd = d.getVar('PKGD')
 
     def dump_filerdeps(varname, outfile, d):
-        outfile.write("#!/usr/bin/env python\n\n")
+        outfile.write("#!/usr/bin/env python3\n\n")
         outfile.write("# Dependency table\n")
         outfile.write('deps = {\n')
         for pkg in packages.split():
@@ -113,6 +113,10 @@ python write_specfile () {
             source_list = os.listdir(ar_outdir)
             source_number = 0
             for source in source_list:
+                # do_deploy_archives may have already run (from sstate) meaning a .src.rpm may already 
+                # exist in ARCHIVER_OUTDIR so skip if present.
+                if source.endswith(".src.rpm"):
+                    continue
                 # The rpmbuild doesn't need the root permission, but it needs
                 # to know the file's user and group name, the only user and
                 # group in fakeroot is "root" when working in fakeroot.
@@ -382,6 +386,12 @@ python write_specfile () {
 
         # Gather special src/first package data
         if srcname == splitname:
+            archiving = d.getVarFlag('ARCHIVER_MODE', 'srpm') == '1' and \
+                        bb.data.inherits_class('archiver', d)
+            if archiving and srclicense != splitlicense:
+                bb.warn("The SRPM produced may not have the correct overall source license in the License tag. This is due to the LICENSE for the primary package and SRPM conflicting.")
+
+            srclicense     = splitlicense
             srcrdepends    = splitrdepends
             srcrrecommends = splitrrecommends
             srcrsuggests   = splitrsuggests
@@ -399,7 +409,6 @@ python write_specfile () {
             if not file_list and localdata.getVar('ALLOW_EMPTY', False) != "1":
                 bb.note("Not creating empty RPM package for %s" % splitname)
             else:
-                bb.note("Creating RPM package for %s" % splitname)
                 spec_files_top.append('%files')
                 if extra_pkgdata:
                     package_rpm_extra_pkgdata(splitname, spec_files_top, localdata)
@@ -408,7 +417,7 @@ python write_specfile () {
                     bb.note("Creating RPM package for %s" % splitname)
                     spec_files_top.extend(file_list)
                 else:
-                    bb.note("Creating EMPTY RPM Package for %s" % splitname)
+                    bb.note("Creating empty RPM package for %s" % splitname)
                 spec_files_top.append('')
             continue
 
@@ -421,8 +430,7 @@ python write_specfile () {
             spec_preamble_bottom.append('Release: %s' % splitrelease)
         if srcepoch != splitepoch:
             spec_preamble_bottom.append('Epoch: %s' % splitepoch)
-        if srclicense != splitlicense:
-            spec_preamble_bottom.append('License: %s' % splitlicense)
+        spec_preamble_bottom.append('License: %s' % splitlicense)
         spec_preamble_bottom.append('Group: %s' % splitsection)
 
         if srccustomtagschunk != splitcustomtagschunk:
@@ -501,7 +509,7 @@ python write_specfile () {
                 bb.note("Creating RPM package for %s" % splitname)
                 spec_files_bottom.extend(file_list)
             else:
-                bb.note("Creating EMPTY RPM Package for %s" % splitname)
+                bb.note("Creating empty RPM package for %s" % splitname)
             spec_files_bottom.append('')
 
         del localdata
@@ -672,6 +680,8 @@ python do_package_rpm () {
     cmd = cmd + " --define '_build_id_links none'"
     cmd = cmd + " --define '_binary_payload w6T.xzdio'"
     cmd = cmd + " --define '_source_payload w6T.xzdio'"
+    cmd = cmd + " --define 'clamp_mtime_to_source_date_epoch 1'"
+    cmd = cmd + " --define '_buildhost reproducible'"
     if perfiledeps:
         cmd = cmd + " --define '__find_requires " + outdepends + "'"
         cmd = cmd + " --define '__find_provides " + outprovides + "'"
@@ -683,7 +693,7 @@ python do_package_rpm () {
     cmd = cmd + " --define '_tmppath " + workdir + "'"
     if d.getVarFlag('ARCHIVER_MODE', 'srpm') == '1' and bb.data.inherits_class('archiver', d):
         cmd = cmd + " --define '_sourcedir " + d.getVar('ARCHIVER_OUTDIR') + "'"
-        cmdsrpm = cmd + " --define '_srcrpmdir " + d.getVar('ARCHIVER_OUTDIR') + "'"
+        cmdsrpm = cmd + " --define '_srcrpmdir " + d.getVar('ARCHIVER_RPMOUTDIR') + "'"
         cmdsrpm = cmdsrpm + " -bs " + outspecfile
         # Build the .src.rpm
         d.setVar('SBUILDSPEC', cmdsrpm + "\n")

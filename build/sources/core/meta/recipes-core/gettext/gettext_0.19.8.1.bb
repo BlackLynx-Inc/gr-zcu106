@@ -8,8 +8,11 @@ SECTION = "libs"
 LICENSE = "GPLv3+ & LGPL-2.1+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-DEPENDS = "gettext-native virtual/libiconv expat"
-DEPENDS_class-native = "gettext-minimal-native"
+# Because po-gram-gen.y has been modified by fix-CVE-2018-18751.patch,
+# it requires yacc which provided by bison-native
+# Please remove bison-native from DEPENDS* when next upgrade
+DEPENDS = "bison-native gettext-native virtual/libiconv"
+DEPENDS_class-native = "bison-native gettext-minimal-native"
 PROVIDES = "virtual/libintl virtual/gettext"
 PROVIDES_class-native = "virtual/gettext-native"
 RCONFLICTS_${PN} = "proxy-libintl"
@@ -17,14 +20,16 @@ SRC_URI = "${GNU_MIRROR}/gettext/gettext-${PV}.tar.gz \
 	   file://parallel.patch \
 	   file://add-with-bisonlocaledir.patch \
 	   file://cr-statement.c-timsort.h-fix-formatting-issues.patch \
+	   file://use-pkgconfig.patch \
+	   file://fix-CVE-2018-18751.patch \
+	   file://run-ptest \
+	   file://serial-tests-config.patch \
 "
 
 SRC_URI[md5sum] = "97e034cf8ce5ba73a28ff6c3c0638092"
 SRC_URI[sha256sum] = "ff942af0e438ced4a8b0ea4b0b6e0d6d657157c5e2364de57baa279c1c125c43"
 
-PACKAGECONFIG[msgcat-curses] = "--with-libncurses-prefix=${STAGING_LIBDIR}/..,--disable-curses,ncurses,"
-
-inherit autotools texinfo
+inherit autotools texinfo pkgconfig ptest
 
 EXTRA_OECONF += "--without-lispdir \
                  --disable-csharp \
@@ -33,17 +38,26 @@ EXTRA_OECONF += "--without-lispdir \
                  --disable-native-java \
                  --disable-openmp \
                  --disable-acl \
-                 --with-included-glib \
                  --without-emacs \
                  --without-cvs \
                  --without-git \
-                 --with-included-libxml \
-                 --with-included-libcroco \
-                 --with-included-libunistring \
+                 --cache-file=${B}/config.cache \
                 "
 EXTRA_OECONF_append_class-target = " \
                  --with-bisonlocaledir=${datadir}/locale \
 "
+
+PACKAGECONFIG ??= "croco glib libxml"
+PACKAGECONFIG_class-native = ""
+PACKAGECONFIG_class-nativesdk = ""
+
+PACKAGECONFIG[croco] = "--without-included-libcroco,--with-included-libcroco,libcroco"
+PACKAGECONFIG[glib] = "--without-included-glib,--with-included-glib,glib-2.0"
+PACKAGECONFIG[libxml] = "--without-included-libxml,--with-included-libxml,libxml2"
+# Need paths here to avoid host contamination but this can cause RPATH warnings
+# or problems if $libdir isn't $prefix/lib.
+PACKAGECONFIG[libunistring] = "--with-libunistring-prefix=${STAGING_LIBDIR}/..,--with-included-libunistring,libunistring"
+PACKAGECONFIG[msgcat-curses] = "--with-libncurses-prefix=${STAGING_LIBDIR}/..,--disable-curses,ncurses,"
 
 acpaths = '-I ${S}/gettext-runtime/m4 \
            -I ${S}/gettext-tools/m4'
@@ -116,5 +130,59 @@ do_install_append_class-native () {
                 GETTEXTDATADIR="${STAGING_DATADIR_NATIVE}/gettext-0.19.8/"
 
 }
+
+do_compile_ptest() {
+        cd ${B}/gettext-tools/tests/
+        sed -i '/^buildtest-TESTS: /c buildtest-TESTS: $(TESTS) $(check_PROGRAMS)' Makefile
+        oe_runmake buildtest-TESTS
+        cd -
+}
+
+do_install_ptest() {
+    if [ ${PTEST_ENABLED} = "1" ]; then
+        mkdir -p                                        ${D}${PTEST_PATH}/tests
+        mkdir -p                                        ${D}${PTEST_PATH}/src
+        mkdir -p                                        ${D}${PTEST_PATH}/po
+        mkdir -p                                        ${D}${PTEST_PATH}/misc
+        cp -rf ${S}/gettext-tools/tests/*               ${D}${PTEST_PATH}/tests
+        cp -rf ${B}/gettext-tools/tests/.libs/*         ${D}${PTEST_PATH}/tests
+        cp -rf ${B}/gettext-runtime/intl/.libs/libgnuintl.so.8*         ${D}${libdir}/
+        cp -rf ${B}/gettext-tools/tests/Makefile        ${D}${PTEST_PATH}/tests
+        sed -i '/^Makefile:/c Makefile:'                ${D}${PTEST_PATH}/tests/Makefile
+        sed -i -e 's:CONFIG_SHELL=.*:& LOCALE_FR='fr_FR.iso88591' LOCALE_FR_UTF8='fr_FR.utf8' LOCALE_JA='ja_JP.eucjp':g' \
+            -e 's:lang-c lang-c++:lang-c++:g' ${D}${PTEST_PATH}/tests/Makefile
+        install ${S}/gettext-tools/src/msgunfmt.tcl     ${D}${PTEST_PATH}/src
+        install ${S}/gettext-tools/src/project-id       ${D}${PTEST_PATH}/src
+        install ${B}/gettext-runtime/src/gettext.sh     ${D}${PTEST_PATH}/src
+        install ${B}/gettext-runtime/src/ngettext       ${D}${PTEST_PATH}/src
+        install ${B}/gettext-runtime/src/envsubst       ${D}${PTEST_PATH}/src
+        install ${B}/gettext-runtime/src/gettext        ${D}${PTEST_PATH}/src
+        install ${B}/gettext-tools/src/.libs/cldr-plurals   ${D}${PTEST_PATH}/src
+        install ${S}/gettext-tools/po/gettext-tools.pot ${D}${PTEST_PATH}/po
+        install ${B}/gettext-tools/misc/*       ${D}${PTEST_PATH}/misc
+        find ${D}${PTEST_PATH}/ -name "*.o" -exec rm {} \;
+        chmod 0755 ${D}${PTEST_PATH}/tests/lang-vala ${D}${PTEST_PATH}/tests/plural-1 ${D}${PTEST_PATH}/tests/xgettext-tcl-4 \
+                   ${D}${PTEST_PATH}/tests/xgettext-vala-1  ${D}${PTEST_PATH}/tests/xgettext-po-2
+    fi
+}
+
+RDEPENDS_${PN}-ptest += "make"
+RDEPENDS_${PN}-ptest_append_libc-glibc = "\
+    glibc-gconv-big5 \
+    glibc-charmap-big5 \
+    glibc-gconv-cp1251 \
+    glibc-charmap-cp1251 \
+    glibc-charmap-iso-8859-9 \
+    glibc-gconv-iso8859-9 \
+    glibc-charmap-koi8-r \
+    glibc-gconv-koi8-r \
+    glibc-gconv-iso8859-2 \
+    glibc-charmap-iso-8859-2 \
+    glibc-gconv-euc-kr \
+    glibc-charmap-euc-kr \
+"
+
+INSANE_SKIP_${PN}-ptest += "ldflags"
+INSANE_SKIP_${PN}-ptest += "rpaths"
 
 BBCLASSEXTEND = "native nativesdk"

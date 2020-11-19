@@ -3,7 +3,7 @@
 # Provides functions for register settings for performance and DRM settings and
 # also some basic utility functions to kill processes, display error message e.t.c
 #
-# Copyright (C) 2017 Xilinx
+# Copyright (C) 2019 Xilinx
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -117,16 +117,25 @@ catchCTRL_C() {
 ##############################################################################################
 RegSetting () {
 	# Qos = 3 for VCU
-	devmem 0xfd380008 w 0x3
-	devmem 0xfd38001c w 0x3
-	devmem 0xfd3b0008 w 0x3
+	devmem 0xfd3b0008 w 0x3   #DEC0, DEC1<->HP3_FPD
 	devmem 0xfd3b001c w 0x3
+	devmem 0xfd3b0004 w 0xf
+	devmem 0xfd3b0018 w 0xf
 
-	# 16 outstanding request for VCU
-	devmem 0xfd380004 w 0xF
-	devmem 0xfd3B0004 w 0xF
-	devmem 0xfd380018 w 0xF
-	devmem 0xfd3B0018 w 0xF
+	devmem 0xfd390008 w 0x3    #ENC1<->HP1_FPD
+	devmem 0xfd39001c w 0x3
+	devmem 0xfd390004 w 0xf
+	devmem 0xfd390018 w 0xf
+
+	devmem 0xfd3a0008 w 0x3    #ENC0<->HP2_FPD
+	devmem 0xfd3a001c w 0x3
+	devmem 0xfd3a0004 w 0xf
+	devmem 0xfd3a0018 w 0xf
+
+	devmem 0xfd360008 w 0x3     #MCU<->HPC0
+	devmem 0xfd36001c w 0x3
+	devmem 0xfd360004 w 0x7
+	devmem 0xfd360018 w 0x7
 }
 
 ##############################################################################################

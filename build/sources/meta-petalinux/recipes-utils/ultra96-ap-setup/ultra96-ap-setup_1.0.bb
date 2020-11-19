@@ -2,7 +2,7 @@ DESCRIPTION = "Creates access point(AP) on ultra96"
 SUMMARY = "Reads MAC address from board and splits the interface to create AP"
 
 LICENSE = "Proprietary"
-LIC_FILES_CHKSUM = "file://ap.sh;beginline=2;endline=30;md5=3e767e675389338fba2ac437bc0d83a4"
+LIC_FILES_CHKSUM = "file://ap.sh;beginline=2;endline=26;md5=27af9029002476f1d14c5035d94e65e7"
 
 SRC_URI = "file://ap.sh \
 	file://udhcpd.conf \
@@ -19,6 +19,8 @@ INITSCRIPT_PARAMS = "start 99 S ."
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE_ultra96-zynqmp = "ultra96-zynqmp"
+
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 RDEPENDS_${PN} = "wpa-supplicant busybox"
 

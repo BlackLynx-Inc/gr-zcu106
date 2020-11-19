@@ -1,15 +1,19 @@
 require pseudo.inc
 
-SRCREV = "02168305b0a19f981ffe857f36eb256ba8810b77"
-PV = "1.8.2+git${SRCPV}"
-
-DEFAULT_PREFERENCE = "-1"
-
 SRC_URI = "git://git.yoctoproject.org/pseudo \
            file://0001-configure-Prune-PIE-flags.patch \
            file://fallback-passwd \
            file://fallback-group \
-           file://moreretries.patch"
+           file://moreretries.patch \
+           file://toomanyfiles.patch \
+           file://0001-maketables-wrappers-use-Python-3.patch \
+           file://0001-Add-statx.patch \
+           file://0001-realpath.c-Remove-trailing-slashes.patch \
+           "
 
+SRCREV = "060058bb29f70b244e685b3c704eb0641b736f73"
 S = "${WORKDIR}/git"
+PV = "1.9.0+git${SRCPV}"
 
+# error: use of undeclared identifier '_STAT_VER'
+COMPATIBLE_HOST_libc-musl = 'null'

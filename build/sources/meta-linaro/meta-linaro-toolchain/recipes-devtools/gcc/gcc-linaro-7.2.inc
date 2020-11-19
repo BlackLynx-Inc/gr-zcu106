@@ -10,8 +10,8 @@ BINV = "${BASEPV}.1"
 
 FILESEXTRAPATHS =. "${FILE_DIRNAME}/gcc-${BASEPV}:${FILE_DIRNAME}/gcc-${BASEPV}/backport:"
 
-DEPENDS =+ "mpfr gmp libmpc zlib"
-NATIVEDEPS = "mpfr-native gmp-native libmpc-native zlib-native"
+DEPENDS =+ "mpfr gmp libmpc zlib flex-native"
+NATIVEDEPS = "mpfr-native gmp-native libmpc-native zlib-native flex-native"
 
 LICENSE = "GPL-3.0-with-GCC-exception & GPLv3"
 
@@ -66,7 +66,7 @@ SRC_URI = "\
            file://0037-Search-target-sysroot-gcc-version-specific-dirs-with.patch \
            file://0038-Fix-various-_FOR_BUILD-and-related-variables.patch \
            file://0039-nios2-Define-MUSL_DYNAMIC_LINKER.patch \
-           file://0040-ssp_nonshared.patch \
+           file://0040-Add-ssp_nonshared-to-link-commandline-for-musl-targe.patch \
            file://0041-gcc-libcpp-support-ffile-prefix-map-old-new.patch \
            file://0042-Reuse-fdebug-prefix-map-to-replace-ffile-prefix-map.patch \
            file://0043-gcc-final.c-fdebug-prefix-map-support-to-remap-sourc.patch \
@@ -88,15 +88,17 @@ FORTRAN = ""
 JAVA = ""
 
 LTO = "--enable-lto"
+SSP ?= "--disable-libssp"
+SSP_mingw32 = "--enable-libssp"
 
 EXTRA_OECONF_BASE = "\
     ${LTO} \
-    --enable-libssp \
+    ${SSP} \
     --enable-libitm \
     --disable-bootstrap \
     --disable-libmudflap \
     --with-system-zlib \
-    --with-linker-hash-style=${LINKER_HASH_STYLE} \
+    ${@'--with-linker-hash-style=${LINKER_HASH_STYLE}' if '${LINKER_HASH_STYLE}' else ''} \
     --enable-linker-build-id \
     --with-ppl=no \
     --with-cloog=no \
@@ -113,12 +115,11 @@ EXTRA_OECONF_INITIAL = "\
     --with-system-zlib \
     --disable-lto \
     --disable-plugin \
+    --enable-linker-build-id \
     --enable-decimal-float=no \
     --without-isl \
-    gcc_cv_libc_provides_ssp=yes \
+    --disable-libssp \
 "
-
-EXTRA_OECONF_append_libc-uclibc = " --disable-decimal-float "
 
 EXTRA_OECONF_append_aarchilp32 = " --with-abi=ilp32"
 

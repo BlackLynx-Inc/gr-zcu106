@@ -1,15 +1,64 @@
 SUMMARY = "Fast open source processor emulator"
+DESCRIPTION = "QEMU is a hosted virtual machine monitor: it emulates the \
+machine's processor through dynamic binary translation and provides a set \
+of different hardware and device models for the machine, enabling it to run \
+a variety of guest operating systems"
 HOMEPAGE = "http://qemu.org"
 LICENSE = "GPLv2 & LGPLv2.1"
-DEPENDS = "glib-2.0 zlib pixman"
-RDEPENDS_${PN}_class-target += "bash"
+
+RDEPENDS_${PN}-ptest = "bash make"
 
 require qemu-targets.inc
-inherit autotools pkgconfig bluetooth
-BBCLASSEXTEND = "native nativesdk"
+inherit pkgconfig ptest
+
+LIC_FILES_CHKSUM = "file://COPYING;md5=441c28d2cf86e15a37fa47e15a72fbac \
+                    file://COPYING.LIB;endline=24;md5=8c5efda6cf1e1b03dcfd0e6c0d271c7f"
+
+SRC_URI = "https://download.qemu.org/${BPN}-${PV}.tar.xz \
+           file://powerpc_rom.bin \
+           file://run-ptest \
+           file://0001-qemu-Add-missing-wacom-HID-descriptor.patch \
+           file://0002-Add-subpackage-ptest-which-runs-all-unit-test-cases-.patch \
+           file://0003-qemu-Add-addition-environment-space-to-boot-loader-q.patch \
+           file://0004-qemu-disable-Valgrind.patch \
+           file://0005-qemu-native-set-ld.bfd-fix-cflags-and-set-some-envir.patch \
+           file://0006-chardev-connect-socket-to-a-spawned-command.patch \
+           file://0007-apic-fixup-fallthrough-to-PIC.patch \
+           file://0008-linux-user-Fix-webkitgtk-hangs-on-32-bit-x86-target.patch \
+           file://0009-Fix-webkitgtk-builds.patch \
+           file://0010-configure-Add-pkg-config-handling-for-libgcrypt.patch \
+           file://CVE-2019-15890.patch \
+           file://CVE-2019-12068.patch \
+           "
+UPSTREAM_CHECK_REGEX = "qemu-(?P<pver>\d+(\.\d+)+)\.tar"
+
+SRC_URI[md5sum] = "cdf2b5ca52b9abac9bacb5842fa420f8"
+SRC_URI[sha256sum] = "656e60218689bdeec69903087fd7582d5d3e72238d02f4481d8dc6d79fd909c6"
+
+COMPATIBLE_HOST_mipsarchn32 = "null"
+COMPATIBLE_HOST_mipsarchn64 = "null"
+
+do_install_append() {
+    # Prevent QA warnings about installed ${localstatedir}/run
+    if [ -d ${D}${localstatedir}/run ]; then rmdir ${D}${localstatedir}/run; fi
+}
+
+do_compile_ptest() {
+	make buildtest-TESTS
+}
+
+do_install_ptest() {
+	cp -rL ${B}/tests ${D}${PTEST_PATH}
+	find ${D}${PTEST_PATH}/tests -type f -name "*.[Sshcod]" | xargs -i rm -rf {}
+
+	cp ${S}/tests/Makefile.include ${D}${PTEST_PATH}/tests
+	# Don't check the file genreated by configure
+	sed -i -e '/wildcard config-host.mak/d' \
+	       -e '$ {/endif/d}' ${D}${PTEST_PATH}/tests/Makefile.include
+}
 
 # QEMU_TARGETS is overridable variable
-QEMU_TARGETS ?= "arm aarch64 i386 mips mipsel mips64 mips64el ppc sh4 x86_64"
+QEMU_TARGETS ?= "arm aarch64 i386 mips mipsel mips64 mips64el ppc ppc64 riscv32 riscv64 sh4 x86_64"
 
 EXTRA_OECONF = " \
     --prefix=${prefix} \
@@ -25,16 +74,15 @@ EXTRA_OECONF = " \
     --with-confsuffix=/${BPN} \
     --disable-strip \
     --disable-werror \
-    --target-list=${@get_qemu_target_list(d)} \
     --extra-cflags='${CFLAGS}' \
+    ${PACKAGECONFIG_CONFARGS} \
     "
-EXTRA_OECONF_append_class-native = " --python=${USRBINPATH}/python2.7"
-
-EXTRA_OEMAKE_append_class-native = " LD='${LD}' AR='${AR}' OBJCOPY='${OBJCOPY}' LDFLAGS='${LDFLAGS}'"
-
-LDFLAGS_append_class-native = " -fuse-ld=bfd"
 
 export LIBTOOL="${HOST_SYS}-libtool"
+
+B = "${WORKDIR}/build"
+
+EXTRA_OECONF_append = " --python=${HOSTTOOLS_DIR}/python3"
 
 do_configure_prepend_class-native() {
 	# Append build host pkg-config paths for native target since the host may provide sdl
@@ -42,21 +90,15 @@ do_configure_prepend_class-native() {
 	if [ ! -z "$BHOST_PKGCONFIG_PATH" ]; then
 		export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BHOST_PKGCONFIG_PATH
 	fi
-
-	# Alter target makefiles to accept CFLAGS set via env
-	sed -i -r \
-		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
-		"${S}"/Makefile "${S}"/Makefile.target
 }
 
 do_configure() {
     ${S}/configure ${EXTRA_OECONF}
-    test ! -e ${S}/target-i386/beginend_funcs.sh || chmod a+x ${S}/target-i386/beginend_funcs.sh
 }
 
 do_install () {
-	export STRIP="true"
-	autotools_do_install
+	export STRIP=""
+	oe_runmake 'DESTDIR=${D}' install
 }
 
 # The following fragment will create a wrapper for qemu-mips user emulation
@@ -73,22 +115,22 @@ do_install_append() {
 }
 # END of qemu-mips workaround
 
-PACKAGECONFIG ??= " \
-	fdt sdl \
-	fdt sdl kvm \
-	${@bb.utils.filter('DISTRO_FEATURES', 'alsa xen', d)} \
-	"
-PACKAGECONFIG_class-native ??= "fdt alsa kvm"
-PACKAGECONFIG_class-nativesdk ??= "fdt sdl kvm"
+make_qemu_wrapper() {
+        gdk_pixbuf_module_file=`pkg-config --variable=gdk_pixbuf_cache_file gdk-pixbuf-2.0`
 
-# Handle distros such as CentOS 5 32-bit that do not have kvm support
-PACKAGECONFIG_class-native_remove = "${@'kvm' if not os.path.exists('/usr/include/linux/kvm.h') else ''}"
+        for tool in `ls ${D}${bindir}/qemu-system-*`; do
+                create_wrapper $tool \
+                        GDK_PIXBUF_MODULE_FILE=$gdk_pixbuf_module_file \
+                        FONTCONFIG_PATH=/etc/fonts \
+                        GTK_THEME=Adwaita
+        done
+}
 
-# Disable kvm on targets that do not support it
-PACKAGECONFIG_remove_darwin = "kvm"
-PACKAGECONFIG_remove_mingw32 = "kvm"
+# Disable kvm/virgl/mesa on targets that do not support it
+PACKAGECONFIG_remove_darwin = "kvm virglrenderer glx gtk+"
+PACKAGECONFIG_remove_mingw32 = "kvm virglrenderer glx gtk+"
 
-PACKAGECONFIG[sdl] = "--enable-sdl,--disable-sdl,libsdl"
+PACKAGECONFIG[sdl] = "--enable-sdl,--disable-sdl,libsdl2"
 PACKAGECONFIG[virtfs] = "--enable-virtfs --enable-attr,--disable-virtfs,libcap attr,"
 PACKAGECONFIG[aio] = "--enable-linux-aio,--disable-linux-aio,libaio,"
 PACKAGECONFIG[xfs] = "--enable-xfsctl,--disable-xfsctl,xfsprogs,"
@@ -96,12 +138,13 @@ PACKAGECONFIG[xen] = "--enable-xen,--disable-xen,xen,xen-libxenstore xen-libxenc
 PACKAGECONFIG[vnc-sasl] = "--enable-vnc --enable-vnc-sasl,--disable-vnc-sasl,cyrus-sasl,"
 PACKAGECONFIG[vnc-jpeg] = "--enable-vnc --enable-vnc-jpeg,--disable-vnc-jpeg,jpeg,"
 PACKAGECONFIG[vnc-png] = "--enable-vnc --enable-vnc-png,--disable-vnc-png,libpng,"
-PACKAGECONFIG[libcurl] = "--enable-curl,--disable-curl,libcurl,"
+PACKAGECONFIG[libcurl] = "--enable-curl,--disable-curl,curl,"
 PACKAGECONFIG[nss] = "--enable-smartcard,--disable-smartcard,nss,"
 PACKAGECONFIG[curses] = "--enable-curses,--disable-curses,ncurses,"
-PACKAGECONFIG[gtk+] = "--enable-gtk --with-gtkabi=3.0 --enable-vte,--disable-gtk --disable-vte,gtk+3 vte"
+PACKAGECONFIG[gtk+] = "--enable-gtk,--disable-gtk,gtk+3 gettext-native"
+PACKAGECONFIG[vte] = "--enable-vte,--disable-vte,vte gettext-native"
 PACKAGECONFIG[libcap-ng] = "--enable-cap-ng,--disable-cap-ng,libcap-ng,"
-PACKAGECONFIG[ssh2] = "--enable-libssh2,--disable-libssh2,libssh2,"
+PACKAGECONFIG[ssh] = "--enable-libssh,--disable-libssh,libssh,"
 PACKAGECONFIG[gcrypt] = "--enable-gcrypt,--disable-gcrypt,libgcrypt,"
 PACKAGECONFIG[nettle] = "--enable-nettle,--disable-nettle,nettle"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb1"
@@ -112,8 +155,16 @@ PACKAGECONFIG[lzo] = "--enable-lzo,--disable-lzo,lzo"
 PACKAGECONFIG[numa] = "--enable-numa,--disable-numa,numactl"
 PACKAGECONFIG[gnutls] = "--enable-gnutls,--disable-gnutls,gnutls"
 PACKAGECONFIG[bzip2] = "--enable-bzip2,--disable-bzip2,bzip2"
-PACKAGECONFIG[bluez] = "--enable-bluez,--disable-bluez,${BLUEZ}"
+PACKAGECONFIG[bluez] = "--enable-bluez,--disable-bluez,bluez5"
 PACKAGECONFIG[libiscsi] = "--enable-libiscsi,--disable-libiscsi"
 PACKAGECONFIG[kvm] = "--enable-kvm,--disable-kvm"
+PACKAGECONFIG[virglrenderer] = "--enable-virglrenderer,--disable-virglrenderer,virglrenderer"
+# spice will be in meta-networking layer
+PACKAGECONFIG[spice] = "--enable-spice,--disable-spice,spice"
+# usbredir will be in meta-networking layer
+PACKAGECONFIG[usb-redir] = "--enable-usb-redir,--disable-usb-redir,usbredir"
+PACKAGECONFIG[snappy] = "--enable-snappy,--disable-snappy,snappy"
 
 INSANE_SKIP_${PN} = "arch"
+
+FILES_${PN} += "${datadir}/icons"

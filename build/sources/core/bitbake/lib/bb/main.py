@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# ex:ts=4:sw=4:sts=4:et
-# -*- tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 #
 # Copyright (C) 2003, 2004  Chris Larson
 # Copyright (C) 2003, 2004  Phil Blundell
@@ -9,18 +6,8 @@
 # Copyright (C) 2005        ROAD GmbH
 # Copyright (C) 2006        Richard Purdie
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
+# SPDX-License-Identifier: GPL-2.0-only
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import os
 import sys
@@ -267,6 +254,11 @@ class BitBakeConfigParameters(cookerdata.ConfigParameters):
                           help="Do not run any setscene tasks. sstate will be ignored and "
                                "everything needed, built.")
 
+        parser.add_option("", "--skip-setscene", action="store_true",
+                          dest="skipsetscene", default=False,
+                          help="Skip setscene tasks if they would be executed. Tasks previously "
+                               "restored from sstate will be kept, unlike --no-setscene")
+
         parser.add_option("", "--setscene-only", action="store_true",
                           dest="setsceneonly", default=False,
                           help="Only run setscene tasks, don't run any real tasks.")
@@ -292,8 +284,12 @@ class BitBakeConfigParameters(cookerdata.ConfigParameters):
                           help="Writes the event log of the build to a bitbake event json file. "
                                "Use '' (empty string) to assign the name automatically.")
 
-        parser.add_option("", "--runall", action="store", dest="runall",
-                          help="Run the specified task for all build targets and their dependencies.")
+        parser.add_option("", "--runall", action="append", dest="runall",
+                          help="Run the specified task for any recipe in the taskgraph of the specified target (even if it wouldn't otherwise have run).")
+
+        parser.add_option("", "--runonly", action="append", dest="runonly",
+                          help="Run only the specified task within the taskgraph of the specified targets (and any task dependencies those tasks may have).")
+
 
         options, targets = parser.parse_args(argv)
 
@@ -401,9 +397,6 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
         # In status only mode there are no logs and no UI
         logger.addHandler(handler)
 
-    # Clear away any spurious environment variables while we stoke up the cooker
-    cleanedvars = bb.utils.clean_environment()
-
     if configParams.server_only:
         featureset = []
         ui_module = None
@@ -418,6 +411,10 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
                 featureset.append(feature)
 
     server_connection = None
+
+    # Clear away any spurious environment variables while we stoke up the cooker
+    # (done after import_extension_module() above since for example import gi triggers env var usage)
+    cleanedvars = bb.utils.clean_environment()
 
     if configParams.remote_server:
         # Connect to a remote XMLRPC server
@@ -443,7 +440,7 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
                 else:
                     logger.info("Reconnecting to bitbake server...")
                     if not os.path.exists(sockname):
-                        print("Previous bitbake instance shutting down?, waiting to retry...")
+                        logger.info("Previous bitbake instance shutting down?, waiting to retry...")
                         i = 0
                         lock = None
                         # Wait for 5s or until we can get the lock
@@ -455,12 +452,7 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
                             bb.utils.unlockfile(lock)
                         raise bb.server.process.ProcessTimeout("Bitbake still shutting down as socket exists but no lock?")
                 if not configParams.server_only:
-                    try:
-                        server_connection = bb.server.process.connectProcessServer(sockname, featureset)
-                    except EOFError:
-                        # The server may have been shutting down but not closed the socket yet. If that happened,
-                        # ignore it.
-                        pass
+                    server_connection = bb.server.process.connectProcessServer(sockname, featureset)
 
                 if server_connection or configParams.server_only:
                     break
@@ -470,12 +462,14 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
                 if not retries:
                     raise
                 retries -= 1
-                if isinstance(e, (bb.server.process.ProcessTimeout, BrokenPipeError)):
-                    logger.info("Retrying server connection...")
+                tryno = 8 - retries
+                if isinstance(e, (bb.server.process.ProcessTimeout, BrokenPipeError, EOFError)):
+                    logger.info("Retrying server connection (#%d)..." % tryno)
                 else:
-                    logger.info("Retrying server connection... (%s)" % traceback.format_exc())
+                    logger.info("Retrying server connection (#%d)... (%s)" % (tryno, traceback.format_exc()))
             if not retries:
-                bb.fatal("Unable to connect to bitbake server, or start one")
+                bb.fatal("Unable to connect to bitbake server, or start one (server startup failures would be in bitbake-cookerdaemon.log).")
+            bb.event.print_ui_queue()
             if retries < 5:
                 time.sleep(5)
 
@@ -497,7 +491,7 @@ def setup_bitbake(configParams, configuration, extrafeatures=None):
 def lockBitbake():
     topdir = bb.cookerdata.findTopdir()
     if not topdir:
-        bb.error("Unable to find conf/bblayers.conf or conf/bitbake.conf. BBAPTH is unset and/or not in a build directory?")
+        bb.error("Unable to find conf/bblayers.conf or conf/bitbake.conf. BBPATH is unset and/or not in a build directory?")
         raise BBMainFatal
     lockfile = topdir + "/bitbake.lock"
     return topdir, bb.utils.lockfile(lockfile, False, False)

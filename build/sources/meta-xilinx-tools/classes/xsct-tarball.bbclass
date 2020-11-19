@@ -1,11 +1,11 @@
-XSCT_LOADER ?= "${XSCT_STAGING_DIR}/SDK/${XILINX_VER_MAIN}/bin/xsct"
+XSCT_LOADER ?= "${XSCT_STAGING_DIR}/Vitis/${XILINX_VER_MAIN}/bin/xsct"
 
-XSCT_URL ?= "http://petalinux.xilinx.com/sswreleases/rel-v2018.3/xsct-trim/"
-XSCT_TARBALL ?= "xsct.tar.xz"
+XSCT_URL ?= "http://petalinux.xilinx.com/sswreleases/rel-v2020/xsct-trim/xsct-2020-1.tar.xz"
+XSCT_TARBALL ?= "xsct_${XILINX_VER_MAIN}.tar.xz"
 XSCT_DLDIR ?= "${DL_DIR}/xsct/"
-XSCT_STAGING_DIR ?= "${STAGING_DIR}-xsct"
+XSCT_STAGING_DIR ?= "${TOPDIR}/xsct"
 
-XSCT_CHECKSUM ?= "27533cf9b7ebb0ef1572b6c481746749"
+XSCT_CHECKSUM ?= "d43c6d6e2d1adf5e72ecd46c354509c1"
 VALIDATE_XSCT_CHECKSUM ?= '1'
 
 USE_XSCT_TARBALL ?= '1'
@@ -20,12 +20,23 @@ EXTERNAL_XSCT_TARBALL ?= ""
 EXTERNAL_XSCT_TARBALL[doc] = "Variable that defines where the xsct tarball is stored"
 
 addhandler xsct_event_extract
-xsct_event_extract[eventmask] = "bb.event.BuildStarted"
+xsct_event_extract[eventmask] = "bb.event.DepTreeGenerated"
+
+# Specify which targets actually need to call xsct
+XSCT_TARGETS ?= "fpga-manager-util extract-cdo bitstream-extraction device-tree fsbl pmu-firmware openamp_fw psm-firmware plm"
 
 python xsct_event_extract() {
+
+    # Only a handful of targets/tasks need XSCT
+    tasks_xsct = [t + '.do_configure' for t in d.getVar('XSCT_TARGETS').split()]
+    xsct_buildtargets = [t for t in e._depgraph['tdepends'] for x in tasks_xsct if x in t]
+
+    if not xsct_buildtargets and d.getVar('FORCE_XSCT_DOWNLOAD') != '1':
+      return
+
     ext_tarball = d.getVar("EXTERNAL_XSCT_TARBALL")
     use_xscttar = d.getVar("USE_XSCT_TARBALL")
-    chksum_tar = d.getVar("XSCT_CHECKSUM")
+    chksum_tar_recipe = d.getVar("XSCT_CHECKSUM")
     validate = d.getVar("VALIDATE_XSCT_CHECKSUM")
     xsct_url = d.getVar("XSCT_URL")
     chksum_tar_actual = ""
@@ -39,11 +50,17 @@ python xsct_event_extract() {
         if os.path.exists(ext_tarball):
             bb.note("Checking local xsct tarball checksum")
             import hashlib
+            md5hash = hashlib.md5()
+            readsize = 1024*md5hash.block_size
             with open(ext_tarball, 'rb') as f:
-                chksum_tar_actual = hashlib.md5(f.read()).hexdigest()
-            if validate == '1' and chksum_tar != chksum_tar_actual:
+                for chunk in iter(lambda: f.read(readsize), b''):
+                    md5hash.update(chunk)
+            chksum_tar_actual = md5hash.hexdigest()
+            if validate == '1' and chksum_tar_recipe != chksum_tar_actual:
                 bb.fatal('Provided external tarball\'s md5sum does not match checksum defined in xsct-tarball class')
-
+        elif xsct_url:
+            #if fetching the tarball, setting chksum_tar_actual as the one defined in the recipe as the fetcher will fail later otherwise
+            chksum_tar_actual = chksum_tar_recipe
     xsctdldir = d.getVar("XSCT_DLDIR")
     tarballname = d.getVar("XSCT_TARBALL")
     xsctsysroots = d.getVar("XSCT_STAGING_DIR")
@@ -54,7 +71,7 @@ python xsct_event_extract() {
     if os.path.exists(loader) and os.path.exists(tarballchksum):
         with open(tarballchksum, "r") as f:
             readchksum = f.read().strip()
-        if readchksum == chksum_tar:
+        if readchksum == chksum_tar_actual:
             return
 
     try:
@@ -70,9 +87,9 @@ python xsct_event_extract() {
             localdata = bb.data.createCopy(d)
             localdata.setVar('FILESPATH', "")
             localdata.setVar('DL_DIR', xsctdldir)
-            srcuri = d.expand("${XSCT_URL}${XSCT_TARBALL};md5sum=%s" % chksum_tar)
+            srcuri = d.expand("${XSCT_URL};md5sum=%s;downloadfilename=%s" % (chksum_tar_actual, tarballname))
             bb.note("Fetching xsct binary tarball from %s" % srcuri)
-            fetcher = bb.fetch2.Fetch([srcuri], localdata, cache=False)
+            fetcher = bb.fetch2.Fetch([srcuri], localdata)
             fetcher.download()
             localpath = fetcher.localpath(srcuri)
             if localpath != tarballpath and os.path.exists(localpath) and not os.path.exists(tarballpath):
@@ -91,14 +108,14 @@ python xsct_event_extract() {
                     pass
 
         cmd = d.expand("\
-            rm -rf ${STAGING_DIR}-xsct; \
-            mkdir -p ${STAGING_DIR}-xsct; \
-            cd ${STAGING_DIR}-xsct; \
+            rm -rf ${XSCT_STAGING_DIR}; \
+            mkdir -p ${XSCT_STAGING_DIR}; \
+            cd ${XSCT_STAGING_DIR}; \
             tar -xvf ${XSCT_DLDIR}/${XSCT_TARBALL};")
         bb.note('Extracting external xsct-tarball to sysroots')
         subprocess.check_output(cmd, shell=True)
         with open(tarballchksum, "w") as f:
-            f.write(chksum_tar)
+            f.write(chksum_tar_actual)
 
     except RuntimeError as e:
         bb.error(str(e))

@@ -10,13 +10,13 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
+SRC_URI += "file://0001-Add-missing-header-for-errno.patch"
+
 DEPENDS += "qtbase qtdeclarative"
 
-inherit bluetooth
-
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)}"
-PACKAGECONFIG[bluez] = "-feature-bluez,-no-feature-bluez,${BLUEZ}"
+PACKAGECONFIG[bluez] = "-feature-bluez,-no-feature-bluez,bluez5"
 
 EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "513e69bd6aca390d7e6ef28d3527c24dee99ee2b"
+SRCREV = "13b15ab1b1ee2ad56d0d37b07d694fbfc22e97a3"

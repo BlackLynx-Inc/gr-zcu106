@@ -8,8 +8,7 @@ inherit packagegroup
 	packagegroup-core-buildessential \
 	packagegroup-petalinux-mraa	 \
 	python-argparse \
-	python-importlib \
-	python-pyserial \
+	python3-pyserial \
 	readline \
 	libftdi	\
 	"
@@ -17,9 +16,9 @@ inherit packagegroup
 96BOARD_SENSOR_PACKAGES_append_ultra96-zynqmp = " \
 	sensor-mezzanine-examples \
 	arduino-toolchain \
-	python-oauthlib \
-	python-requests-oauthlib \
-	python-twitter \
+	python3-oauthlib \
+	python3-requests-oauthlib \
+	python3-twitter \
 	"
 
 RDEPENDS_${PN} = "${96BOARD_SENSOR_PACKAGES}"

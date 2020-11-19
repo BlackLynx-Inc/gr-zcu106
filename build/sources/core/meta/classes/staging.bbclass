@@ -27,9 +27,10 @@ SYSROOT_DIRS_BLACKLIST = " \
     ${mandir} \
     ${docdir} \
     ${infodir} \
-    ${datadir}/locale \
     ${datadir}/applications \
     ${datadir}/fonts \
+    ${datadir}/gtk-doc/html \
+    ${datadir}/locale \
     ${datadir}/pixmaps \
     ${libdir}/${PN}/ptest \
 "
@@ -70,7 +71,7 @@ sysroot_stage_all() {
 python sysroot_strip () {
     inhibit_sysroot = d.getVar('INHIBIT_SYSROOT_STRIP')
     if inhibit_sysroot and oe.types.boolean(inhibit_sysroot):
-        return 0
+        return
 
     dstdir = d.getVar('SYSROOT_DESTDIR')
     pn = d.getVar('PN')
@@ -79,7 +80,7 @@ python sysroot_strip () {
     qa_already_stripped = 'already-stripped' in (d.getVar('INSANE_SKIP_' + pn) or "").split()
     strip_cmd = d.getVar("STRIP")
 
-    oe.package.strip_execs(pn, dstdir, strip_cmd, libdir, base_libdir,
+    oe.package.strip_execs(pn, dstdir, strip_cmd, libdir, base_libdir, d,
                            qa_already_stripped=qa_already_stripped)
 }
 
@@ -167,11 +168,11 @@ def staging_processfixme(fixme, target, recipesysroot, recipesysrootnative, d):
     if not fixme:
         return
     cmd = "sed -e 's:^[^/]*/:%s/:g' %s | xargs sed -i -e 's:FIXMESTAGINGDIRTARGET:%s:g; s:FIXMESTAGINGDIRHOST:%s:g'" % (target, " ".join(fixme), recipesysroot, recipesysrootnative)
-    for fixmevar in ['COMPONENTS_DIR', 'HOSTTOOLS_DIR', 'PKGDATA_DIR', 'PSEUDO_LOCALSTATEDIR', 'LOGFIFO']:
+    for fixmevar in ['PSEUDO_SYSROOT', 'HOSTTOOLS_DIR', 'PKGDATA_DIR', 'PSEUDO_LOCALSTATEDIR', 'LOGFIFO']:
         fixme_path = d.getVar(fixmevar)
         cmd += " -e 's:FIXME_%s:%s:g'" % (fixmevar, fixme_path)
     bb.debug(2, cmd)
-    subprocess.check_output(cmd, shell=True)
+    subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
 
 
 def staging_populate_sysroot_dir(targetsysroot, nativesysroot, native, d):
@@ -196,7 +197,11 @@ def staging_populate_sysroot_dir(targetsysroot, nativesysroot, native, d):
     for pkgarch in pkgarchs:
         for manifest in glob.glob(d.expand("${SSTATE_MANIFESTS}/manifest-%s-*.populate_sysroot" % pkgarch)):
             if manifest.endswith("-initial.populate_sysroot"):
-                # skip glibc-initial and libgcc-initial due to file overlap
+                # skip libgcc-initial due to file overlap
+                continue
+            if not native and (manifest.endswith("-native.populate_sysroot") or "nativesdk-" in manifest):
+                continue
+            if native and not (manifest.endswith("-native.populate_sysroot") or manifest.endswith("-cross.populate_sysroot") or "-cross-" in manifest):
                 continue
             tmanifest = targetdir + "/" + os.path.basename(manifest)
             if os.path.exists(tmanifest):
@@ -228,7 +233,7 @@ def staging_populate_sysroot_dir(targetsysroot, nativesysroot, native, d):
 
     staging_processfixme(fixme, targetdir, targetsysroot, nativesysroot, d)
     for p in postinsts:
-        subprocess.check_output(p, shell=True)
+        subprocess.check_output(p, shell=True, stderr=subprocess.STDOUT)
 
 #
 # Manifests here are complicated. The main sysroot area has the unpacked sstate
@@ -256,12 +261,10 @@ python extend_recipe_sysroot() {
     workdir = d.getVar("WORKDIR")
     #bb.warn(str(taskdepdata))
     pn = d.getVar("PN")
-
     stagingdir = d.getVar("STAGING_DIR")
     sharedmanifests = d.getVar("COMPONENTS_DIR") + "/manifests"
     recipesysroot = d.getVar("RECIPE_SYSROOT")
     recipesysrootnative = d.getVar("RECIPE_SYSROOT_NATIVE")
-    current_variant = d.getVar("BBEXTENDVARIANT")
 
     # Detect bitbake -b usage
     nodeps = d.getVar("BB_LIMITEDDEPS") or False
@@ -294,12 +297,14 @@ python extend_recipe_sysroot() {
     start = set([start])
 
     sstatetasks = d.getVar("SSTATETASKS").split()
+    # Add recipe specific tasks referenced by setscene_depvalid()
+    sstatetasks.append("do_stash_locale")
 
     def print_dep_tree(deptree):
         data = ""
         for dep in deptree:
             deps = "    " + "\n    ".join(deptree[dep][3]) + "\n"
-            data = "%s:\n  %s\n  %s\n%s  %s\n  %s\n" % (deptree[dep][0], deptree[dep][1], deptree[dep][2], deps, deptree[dep][4], deptree[dep][5])
+            data = data + "%s:\n  %s\n  %s\n%s  %s\n  %s\n" % (deptree[dep][0], deptree[dep][1], deptree[dep][2], deps, deptree[dep][4], deptree[dep][5])
         return data
 
     #bb.note("Full dep tree is:\n%s" % print_dep_tree(taskdepdata))
@@ -383,8 +388,6 @@ python extend_recipe_sysroot() {
     lock = bb.utils.lockfile(recipesysroot + "/sysroot.lock")
 
     fixme = {}
-    fixme[''] = []
-    fixme['native'] = []
     seendirs = set()
     postinsts = []
     multilibs = {}
@@ -445,6 +448,7 @@ python extend_recipe_sysroot() {
 
     msg_exists = []
     msg_adding = []
+
     for dep in configuredeps:
         c = setscenedeps[dep][0]
         if c not in installed:
@@ -470,47 +474,29 @@ python extend_recipe_sysroot() {
 
         os.symlink(c + "." + taskhash, depdir + "/" + c)
 
-        d2 = d
-        destsysroot = recipesysroot
-        variant = ''
-        if setscenedeps[dep][2].startswith("virtual:multilib"):
-            variant = setscenedeps[dep][2].split(":")[2]
-            if variant != current_variant:
-                if variant not in multilibs:
-                    multilibs[variant] = get_multilib_datastore(variant, d)
-                d2 = multilibs[variant]
-                destsysroot = d2.getVar("RECIPE_SYSROOT")
+        manifest, d2 = oe.sstatesig.find_sstate_manifest(c, setscenedeps[dep][2], "populate_sysroot", d, multilibs)
+        if d2 is not d:
+            # If we don't do this, the recipe sysroot will be placed in the wrong WORKDIR for multilibs
+            # We need a consistent WORKDIR for the image
+            d2.setVar("WORKDIR", d.getVar("WORKDIR"))
+        destsysroot = d2.getVar("RECIPE_SYSROOT")
+        # We put allarch recipes into the default sysroot
+        if manifest and "allarch" in manifest:
+            destsysroot = d.getVar("RECIPE_SYSROOT")
 
         native = False
-        if c.endswith("-native"):
-            manifest = d2.expand("${SSTATE_MANIFESTS}/manifest-${BUILD_ARCH}-%s.populate_sysroot" % c)
+        if c.endswith("-native") or "-cross-" in c or "-crosssdk" in c:
             native = True
-        elif c.startswith("nativesdk-"):
-            manifest = d2.expand("${SSTATE_MANIFESTS}/manifest-${SDK_ARCH}_${SDK_OS}-%s.populate_sysroot" % c)
-        elif "-cross-" in c:
-            manifest = d2.expand("${SSTATE_MANIFESTS}/manifest-${BUILD_ARCH}_${TARGET_ARCH}-%s.populate_sysroot" % c)
-            native = True
-        elif "-crosssdk" in c:
-            manifest = d2.expand("${SSTATE_MANIFESTS}/manifest-${BUILD_ARCH}_${SDK_ARCH}_${SDK_OS}-%s.populate_sysroot" % c)
-            native = True
-        else:
-            pkgarchs = ['${MACHINE_ARCH}']
-            pkgarchs = pkgarchs + list(reversed(d2.getVar("PACKAGE_EXTRA_ARCHS").split()))
-            pkgarchs.append('allarch')
-            for pkgarch in pkgarchs:
-                manifest = d2.expand("${SSTATE_MANIFESTS}/manifest-%s-%s.populate_sysroot" % (pkgarch, c))
-                if os.path.exists(manifest):
-                    break
-        if not os.path.exists(manifest):
-            bb.warn("Manifest %s not found?" % manifest)
-        else:
+
+        if manifest:
             newmanifest = collections.OrderedDict()
+            targetdir = destsysroot
             if native:
-                fm = fixme['native']
                 targetdir = recipesysrootnative
-            else:
-                fm = fixme['']
-                targetdir = destsysroot
+            if targetdir not in fixme:
+                fixme[targetdir] = []
+            fm = fixme[targetdir]
+
             with open(manifest, "r") as f:
                 manifests[dep] = manifest
                 for l in f:
@@ -568,15 +554,10 @@ python extend_recipe_sysroot() {
     bb.note("Skipping as already exists in sysroot: %s" % str(msg_exists))
 
     for f in fixme:
-        if f == '':
-            staging_processfixme(fixme[f], recipesysroot, recipesysroot, recipesysrootnative, d)
-        elif f == 'native':
-            staging_processfixme(fixme[f], recipesysrootnative, recipesysroot, recipesysrootnative, d)
-        else:
-            staging_processfixme(fixme[f], multilibs[f].getVar("RECIPE_SYSROOT"), recipesysroot, recipesysrootnative, d)
+        staging_processfixme(fixme[f], f, recipesysroot, recipesysrootnative, d)
 
     for p in postinsts:
-        subprocess.check_output(p, shell=True)
+        subprocess.check_output(p, shell=True, stderr=subprocess.STDOUT)
 
     for dep in manifests:
         c = setscenedeps[dep][0]
@@ -590,21 +571,11 @@ python extend_recipe_sysroot() {
 }
 extend_recipe_sysroot[vardepsexclude] += "MACHINE_ARCH PACKAGE_EXTRA_ARCHS SDK_ARCH BUILD_ARCH SDK_OS BB_TASKDEPDATA"
 
+do_prepare_recipe_sysroot[deptask] = "do_populate_sysroot"
 python do_prepare_recipe_sysroot () {
     bb.build.exec_func("extend_recipe_sysroot", d)
 }
 addtask do_prepare_recipe_sysroot before do_configure after do_fetch
-
-# Clean out the recipe specific sysroots before do_fetch
-# (use a prefunc so we can order before extend_recipe_sysroot if it gets added)
-python clean_recipe_sysroot() {
-    # We remove these stamps since we're removing any content they'd have added with
-    # cleandirs. This removes the sigdata too, likely not a big deal,
-    oe.path.remove(d.getVar("STAMP") + "*addto_recipe_sysroot*")
-    return
-}
-clean_recipe_sysroot[cleandirs] += "${RECIPE_SYSROOT} ${RECIPE_SYSROOT_NATIVE}"
-do_fetch[prefuncs] += "clean_recipe_sysroot"
 
 python staging_taskhandler() {
     bbtasks = e.tasklist

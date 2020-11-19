@@ -4,18 +4,17 @@ HOMEPAGE = "https://github.com/OP-TEE/optee_test"
 LICENSE = "BSD & GPLv2"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE.md;md5=daa2bcccc666345ab8940aab1315a4fa"
 
-DEPENDS = "optee-client optee-os python-pycrypto-native"
+inherit python3native
 
-inherit pythonnative
+DEPENDS = "optee-client optee-os python3-pycrypto-native"
 
-PV = "2.4.0+git${SRCPV}"
+PV = "3.7.0+git${SRCPV}"
 
 SRC_URI = "git://github.com/OP-TEE/optee_test.git \
-           file://fix-build-failure-with-GCC6.patch \
           "
 S = "${WORKDIR}/git"
 
-SRCREV = "213ca8aaf4eafe9d26af76db7b31d9595ce57e6f"
+SRCREV = "227d6f4c40eaa6f84fe049b9e48c7b27ad7fab08"
 
 OPTEE_CLIENT_EXPORT = "${STAGING_DIR_HOST}${prefix}"
 TEEC_EXPORT         = "${STAGING_DIR_HOST}${prefix}"
@@ -40,11 +39,11 @@ do_install () {
 
     # install path should match the value set in optee-client/tee-supplicant
     # default TEEC_LOAD_PATH is /lib
-    mkdir -p ${D}/lib/optee_armtz/
-    install -D -p -m0444 ${S}/out/ta/*/*.ta ${D}/lib/optee_armtz/
+    mkdir -p ${D}${nonarch_base_libdir}/optee_armtz/
+    install -D -p -m0444 ${S}/out/ta/*/*.ta ${D}${nonarch_base_libdir}/optee_armtz/
 }
 
-FILES_${PN} += "/lib/optee_armtz/"
+FILES_${PN} += "${nonarch_base_libdir}/optee_armtz/"
 
 # Imports machine specific configs from staging to build
 PACKAGE_ARCH = "${MACHINE_ARCH}"

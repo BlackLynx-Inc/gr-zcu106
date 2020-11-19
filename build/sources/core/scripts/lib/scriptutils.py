@@ -2,33 +2,65 @@
 #
 # Copyright (C) 2014 Intel Corporation
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
+# SPDX-License-Identifier: GPL-2.0-only
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import sys
-import os
-import logging
-import glob
 import argparse
-import subprocess
-import tempfile
-import shutil
+import glob
+import logging
+import os
 import random
+import shlex
+import shutil
 import string
+import subprocess
+import sys
+import tempfile
+import threading
+import importlib
+from importlib import machinery
 
-def logger_create(name, stream=None):
+class KeepAliveStreamHandler(logging.StreamHandler):
+    def __init__(self, keepalive=True, **kwargs):
+        super().__init__(**kwargs)
+        if keepalive is True:
+            keepalive = 5000 # default timeout
+        self._timeout = threading.Condition()
+        self._stop = False
+
+        # background thread waits on condition, if the condition does not
+        # happen emit a keep alive message
+        def thread():
+            while not self._stop:
+                with self._timeout:
+                    if not self._timeout.wait(keepalive):
+                        self.emit(logging.LogRecord("keepalive", logging.INFO,
+                            None, None, "Keepalive message", None, None))
+
+        self._thread = threading.Thread(target = thread, daemon = True)
+        self._thread.start()
+
+    def close(self):
+        # mark the thread to stop and notify it
+        self._stop = True
+        with self._timeout:
+            self._timeout.notify()
+        # wait for it to join
+        self._thread.join()
+        super().close()
+
+    def emit(self, record):
+        super().emit(record)
+        # trigger timer reset
+        with self._timeout:
+            self._timeout.notify()
+
+def logger_create(name, stream=None, keepalive=None):
     logger = logging.getLogger(name)
-    loggerhandler = logging.StreamHandler(stream=stream)
+    if keepalive is not None:
+        loggerhandler = KeepAliveStreamHandler(stream=stream, keepalive=keepalive)
+    else:
+        loggerhandler = logging.StreamHandler(stream=stream)
     loggerhandler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
     logger.addHandler(loggerhandler)
     logger.setLevel(logging.INFO)
@@ -36,12 +68,12 @@ def logger_create(name, stream=None):
 
 def logger_setup_color(logger, color='auto'):
     from bb.msg import BBLogFormatter
-    console = logging.StreamHandler(sys.stdout)
-    formatter = BBLogFormatter("%(levelname)s: %(message)s")
-    console.setFormatter(formatter)
-    logger.handlers = [console]
-    if color == 'always' or (color=='auto' and console.stream.isatty()):
-        formatter.enable_color()
+
+    for handler in logger.handlers:
+        if (isinstance(handler, logging.StreamHandler) and
+            isinstance(handler.formatter, BBLogFormatter)):
+            if color == 'always' or (color == 'auto' and handler.stream.isatty()):
+                handler.formatter.enable_color()
 
 
 def load_plugins(logger, plugins, pluginpath):
@@ -49,12 +81,9 @@ def load_plugins(logger, plugins, pluginpath):
 
     def load_plugin(name):
         logger.debug('Loading plugin %s' % name)
-        fp, pathname, description = imp.find_module(name, [pluginpath])
-        try:
-            return imp.load_module(name, fp, pathname, description)
-        finally:
-            if fp:
-                fp.close()
+        spec = importlib.machinery.PathFinder.find_spec(name, path=[pluginpath] )
+        if spec:
+            return spec.loader.load_module()
 
     def plugin_name(filename):
         return os.path.splitext(os.path.basename(filename))[0]
@@ -68,6 +97,7 @@ def load_plugins(logger, plugins, pluginpath):
             if hasattr(plugin, 'plugin_init'):
                 plugin.plugin_init(plugins)
             plugins.append(plugin)
+
 
 def git_convert_standalone_clone(repodir):
     """If specified directory is a git repository, ensure it's a standalone clone"""
@@ -214,15 +244,14 @@ def fetch_url(tinfoil, srcuri, srcrev, destdir, logger, preserve_tmp=False, mirr
 
 def run_editor(fn, logger=None):
     if isinstance(fn, str):
-        params = '"%s"' % fn
+        files = [fn]
     else:
-        params = ''
-        for fnitem in fn:
-            params += ' "%s"' % fnitem
+        files = fn
 
     editor = os.getenv('VISUAL', os.getenv('EDITOR', 'vi'))
     try:
-        return subprocess.check_call('%s %s' % (editor, params), shell=True)
+        #print(shlex.split(editor) + files)
+        return subprocess.check_call(shlex.split(editor) + files)
     except subprocess.CalledProcessError as exc:
         logger.error("Execution of '%s' failed: %s" % (editor, exc))
         return 1
