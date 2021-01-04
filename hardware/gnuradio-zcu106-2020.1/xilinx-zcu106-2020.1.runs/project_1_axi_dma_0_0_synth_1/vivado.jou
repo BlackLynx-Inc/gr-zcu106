@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Fri Dec 18 01:29:58 2020
+# Process ID: 38201
+# Current directory: /home/ryftuser/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_axi_dma_0_0_synth_1
+# Command line: vivado -log project_1_axi_dma_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source project_1_axi_dma_0_0.tcl
+# Log file: /home/ryftuser/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_axi_dma_0_0_synth_1/project_1_axi_dma_0_0.vds
+# Journal file: /home/ryftuser/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_axi_dma_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source project_1_axi_dma_0_0.tcl -notrace

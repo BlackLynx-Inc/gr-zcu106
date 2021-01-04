@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu May 28 06:08:15 2020
+# Process ID: 90035
+# Current directory: /tmp/tmp.S6vazQvS27/temp/hwflow/hwflow_project_1/project_1.runs/project_1_proc_sys_reset_0_0_synth_1
+# Command line: vivado -log project_1_proc_sys_reset_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source project_1_proc_sys_reset_0_0.tcl
+# Log file: /tmp/tmp.S6vazQvS27/temp/hwflow/hwflow_project_1/project_1.runs/project_1_proc_sys_reset_0_0_synth_1/project_1_proc_sys_reset_0_0.vds
+# Journal file: /tmp/tmp.S6vazQvS27/temp/hwflow/hwflow_project_1/project_1.runs/project_1_proc_sys_reset_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source project_1_proc_sys_reset_0_0.tcl -notrace
