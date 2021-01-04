@@ -6,8 +6,8 @@ Build Instructions
 
 Clone repo
 Go to top-level directory
-$ source setupsdk/n
-$ MACHINE=zcu106-zynqmp bitbake petalinux-image-gr/n
+$ source setupsdk
+$ MACHINE=zcu106-zynqmp bitbake petalinux-image-gr
 This will kick off the build which should complete with 0 errors.
 
 Deploy Instructions
