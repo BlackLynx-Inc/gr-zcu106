@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Mon Dec 21 11:43:12 2020
-| Host         : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Jan 12 22:56:39 2021
+| Host         : L000921 running 64-bit major release  (build 9200)
 | Command      : report_drc -file project_1_wrapper_drc_opted.rpt -pb project_1_wrapper_drc_opted.pb -rpx project_1_wrapper_drc_opted.rpx
 | Design       : project_1_wrapper
 | Device       : xczu7ev-ffvc1156-2-e

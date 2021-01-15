@@ -1,5 +1,5 @@
-set_property SRC_FILE_INFO {cfile:/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc rfile:../../../xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc id:1 order:EARLY scoped_inst:project_1_i/PS_0} [current_design]
-set_property SRC_FILE_INFO {cfile:/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc rfile:../../../xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc id:2} [current_design]
+set_property SRC_FILE_INFO {cfile:c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc rfile:../../../xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc id:1 order:EARLY scoped_inst:project_1_i/PS_0} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc rfile:../../../xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc id:2} [current_design]
 current_instance project_1_i/PS_0
 set_property src_info {type:SCOPED_XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 create_clock -period 10.000 [get_ports {}]

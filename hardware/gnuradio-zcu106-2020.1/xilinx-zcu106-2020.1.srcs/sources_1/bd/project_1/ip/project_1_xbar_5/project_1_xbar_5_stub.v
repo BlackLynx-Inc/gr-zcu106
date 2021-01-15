@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Mon Dec 21 11:38:04 2020
-// Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
+// Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+// Date        : Tue Jan 12 11:08:50 2021
+// Host        : L000921 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
+//               c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
 // Design      : project_1_xbar_5
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xczu7ev-ffvc1156-2-e
@@ -21,7 +21,7 @@ module project_1_xbar_5(aclk, aresetn, s_axi_awaddr, s_axi_awprot,
   m_axi_awprot, m_axi_awvalid, m_axi_awready, m_axi_wdata, m_axi_wstrb, m_axi_wvalid, 
   m_axi_wready, m_axi_bresp, m_axi_bvalid, m_axi_bready, m_axi_araddr, m_axi_arprot, 
   m_axi_arvalid, m_axi_arready, m_axi_rdata, m_axi_rresp, m_axi_rvalid, m_axi_rready)
-/* synthesis syn_black_box black_box_pad_pin="aclk,aresetn,s_axi_awaddr[39:0],s_axi_awprot[2:0],s_axi_awvalid[0:0],s_axi_awready[0:0],s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid[0:0],s_axi_wready[0:0],s_axi_bresp[1:0],s_axi_bvalid[0:0],s_axi_bready[0:0],s_axi_araddr[39:0],s_axi_arprot[2:0],s_axi_arvalid[0:0],s_axi_arready[0:0],s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid[0:0],s_axi_rready[0:0],m_axi_awaddr[159:0],m_axi_awprot[11:0],m_axi_awvalid[3:0],m_axi_awready[3:0],m_axi_wdata[127:0],m_axi_wstrb[15:0],m_axi_wvalid[3:0],m_axi_wready[3:0],m_axi_bresp[7:0],m_axi_bvalid[3:0],m_axi_bready[3:0],m_axi_araddr[159:0],m_axi_arprot[11:0],m_axi_arvalid[3:0],m_axi_arready[3:0],m_axi_rdata[127:0],m_axi_rresp[7:0],m_axi_rvalid[3:0],m_axi_rready[3:0]" */;
+/* synthesis syn_black_box black_box_pad_pin="aclk,aresetn,s_axi_awaddr[39:0],s_axi_awprot[2:0],s_axi_awvalid[0:0],s_axi_awready[0:0],s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid[0:0],s_axi_wready[0:0],s_axi_bresp[1:0],s_axi_bvalid[0:0],s_axi_bready[0:0],s_axi_araddr[39:0],s_axi_arprot[2:0],s_axi_arvalid[0:0],s_axi_arready[0:0],s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid[0:0],s_axi_rready[0:0],m_axi_awaddr[119:0],m_axi_awprot[8:0],m_axi_awvalid[2:0],m_axi_awready[2:0],m_axi_wdata[95:0],m_axi_wstrb[11:0],m_axi_wvalid[2:0],m_axi_wready[2:0],m_axi_bresp[5:0],m_axi_bvalid[2:0],m_axi_bready[2:0],m_axi_araddr[119:0],m_axi_arprot[8:0],m_axi_arvalid[2:0],m_axi_arready[2:0],m_axi_rdata[95:0],m_axi_rresp[5:0],m_axi_rvalid[2:0],m_axi_rready[2:0]" */;
   input aclk;
   input aresetn;
   input [39:0]s_axi_awaddr;
@@ -43,23 +43,23 @@ module project_1_xbar_5(aclk, aresetn, s_axi_awaddr, s_axi_awprot,
   output [1:0]s_axi_rresp;
   output [0:0]s_axi_rvalid;
   input [0:0]s_axi_rready;
-  output [159:0]m_axi_awaddr;
-  output [11:0]m_axi_awprot;
-  output [3:0]m_axi_awvalid;
-  input [3:0]m_axi_awready;
-  output [127:0]m_axi_wdata;
-  output [15:0]m_axi_wstrb;
-  output [3:0]m_axi_wvalid;
-  input [3:0]m_axi_wready;
-  input [7:0]m_axi_bresp;
-  input [3:0]m_axi_bvalid;
-  output [3:0]m_axi_bready;
-  output [159:0]m_axi_araddr;
-  output [11:0]m_axi_arprot;
-  output [3:0]m_axi_arvalid;
-  input [3:0]m_axi_arready;
-  input [127:0]m_axi_rdata;
-  input [7:0]m_axi_rresp;
-  input [3:0]m_axi_rvalid;
-  output [3:0]m_axi_rready;
+  output [119:0]m_axi_awaddr;
+  output [8:0]m_axi_awprot;
+  output [2:0]m_axi_awvalid;
+  input [2:0]m_axi_awready;
+  output [95:0]m_axi_wdata;
+  output [11:0]m_axi_wstrb;
+  output [2:0]m_axi_wvalid;
+  input [2:0]m_axi_wready;
+  input [5:0]m_axi_bresp;
+  input [2:0]m_axi_bvalid;
+  output [2:0]m_axi_bready;
+  output [119:0]m_axi_araddr;
+  output [8:0]m_axi_arprot;
+  output [2:0]m_axi_arvalid;
+  input [2:0]m_axi_arready;
+  input [95:0]m_axi_rdata;
+  input [5:0]m_axi_rresp;
+  input [2:0]m_axi_rvalid;
+  output [2:0]m_axi_rready;
 endmodule

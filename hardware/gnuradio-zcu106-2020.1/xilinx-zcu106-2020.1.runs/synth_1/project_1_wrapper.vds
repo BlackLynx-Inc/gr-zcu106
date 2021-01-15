@@ -1,100 +1,92 @@
 #-----------------------------------------------------------
 # Vivado v2020.1 (64-bit)
-# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Dec 21 11:38:17 2020
-# Process ID: 19764
-# Current directory: /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1
-# Command line: vivado -log project_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source project_1_wrapper.tcl
-# Log file: /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/project_1_wrapper.vds
-# Journal file: /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/vivado.jou
+# Start of session at: Tue Jan 12 22:51:40 2021
+# Process ID: 10596
+# Current directory: C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1
+# Command line: vivado.exe -log project_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source project_1_wrapper.tcl
+# Log file: C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/project_1_wrapper.vds
+# Journal file: C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source project_1_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository '/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/ip'.
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/ryftone/opt/Xilinx/Vivado/2020.1/data/ip'.
-WARNING: [IP_Flow 19-1663] Duplicate IP found for 'xilinx.com:ip:vcu:1.0'. The one found in IP location '/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/ip/vcu' will take precedence over the same IP in the Xilinx installed IP.
-update_ip_catalog: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 2143.184 ; gain = 0.000 ; free physical = 7783 ; free virtual = 357511
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.1/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'xilinx.com:ip:vcu:1.0'. The one found in IP location 'c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/ip/vcu' will take precedence over the same IP in the Xilinx installed IP.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.cache/ip 
 Command: synth_design -top project_1_wrapper -part xczu7ev-ffvc1156-2-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
 INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
-INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 19867
+INFO: [Synth 8-7075] Helper process launched with PID 13916
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 2745.633 ; gain = 10.746 ; free physical = 6579 ; free virtual = 356346
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1755.426 ; gain = 87.207
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'project_1_wrapper' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/hdl/project_1_wrapper.v:12]
-INFO: [Synth 8-6157] synthesizing module 'project_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:534]
-INFO: [Synth 8-6157] synthesizing module 'project_1_PS_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_PS_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_PS_0_0' (1#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_PS_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'saxigp3_bid' of module 'project_1_PS_0_0' is unconnected for instance 'PS_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:723]
-WARNING: [Synth 8-7071] port 'saxigp3_rid' of module 'project_1_PS_0_0' is unconnected for instance 'PS_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:723]
-WARNING: [Synth 8-7023] instance 'PS_0' of module 'project_1_PS_0_0' has 83 connections declared, but only 81 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:723]
-INFO: [Synth 8-6157] synthesizing module 'project_1_axi_dma_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_dma_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_dma_0_0' (2#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_dma_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mm2s_prmry_reset_out_n' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:805]
-WARNING: [Synth 8-7071] port 'm_axis_mm2s_tkeep' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:805]
-WARNING: [Synth 8-7071] port 's2mm_prmry_reset_out_n' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:805]
-WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:805]
-WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'project_1_axi_dma_0_0' has 64 connections declared, but only 60 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:805]
-INFO: [Synth 8-6157] synthesizing module 'project_1_axi_fifo_mm_s_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_fifo_mm_s_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_fifo_mm_s_0_0' (3#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_fifo_mm_s_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mm2s_prmry_reset_out_n' of module 'project_1_axi_fifo_mm_s_0_0' is unconnected for instance 'axi_fifo_mm_s_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:866]
-WARNING: [Synth 8-7071] port 's2mm_prmry_reset_out_n' of module 'project_1_axi_fifo_mm_s_0_0' is unconnected for instance 'axi_fifo_mm_s_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:866]
-WARNING: [Synth 8-7023] instance 'axi_fifo_mm_s_0' of module 'project_1_axi_fifo_mm_s_0_0' has 30 connections declared, but only 28 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:866]
-INFO: [Synth 8-6157] synthesizing module 'project_1_axi_gpio_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_gpio_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_gpio_0_0' (4#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_gpio_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'gpio_io_o' of module 'project_1_axi_gpio_0_0' is unconnected for instance 'axi_gpio_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:895]
-WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'project_1_axi_gpio_0_0' is unconnected for instance 'axi_gpio_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:895]
-WARNING: [Synth 8-7023] instance 'axi_gpio_0' of module 'project_1_axi_gpio_0_0' has 22 connections declared, but only 20 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:895]
-INFO: [Synth 8-6157] synthesizing module 'project_1_axi_gpio_0_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_gpio_0_1' (5#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_axi_gpio_0_1_stub.v:6]
-WARNING: [Synth 8-7071] port 'gpio_io_o' of module 'project_1_axi_gpio_0_1' is unconnected for instance 'axi_gpio_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:916]
-WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'project_1_axi_gpio_0_1' is unconnected for instance 'axi_gpio_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:916]
-WARNING: [Synth 8-7023] instance 'axi_gpio_1' of module 'project_1_axi_gpio_0_1' has 22 connections declared, but only 20 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:916]
-INFO: [Synth 8-6157] synthesizing module 'project_1_axi_interconnect_2_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1143]
-INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1SX60W9' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1SX60W9' (6#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:12]
-INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_H8APG1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:144]
-INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_H8APG1' (7#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:144]
-INFO: [Synth 8-6157] synthesizing module 'm02_couplers_imp_17NBAPK' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:276]
-INFO: [Synth 8-6155] done synthesizing module 'm02_couplers_imp_17NBAPK' (8#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:276]
-INFO: [Synth 8-6157] synthesizing module 'm03_couplers_imp_KPXQJK' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:408]
-INFO: [Synth 8-6155] done synthesizing module 'm03_couplers_imp_KPXQJK' (9#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:408]
-INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_VKUEL1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1942]
-INFO: [Synth 8-6157] synthesizing module 'project_1_auto_ds_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_ds_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_ds_0' (10#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_ds_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'project_1_auto_pc_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_pc_0' (11#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'project_1_auto_rs_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_rs_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_rs_0' (12#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_auto_rs_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'project_1_s00_regslice_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_s00_regslice_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_s00_regslice_0' (13#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_s00_regslice_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'm_axi_awuser' of module 'project_1_s00_regslice_0' is unconnected for instance 's00_regslice' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2505]
-WARNING: [Synth 8-7071] port 'm_axi_aruser' of module 'project_1_s00_regslice_0' is unconnected for instance 's00_regslice' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2505]
-WARNING: [Synth 8-7023] instance 's00_regslice' of module 'project_1_s00_regslice_0' has 84 connections declared, but only 82 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2505]
-INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_VKUEL1' (14#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1942]
-INFO: [Synth 8-6157] synthesizing module 'project_1_xbar_5' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_xbar_5_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_xbar_5' (15#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_xbar_5_stub.v:6]
-WARNING: [Synth 8-689] width (12) of port connection 'm_axi_wstrb' does not match port width (16) of module 'project_1_xbar_5' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1919]
-WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'project_1_xbar_5' is unconnected for instance 'xbar' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1901]
-WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'project_1_xbar_5' is unconnected for instance 'xbar' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1901]
-WARNING: [Synth 8-7023] instance 'xbar' of module 'project_1_xbar_5' has 40 connections declared, but only 38 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1901]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_interconnect_2_1' (16#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1143]
-INFO: [Synth 8-6157] synthesizing module 'project_1_proc_sys_reset_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_proc_sys_reset_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_proc_sys_reset_0_0' (17#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_proc_sys_reset_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1056]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1056]
-WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1056]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1056]
-WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'project_1_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1056]
-INFO: [Synth 8-6157] synthesizing module 'project_1_smartconnect_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_smartconnect_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_smartconnect_0_0' (18#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-19764-buildserver8/realtime/project_1_smartconnect_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'project_1_xlconcat_0_0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconcat_0_0/synth/project_1_xlconcat_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6157] synthesizing module 'project_1_wrapper' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/hdl/project_1_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'project_1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:402]
+INFO: [Synth 8-6157] synthesizing module 'project_1_PS_0_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_PS_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_PS_0_0' (1#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_PS_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'saxigp3_bid' of module 'project_1_PS_0_0' is unconnected for instance 'PS_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:570]
+WARNING: [Synth 8-7071] port 'saxigp3_rid' of module 'project_1_PS_0_0' is unconnected for instance 'PS_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:570]
+WARNING: [Synth 8-7023] instance 'PS_0' of module 'project_1_PS_0_0' has 83 connections declared, but only 81 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:570]
+INFO: [Synth 8-6157] synthesizing module 'project_1_axi_dma_0_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_dma_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_dma_0_0' (2#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_dma_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mm2s_prmry_reset_out_n' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:652]
+WARNING: [Synth 8-7071] port 's2mm_prmry_reset_out_n' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:652]
+WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'project_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:652]
+WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'project_1_axi_dma_0_0' has 64 connections declared, but only 61 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:652]
+INFO: [Synth 8-6157] synthesizing module 'project_1_axi_gpio_0_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_gpio_0_0' (3#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_gpio_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'gpio_io_o' of module 'project_1_axi_gpio_0_0' is unconnected for instance 'axi_gpio_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:714]
+WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'project_1_axi_gpio_0_0' is unconnected for instance 'axi_gpio_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:714]
+WARNING: [Synth 8-7023] instance 'axi_gpio_0' of module 'project_1_axi_gpio_0_0' has 22 connections declared, but only 20 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:714]
+INFO: [Synth 8-6157] synthesizing module 'project_1_axi_gpio_0_1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_gpio_0_1' (4#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_axi_gpio_0_1_stub.v:6]
+WARNING: [Synth 8-7071] port 'gpio_io_o' of module 'project_1_axi_gpio_0_1' is unconnected for instance 'axi_gpio_1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:735]
+WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'project_1_axi_gpio_0_1' is unconnected for instance 'axi_gpio_1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:735]
+WARNING: [Synth 8-7023] instance 'axi_gpio_1' of module 'project_1_axi_gpio_0_1' has 22 connections declared, but only 20 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:735]
+INFO: [Synth 8-6157] synthesizing module 'project_1_axi_interconnect_2_1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:943]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1SX60W9' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1SX60W9' (5#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:12]
+INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_H8APG1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:137]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_H8APG1' (6#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:137]
+INFO: [Synth 8-6157] synthesizing module 'm02_couplers_imp_17NBAPK' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:269]
+INFO: [Synth 8-6155] done synthesizing module 'm02_couplers_imp_17NBAPK' (7#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:269]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_VKUEL1' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1615]
+INFO: [Synth 8-6157] synthesizing module 'project_1_auto_ds_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_ds_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_ds_0' (8#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_ds_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'project_1_auto_pc_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_pc_0' (9#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'project_1_auto_rs_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_rs_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_auto_rs_0' (10#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_auto_rs_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'project_1_s00_regslice_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_s00_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_s00_regslice_0' (11#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_s00_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awuser' of module 'project_1_s00_regslice_0' is unconnected for instance 's00_regslice' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2178]
+WARNING: [Synth 8-7071] port 'm_axi_aruser' of module 'project_1_s00_regslice_0' is unconnected for instance 's00_regslice' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2178]
+WARNING: [Synth 8-7023] instance 's00_regslice' of module 'project_1_s00_regslice_0' has 84 connections declared, but only 82 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:2178]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_VKUEL1' (12#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1615]
+INFO: [Synth 8-6157] synthesizing module 'project_1_xbar_5' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_xbar_5_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_xbar_5' (13#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_xbar_5_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'project_1_xbar_5' is unconnected for instance 'xbar' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1574]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'project_1_xbar_5' is unconnected for instance 'xbar' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1574]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'project_1_xbar_5' has 40 connections declared, but only 38 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:1574]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_axi_interconnect_2_1' (14#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:943]
+INFO: [Synth 8-6157] synthesizing module 'project_1_proc_sys_reset_0_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_proc_sys_reset_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_proc_sys_reset_0_0' (15#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_proc_sys_reset_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:856]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:856]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:856]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'project_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:856]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'project_1_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:856]
+INFO: [Synth 8-6157] synthesizing module 'project_1_smartconnect_0_0' [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_smartconnect_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_smartconnect_0_0' (16#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/.Xil/Vivado-10596-L000921/realtime/project_1_smartconnect_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'project_1_xlconcat_0_0' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconcat_0_0/synth/project_1_xlconcat_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
 	Parameter IN0_WIDTH bound to: 1 - type: integer 
 	Parameter IN1_WIDTH bound to: 1 - type: integer 
 	Parameter IN2_WIDTH bound to: 1 - type: integer 
@@ -129,182 +121,180 @@ INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [/ryftone/ch
 	Parameter IN31_WIDTH bound to: 1 - type: integer 
 	Parameter dout_width bound to: 3 - type: integer 
 	Parameter NUM_PORTS bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_3_xlconcat' (19#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconcat_0_0' (20#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconcat_0_0/synth/project_1_xlconcat_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'project_1_xlconstant_0_1' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_1/synth/project_1_xlconstant_0_1.v:57]
-INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_3_xlconcat' (17#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconcat_0_0' (18#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconcat_0_0/synth/project_1_xlconcat_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'project_1_xlconstant_0_1' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_1/synth/project_1_xlconstant_0_1.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 4567 - type: integer 
 	Parameter CONST_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (21#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconstant_0_1' (22#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_1/synth/project_1_xlconstant_0_1.v:57]
-INFO: [Synth 8-6157] synthesizing module 'project_1_xlconstant_0_2' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_2/synth/project_1_xlconstant_0_2.v:57]
-INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (19#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconstant_0_1' (20#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_1/synth/project_1_xlconstant_0_1.v:57]
+INFO: [Synth 8-6157] synthesizing module 'project_1_xlconstant_0_2' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_2/synth/project_1_xlconstant_0_2.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 1000 - type: integer 
 	Parameter CONST_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (22#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconstant_0_2' (23#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_2/synth/project_1_xlconstant_0_2.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'project_1' (24#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:534]
-INFO: [Synth 8-6155] done synthesizing module 'project_1_wrapper' (25#1) [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/hdl/project_1_wrapper.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (20#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_xlconstant_0_2' (21#1) [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xlconstant_0_2/synth/project_1_xlconstant_0_2.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'project_1' (22#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/synth/project_1.v:402]
+INFO: [Synth 8-6155] done synthesizing module 'project_1_wrapper' (23#1) [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/hdl/project_1_wrapper.v:12]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 2791.539 ; gain = 56.652 ; free physical = 6611 ; free virtual = 356380
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1811.168 ; gain = 142.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 2810.383 ; gain = 75.496 ; free physical = 6605 ; free virtual = 356376
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1829.035 ; gain = 160.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 2810.383 ; gain = 75.496 ; free physical = 6605 ; free virtual = 356376
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1829.035 ; gain = 160.816
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2810.383 ; gain = 0.000 ; free physical = 6598 ; free virtual = 356369
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1829.035 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc] for cell 'project_1_i/PS_0'
-WARNING: [Vivado 12-584] No ports matched ''. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc:2]
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc] for cell 'project_1_i/PS_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0_in_context.xdc] for cell 'project_1_i/proc_sys_reset_0'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0_in_context.xdc] for cell 'project_1_i/proc_sys_reset_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5/project_1_xbar_5_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/xbar'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5/project_1_xbar_5_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/xbar'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_0'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_1/project_1_axi_gpio_0_1/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_1'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_1/project_1_axi_gpio_0_1/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_1'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_dma_0_0/project_1_axi_dma_0_0/project_1_axi_dma_0_0_in_context.xdc] for cell 'project_1_i/axi_dma_0'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_dma_0_0/project_1_axi_dma_0_0/project_1_axi_dma_0_0_in_context.xdc] for cell 'project_1_i/axi_dma_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_fifo_mm_s_0_0/project_1_axi_fifo_mm_s_0_0/project_1_axi_fifo_mm_s_0_0_in_context.xdc] for cell 'project_1_i/axi_fifo_mm_s_0'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_fifo_mm_s_0_0/project_1_axi_fifo_mm_s_0_0/project_1_axi_fifo_mm_s_0_0_in_context.xdc] for cell 'project_1_i/axi_fifo_mm_s_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_smartconnect_0_0/project_1_smartconnect_0_0/project_1_smartconnect_0_0_in_context.xdc] for cell 'project_1_i/smartconnect_0'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_smartconnect_0_0/project_1_smartconnect_0_0/project_1_smartconnect_0_0_in_context.xdc] for cell 'project_1_i/smartconnect_0'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_s00_regslice_0/project_1_s00_regslice_0/project_1_s00_regslice_41_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/s00_regslice'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_s00_regslice_0/project_1_s00_regslice_0/project_1_s00_regslice_41_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/s00_regslice'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_ds_0/project_1_auto_ds_0/project_1_auto_ds_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_ds'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_ds_0/project_1_auto_ds_0/project_1_auto_ds_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_ds'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_pc_0/project_1_auto_pc_0/project_1_auto_pc_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_pc'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_pc_0/project_1_auto_pc_0/project_1_auto_pc_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_pc'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_rs_0/project_1_auto_rs_0/project_1_auto_rs_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_rs'
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_rs_0/project_1_auto_rs_0/project_1_auto_rs_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_rs'
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]
-WARNING: [Vivado 12-584] No ports matched 'si570_user_clk_p'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:10]
-WARNING: [Vivado 12-584] No ports matched 'si570_user_clk_p'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:11]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_act_n[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:18]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:20]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[1]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:21]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[2]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:22]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[3]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:23]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[4]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:24]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[5]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:25]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[6]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:26]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[7]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:27]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[8]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:28]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[9]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:29]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[10]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:30]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[11]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:31]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[12]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:32]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[13]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:33]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[14]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:34]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[15]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:35]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[16]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:36]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ba[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:38]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ba[1]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:39]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_bg[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:41]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ck_c[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:43]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_cke[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:45]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_cs_n[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:47]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:49]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[1]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:50]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[2]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:51]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[3]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:52]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[4]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:53]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[5]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:54]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[6]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:55]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[7]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:56]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:58]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[1]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:59]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[2]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:60]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[3]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:61]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[4]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:62]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[5]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:63]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[6]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:64]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[7]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:65]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[8]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:66]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[9]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:67]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[10]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:68]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[11]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:69]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[12]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:70]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[13]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:71]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[14]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:72]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[15]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:73]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[16]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:74]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[17]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:75]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[18]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:76]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[19]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:77]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[20]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:78]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[21]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:79]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[22]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:80]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[23]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:81]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[24]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:82]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[25]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:83]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[26]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:84]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[27]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:85]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[28]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:86]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[29]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:87]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[30]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:88]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[31]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:89]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[32]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:90]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[33]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:91]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[34]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:92]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[35]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:93]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[36]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:94]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[37]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:95]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[38]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:96]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[39]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:97]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[40]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:98]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[41]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:99]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[42]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:100]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[43]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:101]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[44]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:102]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[45]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:103]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[46]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:104]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[47]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:105]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[48]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:106]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[49]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:107]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[50]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:108]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[51]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:109]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[52]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:110]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[53]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:111]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[54]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:112]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[55]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:113]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[56]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:114]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[57]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:115]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[58]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:116]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[59]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:117]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[60]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:118]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[61]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:119]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[62]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:120]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[63]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:121]
-WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dqs_c[0]'. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:123]
-INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:123]
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/project_1_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/project_1_wrapper_propImpl.xdc].
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc] for cell 'project_1_i/PS_0'
+WARNING: [Vivado 12-584] No ports matched ''. [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc:2]
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0/project_1_PS_0_0_in_context.xdc] for cell 'project_1_i/PS_0'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0_in_context.xdc] for cell 'project_1_i/proc_sys_reset_0'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0_in_context.xdc] for cell 'project_1_i/proc_sys_reset_0'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5/project_1_xbar_5_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/xbar'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5/project_1_xbar_5_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/xbar'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_0'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_0'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_1/project_1_axi_gpio_0_1/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_1'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_gpio_0_1/project_1_axi_gpio_0_1/project_1_axi_gpio_0_0_in_context.xdc] for cell 'project_1_i/axi_gpio_1'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_dma_0_0/project_1_axi_dma_0_0/project_1_axi_dma_0_0_in_context.xdc] for cell 'project_1_i/axi_dma_0'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_axi_dma_0_0/project_1_axi_dma_0_0/project_1_axi_dma_0_0_in_context.xdc] for cell 'project_1_i/axi_dma_0'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_smartconnect_0_0/project_1_smartconnect_0_0/project_1_smartconnect_0_0_in_context.xdc] for cell 'project_1_i/smartconnect_0'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_smartconnect_0_0/project_1_smartconnect_0_0/project_1_smartconnect_0_0_in_context.xdc] for cell 'project_1_i/smartconnect_0'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_s00_regslice_0/project_1_s00_regslice_0/project_1_s00_regslice_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/s00_regslice'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_s00_regslice_0/project_1_s00_regslice_0/project_1_s00_regslice_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/s00_regslice'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_ds_0/project_1_auto_ds_0/project_1_auto_ds_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_ds'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_ds_0/project_1_auto_ds_0/project_1_auto_ds_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_ds'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_pc_0/project_1_auto_pc_0/project_1_auto_pc_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_pc'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_pc_0/project_1_auto_pc_0/project_1_auto_pc_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_pc'
+Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_rs_0/project_1_auto_rs_0/project_1_auto_rs_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_rs'
+Finished Parsing XDC File [c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_rs_0/project_1_auto_rs_0/project_1_auto_rs_0_in_context.xdc] for cell 'project_1_i/axi_interconnect_2/s00_couplers/auto_rs'
+Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]
+WARNING: [Vivado 12-584] No ports matched 'si570_user_clk_p'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:10]
+WARNING: [Vivado 12-584] No ports matched 'si570_user_clk_p'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:11]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_act_n[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:18]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[1]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:21]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[2]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:22]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[3]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:23]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[4]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:24]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[5]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:25]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[6]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:26]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[7]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:27]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[8]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:28]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[9]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:29]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[10]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:30]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[11]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:31]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[12]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:32]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[13]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:33]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[14]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:34]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[15]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:35]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_adr[16]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:36]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ba[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:38]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ba[1]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:39]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_bg[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:41]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_ck_c[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:43]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_cke[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:45]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_cs_n[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:47]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:49]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[1]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:50]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[2]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:51]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[3]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:52]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[4]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:53]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[5]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:54]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[6]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:55]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dm_n[7]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:56]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:58]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[1]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:59]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[2]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:60]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[3]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:61]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[4]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:62]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[5]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:63]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[6]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:64]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[7]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:65]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[8]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:66]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[9]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:67]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[10]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:68]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[11]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:69]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[12]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:70]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[13]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:71]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[14]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:72]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[15]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:73]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[16]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:74]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[17]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:75]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[18]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:76]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[19]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:77]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[20]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:78]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[21]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:79]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[22]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:80]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[23]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:81]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[24]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:82]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[25]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:83]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[26]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:84]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[27]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:85]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[28]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:86]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[29]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:87]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[30]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:88]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[31]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:89]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[32]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:90]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[33]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:91]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[34]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:92]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[35]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:93]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[36]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:94]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[37]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:95]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[38]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:96]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[39]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:97]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[40]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:98]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[41]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:99]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[42]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:100]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[43]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:101]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[44]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:102]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[45]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:103]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[46]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:104]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[47]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:105]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[48]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:106]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[49]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:107]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[50]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:108]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[51]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:109]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[52]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:110]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[53]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:111]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[54]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:112]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[55]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:113]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[56]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:114]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[57]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:115]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[58]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:116]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[59]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:117]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[60]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:118]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[61]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:119]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[62]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:120]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dq[63]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:121]
+WARNING: [Vivado 12-584] No ports matched 'C0_DDR4_dqs_c[0]'. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:123]
+INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc:123]
+Finished Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/project_1_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/vcu_uc2_pll.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/project_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/project_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/default.xdc]
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/default.xdc]
-Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/dont_touch.xdc]
+Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/default.xdc]
+Finished Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/constrs_1/imports/xdc/default.xdc]
+Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2945.102 ; gain = 0.000 ; free physical = 6492 ; free virtual = 356277
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1903.527 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2945.102 ; gain = 0.000 ; free physical = 6492 ; free virtual = 356277
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1903.527 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:24 . Memory (MB): peak = 2945.102 ; gain = 210.215 ; free physical = 6562 ; free virtual = 356352
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1903.527 ; gain = 235.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -312,7 +302,7 @@ Start Loading Part and Timing Information
 Loading part: xczu7ev-ffvc1156-2-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:24 . Memory (MB): peak = 2945.102 ; gain = 210.215 ; free physical = 6562 ; free virtual = 356352
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1903.527 ; gain = 235.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -327,7 +317,6 @@ Applied set_property DONT_TOUCH = true for project_1_i/xlconstant_0. (constraint
 Applied set_property DONT_TOUCH = true for project_1_i/axi_gpio_1. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/xlconstant_1. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/axi_dma_0. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for project_1_i/axi_fifo_mm_s_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/smartconnect_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/xlconcat_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/axi_interconnect_2/s00_couplers/s00_regslice. (constraint file  auto generated constraint, line ).
@@ -335,10 +324,10 @@ Applied set_property DONT_TOUCH = true for project_1_i/axi_interconnect_2/s00_co
 Applied set_property DONT_TOUCH = true for project_1_i/axi_interconnect_2/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for project_1_i/axi_interconnect_2/s00_couplers/auto_rs. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:24 . Memory (MB): peak = 2945.102 ; gain = 210.215 ; free physical = 6562 ; free virtual = 356352
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1903.527 ; gain = 235.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:24 . Memory (MB): peak = 2945.102 ; gain = 210.215 ; free physical = 6563 ; free virtual = 356354
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 1903.527 ; gain = 235.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -360,25 +349,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:25 . Memory (MB): peak = 2945.102 ; gain = 210.215 ; free physical = 6547 ; free virtual = 356343
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1903.527 ; gain = 235.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:01:32 . Memory (MB): peak = 3381.719 ; gain = 646.832 ; free physical = 5874 ; free virtual = 355745
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:41 . Memory (MB): peak = 2497.688 ; gain = 829.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:01:32 . Memory (MB): peak = 3381.719 ; gain = 646.832 ; free physical = 5873 ; free virtual = 355745
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:41 . Memory (MB): peak = 2497.910 ; gain = 829.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:42 ; elapsed = 00:01:33 . Memory (MB): peak = 3402.766 ; gain = 667.879 ; free physical = 5871 ; free virtual = 355743
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:42 . Memory (MB): peak = 2517.594 ; gain = 849.375
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -396,37 +385,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -443,11 +432,10 @@ Report BlackBoxes:
 |5     |project_1_s00_regslice_0     |         1|
 |6     |project_1_PS_0_0             |         1|
 |7     |project_1_axi_dma_0_0        |         1|
-|8     |project_1_axi_fifo_mm_s_0_0  |         1|
-|9     |project_1_axi_gpio_0_0       |         1|
-|10    |project_1_axi_gpio_0_1       |         1|
-|11    |project_1_proc_sys_reset_0_0 |         1|
-|12    |project_1_smartconnect_0_0   |         1|
+|8     |project_1_axi_gpio_0_0       |         1|
+|9     |project_1_axi_gpio_0_1       |         1|
+|10    |project_1_proc_sys_reset_0_0 |         1|
+|11    |project_1_smartconnect_0_0   |         1|
 +------+-----------------------------+----------+
 
 Report Cell Usage: 
@@ -459,31 +447,30 @@ Report Cell Usage:
 |3     |project_1_auto_pc          |     1|
 |4     |project_1_auto_rs          |     1|
 |5     |project_1_axi_dma_0        |     1|
-|6     |project_1_axi_fifo_mm_s_0  |     1|
-|7     |project_1_axi_gpio_0       |     2|
-|9     |project_1_proc_sys_reset_0 |     1|
-|10    |project_1_s00_regslice     |     1|
-|11    |project_1_smartconnect_0   |     1|
-|12    |project_1_xbar             |     1|
+|6     |project_1_axi_gpio_0       |     2|
+|8     |project_1_proc_sys_reset_0 |     1|
+|9     |project_1_s00_regslice     |     1|
+|10    |project_1_smartconnect_0   |     1|
+|11    |project_1_xbar             |     1|
 +------+---------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.734 ; gain = 671.848 ; free physical = 5868 ; free virtual = 355743
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:01:24 . Memory (MB): peak = 3406.734 ; gain = 537.129 ; free physical = 5905 ; free virtual = 355780
-Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:01:35 . Memory (MB): peak = 3406.742 ; gain = 671.848 ; free physical = 5905 ; free virtual = 355780
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:38 . Memory (MB): peak = 2523.383 ; gain = 780.672
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:45 . Memory (MB): peak = 2523.383 ; gain = 855.164
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3406.742 ; gain = 0.000 ; free physical = 5978 ; free virtual = 355853
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 2523.383 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3442.422 ; gain = 0.000 ; free physical = 5911 ; free virtual = 355787
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2565.859 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-70 Infos, 131 Warnings, 0 Critical Warnings and 0 Errors encountered.
+66 Infos, 127 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:02:03 . Memory (MB): peak = 3454.391 ; gain = 1311.207 ; free physical = 6041 ; free virtual = 355918
-INFO: [Common 17-1381] The checkpoint '/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/project_1_wrapper.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:02:06 . Memory (MB): peak = 2570.859 ; gain = 1485.914
+INFO: [Common 17-1381] The checkpoint 'C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/synth_1/project_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file project_1_wrapper_utilization_synth.rpt -pb project_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Dec 21 11:40:39 2020...
+INFO: [Common 17-206] Exiting Vivado at Tue Jan 12 22:53:58 2021...

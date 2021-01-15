@@ -35,9 +35,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==project_1_xlcon
 # IP: bd/project_1/ip/project_1_axi_dma_0_0/project_1_axi_dma_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==project_1_axi_dma_0_0 || ORIG_REF_NAME==project_1_axi_dma_0_0} -quiet] -quiet
 
-# IP: bd/project_1/ip/project_1_axi_fifo_mm_s_0_0/project_1_axi_fifo_mm_s_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==project_1_axi_fifo_mm_s_0_0 || ORIG_REF_NAME==project_1_axi_fifo_mm_s_0_0} -quiet] -quiet
-
 # IP: bd/project_1/ip/project_1_smartconnect_0_0/project_1_smartconnect_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==project_1_smartconnect_0_0 || ORIG_REF_NAME==project_1_smartconnect_0_0} -quiet] -quiet
 

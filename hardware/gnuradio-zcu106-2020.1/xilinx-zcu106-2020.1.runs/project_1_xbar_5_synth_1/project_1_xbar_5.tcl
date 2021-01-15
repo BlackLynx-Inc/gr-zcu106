@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.tcl"
+  variable script "C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "project_1_xbar_5_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 set_msg_config  -id {[BD 41-1306]}  -suppress 
 set_msg_config  -id {[BD 41-1271]}  -suppress 
 set_param project.vivado.isBlockSynthRun true
@@ -81,20 +82,20 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.cache/wt [current_project]
-set_property parent.project_path /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.xpr [current_project]
+set_property webtalk.parent_dir C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.cache/wt [current_project]
+set_property parent.project_path C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:zcu106:part0:2.5 [current_project]
-set_property ip_repo_paths /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/ip [current_project]
+set_property ip_repo_paths c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/ip [current_project]
 update_ip_catalog
-set_property ip_output_repo /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.cache/ip [current_project]
+set_property ip_output_repo c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.xci
-set_property used_in_implementation false [get_files -all /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_ooc.xdc]
+read_ip -quiet C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.xci
+set_property used_in_implementation false [get_files -all c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -110,7 +111,7 @@ set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 OPTRACE "Configure IP Cache" START { }
 
-set cached_ip [config_ip_cache -export -no_bom  -dir /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1 -new_name project_1_xbar_5 -ip [get_ips project_1_xbar_5]]
+set cached_ip [config_ip_cache -export -no_bom  -dir C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1 -new_name project_1_xbar_5 -ip [get_ips project_1_xbar_5]]
 
 OPTRACE "Configure IP Cache" END { }
 if { $cached_ip eq {} } {
@@ -162,32 +163,32 @@ create_report "project_1_xbar_5_synth_1_synth_report_utilization_0" "report_util
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.dcp /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.dcp
+  file copy -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.dcp c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
+  write_verilog -force -mode synth_stub c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl
+  write_vhdl -force -mode synth_stub c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.v
+  write_verilog -force -mode funcsim c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -197,47 +198,47 @@ if { [catch {
 
 
 if { [catch {
-  file copy -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.dcp /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.dcp
+  file copy -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5.dcp c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  file rename -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_stub.v /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
+  file rename -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_stub.v c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_stub.vhdl /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl
+  file rename -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_stub.vhdl c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_sim_netlist.v /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.v
+  file rename -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_sim_netlist.v c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_sim_netlist.vhdl /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.vhdl
+  file rename -force C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.runs/project_1_xbar_5_synth_1/project_1_xbar_5_sim_netlist.vhdl c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 }; # end if cached_ip 
 
-if {[file isdir /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5]} {
+if {[file isdir C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5]} {
   catch { 
-    file copy -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5
+    file copy -force c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.v C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5
   }
 }
 
-if {[file isdir /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5]} {
+if {[file isdir C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5]} {
   catch { 
-    file copy -force /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl /ryftone/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5
+    file copy -force c:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_xbar_5/project_1_xbar_5_stub.vhdl C:/Chintan/projects/darpa/github/gr-zcu106-clean/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.ip_user_files/ip/project_1_xbar_5
   }
 }
 file delete __synthesis_is_running__
