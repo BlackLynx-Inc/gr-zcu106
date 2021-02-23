@@ -1,8 +1,8 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Thu May 28 06:11:59 2020
--- Host        : xcosswbld09 running 64-bit Red Hat Enterprise Linux Workstation release 7.4 (Maipo)
+-- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+-- Date        : Tue Jan 12 11:09:04 2021
+-- Host        : L000921 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top project_1_auto_ds_0 -prefix
 --               project_1_auto_ds_0_ project_1_auto_ds_0_sim_netlist.vhdl
 -- Design      : project_1_auto_ds_0

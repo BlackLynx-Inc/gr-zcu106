@@ -1,11 +1,11 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Fri Dec 18 01:32:26 2020
-// Host        : buildserver7 running 64-bit Ubuntu 16.04.7 LTS
+// Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+// Date        : Tue Jan 12 11:02:24 2021
+// Host        : L000921 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top project_1_s00_regslice_0 -prefix
-//               project_1_s00_regslice_0_ project_1_s00_regslice_41_sim_netlist.v
-// Design      : project_1_s00_regslice_41
+//               project_1_s00_regslice_0_ project_1_s00_regslice_0_sim_netlist.v
+// Design      : project_1_s00_regslice_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xczu7ev-ffvc1156-2-e
@@ -8512,7 +8512,7 @@ module project_1_s00_regslice_0_axi_register_slice_v2_1_21_axic_register_slice__
         .R(1'b0));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "project_1_s00_regslice_41,axi_register_slice_v2_1_21_axi_register_slice,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_register_slice_v2_1_21_axi_register_slice,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "project_1_s00_regslice_0,axi_register_slice_v2_1_21_axi_register_slice,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_register_slice_v2_1_21_axi_register_slice,Vivado 2020.1" *) 
 (* NotValidForBitStream *)
 module project_1_s00_regslice_0
    (aclk,

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xczu7ev-ffvc1156-2-e" LaunchTime="1608568503">
-  <File Type="VDS-TIMING-PB" Name="project_1_wrapper_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="project_1_wrapper_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="project_1_wrapper.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="project_1_wrapper_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="project_1_wrapper_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="project_1_wrapper_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="project_1_wrapper.vds"/>
-  <File Type="REPORTS-TCL" Name="project_1_wrapper_reports.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xczu7ev-ffvc1156-2-e" LaunchTime="1610509896">
   <File Type="PA-TCL" Name="project_1_wrapper.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="project_1_wrapper_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="project_1_wrapper_reports.tcl"/>
+  <File Type="RDS-RDS" Name="project_1_wrapper.vds"/>
+  <File Type="RDS-UTIL" Name="project_1_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="project_1_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="project_1_wrapper.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="project_1_wrapper_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="project_1_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/bd/project_1/project_1.bd">
@@ -62,11 +62,9 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_auto_rs_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_axi_fifo_mm_s_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_proc_sys_reset_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_PS_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_xbar_5"/>
-  <BlockFileSet Type="BlockSrcs" Name="project_1_axi_gpio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="project_1_axi_dma_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="project_1_PS_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="project_1_axi_gpio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="project_1_proc_sys_reset_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="project_1_xbar_5"/>
 </GenRun>
