@@ -5,9 +5,11 @@ Follow the steps below to create a Yocto Linux image for Xilinx ZC106 platform w
 Build Instructions
 
 Clone repo
-Go to top-level directory
+Go to top-level directory and type the following
+
 $ source setupsdk
 $ MACHINE=zcu106-zynqmp bitbake petalinux-image-gr. 
+
 This will kick off the build which should complete with 0 errors.
 
 Deploy Instructions
