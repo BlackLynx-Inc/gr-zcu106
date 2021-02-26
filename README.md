@@ -31,11 +31,4 @@ ZynqMP> mmc dev 0 && mmcinfo && load mmc 0:1 0x80000 Image && load mmc 0:1 0x400
 
 Board should boot correctly after this.
 
-Read Version Registers
 
-Once board is booted, peek command can be used to confirm Version registers.
-(Note: Physical address changes when PL design is changed. Confirm in PL address editor)
-
-peek 0x000A_0001
-
-peek 0x000A_0002
