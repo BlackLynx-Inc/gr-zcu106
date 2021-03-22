@@ -1,4 +1,4 @@
 SANITY_VERSION 1
-TMPDIR /home/ryftuser/chintan/darpa/temp/build/tmp
-SSTATE_DIR /home/ryftuser/chintan/darpa/temp/build/sstate-cache
+TMPDIR /ryftone/chintan/darpa/github/clean/gr-zcu106/build/tmp
+SSTATE_DIR /ryftone/chintan/darpa/github/clean/gr-zcu106/build/sstate-cache
 NATIVELSBSTRING ubuntu-16.04

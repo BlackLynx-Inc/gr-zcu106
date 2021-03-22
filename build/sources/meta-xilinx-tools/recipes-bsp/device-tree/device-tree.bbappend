@@ -91,6 +91,24 @@ do_configure_append () {
     fi
 }
 
+SRC_URI_append_zcu106-zynqmp = "\
+    file://system-user.dtsi \
+"
+
+do_configure_append_zcu106-zynqmp() {
+        if [ -e ${WORKDIR}/system-user.dtsi ]; then
+               cp ${WORKDIR}/system-user.dtsi ${DT_FILES_PATH}/system-user.dtsi
+               echo '/include/ "system-user.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
+        fi
+}
+
+do_configure_append () {
+    if [ -n "${CUSTOM_PL_INCLUDE_DTSI}" ]; then
+        [ ! -f "${CUSTOM_PL_INCLUDE_DTSI}" ] && bbfatal "Please check that the correct filepath was provided using CUSTOM_PL_INCLUDE_DTSI"
+        cp ${CUSTOM_PL_INCLUDE_DTSI} ${XSCTH_WS}/${XSCTH_PROJ}/pl-custom.dtsi
+    fi
+}
+
 do_compile_prepend() {
     listpath = d.getVar("DT_FILES_PATH")
     try:
