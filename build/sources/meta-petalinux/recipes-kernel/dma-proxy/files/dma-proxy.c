@@ -457,7 +457,6 @@ static int dma_proxy_probe(struct platform_device *pdev)
 	/* Create the transmit and receive channels.
 	 */
 	rc = create_channel(pdev, &channels[TX_CHANNEL], "dma_proxy_tx", DMA_MEM_TO_DEV);
-
 	if (rc) 
 		return rc;
 
@@ -518,6 +517,8 @@ static struct platform_driver dma_proxy_driver = {
 
 static int __init dma_proxy_init(void)
 {
+	pr_info("BLNX --  LOADING DMA PROXY\n");
+	
 	return platform_driver_register(&dma_proxy_driver);
 
 }
@@ -525,6 +526,8 @@ static int __init dma_proxy_init(void)
 static void __exit dma_proxy_exit(void)
 {
 	platform_driver_unregister(&dma_proxy_driver);
+	
+	pr_info("BLNX --  REMOVING DMA PROXY\n");
 }
 
 module_init(dma_proxy_init)

@@ -21,6 +21,11 @@ COMMON_INSTALL = " \
     can-utils \
     pciutils \
     kernel-modules \
+    kmod \
+    peekpoke \
+    xilinxdma \
+    dma-proxy \
+    dma-proxy-test \
     "
 
 IMAGE_INSTALL = " \
