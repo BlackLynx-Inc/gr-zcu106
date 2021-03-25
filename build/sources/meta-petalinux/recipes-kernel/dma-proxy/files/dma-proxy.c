@@ -76,18 +76,19 @@
 
 MODULE_LICENSE("GPL");
 
-#define DRIVER_NAME 		"dma_proxy"
+#define DRIVER_NAME 		"xilinx_dma"
 #define CHANNEL_COUNT 		2
-#define TX_CHANNEL		0
-#define RX_CHANNEL		1
-#define ERROR 			-1
+#define TX_CHANNEL			0
+#define RX_CHANNEL			1
+#define ERROR 			   -1
 #define NOT_LAST_CHANNEL 	0
-#define LAST_CHANNEL 		1
 
 /* The following module parameter controls if the internal test runs when the module is inserted.
  */
 static unsigned internal_test = 0;
 module_param(internal_test, int, S_IRUGO);
+
+
 
 /* The following data structure represents a single channel of DMA, transmit or receive in the case
  * when using AXI DMA.  It contains all the data to be maintained for the channel.
@@ -96,18 +97,25 @@ struct dma_proxy_channel {
 	struct dma_proxy_channel_interface *interface_p;	/* user to kernel space interface */
 	dma_addr_t interface_phys_addr;
 
-	struct device *proxy_device_p;				/* character device support */
-	struct device *dma_device_p;
-	dev_t dev_node;
-	struct cdev cdev;
-	struct class *class_p;
+	struct xilinx_dma_t* parent;		/* pointer back to parent */
 
-	struct dma_chan *channel_p;				/* dma support */
+	struct dma_chan *channel_p;			/* dma support */
 	struct completion cmp;
 	dma_cookie_t cookie;
 	dma_addr_t dma_handle;
 	u32 direction;						/* DMA_MEM_TO_DEV or DMA_DEV_TO_MEM */
 	struct scatterlist sglist;
+};
+
+struct xilinx_dma_t {
+	struct device *proxy_device_p;		/* character device support */
+	struct device *dma_device_p;
+	dev_t dev_node;
+	struct cdev cdev;
+	struct class *class_p;
+	
+	struct dma_proxy_channel tx_channel;
+	struct dma_proxy_channel rx_channel;
 };
 
 /* Allocate the channels for this example statically rather than dynamically for simplicity.
@@ -219,6 +227,7 @@ static void tx_test(struct work_struct *unused)
 	channels[TX_CHANNEL].interface_p->length = TEST_SIZE;
 	transfer(&channels[TX_CHANNEL]);
 }
+
 static void test(void)
 {
 	int i;
@@ -264,11 +273,12 @@ static void test(void)
  */
 static int mmap(struct file *file_p, struct vm_area_struct *vma)
 {
-	struct dma_proxy_channel *pchannel_p = (struct dma_proxy_channel *)file_p->private_data;
+	//~ struct dma_proxy_channel *pchannel_p = (struct dma_proxy_channel *)file_p->private_data;
 
-	return dma_mmap_coherent(pchannel_p->dma_device_p, vma,
-					   pchannel_p->interface_p, pchannel_p->interface_phys_addr,
-					   vma->vm_end - vma->vm_start);
+	//~ return dma_mmap_coherent(pchannel_p->dma_device_p, vma,
+					   //~ pchannel_p->interface_p, pchannel_p->interface_phys_addr,
+					   //~ vma->vm_end - vma->vm_start);
+	return 0;
 }
 
 /* Open the device file and set up the data pointer to the proxy channel data for the
@@ -276,7 +286,7 @@ static int mmap(struct file *file_p, struct vm_area_struct *vma)
  */
 static int local_open(struct inode *ino, struct file *file)
 {
-	file->private_data = container_of(ino->i_cdev, struct dma_proxy_channel, cdev);
+	file->private_data = container_of(ino->i_cdev, struct xilinx_dma_t, cdev);
 
 	return 0;
 }
@@ -285,8 +295,8 @@ static int local_open(struct inode *ino, struct file *file)
  */
 static int release(struct inode *ino, struct file *file)
 {
-	struct dma_proxy_channel *pchannel_p = (struct dma_proxy_channel *)file->private_data;
-	struct dma_device *dma_device = pchannel_p->channel_p->device;
+	struct xilinx_dma_t* xilinx_dma = (struct xilinx_dma_t *)file->private_data;
+	//~ struct dma_device *dma_device = xilinx_dma->channel_p->device;
 
 	/* Stop all the activity when the channel is closed assuming this
 	 * may help if the application is aborted without normal closure
@@ -312,97 +322,93 @@ static struct file_operations dm_fops = {
 	.owner    = THIS_MODULE,
 	.open     = local_open,
 	.release  = release,
-	.unlocked_ioctl = ioctl,
-	.mmap	= mmap
+	//~ .unlocked_ioctl = ioctl,
+	//~ .mmap	= mmap
 };
 
 
 /* Initialize the driver to be a character device such that is responds to
  * file operations.
  */
-static int cdevice_init(struct dma_proxy_channel *pchannel_p, char *name)
+static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
 {
 	int rc;
-	char device_name[32] = "dma_proxy";
-	static struct class *local_class_p = NULL;
+	char device_name[32] = "xilinx_dma";
 
-	/* Allocate a character device from the kernel for this driver.
+	/* 
+	 * Allocate a character device from the kernel for this driver.
 	 */
-	rc = alloc_chrdev_region(&pchannel_p->dev_node, 0, 1, "dma_proxy");
+	rc = alloc_chrdev_region(&xilinx_dma_p->dev_node, 0, 1, "xilinx_dma");
 
 	if (rc) {
-		dev_err(pchannel_p->dma_device_p, "unable to get a char device number\n");
+		dev_err(xilinx_dma_p->dma_device_p, "unable to get a char device number\n");
 		return rc;
 	}
 
-	/* Initialize the device data structure before registering the character 
+	/* 
+	 * Initialize the device data structure before registering the character 
 	 * device with the kernel.
 	 */
-	cdev_init(&pchannel_p->cdev, &dm_fops);
-	pchannel_p->cdev.owner = THIS_MODULE;
-	rc = cdev_add(&pchannel_p->cdev, pchannel_p->dev_node, 1);
-
+	cdev_init(&xilinx_dma_p->cdev, &dm_fops);
+	xilinx_dma_p->cdev.owner = THIS_MODULE;
+	rc = cdev_add(&xilinx_dma_p->cdev, xilinx_dma_p->dev_node, 1);
 	if (rc) {
-		dev_err(pchannel_p->dma_device_p, "unable to add char device\n");
+		dev_err(xilinx_dma_p->dma_device_p, "unable to add char device\n");
 		goto init_error1;
 	}
 
-	/* Only one class in sysfs is to be created for multiple channels,
-	 * create the device in sysfs which will allow the device node
-	 * in /dev to be created
+	/* 
+	 * Create sysfs class to create the device in sysfs which will allow the 
+	 * device node in /dev to be created
 	 */
-	if (!local_class_p) {
-		local_class_p = class_create(THIS_MODULE, DRIVER_NAME);
-
-		if (IS_ERR(pchannel_p->dma_device_p->class)) {
-			dev_err(pchannel_p->dma_device_p, "unable to create class\n");
-			rc = ERROR;
-			goto init_error2;
-		}
+	xilinx_dma_p->class_p = class_create(THIS_MODULE, DRIVER_NAME);
+	if (IS_ERR(xilinx_dma_p->dma_device_p->class)) {
+		dev_err(xilinx_dma_p->dma_device_p, "unable to create class\n");
+		rc = ERROR;
+		goto init_error2;
 	}
-	pchannel_p->class_p = local_class_p;
+	
 
-	/* Create the device node in /dev so the device is accessible
-	 * as a character device
+	/* 
+	 * Create the device node in /dev so the device is accessible as a 
+	 * character device
 	 */
 	strcat(device_name, name);
-	pchannel_p->proxy_device_p = device_create(pchannel_p->class_p, NULL,
-					  	 pchannel_p->dev_node, NULL, name);
-
-	if (IS_ERR(pchannel_p->proxy_device_p)) {
-		dev_err(pchannel_p->dma_device_p, "unable to create the device\n");
+	xilinx_dma_p->proxy_device_p = device_create(xilinx_dma_p->class_p, NULL,
+												 xilinx_dma_p->dev_node, NULL, 
+												 name);
+	if (IS_ERR(xilinx_dma_p->proxy_device_p)) {
+		dev_err(xilinx_dma_p->dma_device_p, "unable to create the device\n");
 		goto init_error3;
 	}
 
 	return 0;
 
 init_error3:
-	class_destroy(pchannel_p->class_p);
+	class_destroy(xilinx_dma_p->class_p);
 
 init_error2:
-	cdev_del(&pchannel_p->cdev);
+	cdev_del(&xilinx_dma_p->cdev);
 
 init_error1:
-	unregister_chrdev_region(pchannel_p->dev_node, 1);
+	unregister_chrdev_region(xilinx_dma_p->dev_node, 1);
 	return rc;
 }
 
 /* Exit the character device by freeing up the resources that it created and
  * disconnecting itself from the kernel.
  */
-static void cdevice_exit(struct dma_proxy_channel *pchannel_p, int last_channel)
+static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
 {
-	/* Take everything down in the reverse order
-	 * from how it was created for the char device
+	/* 
+	 * Take everything down in the reverse order from how it was created for 
+	 * the char device
 	 */
-	if (pchannel_p->proxy_device_p) {
-		device_destroy(pchannel_p->class_p, pchannel_p->dev_node);
-		if (last_channel)
-			class_destroy(pchannel_p->class_p);
+	device_destroy(xilinx_dma_p->class_p, xilinx_dma_p->dev_node);
+	class_destroy(xilinx_dma_p->class_p);
 
-		cdev_del(&pchannel_p->cdev);
-		unregister_chrdev_region(pchannel_p->dev_node, 1);
-	}
+	cdev_del(&xilinx_dma_p->cdev);
+	unregister_chrdev_region(xilinx_dma_p->dev_node, 1);
 }
 
 /* Create a DMA channel by getting a DMA channel from the DMA Engine and then setting
@@ -412,37 +418,32 @@ static int create_channel(struct platform_device *pdev, struct dma_proxy_channel
 {
 	int rc;
 
-	/* Request the DMA channel from the DMA engine and then use the device from
+	/* 
+	 * Request the DMA channel from the DMA engine and then use the device from
 	 * the channel for the proxy channel also.
 	 */
 	pchannel_p->channel_p = dma_request_slave_channel(&pdev->dev, name);
 	if (!pchannel_p->channel_p) {
-		dev_err(pchannel_p->dma_device_p, "DMA channel request error\n");
+		dev_err(pchannel_p->parent->dma_device_p, "DMA channel request error\n");
 		return ERROR;
 	}
-	pchannel_p->dma_device_p = &pdev->dev; 
-
-	/* Initialize the character device for the dma proxy channel
-	 */
-	rc = cdevice_init(pchannel_p, name);
-	if (rc) 
-		return rc;
-
+	
 	pchannel_p->direction = direction;
 
 	/* Allocate DMA memory for the proxy channel interface.
 	 */
 	pchannel_p->interface_p = (struct dma_proxy_channel_interface *)
-		dmam_alloc_coherent(pchannel_p->dma_device_p,
-					sizeof(struct dma_proxy_channel_interface),
-					&pchannel_p->interface_phys_addr, GFP_KERNEL);
+		dmam_alloc_coherent(pchannel_p->parent->dma_device_p,
+							sizeof(struct dma_proxy_channel_interface),
+							&pchannel_p->interface_phys_addr, GFP_KERNEL);
 		pr_info("Allocating uncached memory at virtual address 0x%p, physical address 0x%p\n", 
-			pchannel_p->interface_p, (void *)pchannel_p->interface_phys_addr);
+				pchannel_p->interface_p, (void *)pchannel_p->interface_phys_addr);
 
 	if (!pchannel_p->interface_p) {
-		dev_err(pchannel_p->dma_device_p, "DMA allocation error\n");
+		dev_err(pchannel_p->parent->dma_device_p, "DMA allocation error\n");
 		return ERROR;
 	}
+	
 	return 0;
 }
 
@@ -454,49 +455,91 @@ static int dma_proxy_probe(struct platform_device *pdev)
 
 	pr_info("dma_proxy module initialized\n");
 
-	/* Create the transmit and receive channels.
+	/*
+	 * Allocate private data for the platform device and stash
+	 */ 
+	struct xilinx_dma_t* xilinx_dma = kzalloc(sizeof(struct xilinx_dma_t), GFP_KERNEL);
+	if (xilinx_dma == NULL) {
+		return -EIO;
+	}
+	platform_set_drvdata(pdev, xilinx_dma);
+	
+	pr_info("BLNX - channel count: \n");
+	
+	/*
+	 * First, attempt to create TX and RX DMA channels
+	 */ 
+	xilinx_dma->dma_device_p = &pdev->dev; 
+	xilinx_dma->tx_channel.parent = xilinx_dma;
+	xilinx_dma->rx_channel.parent = xilinx_dma;
+	 
+	rc = create_channel(pdev, &xilinx_dma->tx_channel, "dma_proxy_tx", DMA_MEM_TO_DEV);
+	if (rc) {
+		pr_err("unable to create TX channel");
+		return rc;
+	}
+	pr_info("BLNX - created TX channel\n");
+	
+	rc = create_channel(pdev, &xilinx_dma->rx_channel, "dma_proxy_rx", DMA_DEV_TO_MEM);
+	if (rc) {
+		pr_err("unable to create RX channel");
+		return rc;
+	}
+	pr_info("BLNX - created RX channel\n");
+	
+	/* 
+	 * Now initialize the character device 
 	 */
-	rc = create_channel(pdev, &channels[TX_CHANNEL], "dma_proxy_tx", DMA_MEM_TO_DEV);
-	if (rc) 
+	rc = cdevice_init(xilinx_dma, "xilinx_dma");
+	if (rc) {
 		return rc;
-
-	rc = create_channel(pdev, &channels[RX_CHANNEL], "dma_proxy_rx", DMA_DEV_TO_MEM);
-	if (rc) 
-		return rc;
-
-	if (internal_test)
-		test();
+	}
+	
+	pr_info("BLNX - inited char device\n");
 
 	return 0;
 }
  
-/* Exit the dma proxy device driver module.
+/** 
+ * Exit the dma proxy device driver module.
  */
 static int dma_proxy_remove(struct platform_device *pdev)
 {
 	int i;
 
 	pr_info("dma_proxy module exited\n");
+	
+	/*
+	 * Retrieve the xilinx_dma_t
+	 */ 
+	struct xilinx_dma_t* xilinx_dma = platform_get_drvdata(pdev);
 
-	/* Take care of the char device infrastructure for each
-	 * channel except for the last channel. Handle the last
-	 * channel seperately.
+	/* 
+	 * Take care of the DMA channels and the any buffers allocated for the DMA 
+	 * transfers. The DMA buffers are using managed memory such that it's 
+	 * automatically done.
 	 */
-	for (i = 0; i < CHANNEL_COUNT - 1; i++) 
-		if (channels[i].proxy_device_p)
-			cdevice_exit(&channels[i], NOT_LAST_CHANNEL);
+	struct dma_chan *tx_channel = xilinx_dma->tx_channel.channel_p;	 
+	tx_channel->device->device_terminate_all(tx_channel);
+	dma_release_channel(tx_channel);
+	
+	pr_info("BLNX - terminated TX chan\n");
 
-	cdevice_exit(&channels[i], LAST_CHANNEL);
+	struct dma_chan *rx_channel = xilinx_dma->rx_channel.channel_p;	 
+	rx_channel->device->device_terminate_all(rx_channel);
+	dma_release_channel(rx_channel);
+	
+	pr_info("BLNX - terminated RX chan\n");
 
-	/* Take care of the DMA channels and the any buffers allocated
-	 * for the DMA transfers. The DMA buffers are using managed
-	 * memory such that it's automatically done.
-	 */
-	for (i = 0; i < CHANNEL_COUNT; i++)
-		if (channels[i].channel_p) {
-			channels[i].channel_p->device->device_terminate_all(channels[i].channel_p);
-			dma_release_channel(channels[i].channel_p);
-		}
+	/*
+	 * Teardown character device
+	 */ 
+	cdevice_exit(xilinx_dma);
+	
+	pr_info("BLNX - cdev teardown done\n");
+
+	kfree(xilinx_dma);
+
 	return 0;
 }
 
@@ -533,6 +576,6 @@ static void __exit dma_proxy_exit(void)
 module_init(dma_proxy_init)
 module_exit(dma_proxy_exit)
 
-MODULE_AUTHOR("Xilinx, Inc.");
+MODULE_AUTHOR("Xilinx, Inc.; BlackLynx Inc.");
 MODULE_DESCRIPTION("DMA Proxy Prototype");
 MODULE_LICENSE("GPL v2");
