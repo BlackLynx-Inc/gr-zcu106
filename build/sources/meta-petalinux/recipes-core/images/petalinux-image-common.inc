@@ -25,6 +25,7 @@ COMMON_INSTALL = " \
     peekpoke \
     xilinxdma \
     dma-proxy \
+    dma-proxy-lib \
     dma-proxy-test \
     "
 

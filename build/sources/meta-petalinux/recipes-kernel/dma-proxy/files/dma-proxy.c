@@ -339,7 +339,6 @@ static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
 	 * Allocate a character device from the kernel for this driver.
 	 */
 	rc = alloc_chrdev_region(&xilinx_dma_p->dev_node, 0, 1, "xilinx_dma");
-
 	if (rc) {
 		dev_err(xilinx_dma_p->dma_device_p, "unable to get a char device number\n");
 		return rc;
@@ -367,7 +366,6 @@ static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
 		rc = ERROR;
 		goto init_error2;
 	}
-	
 
 	/* 
 	 * Create the device node in /dev so the device is accessible as a 
@@ -406,7 +404,6 @@ static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
 	 */
 	device_destroy(xilinx_dma_p->class_p, xilinx_dma_p->dev_node);
 	class_destroy(xilinx_dma_p->class_p);
-
 	cdev_del(&xilinx_dma_p->cdev);
 	unregister_chrdev_region(xilinx_dma_p->dev_node, 1);
 }
