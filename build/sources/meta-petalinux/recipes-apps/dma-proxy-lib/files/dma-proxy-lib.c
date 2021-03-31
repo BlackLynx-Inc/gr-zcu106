@@ -54,7 +54,8 @@ static int _map_reg_space()
 	}
 	
 	__dma_proxy_reg_space_ptr = mmap(NULL, REG_SPACE_SIZE, PROT_READ | PROT_WRITE,
-	                                 MAP_SHARED, __dma_proxy_reg_space_fd, 0);
+	                                 MAP_SHARED, __dma_proxy_reg_space_fd, 
+	                                 REG_SPACE_BASE_ADDR);
 	if (__dma_proxy_reg_space_ptr == MAP_FAILED) 
 	{
 		return -2;
@@ -66,6 +67,12 @@ static int _map_reg_space()
 uint32_t reg_read32(uint32_t offset)
 {
 	uint32_t value = 0xDEADDEAD;
+	
+	// Make sure the offset doesn't exceed the size of the mapped space
+	if (offset > REG_SPACE_SIZE)
+	{
+		return value;
+	}
 	
 	// Map the register space if it is not already mapped
 	if (__dma_proxy_reg_space_ptr == NULL)
@@ -82,6 +89,12 @@ uint32_t reg_read32(uint32_t offset)
 
 int reg_write32(uint32_t offset, uint32_t value)
 {
+	// Make sure the offset doesn't exceed the size of the mapped space
+	if (offset > REG_SPACE_SIZE)
+	{
+		return -1;
+	}
+	
 	// Map the register space if it is not already mapped
 	if (__dma_proxy_reg_space_ptr == NULL)
 	{

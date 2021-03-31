@@ -87,7 +87,6 @@ void *tx_thread(int dma_count)
 	}
 }
 
-
 int main(int argc, char *argv[])
 {
 	struct dma_proxy_channel_interface *rx_proxy_interface_p;

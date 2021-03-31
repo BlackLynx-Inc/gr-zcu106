@@ -83,20 +83,18 @@ MODULE_LICENSE("GPL");
 #define ERROR 			   -1
 #define NOT_LAST_CHANNEL 	0
 
-/* The following module parameter controls if the internal test runs when the module is inserted.
+/* 
+ * The following module parameter controls if the internal test runs when the module is inserted.
  */
 static unsigned internal_test = 0;
 module_param(internal_test, int, S_IRUGO);
 
 
-
-/* The following data structure represents a single channel of DMA, transmit or receive in the case
+/* 
+ * The following data structure represents a single channel of DMA, transmit or receive in the case
  * when using AXI DMA.  It contains all the data to be maintained for the channel.
  */
 struct dma_proxy_channel {
-	struct dma_proxy_channel_interface *interface_p;	/* user to kernel space interface */
-	dma_addr_t interface_phys_addr;
-
 	struct xilinx_dma_t* parent;		/* pointer back to parent */
 
 	struct dma_chan *channel_p;			/* dma support */
@@ -118,9 +116,16 @@ struct xilinx_dma_t {
 	struct dma_proxy_channel rx_channel;
 };
 
-/* Allocate the channels for this example statically rather than dynamically for simplicity.
- */
-static struct dma_proxy_channel channels[CHANNEL_COUNT];
+enum proxy_status { PROXY_NO_ERROR = 0, PROXY_BUSY = 1, PROXY_TIMEOUT = 2, PROXY_ERROR = 3 };
+struct dma_proxy_file_t {
+	struct xilinx_dma_t* proxy_dev;	/* owning device for this buffer */
+	//~ uint32_t id;			/* unique ID for this file - not sure if needed*/
+	dma_addr_t phys_addr;		/* bus address of DMA buffer */
+	void *virt_address;     	/* kernel virtual address of the DMA buffer */
+	size_t size;          		/* size in bytes of the buffer */
+	enum proxy_status status;	/* status of the proxy channel */
+};
+
 
 /* Handle a callback and indicate the DMA transfer is complete to another
  * thread of control
@@ -139,6 +144,7 @@ static void sync_callback(void *completion)
  */
 static void start_transfer(struct dma_proxy_channel *pchannel_p)
 {
+#if 0	
 	enum dma_ctrl_flags flags = DMA_CTRL_ACK | DMA_PREP_INTERRUPT;
 	struct dma_async_tx_descriptor *chan_desc;
 	struct dma_proxy_channel_interface *interface_p = pchannel_p->interface_p;
@@ -178,12 +184,14 @@ static void start_transfer(struct dma_proxy_channel *pchannel_p)
 		 */
 		dma_async_issue_pending(pchannel_p->channel_p);
 	}
+#endif
 }
 
 /* Wait for a DMA transfer that was previously submitted to the DMA engine
  */
 static void wait_for_transfer(struct dma_proxy_channel *pchannel_p)
 {
+#if 0
 	unsigned long timeout = msecs_to_jiffies(3000);
 	enum dma_status status;
 
@@ -203,12 +211,14 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p)
 			   status == DMA_ERROR ? "error" : "in progress");
 	} else
 		pchannel_p->interface_p->status = PROXY_NO_ERROR;
+#endif
 }
 
 /* Perform the DMA transfer for the channel, starting it then blocking to wait for completion.
  */
 static void transfer(struct dma_proxy_channel *pchannel_p)
 {
+#if 0
 	/* The physical address of the buffer in the interface is needed for the dma transfer
 	 * as the buffer may not be the first data in the interface
 	 */
@@ -217,6 +227,7 @@ static void transfer(struct dma_proxy_channel *pchannel_p)
 
 	start_transfer(pchannel_p);
 	wait_for_transfer(pchannel_p);
+#endif
 }
 
 /* The following functions are designed to test the driver from within the device
@@ -224,12 +235,13 @@ static void transfer(struct dma_proxy_channel *pchannel_p)
  */
 static void tx_test(struct work_struct *unused)
 {
-	channels[TX_CHANNEL].interface_p->length = TEST_SIZE;
-	transfer(&channels[TX_CHANNEL]);
+	//~ channels[TX_CHANNEL].interface_p->length = TEST_SIZE;
+	//~ transfer(&channels[TX_CHANNEL]);
 }
 
 static void test(void)
 {
+#if 0
 	int i;
 	struct work_struct work;
 	
@@ -264,45 +276,134 @@ static void test(void)
 		}
 
 	pr_alert("Internal test complete\n");
+#endif
 }
 
-/* Map the memory for the channel interface into user space such that user space can
- * access it using coherent memory which will be non-cached for s/w coherent systems
- * such as Zynq 7K or the current default for Zynq MPSOC. MPSOC can be h/w coherent
- * when set up and then the memory will be cached.
+/**
+ * Empty placeholder function for a required function
  */
-static int mmap(struct file *file_p, struct vm_area_struct *vma)
+static void dma_proxy_vma_open(struct vm_area_struct *vma)
 {
-	//~ struct dma_proxy_channel *pchannel_p = (struct dma_proxy_channel *)file_p->private_data;
-
-	//~ return dma_mmap_coherent(pchannel_p->dma_device_p, vma,
-					   //~ pchannel_p->interface_p, pchannel_p->interface_phys_addr,
-					   //~ vma->vm_end - vma->vm_start);
-	return 0;
 }
 
-/* Open the device file and set up the data pointer to the proxy channel data for the
- * proxy channel such that the ioctl function can access the data structure later.
+/**
+ * Free all of the DMA buffers that were allocated in the mmap call. This
+ * function gets called after the munmap syscall returns success.
+ */
+static void dma_proxy_vma_close(struct vm_area_struct *vma)
+{
+	pr_info("BLNX - vma close\n");
+	
+	struct file *file = vma->vm_file;
+	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
+	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
+	
+	pr_info("BLNX - pre free coherent\n");
+	// Free the DMA buffer that was allocated in the mmap call
+	dma_free_coherent(xilinx_dma->dma_device_p, proxy_file->size, 
+					  proxy_file->virt_address, proxy_file->phys_addr);
+	pr_info("BLNX - post free coherent\n");
+	
+	// Reset values just in case
+	proxy_file->size = 0; 
+	proxy_file->virt_address = NULL;
+	proxy_file->phys_addr = 0;
+}
+
+//~ static int dma_proxy_fault(struct vm_fault *fdata)
+//~ {
+	//~ // This should never be called
+	//~ pr_info("BLNX - vma page fault handler\n");
+	//~ return VM_FAULT_SIGBUS;
+//~ }
+
+static struct vm_operations_struct dma_proxy_vm_ops = {
+    .open  = dma_proxy_vma_open,
+    .close = dma_proxy_vma_close,
+    //~ .fault = dma_proxy_fault,
+};
+
+/** 
+ * Map buffer memory.
+ */
+static int mmap(struct file *file, struct vm_area_struct *vma)
+{
+	pr_info("BLNX - mmmmmap\n");
+	
+	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
+	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
+
+	// Determine the size that userspace is attempting to mmap
+    size_t size = vma->vm_end - vma->vm_start;
+	proxy_file->size = size;
+
+	pr_info("BLNX - buffer size: %u\n", size);
+	
+	// Allocate the DMA buffer
+	proxy_file->virt_address = dma_alloc_coherent(xilinx_dma->dma_device_p, 
+												  size, 
+											   	  &proxy_file->phys_addr, 
+											   	  GFP_DMA | GFP_DMA32 | GFP_KERNEL);
+	pr_info("BLNX - dma_alloc_coherent done\n");
+	if (proxy_file->virt_address == NULL)
+	{
+		pr_err("BLNX - ALLOC FAILED\n");
+		return -ENOMEM;
+	}
+
+	// Install custom VM operations
+    vma->vm_ops = &dma_proxy_vm_ops;
+
+	// Map the DMA buffer into the VMA
+	return dma_mmap_coherent(xilinx_dma->dma_device_p, vma,
+			    			 proxy_file->virt_address, proxy_file->phys_addr,
+						     size);
+}
+
+/** 
+ * Open the device file, allocate per file structure, and set up the data pointer 
+ * such that the ioctl function can access the data structure later.
  */
 static int local_open(struct inode *ino, struct file *file)
 {
-	file->private_data = container_of(ino->i_cdev, struct xilinx_dma_t, cdev);
+	pr_info("BLNX - open file\n");
+	
+	// Grab pointer to the proxy device structure
+	struct xilinx_dma_t* xilinx_dma = container_of(ino->i_cdev, struct xilinx_dma_t, cdev);
+	 
+	// Allocate per file (i.e. buffer) structure
+	struct dma_proxy_file_t* proxy_file = kzalloc(sizeof(struct dma_proxy_file_t), GFP_KERNEL);
+	if (proxy_file == NULL) {
+		return -ENOMEM;
+	}
+	
+	pr_info("BLNX - create per file data structure\n");
+	
+	// Store pointer to parent device and stash in file
+	proxy_file->proxy_dev = xilinx_dma;
+	file->private_data = proxy_file;
+	
+	pr_info("BLNX - data structure storred\n");
 
 	return 0;
 }
 
-/* Close the file and there's nothing to do for it
+/** 
+ * Close the file and free the per file data structure
  */
 static int release(struct inode *ino, struct file *file)
 {
-	struct xilinx_dma_t* xilinx_dma = (struct xilinx_dma_t *)file->private_data;
-	//~ struct dma_device *dma_device = xilinx_dma->channel_p->device;
-
-	/* Stop all the activity when the channel is closed assuming this
-	 * may help if the application is aborted without normal closure
-	 */
-
-	//dma_device->device_terminate_all(pchannel_p->channel_p);
+	pr_info("BLNX - file close (release)\n");
+	
+	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
+	
+	// Check status and wait if busy?
+	
+	// Free file struct
+    kfree(proxy_file);
+	
+	pr_info("BLNX - freed per file data structure\n");
+	
 	return 0;
 }
 
@@ -318,27 +419,28 @@ static long ioctl(struct file *file, unsigned int unused , unsigned long arg)
 
 	return 0;
 }
+
 static struct file_operations dm_fops = {
 	.owner    = THIS_MODULE,
 	.open     = local_open,
 	.release  = release,
 	//~ .unlocked_ioctl = ioctl,
-	//~ .mmap	= mmap
+	.mmap	= mmap
 };
 
-
-/* Initialize the driver to be a character device such that is responds to
+/** 
+ * Initialize the driver to be a character device such that is responds to
  * file operations.
  */
 static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
 {
 	int rc;
-	char device_name[32] = "xilinx_dma";
+	char device_name[32] = "xilinx_dma_proxy";
 
 	/* 
 	 * Allocate a character device from the kernel for this driver.
 	 */
-	rc = alloc_chrdev_region(&xilinx_dma_p->dev_node, 0, 1, "xilinx_dma");
+	rc = alloc_chrdev_region(&xilinx_dma_p->dev_node, 0, 1, device_name);
 	if (rc) {
 		dev_err(xilinx_dma_p->dma_device_p, "unable to get a char device number\n");
 		return rc;
@@ -393,7 +495,8 @@ init_error1:
 	return rc;
 }
 
-/* Exit the character device by freeing up the resources that it created and
+/* 
+ * Exit the character device by freeing up the resources that it created and
  * disconnecting itself from the kernel.
  */
 static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
@@ -408,8 +511,9 @@ static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
 	unregister_chrdev_region(xilinx_dma_p->dev_node, 1);
 }
 
-/* Create a DMA channel by getting a DMA channel from the DMA Engine and then setting
- * up the channel as a character device to allow user space control.
+/**
+ * Create a DMA channel by getting a DMA channel from the DMA Engine and then 
+ * setting up the channel as a character device to allow user space control.
  */
 static int create_channel(struct platform_device *pdev, struct dma_proxy_channel *pchannel_p, char *name, u32 direction)
 {
@@ -427,7 +531,10 @@ static int create_channel(struct platform_device *pdev, struct dma_proxy_channel
 	
 	pchannel_p->direction = direction;
 
-	/* Allocate DMA memory for the proxy channel interface.
+#if 0
+	/* 
+	 * TODO: remove this?
+	 * Allocate DMA memory for the proxy channel interface.
 	 */
 	pchannel_p->interface_p = (struct dma_proxy_channel_interface *)
 		dmam_alloc_coherent(pchannel_p->parent->dma_device_p,
@@ -440,11 +547,13 @@ static int create_channel(struct platform_device *pdev, struct dma_proxy_channel
 		dev_err(pchannel_p->parent->dma_device_p, "DMA allocation error\n");
 		return ERROR;
 	}
+#endif
 	
 	return 0;
 }
 
-/* Initialize the dma proxy device driver module.
+/** 
+ * Initialize the dma proxy device driver module.
  */
 static int dma_proxy_probe(struct platform_device *pdev)
 {
@@ -460,8 +569,6 @@ static int dma_proxy_probe(struct platform_device *pdev)
 		return -EIO;
 	}
 	platform_set_drvdata(pdev, xilinx_dma);
-	
-	pr_info("BLNX - channel count: \n");
 	
 	/*
 	 * First, attempt to create TX and RX DMA channels
@@ -487,10 +594,18 @@ static int dma_proxy_probe(struct platform_device *pdev)
 	/* 
 	 * Now initialize the character device 
 	 */
-	rc = cdevice_init(xilinx_dma, "xilinx_dma");
+	rc = cdevice_init(xilinx_dma, "xilinx_dma_proxy");
 	if (rc) {
 		return rc;
 	}
+	
+	// proxy_device_p
+	size_t max_map = dma_max_mapping_size(xilinx_dma->dma_device_p);
+	pr_info("BLNX - max mapping: %d\n", max_map);
+	
+	max_map = dma_max_mapping_size(xilinx_dma->proxy_device_p);
+	pr_info("BLNX - max mapping[2]: %d\n", max_map);
+	
 	
 	pr_info("BLNX - inited char device\n");
 
