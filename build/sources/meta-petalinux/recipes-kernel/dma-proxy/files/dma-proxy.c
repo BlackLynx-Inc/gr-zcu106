@@ -100,7 +100,7 @@ struct dma_proxy_channel {
 	struct dma_chan *channel_p;			/* dma support */
 	struct completion cmp;
 	dma_cookie_t cookie;
-	dma_addr_t dma_handle;
+	//~ dma_addr_t dma_handle;
 	u32 direction;						/* DMA_MEM_TO_DEV or DMA_DEV_TO_MEM */
 	struct scatterlist sglist;
 };
@@ -124,6 +124,8 @@ struct dma_proxy_file_t {
 	void *virt_address;     	/* kernel virtual address of the DMA buffer */
 	size_t size;          		/* size in bytes of the buffer */
 	enum proxy_status status;	/* status of the proxy channel */
+	
+	struct dma_proxy_rw_info* rw_info;
 };
 
 
@@ -138,105 +140,123 @@ static void sync_callback(void *completion)
 	complete(completion);
 }
 
-/* Prepare a DMA buffer to be used in a DMA transaction, submit it to the DMA engine
- * to ibe queued and return a cookie that can be used to track that status of the
+/* 
+ * Prepare a DMA buffer to be used in a DMA transaction, submit it to the DMA engine
+ * to be queued and return a cookie that can be used to track that status of the
  * transaction
  */
-static void start_transfer(struct dma_proxy_channel *pchannel_p)
+static void start_transfer(struct dma_proxy_channel* pchannel_p, 
+						   struct dma_proxy_file_t* proxy_file)
 {
-#if 0	
 	enum dma_ctrl_flags flags = DMA_CTRL_ACK | DMA_PREP_INTERRUPT;
 	struct dma_async_tx_descriptor *chan_desc;
-	struct dma_proxy_channel_interface *interface_p = pchannel_p->interface_p;
 	struct dma_device *dma_device = pchannel_p->channel_p->device;
+	struct dma_proxy_rw_info* rw_info = proxy_file->rw_info;
+	
+	/*
+	 * Set slave config which specifies the source/destination device address 
+	 * (I think...)
+	 */
+	struct dma_slave_config config;
+	memset(&config, 0, sizeof(struct dma_slave_config));
+	if (pchannel_p->direction == DMA_MEM_TO_DEV)
+	{
+		config.dst_addr = rw_info->address;
+	}
+	else // DMA_DEV_TO_MEM
+	{
+		config.src_addr = rw_info->address;
+	}
+	
+	int rc = dmaengine_slave_config(pchannel_p->channel_p, &config);
+	if (rc)
+	{
+		pr_err("dmaengine_slave_config()\n");
+		return;
+	}
 
-	/* For now use a single entry in a scatter gather list just for future
+	/* 
+	 * For now use a single entry in a scatter gather list just for future
 	 * flexibility for scatter gather.
 	 */
 	sg_init_table(&pchannel_p->sglist, 1);
-	sg_dma_address(&pchannel_p->sglist) = pchannel_p->dma_handle;
-	sg_dma_len(&pchannel_p->sglist) = interface_p->length;
+	sg_dma_address(&pchannel_p->sglist) = proxy_file->phys_addr;
+	sg_dma_len(&pchannel_p->sglist) = rw_info->length;
 
-	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, &pchannel_p->sglist, 1, 
-						pchannel_p->direction, flags, NULL);
+	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, 
+												 &pchannel_p->sglist, 1, 
+												 pchannel_p->direction, flags, 
+												 NULL);
 
-	/* Make sure the operation was completed successfully
+	/*
+	 *  Make sure the operation was completed successfully
 	 */
-	if (!chan_desc) {
+	if (!chan_desc) 
+	{
 		pr_err("dmaengine_prep*() error\n");
-	} else {
+	} 
+	else 
+	{
 		chan_desc->callback = sync_callback;
 		chan_desc->callback_param = &pchannel_p->cmp;
 
-		/* Initialize the completion for the transfer and before using it
+		/* 
+		 * Initialize the completion for the transfer and before using it
 		 * then submit the transaction to the DMA engine so that it's queued
 		 * up to be processed later and get a cookie to track it's status
 		 */
 		init_completion(&pchannel_p->cmp);
 
 		pchannel_p->cookie = dmaengine_submit(chan_desc);
-		if (dma_submit_error(pchannel_p->cookie)) {
+		if (dma_submit_error(pchannel_p->cookie)) 
+		{
 			pr_err("Submit error\n");
 	 		return;
 		}
 
-		/* Start the DMA transaction which was previously queued up in the DMA engine
+		/* 
+		 * Start the DMA transaction which was previously queued up in the DMA engine
 		 */
 		dma_async_issue_pending(pchannel_p->channel_p);
 	}
-#endif
+
 }
 
 /* Wait for a DMA transfer that was previously submitted to the DMA engine
  */
-static void wait_for_transfer(struct dma_proxy_channel *pchannel_p)
+static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
+							  struct dma_proxy_file_t* proxy_file)
 {
-#if 0
 	unsigned long timeout = msecs_to_jiffies(3000);
 	enum dma_status status;
 
-	pchannel_p->interface_p->status = PROXY_BUSY;
+	//~ pchannel_p->interface_p->status = PROXY_BUSY;
+	proxy_file->status = PROXY_BUSY;
+	
 
 	/* Wait for the transaction to complete, or timeout, or get an error
 	 */
 	timeout = wait_for_completion_timeout(&pchannel_p->cmp, timeout);
 	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, NULL, NULL);
 
-	if (timeout == 0)  {
-		pchannel_p->interface_p->status  = PROXY_TIMEOUT;
+	if (timeout == 0)  
+	{
+		//~ pchannel_p->interface_p->status  = PROXY_TIMEOUT;
+		proxy_file->status = PROXY_TIMEOUT;
 		pr_err("DMA timed out\n");
-	} else if (status != DMA_COMPLETE) {
-		pchannel_p->interface_p->status = PROXY_ERROR;
+	} 
+	else if (status != DMA_COMPLETE) 
+	{
+		//~ pchannel_p->interface_p->status = PROXY_ERROR;
+		proxy_file->status = PROXY_ERROR;
 		pr_err("DMA returned completion callback status of: %s\n",
 			   status == DMA_ERROR ? "error" : "in progress");
-	} else
-		pchannel_p->interface_p->status = PROXY_NO_ERROR;
-#endif
-}
-
-/* Perform the DMA transfer for the channel, starting it then blocking to wait for completion.
- */
-static void transfer(struct dma_proxy_channel *pchannel_p)
-{
-#if 0
-	/* The physical address of the buffer in the interface is needed for the dma transfer
-	 * as the buffer may not be the first data in the interface
-	 */
-	pchannel_p->dma_handle = (dma_addr_t)(pchannel_p->interface_phys_addr + 
-					offsetof(struct dma_proxy_channel_interface, buffer));
-
-	start_transfer(pchannel_p);
-	wait_for_transfer(pchannel_p);
-#endif
-}
-
-/* The following functions are designed to test the driver from within the device
- * driver without any user space.
- */
-static void tx_test(struct work_struct *unused)
-{
-	//~ channels[TX_CHANNEL].interface_p->length = TEST_SIZE;
-	//~ transfer(&channels[TX_CHANNEL]);
+	} 
+	else
+	{
+		//~ pchannel_p->interface_p->status = PROXY_NO_ERROR;
+		proxy_file->status = PROXY_NO_ERROR;
+	}
 }
 
 static void test(void)
@@ -310,17 +330,9 @@ static void dma_proxy_vma_close(struct vm_area_struct *vma)
 	proxy_file->phys_addr = 0;
 }
 
-//~ static int dma_proxy_fault(struct vm_fault *fdata)
-//~ {
-	//~ // This should never be called
-	//~ pr_info("BLNX - vma page fault handler\n");
-	//~ return VM_FAULT_SIGBUS;
-//~ }
-
 static struct vm_operations_struct dma_proxy_vm_ops = {
     .open  = dma_proxy_vma_open,
     .close = dma_proxy_vma_close,
-    //~ .fault = dma_proxy_fault,
 };
 
 /** 
@@ -409,13 +421,63 @@ static int release(struct inode *ino, struct file *file)
 
 /* Perform I/O control to start a DMA transfer.
  */
-static long ioctl(struct file *file, unsigned int unused , unsigned long arg)
+static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
-	struct dma_proxy_channel *pchannel_p = (struct dma_proxy_channel *)file->private_data;
+	pr_info("BLNX - ioctl() CMD: %u\n", cmd);
+	
+	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
+	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
+	
+	long ret = 0;
+	struct dma_proxy_rw_info rw_info;
 
-	/* Perform the DMA transfer on the specified channel blocking til it completes
-	 */
-	transfer(pchannel_p);
+	// Decode the IOCTL
+    switch (cmd) {
+		
+		case DMA_PROXY_IOC_READ:
+			// Copy the R/W info struct in from userspace
+            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
+            if (ret) 
+            {
+                break;
+            }
+            
+            // Temporarily install the RW info into the proxy file struct
+            proxy_file->rw_info = &rw_info;
+            
+            // Do the transfer
+            start_transfer(&xilinx_dma->rx_channel, proxy_file);
+            wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
+            
+            proxy_file->rw_info = NULL;
+            
+			break;
+		
+		case DMA_PROXY_IOC_WRITE:
+			// Copy the R/W info struct in from userspace
+            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
+            if (ret) 
+            {
+                break;
+            }
+            
+            // Temporarily install the RW info into the proxy file struct
+            proxy_file->rw_info = &rw_info;
+            
+            // Do the transfer
+            start_transfer(&xilinx_dma->tx_channel, proxy_file);
+            wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
+            
+            proxy_file->rw_info = NULL;
+            
+			break;
+		
+		default:
+            ret = -ENOTTY;
+            break;
+	}
+
+	pr_info("BLNX - ioctl() CMD: %u -- fini\n", cmd);
 
 	return 0;
 }
@@ -424,7 +486,7 @@ static struct file_operations dm_fops = {
 	.owner    = THIS_MODULE,
 	.open     = local_open,
 	.release  = release,
-	//~ .unlocked_ioctl = ioctl,
+	.unlocked_ioctl = ioctl,
 	.mmap	= mmap
 };
 
@@ -515,7 +577,8 @@ static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
  * Create a DMA channel by getting a DMA channel from the DMA Engine and then 
  * setting up the channel as a character device to allow user space control.
  */
-static int create_channel(struct platform_device *pdev, struct dma_proxy_channel *pchannel_p, char *name, u32 direction)
+static int create_channel(struct platform_device *pdev, struct dma_proxy_channel *pchannel_p, 
+							char *name, u32 direction)
 {
 	int rc;
 
@@ -524,29 +587,40 @@ static int create_channel(struct platform_device *pdev, struct dma_proxy_channel
 	 * the channel for the proxy channel also.
 	 */
 	pchannel_p->channel_p = dma_request_slave_channel(&pdev->dev, name);
-	if (!pchannel_p->channel_p) {
+	if (!pchannel_p->channel_p) 
+	{
 		dev_err(pchannel_p->parent->dma_device_p, "DMA channel request error\n");
 		return ERROR;
 	}
 	
 	pchannel_p->direction = direction;
-
+	
 #if 0
-	/* 
-	 * TODO: remove this?
-	 * Allocate DMA memory for the proxy channel interface.
-	 */
-	pchannel_p->interface_p = (struct dma_proxy_channel_interface *)
-		dmam_alloc_coherent(pchannel_p->parent->dma_device_p,
-							sizeof(struct dma_proxy_channel_interface),
-							&pchannel_p->interface_phys_addr, GFP_KERNEL);
-		pr_info("Allocating uncached memory at virtual address 0x%p, physical address 0x%p\n", 
-				pchannel_p->interface_p, (void *)pchannel_p->interface_phys_addr);
+	// Sanity check experimentation, none of which worked... 
 
-	if (!pchannel_p->interface_p) {
-		dev_err(pchannel_p->parent->dma_device_p, "DMA allocation error\n");
-		return ERROR;
-	}
+	struct dma_device* dma_dev = pchannel_p->channel_p->device;
+	pr_info("BLNX -- chancnt: %u\n", dma_dev->chancnt);
+	pr_info("BLNX -- src_addr_widths: %u\n", dma_dev->src_addr_widths);
+	pr_info("BLNX -- dst_addr_widths: %u\n", dma_dev->dst_addr_widths);
+	pr_info("BLNX -- directions: %u\n", dma_dev->directions);
+	pr_info("BLNX -- max_burst: %u\n", dma_dev->max_burst);
+	
+	struct dma_slave_caps caps;
+	memset(&caps, 0, sizeof(struct dma_slave_caps));
+	rc = dma_get_slave_caps(pchannel_p->channel_p, &caps);
+	
+	//~ struct dma_slave_config config;
+	//~ rc = pchannel_p->channel_p->
+	
+	pr_info("BLNX [capabilities] -- directions: %u\n", caps.directions);
+	//~ pr_info("BLNX [chanconfig] -- src_addr: %llX\n", config.src_addr);
+	//~ pr_info("BLNX [chanconfig] -- dst_addr: %llX\n", config.dst_addr);
+	pr_info("BLNX [capabilities] -- src_addr_widths: %llX\n", caps.src_addr_widths);
+	pr_info("BLNX [capabilities] -- dst_addr_width:s %llX\n", caps.dst_addr_widths);
+	pr_info("BLNX [capabilities] -- maxburst: %u\n", caps.max_burst);
+	//~ pr_info("BLNX [chanconfig] -- dst_maxburst: %u\n", config.dst_maxburst);
+	//~ pr_info("BLNX [chanconfig] -- device_fc: %d\n", config.device_fc);
+	//~ pr_info("BLNX [chanconfig] -- slave_id: %u\n", config.slave_id);
 #endif
 	
 	return 0;
