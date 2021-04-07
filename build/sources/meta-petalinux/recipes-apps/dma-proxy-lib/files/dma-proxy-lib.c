@@ -204,7 +204,7 @@ int dmap_reg_write32(uint32_t offset, uint32_t value)
     // Make sure the offset doesn't exceed the size of the mapped space
     if (offset > REG_SPACE_SIZE)
     {
-        return -1;
+        return DMAP_INVALID_REG_OFFSET;
     }
     
     // Map the register space if it is not already mapped
@@ -276,4 +276,90 @@ void dmap_free_buffer(void* buffer)
     pthread_mutex_unlock(&master_mutex);
     
     return;
+}
+
+int dmap_read(void* buffer, uint32_t device_address, uint32_t length)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    pthread_mutex_lock(&master_mutex);
+    
+    // Find the proxy_buffer_info_t that is active who's value matches the 
+    // passed buffer pointer
+    uint32_t idx = 0;
+    for (; idx < buffer_list_size; ++idx)
+    {
+        if (buffer && buffer_list[idx].fd > 0 && buffer_list[idx].buffer == buffer)
+        {
+            break;
+        }
+    }
+    
+    pthread_mutex_unlock(&master_mutex);
+    
+    // The buffer was not found
+    if (idx == buffer_list_size)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    // TODO: validate that device_address and length fall in bounds
+    // TODO: handle offset within DMA buffer (store in struct?)
+    struct dma_proxy_rw_info rw_info;
+    rw_info.address = device_address;
+    rw_info.length = length;
+    
+    printf("[DMAP-LIB] submitting read IOCTL\n");
+    
+    int rc = ioctl(buffer_list[idx].fd, DMA_PROXY_IOC_READ, (unsigned long)&rw_info);
+    
+    printf("[DMAP-LIB] returned from read IOCTL\n");
+    
+    return rc;
+}
+
+int dmap_write(void* buffer, uint32_t device_address, uint32_t length)
+{
+        if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    pthread_mutex_lock(&master_mutex);
+    
+    // Find the proxy_buffer_info_t that is active who's value matches the 
+    // passed buffer pointer
+    uint32_t idx = 0;
+    for (; idx < buffer_list_size; ++idx)
+    {
+        if (buffer && buffer_list[idx].fd > 0 && buffer_list[idx].buffer == buffer)
+        {
+            break;
+        }
+    }
+    
+    pthread_mutex_unlock(&master_mutex);
+    
+    // The buffer was not found
+    if (idx == buffer_list_size)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    // TODO: validate that device_address and length fall in bounds
+    // TODO: handle offset within DMA buffer (store in struct?)
+    struct dma_proxy_rw_info rw_info;
+    rw_info.address = device_address;
+    rw_info.length = length;
+    
+    printf("[DMAP-LIB] submitting write IOCTL\n");
+    
+    int rc = ioctl(buffer_list[idx].fd, DMA_PROXY_IOC_WRITE, (unsigned long)&rw_info);
+    
+    printf("[DMAP-LIB] returned from write IOCTL\n");
+    
+    return rc;
 }

@@ -36,8 +36,8 @@ struct dma_proxy_channel_interface {
 #define DMA_PROXY_IOC_READ	_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from device RAM
 #define DMA_PROXY_IOC_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to device RAM
 
-
+// NOTE the library needs this too
 struct dma_proxy_rw_info {
-    uint64_t address;       //!< device address
+    uint32_t address;       //!< device address
     uint32_t length;        //!< buffer length
 };

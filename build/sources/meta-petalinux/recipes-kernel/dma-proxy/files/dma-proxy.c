@@ -117,15 +117,13 @@ struct xilinx_dma_t {
 };
 
 enum proxy_status { PROXY_NO_ERROR = 0, PROXY_BUSY = 1, PROXY_TIMEOUT = 2, PROXY_ERROR = 3 };
+
 struct dma_proxy_file_t {
 	struct xilinx_dma_t* proxy_dev;	/* owning device for this buffer */
-	//~ uint32_t id;			/* unique ID for this file - not sure if needed*/
-	dma_addr_t phys_addr;		/* bus address of DMA buffer */
-	void *virt_address;     	/* kernel virtual address of the DMA buffer */
-	size_t size;          		/* size in bytes of the buffer */
-	enum proxy_status status;	/* status of the proxy channel */
-	
-	struct dma_proxy_rw_info* rw_info;
+	dma_addr_t phys_addr;			/* bus address of DMA buffer */
+	void *virt_address;     		/* kernel virtual address of the DMA buffer */
+	size_t size;          			/* buffer size in bytes */
+	enum proxy_status status;		/* status of the proxy channel */
 };
 
 
@@ -145,14 +143,18 @@ static void sync_callback(void *completion)
  * to be queued and return a cookie that can be used to track that status of the
  * transaction
  */
-static void start_transfer(struct dma_proxy_channel* pchannel_p, 
-						   struct dma_proxy_file_t* proxy_file)
+static int start_transfer(struct dma_proxy_channel* pchannel_p, 
+						  struct dma_proxy_file_t* proxy_file,
+						  struct dma_proxy_rw_info* rw_info)
 {
 	enum dma_ctrl_flags flags = DMA_CTRL_ACK | DMA_PREP_INTERRUPT;
 	struct dma_async_tx_descriptor *chan_desc;
 	struct dma_device *dma_device = pchannel_p->channel_p->device;
-	struct dma_proxy_rw_info* rw_info = proxy_file->rw_info;
 	
+	pr_info("BLNX - dma_device chancnt: %u\n", dma_device->chancnt);
+	pr_info("BLNX - dma_device directions: %u\n", dma_device->directions);
+	
+#if 0
 	/*
 	 * Set slave config which specifies the source/destination device address 
 	 * (I think...)
@@ -162,18 +164,24 @@ static void start_transfer(struct dma_proxy_channel* pchannel_p,
 	if (pchannel_p->direction == DMA_MEM_TO_DEV)
 	{
 		config.dst_addr = rw_info->address;
+		pr_info("BLNX - set DST address\n");
 	}
 	else // DMA_DEV_TO_MEM
 	{
 		config.src_addr = rw_info->address;
+		pr_info("BLNX - set SRC address\n");
 	}
 	
 	int rc = dmaengine_slave_config(pchannel_p->channel_p, &config);
 	if (rc)
 	{
-		pr_err("dmaengine_slave_config()\n");
-		return;
+		pr_info("BLNX - dmaengine_slave_config() returned error: %d\n", rc);
+		pr_err("BLNX - dmaengine_slave_config()\n");
+		return -17;
 	}
+	
+	pr_info("BLNX - post dmaengine_slave_config()\n");
+#endif
 
 	/* 
 	 * For now use a single entry in a scatter gather list just for future
@@ -188,12 +196,16 @@ static void start_transfer(struct dma_proxy_channel* pchannel_p,
 												 pchannel_p->direction, flags, 
 												 NULL);
 
+	pr_info("BLNX - post device_prep_slave_sg() -- %u\n", rw_info->length);
+
 	/*
 	 *  Make sure the operation was completed successfully
 	 */
-	if (!chan_desc) 
+	if (! chan_desc) 
 	{
 		pr_err("dmaengine_prep*() error\n");
+		pr_info("BLNX - dmaengine_prep*() error\n");
+		return -1;
 	} 
 	else 
 	{
@@ -206,20 +218,27 @@ static void start_transfer(struct dma_proxy_channel* pchannel_p,
 		 * up to be processed later and get a cookie to track it's status
 		 */
 		init_completion(&pchannel_p->cmp);
+		
+		pr_info("BLNX - post init_completion()\n");
 
 		pchannel_p->cookie = dmaengine_submit(chan_desc);
 		if (dma_submit_error(pchannel_p->cookie)) 
 		{
 			pr_err("Submit error\n");
-	 		return;
+	 		return -2;
 		}
+		
+		pr_info("BLNX - post dmaengine_submit()\n");
 
 		/* 
 		 * Start the DMA transaction which was previously queued up in the DMA engine
 		 */
 		dma_async_issue_pending(pchannel_p->channel_p);
+		
+		pr_info("BLNX - post dma_async_issue_pending()\n");
 	}
 
+	return 0;
 }
 
 /* Wait for a DMA transfer that was previously submitted to the DMA engine
@@ -233,11 +252,13 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
 	//~ pchannel_p->interface_p->status = PROXY_BUSY;
 	proxy_file->status = PROXY_BUSY;
 	
-
-	/* Wait for the transaction to complete, or timeout, or get an error
+	/* 
+	 * Wait for the transaction to complete, or timeout, or get an error
 	 */
 	timeout = wait_for_completion_timeout(&pchannel_p->cmp, timeout);
 	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, NULL, NULL);
+	
+	pr_info("BLNX - dma status: %d (%d)\n", status, DMA_COMPLETE);
 
 	if (timeout == 0)  
 	{
@@ -355,7 +376,7 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 	proxy_file->virt_address = dma_alloc_coherent(xilinx_dma->dma_device_p, 
 												  size, 
 											   	  &proxy_file->phys_addr, 
-											   	  GFP_DMA | GFP_DMA32 | GFP_KERNEL);
+											   	  GFP_KERNEL);
 	pr_info("BLNX - dma_alloc_coherent done\n");
 	if (proxy_file->virt_address == NULL)
 	{
@@ -429,6 +450,7 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
 	
 	long ret = 0;
+	int rc = 0;
 	struct dma_proxy_rw_info rw_info;
 
 	// Decode the IOCTL
@@ -441,16 +463,21 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
             {
                 break;
             }
-            
-            // Temporarily install the RW info into the proxy file struct
-            proxy_file->rw_info = &rw_info;
+            pr_info("BLNX - IOC_READ -- addr: 0x%08X; len: %u\n", rw_info.address, rw_info.length);
             
             // Do the transfer
-            start_transfer(&xilinx_dma->rx_channel, proxy_file);
+            rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
+            if (rc)
+            {
+				pr_info("BLNX - IOC_READ -- start_transfer() returned error: %d\n", rc);
+				return -1;
+			}
+            
+            pr_info("BLNX - IOC_READ -- post start_transfer(); pre wait_for_transfer()\n");
+            
             wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
             
-            proxy_file->rw_info = NULL;
-            
+            pr_info("BLNX - IOC_READ -- post pre wait_for_transfer()\n");
 			break;
 		
 		case DMA_PROXY_IOC_WRITE:
@@ -461,15 +488,18 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
                 break;
             }
             
-            // Temporarily install the RW info into the proxy file struct
-            proxy_file->rw_info = &rw_info;
+            pr_info("BLNX - IOC_WRITE -- addr: 0x%08X; len: %u\n", rw_info.address, rw_info.length);
             
             // Do the transfer
-            start_transfer(&xilinx_dma->tx_channel, proxy_file);
+            rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
+            if (rc)
+            {
+				pr_info("BLNX - IOC_WRITE -- start_transfer() returned error: %d\n", rc);
+				return -1;
+			}
+            
             wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
-            
-            proxy_file->rw_info = NULL;
-            
+            pr_info("BLNX - IOC_WRITE -- post pre wait_for_transfer()\n");
 			break;
 		
 		default:
