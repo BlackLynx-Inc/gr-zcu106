@@ -151,9 +151,6 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	struct dma_async_tx_descriptor *chan_desc;
 	struct dma_device *dma_device = pchannel_p->channel_p->device;
 	
-	pr_info("BLNX - dma_device chancnt: %u\n", dma_device->chancnt);
-	pr_info("BLNX - dma_device directions: %u\n", dma_device->directions);
-	
 	/* 
 	 * For now use a single entry in a scatter gather list just for future
 	 * flexibility for scatter gather.
@@ -162,14 +159,10 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	sg_dma_address(&pchannel_p->sglist) = proxy_file->phys_addr;
 	sg_dma_len(&pchannel_p->sglist) = rw_info->length;
 
-	pr_info("PHYS ADDR[1]: 0x0%llX\n", proxy_file->phys_addr);
-
 	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, 
 												 &pchannel_p->sglist, 1, 
 												 pchannel_p->direction, flags, 
 												 NULL);
-
-	pr_info("BLNX - post device_prep_slave_sg() -- %u\n", rw_info->length);
 
 	/*
 	 *  Make sure the operation was completed successfully
@@ -177,7 +170,6 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	if (! chan_desc) 
 	{
 		pr_err("dmaengine_prep*() error\n");
-		pr_info("BLNX - dmaengine_prep*() error\n");
 		return -1;
 	} 
 	else 
@@ -192,8 +184,6 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 		 */
 		init_completion(&pchannel_p->cmp);
 		
-		pr_info("BLNX - post init_completion()\n");
-
 		pchannel_p->cookie = dmaengine_submit(chan_desc);
 		if (dma_submit_error(pchannel_p->cookie)) 
 		{
@@ -201,14 +191,10 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	 		return -2;
 		}
 		
-		pr_info("BLNX - post dmaengine_submit() -- %d\n", pchannel_p->cookie);
-
 		/* 
 		 * Start the DMA transaction which was previously queued up in the DMA engine
 		 */
 		dma_async_issue_pending(pchannel_p->channel_p);
-		
-		pr_info("BLNX - post dma_async_issue_pending()\n");
 	}
 
 	return 0;
@@ -222,7 +208,6 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
 	unsigned long timeout = msecs_to_jiffies(3000);
 	enum dma_status status;
 
-	//~ pchannel_p->interface_p->status = PROXY_BUSY;
 	proxy_file->status = PROXY_BUSY;
 	
 	/* 
@@ -232,35 +217,22 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
 	dma_cookie_t last_completed;
 	dma_cookie_t last_issued;
 	
-	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, &last_completed, &last_issued);
+	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, 
+									  &last_completed, &last_issued);
 	
-	pr_info("BLNX - dma status: %d (DMA_COMPLETE: %d - DMA_IN_PROGRESS: %d)\n", status, DMA_COMPLETE, DMA_IN_PROGRESS);
-	pr_info("BLNX - last completed: %d\n", last_completed);
-	pr_info("BLNX - last issued:    %d\n", last_issued);
-	
-	// DEBUG
-	struct dma_tx_state state;
-	status = pchannel_p->channel_p->device->device_tx_status(pchannel_p->channel_p, 
-															 pchannel_p->cookie,
-															 &state);
-	pr_info("BLNX - residue: %d\n", state.residue);
-
 	if (timeout == 0)  
 	{
-		//~ pchannel_p->interface_p->status  = PROXY_TIMEOUT;
 		proxy_file->status = PROXY_TIMEOUT;
 		pr_err("DMA timed out\n");
 	} 
 	else if (status != DMA_COMPLETE) 
 	{
-		//~ pchannel_p->interface_p->status = PROXY_ERROR;
 		proxy_file->status = PROXY_ERROR;
 		pr_err("DMA returned completion callback status of: %s\n",
 			   status == DMA_ERROR ? "error" : "in progress");
 	} 
 	else
 	{
-		//~ pchannel_p->interface_p->status = PROXY_NO_ERROR;
 		proxy_file->status = PROXY_NO_ERROR;
 	}
 }
@@ -318,17 +290,13 @@ static void dma_proxy_vma_open(struct vm_area_struct *vma)
  */
 static void dma_proxy_vma_close(struct vm_area_struct *vma)
 {
-	pr_info("BLNX - vma close\n");
-	
 	struct file *file = vma->vm_file;
 	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
 	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
 	
-	pr_info("BLNX - pre free coherent\n");
 	// Free the DMA buffer that was allocated in the mmap call
 	dma_free_coherent(xilinx_dma->dma_device_p, proxy_file->size, 
 					  proxy_file->virt_address, proxy_file->phys_addr);
-	pr_info("BLNX - post free coherent\n");
 	
 	// Reset values just in case
 	proxy_file->size = 0; 
@@ -346,8 +314,6 @@ static struct vm_operations_struct dma_proxy_vm_ops = {
  */
 static int mmap(struct file *file, struct vm_area_struct *vma)
 {
-	pr_info("BLNX - mmmmmap\n");
-	
 	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
 	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
 
@@ -355,20 +321,15 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
     size_t size = vma->vm_end - vma->vm_start;
 	proxy_file->size = size;
 
-	pr_info("BLNX - buffer size: %u\n", size);
-	
 	// Allocate the DMA buffer
 	proxy_file->virt_address = dma_alloc_coherent(xilinx_dma->dma_device_p, 
 												  size, 
 											   	  &proxy_file->phys_addr, 
 											   	  GFP_KERNEL);
 											   	  
-	pr_info("PHYS ADDR[2]: 0x0%llX\n", proxy_file->phys_addr);
-											   	  
-	pr_info("BLNX - dma_alloc_coherent done\n");
 	if (proxy_file->virt_address == NULL)
 	{
-		pr_err("BLNX - ALLOC FAILED\n");
+		pr_err("dma_alloc_coherent() -- FAILED\n");
 		return -ENOMEM;
 	}
 
@@ -387,8 +348,6 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
  */
 static int local_open(struct inode *ino, struct file *file)
 {
-	pr_info("BLNX - open file\n");
-	
 	// Grab pointer to the proxy device structure
 	struct xilinx_dma_t* xilinx_dma = container_of(ino->i_cdev, struct xilinx_dma_t, cdev);
 	 
@@ -398,14 +357,10 @@ static int local_open(struct inode *ino, struct file *file)
 		return -ENOMEM;
 	}
 	
-	pr_info("BLNX - create per file data structure\n");
-	
 	// Store pointer to parent device and stash in file
 	proxy_file->proxy_dev = xilinx_dma;
 	file->private_data = proxy_file;
 	
-	pr_info("BLNX - data structure storred\n");
-
 	return 0;
 }
 
@@ -414,16 +369,12 @@ static int local_open(struct inode *ino, struct file *file)
  */
 static int release(struct inode *ino, struct file *file)
 {
-	pr_info("BLNX - file close (release)\n");
-	
 	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
 	
 	// Check status and wait if busy?
 	
 	// Free file struct
     kfree(proxy_file);
-	
-	pr_info("BLNX - freed per file data structure\n");
 	
 	return 0;
 }
@@ -432,8 +383,6 @@ static int release(struct inode *ino, struct file *file)
  */
 static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
-	pr_info("BLNX - ioctl() CMD: %u\n", cmd);
-	
 	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
 	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
 	
@@ -451,21 +400,15 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
             {
                 break;
             }
-            pr_info("BLNX - IOC_READ -- addr: 0x%08X; len: %u\n", rw_info.address, rw_info.length);
             
             // Do the transfer
             rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
             if (rc)
             {
-				pr_info("BLNX - IOC_READ -- start_transfer() returned error: %d\n", rc);
 				return -1;
 			}
             
-            pr_info("BLNX - IOC_READ -- post start_transfer(); pre wait_for_transfer()\n");
-            
             wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
-            
-            pr_info("BLNX - IOC_READ -- post pre wait_for_transfer()\n");
 			break;
 		
 		case DMA_PROXY_IOC_WRITE:
@@ -476,26 +419,20 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
                 break;
             }
             
-            pr_info("BLNX - IOC_WRITE -- addr: 0x%08X; len: %u\n", rw_info.address, rw_info.length);
-            
             // Do the transfer
             rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
             if (rc)
             {
-				pr_info("BLNX - IOC_WRITE -- start_transfer() returned error: %d\n", rc);
 				return -1;
 			}
             
             wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
-            pr_info("BLNX - IOC_WRITE -- post pre wait_for_transfer()\n");
 			break;
 		
 		default:
             ret = -ENOTTY;
             break;
 	}
-
-	pr_info("BLNX - ioctl() CMD: %u -- fini\n", cmd);
 
 	return ret;
 }
@@ -613,34 +550,6 @@ static int create_channel(struct platform_device *pdev, struct dma_proxy_channel
 	
 	pchannel_p->direction = direction;
 	
-#if 0
-	// Sanity check experimentation, none of which worked... 
-
-	struct dma_device* dma_dev = pchannel_p->channel_p->device;
-	pr_info("BLNX -- chancnt: %u\n", dma_dev->chancnt);
-	pr_info("BLNX -- src_addr_widths: %u\n", dma_dev->src_addr_widths);
-	pr_info("BLNX -- dst_addr_widths: %u\n", dma_dev->dst_addr_widths);
-	pr_info("BLNX -- directions: %u\n", dma_dev->directions);
-	pr_info("BLNX -- max_burst: %u\n", dma_dev->max_burst);
-	
-	struct dma_slave_caps caps;
-	memset(&caps, 0, sizeof(struct dma_slave_caps));
-	rc = dma_get_slave_caps(pchannel_p->channel_p, &caps);
-	
-	//~ struct dma_slave_config config;
-	//~ rc = pchannel_p->channel_p->
-	
-	pr_info("BLNX [capabilities] -- directions: %u\n", caps.directions);
-	//~ pr_info("BLNX [chanconfig] -- src_addr: %llX\n", config.src_addr);
-	//~ pr_info("BLNX [chanconfig] -- dst_addr: %llX\n", config.dst_addr);
-	pr_info("BLNX [capabilities] -- src_addr_widths: %llX\n", caps.src_addr_widths);
-	pr_info("BLNX [capabilities] -- dst_addr_width:s %llX\n", caps.dst_addr_widths);
-	pr_info("BLNX [capabilities] -- maxburst: %u\n", caps.max_burst);
-	//~ pr_info("BLNX [chanconfig] -- dst_maxburst: %u\n", config.dst_maxburst);
-	//~ pr_info("BLNX [chanconfig] -- device_fc: %d\n", config.device_fc);
-	//~ pr_info("BLNX [chanconfig] -- slave_id: %u\n", config.slave_id);
-#endif
-	
 	return 0;
 }
 
@@ -651,7 +560,7 @@ static int dma_proxy_probe(struct platform_device *pdev)
 {
 	int rc;
 
-	pr_info("dma_proxy module initialized\n");
+	pr_info("BLNX - dma_proxy module initialized\n");
 
 	/*
 	 * Allocate private data for the platform device and stash
@@ -674,14 +583,12 @@ static int dma_proxy_probe(struct platform_device *pdev)
 		pr_err("unable to create TX channel");
 		return rc;
 	}
-	pr_info("BLNX - created TX channel\n");
 	
 	rc = create_channel(pdev, &xilinx_dma->rx_channel, "dma_proxy_rx", DMA_DEV_TO_MEM);
 	if (rc) {
 		pr_err("unable to create RX channel");
 		return rc;
 	}
-	pr_info("BLNX - created RX channel\n");
 	
 	/* 
 	 * Now initialize the character device 
@@ -691,16 +598,6 @@ static int dma_proxy_probe(struct platform_device *pdev)
 		return rc;
 	}
 	
-	// proxy_device_p
-	size_t max_map = dma_max_mapping_size(xilinx_dma->dma_device_p);
-	pr_info("BLNX - max mapping: %d\n", max_map);
-	
-	max_map = dma_max_mapping_size(xilinx_dma->proxy_device_p);
-	pr_info("BLNX - max mapping[2]: %d\n", max_map);
-	
-	
-	pr_info("BLNX - inited char device\n");
-
 	return 0;
 }
  
@@ -709,9 +606,9 @@ static int dma_proxy_probe(struct platform_device *pdev)
  */
 static int dma_proxy_remove(struct platform_device *pdev)
 {
-	int i;
+	int i = 0;
 
-	pr_info("dma_proxy module exited\n");
+	pr_info("BLNX - dma_proxy module exited\n");
 	
 	/*
 	 * Retrieve the xilinx_dma_t
@@ -727,21 +624,14 @@ static int dma_proxy_remove(struct platform_device *pdev)
 	tx_channel->device->device_terminate_all(tx_channel);
 	dma_release_channel(tx_channel);
 	
-	pr_info("BLNX - terminated TX chan\n");
-
 	struct dma_chan *rx_channel = xilinx_dma->rx_channel.channel_p;	 
 	rx_channel->device->device_terminate_all(rx_channel);
 	dma_release_channel(rx_channel);
-	
-	pr_info("BLNX - terminated RX chan\n");
 
 	/*
 	 * Teardown character device
 	 */ 
 	cdevice_exit(xilinx_dma);
-	
-	pr_info("BLNX - cdev teardown done\n");
-
 	kfree(xilinx_dma);
 
 	return 0;
