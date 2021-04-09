@@ -24,13 +24,13 @@
 */
 #include <linux/ioctl.h>
 
-#define TEST_SIZE (3 * 1024 * 1024)
+//~ #define TEST_SIZE (3 * 1024 * 1024)
 
-struct dma_proxy_channel_interface {
-	unsigned char buffer[TEST_SIZE];
+//~ struct dma_proxy_channel_interface {
+	//~ unsigned char buffer[TEST_SIZE];
 	//~ enum proxy_status { PROXY_NO_ERROR = 0, PROXY_BUSY = 1, PROXY_TIMEOUT = 2, PROXY_ERROR = 3 } status;
-	unsigned int length;
-};
+	//~ unsigned int length;
+//~ };
 
 #define DMA_PROXY_IOCTL_MAGIC  'b'
 #define DMA_PROXY_IOC_READ	_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from device RAM

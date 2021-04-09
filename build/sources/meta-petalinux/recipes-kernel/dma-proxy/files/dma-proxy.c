@@ -76,7 +76,7 @@
 
 MODULE_LICENSE("GPL");
 
-#define DRIVER_NAME 		"xilinx_dma"
+#define DRIVER_NAME 		"dma_proxy"
 #define CHANNEL_COUNT 		2
 #define TX_CHANNEL			0
 #define RX_CHANNEL			1
@@ -154,35 +154,6 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	pr_info("BLNX - dma_device chancnt: %u\n", dma_device->chancnt);
 	pr_info("BLNX - dma_device directions: %u\n", dma_device->directions);
 	
-#if 0
-	/*
-	 * Set slave config which specifies the source/destination device address 
-	 * (I think...)
-	 */
-	struct dma_slave_config config;
-	memset(&config, 0, sizeof(struct dma_slave_config));
-	if (pchannel_p->direction == DMA_MEM_TO_DEV)
-	{
-		config.dst_addr = rw_info->address;
-		pr_info("BLNX - set DST address\n");
-	}
-	else // DMA_DEV_TO_MEM
-	{
-		config.src_addr = rw_info->address;
-		pr_info("BLNX - set SRC address\n");
-	}
-	
-	int rc = dmaengine_slave_config(pchannel_p->channel_p, &config);
-	if (rc)
-	{
-		pr_info("BLNX - dmaengine_slave_config() returned error: %d\n", rc);
-		pr_err("BLNX - dmaengine_slave_config()\n");
-		return -17;
-	}
-	
-	pr_info("BLNX - post dmaengine_slave_config()\n");
-#endif
-
 	/* 
 	 * For now use a single entry in a scatter gather list just for future
 	 * flexibility for scatter gather.
@@ -190,6 +161,8 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	sg_init_table(&pchannel_p->sglist, 1);
 	sg_dma_address(&pchannel_p->sglist) = proxy_file->phys_addr;
 	sg_dma_len(&pchannel_p->sglist) = rw_info->length;
+
+	pr_info("PHYS ADDR[1]: 0x0%llX\n", proxy_file->phys_addr);
 
 	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, 
 												 &pchannel_p->sglist, 1, 
@@ -228,7 +201,7 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	 		return -2;
 		}
 		
-		pr_info("BLNX - post dmaengine_submit()\n");
+		pr_info("BLNX - post dmaengine_submit() -- %d\n", pchannel_p->cookie);
 
 		/* 
 		 * Start the DMA transaction which was previously queued up in the DMA engine
@@ -256,9 +229,21 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
 	 * Wait for the transaction to complete, or timeout, or get an error
 	 */
 	timeout = wait_for_completion_timeout(&pchannel_p->cmp, timeout);
-	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, NULL, NULL);
+	dma_cookie_t last_completed;
+	dma_cookie_t last_issued;
 	
-	pr_info("BLNX - dma status: %d (%d)\n", status, DMA_COMPLETE);
+	status = dma_async_is_tx_complete(pchannel_p->channel_p, pchannel_p->cookie, &last_completed, &last_issued);
+	
+	pr_info("BLNX - dma status: %d (DMA_COMPLETE: %d - DMA_IN_PROGRESS: %d)\n", status, DMA_COMPLETE, DMA_IN_PROGRESS);
+	pr_info("BLNX - last completed: %d\n", last_completed);
+	pr_info("BLNX - last issued:    %d\n", last_issued);
+	
+	// DEBUG
+	struct dma_tx_state state;
+	status = pchannel_p->channel_p->device->device_tx_status(pchannel_p->channel_p, 
+															 pchannel_p->cookie,
+															 &state);
+	pr_info("BLNX - residue: %d\n", state.residue);
 
 	if (timeout == 0)  
 	{
@@ -377,6 +362,9 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 												  size, 
 											   	  &proxy_file->phys_addr, 
 											   	  GFP_KERNEL);
+											   	  
+	pr_info("PHYS ADDR[2]: 0x0%llX\n", proxy_file->phys_addr);
+											   	  
 	pr_info("BLNX - dma_alloc_coherent done\n");
 	if (proxy_file->virt_address == NULL)
 	{
@@ -509,7 +497,7 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 	pr_info("BLNX - ioctl() CMD: %u -- fini\n", cmd);
 
-	return 0;
+	return ret;
 }
 
 static struct file_operations dm_fops = {
