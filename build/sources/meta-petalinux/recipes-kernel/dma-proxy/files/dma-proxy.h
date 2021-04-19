@@ -28,6 +28,9 @@
 #define DMA_PROXY_IOC_READ	_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from device RAM
 #define DMA_PROXY_IOC_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to device RAM
 
+#define MAX_BUF_SIZE        ((1 << (MAX_ORDER - 1)) * PAGE_SIZE)  
+#define BUFFER_LIST_INCREMENT 	10
+
 // NOTE the library needs this too
 struct dma_proxy_rw_info {
     uint32_t address;       //!< device address

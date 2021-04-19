@@ -36,6 +36,8 @@ void* write_thread(size_t buffer_size)
     dmap_free_buffer(dma_buffer);
     
     printf("[WRT] complete\n");
+    
+    return NULL;
 }
 
 int main(int argc, char** argv)
