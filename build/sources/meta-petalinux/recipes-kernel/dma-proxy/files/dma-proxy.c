@@ -70,6 +70,7 @@
 #include <linux/workqueue.h>
 #include <linux/platform_device.h>
 #include <linux/of_dma.h>
+#include <linux/dma-noncoherent.h>
 
 #include "dma-proxy.h"
 
@@ -192,7 +193,7 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 			break;
 		}
 	}
-	uint32_t num_buffers = 1;//idx;
+	uint32_t num_buffers = idx; // 1;
 	struct scatterlist* sg_entry;
 	
 	pr_info("BLNX - num_buffers: %d\n", num_buffers); 
@@ -201,14 +202,15 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	sg_init_table(&pchannel_p->sglist, num_buffers);
 	for_each_sg(&pchannel_p->sglist, sg_entry, num_buffers, idx)
 	{
-		pr_info("BLNX - [%d] IDX: %u -- %p -- %u\n", pchannel_p->direction, idx,  sg_entry, proxy_file->buffer_list[idx].size);
+		pr_info("BLNX - [%d] IDX: %u -- %p -- %u\n", pchannel_p->direction, idx,  
+			    sg_entry, proxy_file->buffer_list[idx].size);
 		sg_dma_address(sg_entry) = proxy_file->buffer_list[idx].phys_addr;
 		sg_dma_len(sg_entry) = proxy_file->buffer_list[idx].size;
 	}
-	pr_info("BLNX - post sg setup\n");
 	
 	//~ sg_dma_address(&pchannel_p->sglist) = proxy_file->buffer_list[0].phys_addr;
 	//~ sg_dma_len(&pchannel_p->sglist) = proxy_file->buffer_list[0].size;
+	pr_info("BLNX - post sg setup\n");
 
 	struct dma_async_tx_descriptor *chan_desc;
 	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, 
@@ -412,7 +414,7 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 				
 		for (int order = order_base_2(attempt_size / PAGE_SIZE); order > 0; order--)
 		{
-			// Allocate the DMA buffer
+			// Attempt to allocate the DMA buffer segment
 			attempt_size = (1 << order) * PAGE_SIZE;
 			
 			// DEBUG
@@ -450,7 +452,10 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 
     // Sneakily map each of the buffers into the VMA one by one
     int rc;
-    unsigned long vma_addr = vma->vm_start;
+    unsigned long vm_start_orig = vma->vm_start;
+    unsigned long vm_end_orig = vma->vm_end;
+    pr_info("BLNX - START: 0x%016llX -- END: 0x%016llX\n", vm_start_orig, vm_end_orig);
+    
     for (idx = 0; idx < proxy_file->buffer_list_size; idx++) 
     {
 		// Relabel the buffer list entry
@@ -460,22 +465,29 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 			break;
 		}
 		
-		// Increment VMA start address (offset)
+		// Increment VMA start and end addresses (offset)
 		if (idx > 0)
 		{
-			vma_addr += proxy_file->buffer_list[idx - 1].size;
+			vma->vm_start = vma->vm_end;
 		}
+		vma->vm_end = vma->vm_start + buffer_entry->size;
 		
-        rc = remap_pfn_range(vma, vma_addr,
-                             buffer_entry->phys_addr >> PAGE_SHIFT,
-                             buffer_entry->size, vma->vm_page_prot);
+		rc = dma_mmap_coherent(xilinx_dma->dma_device_p, vma,
+						   	   buffer_entry->virt_address, 
+							   buffer_entry->phys_addr, 
+							   buffer_entry->size);
+							   
         if (rc != 0) 
         {
-            pr_err("remap_pfn_range: %d\n", rc);
+            pr_err("dma_mmap_coherent: %d (IDX = %u)\n", rc, idx);
             // TODO: unroll from here if the mapping fails
             return -EAGAIN;
         }
     }
+    
+    // Restore VMA addresses
+    vma->vm_start = vm_start_orig;
+    vma->vm_end = vm_end_orig;
     
     return rc;
 }
