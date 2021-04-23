@@ -103,7 +103,7 @@ struct dma_proxy_channel {
 	struct completion cmp;
 	dma_cookie_t cookie;
 	u32 direction;						/* DMA_MEM_TO_DEV or DMA_DEV_TO_MEM */
-	struct scatterlist sglist;
+	struct scatterlist* sglist;
 };
 
 struct xilinx_dma_t {
@@ -129,6 +129,7 @@ struct dma_proxy_file_t {
 	struct xilinx_dma_t* proxy_dev;	/* owning device for this buffer */
 	struct dma_proxy_file_buffer_t* buffer_list; /* array of underlying buffers */
 	uint32_t buffer_list_size;		/* length in entries of the buffer list array */
+	uint32_t buffer_list_max_idx;	/* index of last used entry in buffer list */
 	
 	//~ dma_addr_t phys_addr;			/* bus address of DMA buffer */
 	//~ void *virt_address;     		/* kernel virtual address of the DMA buffer */
@@ -179,46 +180,25 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 	enum dma_ctrl_flags flags = DMA_CTRL_ACK | DMA_PREP_INTERRUPT;
 	struct dma_device *dma_device = pchannel_p->channel_p->device;
 	
-	/* 
-	 * For now use a single entry in a scatter gather list just for future
-	 * flexibility for scatter gather.
-	 */
-	 
-	// TODO: do this more efficiently
-	uint32_t idx = 0;
-	for (; idx < proxy_file->buffer_list_size; ++idx)
-	{
-		if (proxy_file->buffer_list[idx].size == 0)
-		{
-			break;
-		}
-	}
-	uint32_t num_buffers = idx; // 1;
-	struct scatterlist* sg_entry;
-	
-	pr_info("BLNX - num_buffers: %d\n", num_buffers); 
+	// Allocate scatter/gather list
+	uint32_t num_buffers = proxy_file->buffer_list_max_idx + 1;
+	pchannel_p->sglist = kmalloc(sizeof(struct scatterlist) * num_buffers, GFP_KERNEL);
 	
 	// Setup the scatter/gather table and add each buffer to it
-	sg_init_table(&pchannel_p->sglist, num_buffers);
-	for_each_sg(&pchannel_p->sglist, sg_entry, num_buffers, idx)
+	sg_init_table(pchannel_p->sglist, num_buffers);
+	struct scatterlist* sg_entry;
+	uint32_t idx = 0;
+	for_each_sg(pchannel_p->sglist, sg_entry, num_buffers, idx)
 	{
-		pr_info("BLNX - [%d] IDX: %u -- %p -- %u\n", pchannel_p->direction, idx,  
-			    sg_entry, proxy_file->buffer_list[idx].size);
 		sg_dma_address(sg_entry) = proxy_file->buffer_list[idx].phys_addr;
 		sg_dma_len(sg_entry) = proxy_file->buffer_list[idx].size;
 	}
 	
-	//~ sg_dma_address(&pchannel_p->sglist) = proxy_file->buffer_list[0].phys_addr;
-	//~ sg_dma_len(&pchannel_p->sglist) = proxy_file->buffer_list[0].size;
-	pr_info("BLNX - post sg setup\n");
-
 	struct dma_async_tx_descriptor *chan_desc;
 	chan_desc = dma_device->device_prep_slave_sg(pchannel_p->channel_p, 
-												 &pchannel_p->sglist, num_buffers, 
+												 pchannel_p->sglist, num_buffers, 
 												 pchannel_p->direction, flags, 
 												 NULL);
-
-	pr_info("BLNX - post prep slave: %d\n", pchannel_p->direction);
 
 	/*
 	 *  Make sure the operation was completed successfully
@@ -291,46 +271,12 @@ static void wait_for_transfer(struct dma_proxy_channel *pchannel_p,
 	{
 		proxy_file->status = PROXY_NO_ERROR;
 	}
-}
-
-static void test(void)
-{
-#if 0
-	int i;
-	struct work_struct work;
 	
-	pr_alert("Starting internal test\n");
-
-	/* Initialize the buffers for the test
-	 */
-	for (i = 0; i < TEST_SIZE; i++) {
-		channels[TX_CHANNEL].interface_p->buffer[i] = i;
-		channels[RX_CHANNEL].interface_p->buffer[i] = 0;
+	if (pchannel_p->sglist)
+	{
+		kfree(pchannel_p->sglist);
+		pchannel_p->sglist = NULL;
 	}
-
-	/* Since the transfer function is blocking the transmit channel is started from a worker
-	 * thread
-	 */
-	INIT_WORK(&work, tx_test);
-	schedule_work(&work);
-
-	/* Receive the data that was just sent and looped back
-	 */
-	channels[1].interface_p->length = TEST_SIZE;
-	transfer(&channels[1]);
-
-	/* Verify the receiver buffer matches the transmit buffer to
-	 * verify the transfer was good
-	 */
-	for (i = 0; i < TEST_SIZE; i++)
-		if (channels[TX_CHANNEL].interface_p->buffer[i] !=
-			channels[RX_CHANNEL].interface_p->buffer[i]) {
-			printk("buffers not equal, first index = %d\n", i);
-			break;
-		}
-
-	pr_alert("Internal test complete\n");
-#endif
 }
 
 /**
@@ -350,13 +296,8 @@ static void dma_proxy_vma_close(struct vm_area_struct *vma)
 	struct dma_proxy_file_t* proxy_file = (struct dma_proxy_file_t*)file->private_data;
 	struct xilinx_dma_t* xilinx_dma = proxy_file->proxy_dev;
 	
-	for (uint32_t idx = 0; idx < proxy_file->buffer_list_size; ++idx)
+	for (uint32_t idx = 0; idx < proxy_file->buffer_list_max_idx + 1; ++idx)
 	{
-		if (proxy_file->buffer_list[idx].size == 0)
-		{
-			break;
-		}
-		
 		// Free the DMA buffer that was allocated in the mmap call
 		dma_free_coherent(xilinx_dma->dma_device_p, 
 						  proxy_file->buffer_list[idx].size, 
@@ -386,11 +327,10 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 	// Determine the size that userspace is attempting to mmap
     size_t size = vma->vm_end - vma->vm_start;
 	size_t size_remaining = size;
-	size_t attempt_size = 0;
 	
 	// NOTE: assume each file only has one buffer which is enforced by the library layer
 	uint32_t idx = 0; 
-	
+	size_t attempt_size = 0;
 	while (size_remaining > 0)
 	{
 		// Determine how much to allocate for this buffer
@@ -405,20 +345,22 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 		
 		if (! is_power_of_2(attempt_size))
 		{
-			// Round down to the nearest power of 2
+			/*
+			 * Round down to the nearest power of 2; NOTE: the library will
+			 * round the user requested size up to the nearest PAGE_SIZE 
+			 * multiple, so this operation should be safe.
+			 */ 
 			attempt_size = __rounddown_pow_of_two(attempt_size);
 		}
 		
-		// DEBUG
-		pr_info("BLNX - (%u - %u) modified attempt size: %u\n", idx, size_remaining, attempt_size);
-				
-		for (int order = order_base_2(attempt_size / PAGE_SIZE); order > 0; order--)
+		/*
+		 * Start by attempting to allocate the largest segment possible. If
+		 * the allocation fails decrease the size by a power of 2 and try again.
+		 */ 
+		for (int order = order_base_2(attempt_size / PAGE_SIZE); order >= 0; order--)
 		{
 			// Attempt to allocate the DMA buffer segment
 			attempt_size = (1 << order) * PAGE_SIZE;
-			
-			// DEBUG
-			pr_info("BLNX - (%u - %u) ORDER: %d -- size: %u\n", idx,  size_remaining, order, attempt_size);
 			
 			buffer_entry->virt_address = dma_alloc_coherent(xilinx_dma->dma_device_p, 
 															attempt_size, 
@@ -428,15 +370,13 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 			// Check if the allocation succeeded, if so then stop
 			if (buffer_entry->virt_address != NULL)
 			{
-				// DEBUG
-				pr_info("BLNX - allocation SUCCESS\n");
 				break;
 			}
 		}
 		
 		if (buffer_entry->virt_address == NULL)
 		{
-			// Allocation failed even at order 1 (i.e. 1 page)... error out
+			// Allocation failed even at order 0 (i.e. 1 page)... error out
 			pr_err("dma_alloc_coherent() -- FAILED\n");
 			return -ENOMEM;
 		}
@@ -446,6 +386,7 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
 		size_remaining -= attempt_size;
 		++idx;
 	}
+	proxy_file->buffer_list_max_idx = idx - 1;
 	
 	// Install custom VM operations
     vma->vm_ops = &dma_proxy_vm_ops;
@@ -453,17 +394,11 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
     // Sneakily map each of the buffers into the VMA one by one
     int rc;
     unsigned long vm_start_orig = vma->vm_start;
-    unsigned long vm_end_orig = vma->vm_end;
-    pr_info("BLNX - START: 0x%016llX -- END: 0x%016llX\n", vm_start_orig, vm_end_orig);
-    
-    for (idx = 0; idx < proxy_file->buffer_list_size; idx++) 
+    unsigned long vm_end_orig = vma->vm_end;    
+    for (idx = 0; idx < proxy_file->buffer_list_max_idx + 1; idx++) 
     {
 		// Relabel the buffer list entry
 		buffer_entry = &proxy_file->buffer_list[idx];
-		if (buffer_entry->size == 0)
-		{
-			break;
-		}
 		
 		// Increment VMA start and end addresses (offset)
 		if (idx > 0)
@@ -485,7 +420,7 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
         }
     }
     
-    // Restore VMA addresses
+    // Restore original VMA bounds addresses
     vma->vm_start = vm_start_orig;
     vma->vm_end = vm_end_orig;
     
@@ -503,14 +438,16 @@ static int local_open(struct inode *ino, struct file *file)
 	 
 	// Allocate per file (i.e. buffer) structure
 	struct dma_proxy_file_t* proxy_file = kzalloc(sizeof(struct dma_proxy_file_t), GFP_KERNEL);
-	if (proxy_file == NULL) {
+	if (proxy_file == NULL) 
+	{
 		return -ENOMEM;
 	}
 	
 	// Setup the file buffer list (array)
 	size_t size = sizeof(struct dma_proxy_file_buffer_t) * BUFFER_LIST_INCREMENT;
 	proxy_file->buffer_list = kzalloc(size, GFP_KERNEL);
-	if (proxy_file->buffer_list == NULL) {
+	if (proxy_file->buffer_list == NULL) 
+	{
 		return -ENOMEM;
 	}
 	
