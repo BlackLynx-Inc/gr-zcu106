@@ -244,7 +244,7 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 				sg_dma_len(sg_entry) = rw_info->length;
 			}
 		}
-		else if (buf_idx > start_idx && buf_idx > end_idx)
+		else if (buf_idx > start_idx && buf_idx < end_idx)
 		{
 			// Middle buffer
 			sg_dma_address(sg_entry) = proxy_file->buffer_list[buf_idx].phys_addr;
