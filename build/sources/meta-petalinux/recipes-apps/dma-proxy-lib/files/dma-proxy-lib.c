@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -294,28 +295,25 @@ void dmap_free_buffer(void* buffer)
     return;
 }
 
-int dmap_read(void* buffer, uint32_t device_address, uint32_t length)
+static int _buffer_select_helper(void* buffer, uint32_t length, struct proxy_buffer_info* selected)
 {
-    if (buffer == NULL)
-    {
-        return DMAP_INVALID_BUF_PTR;
-    }
-    
     int rc = 0;
-    struct proxy_buffer_info selected;
     
     pthread_mutex_lock(&master_mutex);
     
     // Find the proxy_buffer_info_t that is active who's value matches the 
-    // passed buffer pointer
+    // passed buffer pointer. Note "buffer" may include an offset and therefore
+    // not be the start of the buffer.
     uint32_t idx = 0;
     for (; idx < buffer_list_size; ++idx)
     {
-        if (buffer && buffer_list[idx].fd > 0 && buffer_list[idx].buffer == buffer)
+        if (buffer && buffer_list[idx].fd > 0 && 
+            buffer >= buffer_list[idx].buffer && 
+            buffer < (buffer_list[idx].buffer + buffer_list[idx].size))
         {
             // Copy the selected element as a realloc might happen at any time
             // the mutex is not locked
-            memcpy(&selected, &buffer_list[idx], sizeof(struct proxy_buffer_info));
+            memcpy(selected, &buffer_list[idx], sizeof(struct proxy_buffer_info));
             break;
         }
     }
@@ -328,63 +326,157 @@ int dmap_read(void* buffer, uint32_t device_address, uint32_t length)
     
     pthread_mutex_unlock(&master_mutex);
     
-    // TODO: validate that device_address and length fall in bounds
-    // TODO: handle offset within DMA buffer (store in struct?)
-    if (rc == 0)
+    if (rc)
     {
-        struct dma_proxy_rw_info rw_info;
-        rw_info.address = device_address;
-        rw_info.length = length;
+        return rc;
+    }
     
-        rc = ioctl(selected.fd, DMA_PROXY_IOC_READ, (unsigned long)&rw_info);
+    // Validate that buffer address + read length fall in bounds
+    if ((buffer + length) > (selected->buffer + selected->size))
+    {
+        rc = DMAP_ACCESS_OUT_OF_BOUNDS;
     }
     
     return rc;
 }
 
-int dmap_write(void* buffer, uint32_t device_address, uint32_t length)
+int dmap_read(void* buffer, uint32_t length)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
     }
     
-    int rc = 0;
     struct proxy_buffer_info selected;
-    
-    pthread_mutex_lock(&master_mutex);
-    
-    // Find the proxy_buffer_info_t that is active who's value matches the 
-    // passed buffer pointer
-    uint32_t idx = 0;
-    for (; idx < buffer_list_size; ++idx)
+    int rc = _buffer_select_helper(buffer, length, &selected);
+    if (rc)
     {
-        if (buffer && buffer_list[idx].fd > 0 && buffer_list[idx].buffer == buffer)
-        {
-            // Copy the selected element as a realloc might happen at any time
-            // the mutex is not locked
-            memcpy(&selected, &buffer_list[idx], sizeof(struct proxy_buffer_info));
-            break;
-        }
+        return rc;
     }
-    
-    // The buffer was not found
-    if (idx == buffer_list_size)
-    {
-        rc = DMAP_INVALID_BUF_PTR;
-    }
-    
-    pthread_mutex_unlock(&master_mutex);
-    
-    // TODO: validate that device_address and length fall in bounds
-    // TODO: handle offset within DMA buffer (store in struct?)
-    if (rc == 0)
+    else
     {
         struct dma_proxy_rw_info rw_info;
-        rw_info.address = device_address;
+        rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
-        
-        rc = ioctl(buffer_list[idx].fd, DMA_PROXY_IOC_WRITE, (unsigned long)&rw_info);
+    
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_READ_BLOCKING, (unsigned long)&rw_info);
+    }
+    
+    return rc;
+}
+
+int dmap_read_nb(void* buffer, uint32_t length)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    struct proxy_buffer_info selected;
+    int rc = _buffer_select_helper(buffer, length, &selected);
+    if (rc)
+    {
+        return rc;
+    }
+    else
+    {
+        struct dma_proxy_rw_info rw_info;
+        rw_info.offset = buffer - selected.buffer;;
+        rw_info.length = length;
+    
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_START_READ, (unsigned long)&rw_info);
+    }
+    
+    return rc;
+}
+
+int dmap_read_complete(void* buffer)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    struct proxy_buffer_info selected;
+    int rc = _buffer_select_helper(buffer, 0, &selected);
+    if (rc)
+    {
+        return rc;
+    }
+    else
+    {
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_READ, 0);
+    }
+    
+    return rc;
+}
+
+int dmap_write(void* buffer, uint32_t length)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    struct proxy_buffer_info selected;
+    int rc = _buffer_select_helper(buffer, length, &selected);
+    if (rc)
+    {
+        return rc;
+    }
+    else
+    {
+        struct dma_proxy_rw_info rw_info;
+        rw_info.offset = buffer - selected.buffer;;
+        rw_info.length = length;
+    
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_WRITE_BLOCKING, (unsigned long)&rw_info);
+    }
+    
+    return rc;
+}
+
+int dmap_write_nb(void* buffer, uint32_t length)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    struct proxy_buffer_info selected;
+    int rc = _buffer_select_helper(buffer, length, &selected);
+    if (rc)
+    {
+        return rc;
+    }
+    else
+    {
+        struct dma_proxy_rw_info rw_info;
+        rw_info.offset = buffer - selected.buffer;;
+        rw_info.length = length;
+    
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_START_WRITE, (unsigned long)&rw_info);
+    }
+    
+    return rc;
+}
+
+int dmap_write_complete(void* buffer)
+{
+    if (buffer == NULL)
+    {
+        return DMAP_INVALID_BUF_PTR;
+    }
+    
+    struct proxy_buffer_info selected;
+    int rc = _buffer_select_helper(buffer, 0, &selected);
+    if (rc)
+    {
+        return rc;
+    }
+    else
+    {
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_WRITE, 0);
     }
     
     return rc;

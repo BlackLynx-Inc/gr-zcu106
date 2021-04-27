@@ -98,8 +98,7 @@ module_param(internal_test, int, S_IRUGO);
  */
 struct dma_proxy_channel {
 	struct xilinx_dma_t* parent;		/* pointer back to parent */
-
-	struct dma_chan *channel_p;			/* dma support */
+	struct dma_chan *channel_p;			/* DMA support */
 	struct completion cmp;
 	dma_cookie_t cookie;
 	u32 direction;						/* DMA_MEM_TO_DEV or DMA_DEV_TO_MEM */
@@ -130,10 +129,6 @@ struct dma_proxy_file_t {
 	struct dma_proxy_file_buffer_t* buffer_list; /* array of underlying buffers */
 	uint32_t buffer_list_size;		/* length in entries of the buffer list array */
 	uint32_t buffer_list_max_idx;	/* index of last used entry in buffer list */
-	
-	//~ dma_addr_t phys_addr;			/* bus address of DMA buffer */
-	//~ void *virt_address;     		/* kernel virtual address of the DMA buffer */
-	//~ size_t size;          			/* buffer size in bytes */
 	enum proxy_status status;		/* status of the proxy channel */
 };
 
@@ -177,21 +172,92 @@ static int start_transfer(struct dma_proxy_channel* pchannel_p,
 						  struct dma_proxy_file_t* proxy_file,
 						  struct dma_proxy_rw_info* rw_info)
 {
+	// Determine the start index into the buffer/SG list and the offset into
+	// the first buffer
+	uint32_t offset_remaining = rw_info->offset;
+	uint32_t start_idx = 0;
+	for (start_idx = 0; start_idx < proxy_file->buffer_list_max_idx + 1; start_idx++)
+	{
+		if (offset_remaining > 0 &&
+			offset_remaining >= proxy_file->buffer_list[start_idx].size)
+		{
+			offset_remaining -= proxy_file->buffer_list[start_idx].size;
+		}
+		else
+		{
+			// The transfer should start at an offset (possibly zero) within
+			// the buffer at this index
+			break;
+		}
+	}
+	
+	// Determine the end index and "tail size"
+	uint32_t tail_size = 0;
+	uint32_t size_counter = 0;
+	uint32_t end_idx = 0;
+	for (end_idx = start_idx; end_idx < proxy_file->buffer_list_max_idx + 1; end_idx++)
+	{
+		if (end_idx == start_idx)
+		{
+			size_counter = proxy_file->buffer_list[end_idx].size - offset_remaining;
+		}
+		else
+		{
+			size_counter += proxy_file->buffer_list[end_idx].size;
+		}
+		
+		if (size_counter >= rw_info->length)
+		{
+			tail_size = rw_info->length - (size_counter - proxy_file->buffer_list[end_idx].size);
+			
+			// The transfer should end at the buffer at this index
+			break;
+		}
+	}
+	
 	enum dma_ctrl_flags flags = DMA_CTRL_ACK | DMA_PREP_INTERRUPT;
 	struct dma_device *dma_device = pchannel_p->channel_p->device;
 	
 	// Allocate scatter/gather list
-	uint32_t num_buffers = proxy_file->buffer_list_max_idx + 1;
+	uint32_t num_buffers = (end_idx - start_idx) + 1;
 	pchannel_p->sglist = kmalloc(sizeof(struct scatterlist) * num_buffers, GFP_KERNEL);
 	
 	// Setup the scatter/gather table and add each buffer to it
 	sg_init_table(pchannel_p->sglist, num_buffers);
 	struct scatterlist* sg_entry;
 	uint32_t idx = 0;
+	uint32_t buf_idx = start_idx;
 	for_each_sg(pchannel_p->sglist, sg_entry, num_buffers, idx)
 	{
-		sg_dma_address(sg_entry) = proxy_file->buffer_list[idx].phys_addr;
-		sg_dma_len(sg_entry) = proxy_file->buffer_list[idx].size;
+		if (buf_idx == start_idx)
+		{
+			// Start buffer possibly with offset
+			sg_dma_address(sg_entry) = proxy_file->buffer_list[buf_idx].phys_addr + 
+								   	   offset_remaining;
+			if (num_buffers > 1)
+			{
+				sg_dma_len(sg_entry) = proxy_file->buffer_list[buf_idx].size - 
+									   offset_remaining;
+			}
+			else
+			{
+				sg_dma_len(sg_entry) = rw_info->length;
+			}
+		}
+		else if (buf_idx > start_idx && buf_idx > end_idx)
+		{
+			// Middle buffer
+			sg_dma_address(sg_entry) = proxy_file->buffer_list[buf_idx].phys_addr;
+			sg_dma_len(sg_entry) = proxy_file->buffer_list[buf_idx].size;
+		}
+		else if (buf_idx == end_idx)
+		{
+			// End buffer possibly with tail size
+			sg_dma_address(sg_entry) = proxy_file->buffer_list[buf_idx].phys_addr;
+			sg_dma_len(sg_entry) = tail_size;
+		}
+		
+		++buf_idx;
 	}
 	
 	struct dma_async_tx_descriptor *chan_desc;
@@ -492,7 +558,7 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	// Decode the IOCTL
     switch (cmd) {
 		
-		case DMA_PROXY_IOC_READ:
+		case DMA_PROXY_IOC_READ_BLOCKING:
 			// Copy the R/W info struct in from userspace
             ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
             if (ret) 
@@ -500,7 +566,6 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
                 break;
             }
             
-            // Do the transfer
             rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
             if (rc)
             {
@@ -509,8 +574,8 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
             
             wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
 			break;
-		
-		case DMA_PROXY_IOC_WRITE:
+			
+		case DMA_PROXY_IOC_START_READ:
 			// Copy the R/W info struct in from userspace
             ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
             if (ret) 
@@ -518,7 +583,25 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
                 break;
             }
             
-            // Do the transfer
+            rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
+            if (rc)
+            {
+				return -1;
+			}
+			break;
+		
+		case DMA_PROXY_IOC_COMPLETE_READ:
+			wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
+			break;
+		
+		case DMA_PROXY_IOC_WRITE_BLOCKING:
+			// Copy the R/W info struct in from userspace
+            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
+            if (ret) 
+            {
+                break;
+            }
+            
             rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
             if (rc)
             {
@@ -526,6 +609,25 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			}
             
             wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
+			break;
+		
+		case DMA_PROXY_IOC_START_WRITE:
+			// Copy the R/W info struct in from userspace
+            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
+            if (ret) 
+            {
+                break;
+            }
+            
+            rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
+            if (rc)
+            {
+				return -1;
+			}
+			break;
+			
+		case DMA_PROXY_IOC_COMPLETE_WRITE:
+			wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
 			break;
 		
 		default:

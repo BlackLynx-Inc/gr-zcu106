@@ -12,39 +12,10 @@
 
 #include <dma-proxy-lib.h>
 
-struct write_thread_args 
-{
-    char* dma_buffer;
-    size_t buffer_size;
-    uint32_t offset;
-    uint32_t xfer_len;
-};
-
-void* write_thread(struct write_thread_args* args)
-{
-    printf("[WRT] Write thread running...\n");
-    
-    // Write unique pattern to transmit buffer
-    memset(args->dma_buffer, 0xC3, args->buffer_size);
-    printf("[WRT] WROTE THE BUFFER!\n");
-
-#if 1
-    // Write/transmit the data
-    int rc = dmap_write((void*)args->dma_buffer + args->offset, args->xfer_len);
-    if (rc)
-    {
-        fprintf(stderr, "[WRT] DMA write failed: %d\n", rc);
-    }
-    
-    printf("[WRT] complete\n");
-#endif
-    
-    return NULL;
-}
 
 int main(int argc, char** argv)
 {
-    printf("DMA Proxy Util\n\n");
+    printf("DMA Proxy Util NonBlocking\n\n");
     
     // Set default arguments and override with command line arguments as needed
     size_t buf_size = 1024 * 1024;
@@ -93,6 +64,9 @@ int main(int argc, char** argv)
         return;
     }
     
+    // Write unique pattern to transmit buffer
+    memset(tx_dma_buffer, 0xC3, buf_size);
+    
     // Allocate receive buffer
     char* rx_dma_buffer = (char*)dmap_alloc_buffer(buf_size);
     if (rx_dma_buffer == NULL)
@@ -104,27 +78,28 @@ int main(int argc, char** argv)
     // Write a pattern to the recieve buffer 
     memset(rx_dma_buffer, 0x5A, buf_size);
     
-    struct write_thread_args args;
-    args.dma_buffer = tx_dma_buffer;
-    args.buffer_size = buf_size;
-    args.offset = offset;
-    args.xfer_len = xfer_len;
-
-    // Spawn the write thread
-    pthread_t tid;
-    pthread_create(&tid, NULL, write_thread, &args);
-
     printf("Buffer contents BEFORE: 0x%08X\n", *(uint32_t*)rx_dma_buffer);
 
-    // Read the transmitted data back
-    int rc = dmap_read((void*)rx_dma_buffer + offset, xfer_len);
+    // Kick off the read operation
+    int rc = dmap_read_nb((void*)rx_dma_buffer + offset, xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);
     }
     
-    // Join the write thread
-    pthread_join(tid, NULL);
+    // Write/transmit the data
+    rc = dmap_write((void*)tx_dma_buffer + offset, xfer_len);
+    if (rc)
+    {
+        fprintf(stderr, "[WRT] DMA write failed: %d\n", rc);
+    }
+    
+    // Wait for the read operation to complete
+    rc = dmap_read_complete((void*)rx_dma_buffer);
+    if (rc)
+    {
+        fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);
+    }
     
     printf("Buffer contents AFTER:  0x%08X\n", *(uint32_t*)rx_dma_buffer);
     

@@ -16,17 +16,22 @@ extern "C" {
 
 // NOTE: this is currently duplicated, even though it really shouldn't be
 #define DMA_PROXY_IOCTL_MAGIC  'b'
-#define DMA_PROXY_IOC_READ	_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from device RAM
-#define DMA_PROXY_IOC_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to device RAM
+#define DMA_PROXY_IOC_READ_BLOCKING		_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from PL blocking
+#define DMA_PROXY_IOC_WRITE_BLOCKING	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to PL blocking
+#define DMA_PROXY_IOC_START_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  2, int)  //!< IOCTL: start read from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  3, int)  //!< IOCTL: complete read from PL (nonblocking)
+#define DMA_PROXY_IOC_START_WRITE		_IOW(DMA_PROXY_IOCTL_MAGIC,  4, int)  //!< IOCTL: start write from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  5, int)  //!< IOCTL: complete write from PL (nonblocking)
 
 struct dma_proxy_rw_info {
-    uint32_t address;       //!< device address
+    uint32_t offset;       	//!< offset in bytes from start of buffer
     uint32_t length;        //!< buffer length
 };
 
 // RETURN CODES
 #define DMAP_INVALID_REG_OFFSET		1
 #define DMAP_INVALID_BUF_PTR		2
+#define DMAP_ACCESS_OUT_OF_BOUNDS	3
 
 /**
  * Read 32 bit value from the specified offset in the register space.
@@ -49,14 +54,36 @@ void* dmap_alloc_buffer(size_t size);
 void dmap_free_buffer(void* buffer);
 
 /**
- * Perform DMA read: device buffer --> host buffer
+ * Perform blocking DMA read: PL --> host buffer
  */ 
-int dmap_read(void* buffer, uint32_t device_address, uint32_t length);
+int dmap_read(void* buffer, uint32_t length);
 
 /**
- * Perform DMA write: host buffer --> device buffer
+ * Start nonblocking DMA read: PL --> host buffer
  */ 
-int dmap_write(void* buffer, uint32_t device_address, uint32_t length);
+int dmap_read_nb(void* buffer, uint32_t length);
+
+/**
+ * Wait for previously started read to complete. This call blocks.
+ */ 
+int dmap_read_complete(void* buffer);
+
+/**
+ * Perform blocking DMA write: host buffer --> PL
+ */ 
+int dmap_write(void* buffer, uint32_t length);
+
+/**
+ * Start nonblocking DMA write: host buffer --> PL
+ */ 
+int dmap_write_nb(void* buffer, uint32_t length);
+
+/**
+ * Wait for previously started write operation to complete. This call blocks.
+ */ 
+int dmap_write_complete(void* buffer);
+
+
 
 #ifdef __cplusplus
 }  // End of extern "C"

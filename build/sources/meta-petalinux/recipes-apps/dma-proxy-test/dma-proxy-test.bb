@@ -6,6 +6,7 @@ SRC_URI = " \
 	file://dma-proxy-reg.c \
 	file://dma-proxy-test.c \
 	file://dma-proxy-util.c \
+	file://dma-proxy-util-nb.c \
 	file://dma-proxy.h \
 	file://Makefile \
 "
@@ -28,4 +29,5 @@ do_install() {
 	     install -m 0755 dma-proxy-test ${D}${bindir}
 	     install -m 0755 dma-proxy-reg ${D}${bindir}
 	     install -m 0755 dma-proxy-util ${D}${bindir}
+	     install -m 0755 dma-proxy-util-nb ${D}${bindir}
 }

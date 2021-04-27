@@ -25,14 +25,18 @@
 #include <linux/ioctl.h>
 
 #define DMA_PROXY_IOCTL_MAGIC  'b'
-#define DMA_PROXY_IOC_READ	_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from device RAM
-#define DMA_PROXY_IOC_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to device RAM
+#define DMA_PROXY_IOC_READ_BLOCKING		_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from PL blocking
+#define DMA_PROXY_IOC_WRITE_BLOCKING	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to PL blocking
+#define DMA_PROXY_IOC_START_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  2, int)  //!< IOCTL: start read from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  3, int)  //!< IOCTL: complete read from PL (nonblocking)
+#define DMA_PROXY_IOC_START_WRITE		_IOW(DMA_PROXY_IOCTL_MAGIC,  4, int)  //!< IOCTL: start write from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  5, int)  //!< IOCTL: complete write from PL (nonblocking)
 
-#define MAX_BUF_SIZE        ((1 << (MAX_ORDER - 1)) * PAGE_SIZE)  
+#define MAX_BUF_SIZE        	((1 << (MAX_ORDER - 1)) * PAGE_SIZE)  
 #define BUFFER_LIST_INCREMENT 	10
 
 // NOTE the library needs this too
 struct dma_proxy_rw_info {
-    uint32_t address;       //!< device address
+    uint32_t offset;       	//!< offset in bytes from start of buffer
     uint32_t length;        //!< buffer length
 };
