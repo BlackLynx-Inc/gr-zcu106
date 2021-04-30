@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Tue Jan 12 11:02:24 2021
--- Host        : L000921 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top project_1_s00_regslice_0 -prefix
---               project_1_s00_regslice_0_ project_1_s00_regslice_0_sim_netlist.vhdl
+-- Tool Version: Vivado v.2020.1.1 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
+-- Date        : Fri Apr 30 14:12:53 2021
+-- Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /ryftone/chintan/darpa/github/dsorber/gr-zcu106/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_s00_regslice_0/project_1_s00_regslice_0_sim_netlist.vhdl
 -- Design      : project_1_s00_regslice_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -27,6 +27,8 @@ entity project_1_s00_regslice_0_axi_register_slice_v2_1_21_axic_register_slice i
     s_ready_i_reg_0 : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 100 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axic_register_slice : entity is "axi_register_slice_v2_1_21_axic_register_slice";
 end project_1_s00_regslice_0_axi_register_slice_v2_1_21_axic_register_slice;
 
 architecture STRUCTURE of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axic_register_slice is
@@ -10960,6 +10962,8 @@ entity project_1_s00_regslice_0_axi_register_slice_v2_1_21_axi_register_slice is
   attribute G_AXI_WUSER_INDEX of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axi_register_slice : entity is 145;
   attribute G_AXI_WUSER_WIDTH : integer;
   attribute G_AXI_WUSER_WIDTH of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axi_register_slice : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axi_register_slice : entity is "axi_register_slice_v2_1_21_axi_register_slice";
   attribute P_FORWARD : integer;
   attribute P_FORWARD of project_1_s00_regslice_0_axi_register_slice_v2_1_21_axi_register_slice : entity is 0;
   attribute P_RESPONSE : integer;
@@ -11220,7 +11224,7 @@ entity project_1_s00_regslice_0 is
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of project_1_s00_regslice_0 : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of project_1_s00_regslice_0 : entity is "axi_register_slice_v2_1_21_axi_register_slice,Vivado 2020.1";
+  attribute X_CORE_INFO of project_1_s00_regslice_0 : entity is "axi_register_slice_v2_1_21_axi_register_slice,Vivado 2020.1.1";
 end project_1_s00_regslice_0;
 
 architecture STRUCTURE of project_1_s00_regslice_0 is
