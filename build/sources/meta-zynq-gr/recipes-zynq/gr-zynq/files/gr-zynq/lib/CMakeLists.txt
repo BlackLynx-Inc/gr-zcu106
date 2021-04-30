@@ -19,6 +19,19 @@
 # Boston, MA 02110-1301, USA.
 
 ########################################################################
+# Helper function
+########################################################################
+SET(EXTERNAL_LIBS )
+FUNCTION(check_lib lib_name)
+        FIND_LIBRARY(LIB_${lib_name} ${lib_name})
+        IF (NOT LIB_${lib_name})
+            MESSAGE(FATAL_ERROR "Can't find ${lib_name}!")
+        ELSE()
+            SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${LIB_${lib_name}} PARENT_SCOPE)
+        ENDIF()
+ENDFUNCTION()
+
+########################################################################
 # Setup library
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
@@ -33,8 +46,14 @@ if(NOT zynq_sources)
     return()
 endif(NOT zynq_sources)
 
+CHECK_LIB(dmaproxy) # link against libdmaproxy
+
+# Add C++11 support
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 add_library(gnuradio-zynq SHARED ${zynq_sources})
-target_link_libraries(gnuradio-zynq gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-zynq gnuradio::gnuradio-runtime
+                                    ${EXTERNAL_LIBS})
 target_include_directories(gnuradio-zynq
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<INSTALL_INTERFACE:include>

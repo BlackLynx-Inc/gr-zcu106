@@ -22,5 +22,6 @@ include(GrPython)
 
 GR_PYTHON_INSTALL(
     PROGRAMS
+    loopback.py
     DESTINATION bin
 )

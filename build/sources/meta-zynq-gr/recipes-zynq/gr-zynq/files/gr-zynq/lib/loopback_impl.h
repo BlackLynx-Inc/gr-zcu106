@@ -21,7 +21,11 @@
 #ifndef INCLUDED_ZYNQ_LOOPBACK_IMPL_H
 #define INCLUDED_ZYNQ_LOOPBACK_IMPL_H
 
+#include <fstream>
+
 #include <zynq/loopback.h>
+
+#include <dma-proxy-lib.h>
 
 namespace gr {
 namespace zynq {
@@ -29,14 +33,20 @@ namespace zynq {
 class loopback_impl : public loopback
 {
 private:
-      // Nothing to declare in this block.
-
+    void* d_dma_write_buffer;
+    void* d_dma_read_buffer;
+    
+    uint32_t d_max_noutput_items;
+    
 public:
     loopback_impl();
     ~loopback_impl();
+    
+    bool start();
+    bool stop();
 
     // Where all the action really happens
-    void forecast (int noutput_items, gr_vector_int &ninput_items_required);
+    void forecast(int noutput_items, gr_vector_int &ninput_items_required);
 
     int general_work(int noutput_items,
                      gr_vector_int &ninput_items,

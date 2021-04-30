@@ -2,7 +2,11 @@ SUMMARY = "gr-zynq GNU Radio OOT module"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-DEPENDS += "gnuradio swig-native"
+SRC_URI = " \
+	file://gr-zynq/* \
+"
+
+DEPENDS += "gnuradio swig-native dma-proxy-lib"
 
 inherit setuptools3 cmake
 
@@ -13,9 +17,6 @@ FILES_${PN} += "${datadir}/gnuradio/gr-zynq \
 				${datadir}/gnuradio/grc/blocks/ \
                 ${PYTHON_SITEPACKAGES_DIR}/gnuradio/gr-zynq"
 
-SRC_URI = " \
-	file://gr-zynq/* \
-"
 
 S = "${WORKDIR}/gr-zynq"
 
