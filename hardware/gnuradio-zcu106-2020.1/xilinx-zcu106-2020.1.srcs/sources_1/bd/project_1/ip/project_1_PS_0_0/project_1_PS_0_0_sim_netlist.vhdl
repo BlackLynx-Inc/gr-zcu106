@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Fri Dec 18 01:32:43 2020
--- Host        : buildserver7 running 64-bit Ubuntu 16.04.7 LTS
+-- Tool Version: Vivado v.2020.1.1 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
+-- Date        : Fri Apr 30 21:30:36 2021
+-- Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/ryftuser/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0_sim_netlist.vhdl
+--               /ryftone/chintan/darpa/github/dev/gr-zcu106/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0_sim_netlist.vhdl
 -- Design      : project_1_PS_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -990,7 +990,7 @@ entity project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e is
     ps_pl_trigger_3 : out STD_LOGIC;
     ftm_gpo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     ftm_gpi : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    pl_ps_irq0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    pl_ps_irq0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     pl_ps_irq1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     pl_resetn0 : out STD_LOGIC;
     pl_resetn1 : out STD_LOGIC;
@@ -1531,7 +1531,7 @@ entity project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e is
   attribute C_MAXIGP2_DATA_WIDTH : integer;
   attribute C_MAXIGP2_DATA_WIDTH of project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e : entity is 32;
   attribute C_NUM_F2P_0_INTR_INPUTS : integer;
-  attribute C_NUM_F2P_0_INTR_INPUTS of project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e : entity is 3;
+  attribute C_NUM_F2P_0_INTR_INPUTS of project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e : entity is 2;
   attribute C_NUM_F2P_1_INTR_INPUTS : integer;
   attribute C_NUM_F2P_1_INTR_INPUTS of project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e : entity is 1;
   attribute C_NUM_FABRIC_RESETS : integer;
@@ -3410,8 +3410,8 @@ PS8_i: unisim.vcomponents.PS8
       PLPSAPUGICFIQ(3 downto 0) => pl_ps_apugic_fiq(3 downto 0),
       PLPSAPUGICIRQ(3 downto 0) => pl_ps_apugic_irq(3 downto 0),
       PLPSEVENTI => pl_ps_eventi,
-      PLPSIRQ0(7 downto 3) => B"00000",
-      PLPSIRQ0(2 downto 0) => pl_ps_irq0(2 downto 0),
+      PLPSIRQ0(7 downto 2) => B"000000",
+      PLPSIRQ0(1 downto 0) => pl_ps_irq0(1 downto 0),
       PLPSIRQ1(7 downto 1) => B"0000000",
       PLPSIRQ1(0) => pl_ps_irq1(0),
       PLPSTRACECLK => pl_ps_trace_clk,
@@ -7256,7 +7256,7 @@ entity project_1_PS_0_0 is
     saxigp3_rready : in STD_LOGIC;
     saxigp3_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
     saxigp3_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    pl_ps_irq0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    pl_ps_irq0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     pl_resetn0 : out STD_LOGIC;
     pl_clk0 : out STD_LOGIC
   );
@@ -7267,7 +7267,7 @@ entity project_1_PS_0_0 is
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of project_1_PS_0_0 : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of project_1_PS_0_0 : entity is "zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,Vivado 2020.1";
+  attribute X_CORE_INFO of project_1_PS_0_0 : entity is "zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,Vivado 2020.1.1";
 end project_1_PS_0_0;
 
 architecture STRUCTURE of project_1_PS_0_0 is
@@ -8024,7 +8024,7 @@ architecture STRUCTURE of project_1_PS_0_0 is
   attribute C_MAXIGP2_DATA_WIDTH : integer;
   attribute C_MAXIGP2_DATA_WIDTH of inst : label is 32;
   attribute C_NUM_F2P_0_INTR_INPUTS : integer;
-  attribute C_NUM_F2P_0_INTR_INPUTS of inst : label is 3;
+  attribute C_NUM_F2P_0_INTR_INPUTS of inst : label is 2;
   attribute C_NUM_F2P_1_INTR_INPUTS : integer;
   attribute C_NUM_F2P_1_INTR_INPUTS of inst : label is 1;
   attribute C_NUM_FABRIC_RESETS : integer;
@@ -8386,7 +8386,7 @@ architecture STRUCTURE of project_1_PS_0_0 is
   attribute X_INTERFACE_INFO of maxigp0_wdata : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD WDATA";
   attribute X_INTERFACE_INFO of maxigp0_wstrb : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD WSTRB";
   attribute X_INTERFACE_INFO of pl_ps_irq0 : signal is "xilinx.com:signal:interrupt:1.0 PL_PS_IRQ0 INTERRUPT";
-  attribute X_INTERFACE_PARAMETER of pl_ps_irq0 : signal is "XIL_INTERFACENAME PL_PS_IRQ0, SENSITIVITY LEVEL_HIGH:LEVEL_HIGH:LEVEL_HIGH, PortWidth 3";
+  attribute X_INTERFACE_PARAMETER of pl_ps_irq0 : signal is "XIL_INTERFACENAME PL_PS_IRQ0, SENSITIVITY LEVEL_HIGH:LEVEL_HIGH, PortWidth 2";
   attribute X_INTERFACE_INFO of saxigp3_araddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD ARADDR";
   attribute X_INTERFACE_INFO of saxigp3_arburst : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD ARBURST";
   attribute X_INTERFACE_INFO of saxigp3_arcache : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD ARCACHE";
@@ -9247,7 +9247,7 @@ inst: entity work.project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e
       pl_ps_apugic_fiq(3 downto 0) => B"0000",
       pl_ps_apugic_irq(3 downto 0) => B"0000",
       pl_ps_eventi => '0',
-      pl_ps_irq0(2 downto 0) => pl_ps_irq0(2 downto 0),
+      pl_ps_irq0(1 downto 0) => pl_ps_irq0(1 downto 0),
       pl_ps_irq1(0) => '0',
       pl_ps_trace_clk => '0',
       pl_ps_trigack_0 => '0',

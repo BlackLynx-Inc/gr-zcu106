@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Tue Jan 12 11:09:04 2021
--- Host        : L000921 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top project_1_auto_ds_0 -prefix
---               project_1_auto_ds_0_ project_1_auto_ds_0_sim_netlist.vhdl
+-- Tool Version: Vivado v.2020.1.1 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
+-- Date        : Fri Apr 30 21:31:05 2021
+-- Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /ryftone/chintan/darpa/github/dev/gr-zcu106/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_auto_ds_0/project_1_auto_ds_0_sim_netlist.vhdl
 -- Design      : project_1_auto_ds_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,6 +28,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_b_downsizer is
     empty : in STD_LOGIC;
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_b_downsizer : entity is "axi_dwidth_converter_v2_1_21_b_downsizer";
 end project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_b_downsizer;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_b_downsizer is
@@ -414,6 +416,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_r_downsizer is
     \WORD_LANE[2].S_AXI_RDATA_II_reg[95]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \WORD_LANE[3].S_AXI_RDATA_II_reg[127]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_r_downsizer : entity is "axi_dwidth_converter_v2_1_21_r_downsizer";
 end project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_r_downsizer;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_r_downsizer is
@@ -1820,6 +1824,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_w_downsizer is
     \m_axi_wdata[31]_INST_0_i_4\ : in STD_LOGIC_VECTOR ( 8 downto 0 );
     D : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_w_downsizer : entity is "axi_dwidth_converter_v2_1_21_w_downsizer";
 end project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_w_downsizer;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_w_downsizer is
@@ -2161,6 +2167,8 @@ entity project_1_auto_ds_0_xpm_cdc_async_rst is
   attribute INIT_SYNC_FF of project_1_auto_ds_0_xpm_cdc_async_rst : entity is 0;
   attribute INV_DEF_VAL : string;
   attribute INV_DEF_VAL of project_1_auto_ds_0_xpm_cdc_async_rst : entity is "1'b1";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_xpm_cdc_async_rst : entity is "xpm_cdc_async_rst";
   attribute RST_ACTIVE_HIGH : integer;
   attribute RST_ACTIVE_HIGH of project_1_auto_ds_0_xpm_cdc_async_rst : entity is 1;
   attribute VERSION : integer;
@@ -2371,6 +2379,8 @@ entity project_1_auto_ds_0_dmem is
     I24 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     \gpr1.dout_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_dmem : entity is "dmem";
 end project_1_auto_ds_0_dmem;
 
 architecture STRUCTURE of project_1_auto_ds_0_dmem is
@@ -3442,6 +3452,8 @@ entity project_1_auto_ds_0_rd_bin_cntr is
     clk : in STD_LOGIC;
     \gc0.count_d1_reg[0]_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_rd_bin_cntr : entity is "rd_bin_cntr";
 end project_1_auto_ds_0_rd_bin_cntr;
 
 architecture STRUCTURE of project_1_auto_ds_0_rd_bin_cntr is
@@ -4004,6 +4016,8 @@ entity project_1_auto_ds_0_rd_fwft is
     rd_en : in STD_LOGIC;
     \gc0.count_reg[4]\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_rd_fwft : entity is "rd_fwft";
 end project_1_auto_ds_0_rd_fwft;
 
 architecture STRUCTURE of project_1_auto_ds_0_rd_fwft is
@@ -4700,6 +4714,8 @@ entity project_1_auto_ds_0_rd_status_flags_ss is
     clk : in STD_LOGIC;
     ram_empty_fb_i_reg_0 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end project_1_auto_ds_0_rd_status_flags_ss;
 
 architecture STRUCTURE of project_1_auto_ds_0_rd_status_flags_ss is
@@ -4868,6 +4884,8 @@ entity project_1_auto_ds_0_wr_bin_cntr is
     clk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_wr_bin_cntr : entity is "wr_bin_cntr";
 end project_1_auto_ds_0_wr_bin_cntr;
 
 architecture STRUCTURE of project_1_auto_ds_0_wr_bin_cntr is
@@ -5764,6 +5782,8 @@ entity project_1_auto_ds_0_wr_status_flags_ss is
     AR : in STD_LOGIC_VECTOR ( 0 to 0 );
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end project_1_auto_ds_0_wr_status_flags_ss;
 
 architecture STRUCTURE of project_1_auto_ds_0_wr_status_flags_ss is
@@ -6024,6 +6044,8 @@ entity project_1_auto_ds_0_memory is
     I24 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     \gpr1.dout_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_memory : entity is "memory";
 end project_1_auto_ds_0_memory;
 
 architecture STRUCTURE of project_1_auto_ds_0_memory is
@@ -6808,6 +6830,8 @@ entity project_1_auto_ds_0_rd_logic is
     \gc0.count_d1_reg[0]\ : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_rd_logic : entity is "rd_logic";
 end project_1_auto_ds_0_rd_logic;
 
 architecture STRUCTURE of project_1_auto_ds_0_rd_logic is
@@ -6966,6 +6990,8 @@ entity project_1_auto_ds_0_reset_blk_ramfifo is
     rd_en : in STD_LOGIC;
     \goreg_dm.dout_i_reg[28]\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end project_1_auto_ds_0_reset_blk_ramfifo;
 
 architecture STRUCTURE of project_1_auto_ds_0_reset_blk_ramfifo is
@@ -7512,6 +7538,8 @@ entity project_1_auto_ds_0_wr_logic is
     ram_empty_fb_i_i_3 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     ram_empty_fb_i_i_2 : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_wr_logic : entity is "wr_logic";
 end project_1_auto_ds_0_wr_logic;
 
 architecture STRUCTURE of project_1_auto_ds_0_wr_logic is
@@ -7669,6 +7697,8 @@ entity project_1_auto_ds_0_fifo_generator_ramfifo is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end project_1_auto_ds_0_fifo_generator_ramfifo;
 
 architecture STRUCTURE of project_1_auto_ds_0_fifo_generator_ramfifo is
@@ -7919,6 +7949,8 @@ entity project_1_auto_ds_0_fifo_generator_top is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_fifo_generator_top : entity is "fifo_generator_top";
 end project_1_auto_ds_0_fifo_generator_top;
 
 architecture STRUCTURE of project_1_auto_ds_0_fifo_generator_top is
@@ -8016,6 +8048,8 @@ entity project_1_auto_ds_0_fifo_generator_v13_2_5_synth is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_fifo_generator_v13_2_5_synth : entity is "fifo_generator_v13_2_5_synth";
 end project_1_auto_ds_0_fifo_generator_v13_2_5_synth;
 
 architecture STRUCTURE of project_1_auto_ds_0_fifo_generator_v13_2_5_synth is
@@ -8740,6 +8774,8 @@ entity project_1_auto_ds_0_fifo_generator_v13_2_5 is
   attribute C_WR_PNTR_WIDTH_WRCH of project_1_auto_ds_0_fifo_generator_v13_2_5 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of project_1_auto_ds_0_fifo_generator_v13_2_5 : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_fifo_generator_v13_2_5 : entity is "fifo_generator_v13_2_5";
 end project_1_auto_ds_0_fifo_generator_v13_2_5;
 
 architecture STRUCTURE of project_1_auto_ds_0_fifo_generator_v13_2_5 is
@@ -11960,6 +11996,8 @@ entity project_1_auto_ds_0_axi_data_fifo_v2_1_20_fifo_gen is
     access_is_fix_q : in STD_LOGIC;
     \gpr1.dout_i_reg[1]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_data_fifo_v2_1_20_fifo_gen : entity is "axi_data_fifo_v2_1_20_fifo_gen";
 end project_1_auto_ds_0_axi_data_fifo_v2_1_20_fifo_gen;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_data_fifo_v2_1_20_fifo_gen is
@@ -19450,6 +19488,8 @@ entity project_1_auto_ds_0_axi_data_fifo_v2_1_20_axic_fifo is
     access_is_fix_q : in STD_LOGIC;
     \gpr1.dout_i_reg[1]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_data_fifo_v2_1_20_axic_fifo : entity is "axi_data_fifo_v2_1_20_axic_fifo";
 end project_1_auto_ds_0_axi_data_fifo_v2_1_20_axic_fifo;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_data_fifo_v2_1_20_axic_fifo is
@@ -19830,6 +19870,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_a_downsizer is
     s_axi_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axi_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_a_downsizer : entity is "axi_dwidth_converter_v2_1_21_a_downsizer";
 end project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_a_downsizer;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_a_downsizer is
@@ -29762,6 +29804,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_axi_downsizer is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
     s_axi_wstrb : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_axi_downsizer : entity is "axi_dwidth_converter_v2_1_21_axi_downsizer";
 end project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_axi_downsizer;
 
 architecture STRUCTURE of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_axi_downsizer is
@@ -30089,6 +30133,8 @@ entity project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_top is
   attribute C_S_AXI_ID_WIDTH of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_top : entity is 16;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_top : entity is "yes";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_top : entity is "axi_dwidth_converter_v2_1_21_top";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of project_1_auto_ds_0_axi_dwidth_converter_v2_1_21_top : entity is 1;
   attribute P_AXI4 : integer;
@@ -30277,7 +30323,7 @@ entity project_1_auto_ds_0 is
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of project_1_auto_ds_0 : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of project_1_auto_ds_0 : entity is "axi_dwidth_converter_v2_1_21_top,Vivado 2020.1";
+  attribute X_CORE_INFO of project_1_auto_ds_0 : entity is "axi_dwidth_converter_v2_1_21_top,Vivado 2020.1.1";
 end project_1_auto_ds_0;
 
 architecture STRUCTURE of project_1_auto_ds_0 is

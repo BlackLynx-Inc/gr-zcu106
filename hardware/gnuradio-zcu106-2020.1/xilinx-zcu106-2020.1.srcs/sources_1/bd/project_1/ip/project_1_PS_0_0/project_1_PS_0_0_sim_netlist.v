@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Fri Dec 18 01:32:43 2020
-// Host        : buildserver7 running 64-bit Ubuntu 16.04.7 LTS
+// Tool Version: Vivado v.2020.1.1 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
+// Date        : Fri Apr 30 21:30:35 2021
+// Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/ryftuser/chintan/darpa/vivado/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0_sim_netlist.v
+//               /ryftone/chintan/darpa/github/dev/gr-zcu106/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_PS_0_0/project_1_PS_0_0_sim_netlist.v
 // Design      : project_1_PS_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "project_1_PS_0_0,zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "project_1_PS_0_0,zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e,Vivado 2020.1.1" *) 
 (* NotValidForBitStream *)
 module project_1_PS_0_0
    (maxihpm0_fpd_aclk,
@@ -178,7 +178,7 @@ module project_1_PS_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD RREADY" *) input saxigp3_rready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD AWQOS" *) input [3:0]saxigp3_awqos;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI_HP1_FPD ARQOS" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_HP1_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 99990005, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 4, PHASE 0.000, CLK_DOMAIN project_1_PS_0_0_pl_clk0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input [3:0]saxigp3_arqos;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 PL_PS_IRQ0 INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME PL_PS_IRQ0, SENSITIVITY LEVEL_HIGH:LEVEL_HIGH:LEVEL_HIGH, PortWidth 3" *) input [2:0]pl_ps_irq0;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 PL_PS_IRQ0 INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME PL_PS_IRQ0, SENSITIVITY LEVEL_HIGH:LEVEL_HIGH, PortWidth 2" *) input [1:0]pl_ps_irq0;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 PL_RESETN0 RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME PL_RESETN0, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output pl_resetn0;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 PL_CLK0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME PL_CLK0, FREQ_HZ 99990005, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN project_1_PS_0_0_pl_clk0, INSERT_VIP 0" *) output pl_clk0;
 
@@ -223,7 +223,7 @@ module project_1_PS_0_0
   wire maxigp0_wvalid;
   wire maxihpm0_fpd_aclk;
   wire pl_clk0;
-  wire [2:0]pl_ps_irq0;
+  wire [1:0]pl_ps_irq0;
   wire pl_resetn0;
   wire [48:0]saxigp3_araddr;
   wire [1:0]saxigp3_arburst;
@@ -1007,7 +1007,7 @@ module project_1_PS_0_0
   (* C_MAXIGP0_DATA_WIDTH = "128" *) 
   (* C_MAXIGP1_DATA_WIDTH = "128" *) 
   (* C_MAXIGP2_DATA_WIDTH = "32" *) 
-  (* C_NUM_F2P_0_INTR_INPUTS = "3" *) 
+  (* C_NUM_F2P_0_INTR_INPUTS = "2" *) 
   (* C_NUM_F2P_1_INTR_INPUTS = "1" *) 
   (* C_NUM_FABRIC_RESETS = "1" *) 
   (* C_PL_CLK0_BUF = "TRUE" *) 
@@ -2534,7 +2534,7 @@ endmodule
 (* C_DP_USE_AUDIO = "0" *) (* C_DP_USE_VIDEO = "0" *) (* C_EMIO_GPIO_WIDTH = "92" *) 
 (* C_EN_EMIO_TRACE = "0" *) (* C_EN_FIFO_ENET0 = "0" *) (* C_EN_FIFO_ENET1 = "0" *) 
 (* C_EN_FIFO_ENET2 = "0" *) (* C_EN_FIFO_ENET3 = "0" *) (* C_MAXIGP0_DATA_WIDTH = "128" *) 
-(* C_MAXIGP1_DATA_WIDTH = "128" *) (* C_MAXIGP2_DATA_WIDTH = "32" *) (* C_NUM_F2P_0_INTR_INPUTS = "3" *) 
+(* C_MAXIGP1_DATA_WIDTH = "128" *) (* C_MAXIGP2_DATA_WIDTH = "32" *) (* C_NUM_F2P_0_INTR_INPUTS = "2" *) 
 (* C_NUM_F2P_1_INTR_INPUTS = "1" *) (* C_NUM_FABRIC_RESETS = "1" *) (* C_PL_CLK0_BUF = "TRUE" *) 
 (* C_PL_CLK1_BUF = "FALSE" *) (* C_PL_CLK2_BUF = "FALSE" *) (* C_PL_CLK3_BUF = "FALSE" *) 
 (* C_SAXIGP0_DATA_WIDTH = "128" *) (* C_SAXIGP1_DATA_WIDTH = "128" *) (* C_SAXIGP2_DATA_WIDTH = "128" *) 
@@ -5011,7 +5011,7 @@ module project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e
   output ps_pl_trigger_3;
   output [31:0]ftm_gpo;
   input [31:0]ftm_gpi;
-  input [2:0]pl_ps_irq0;
+  input [1:0]pl_ps_irq0;
   input [0:0]pl_ps_irq1;
   output pl_resetn0;
   output pl_resetn1;
@@ -6063,7 +6063,7 @@ module project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e
   wire [3:0]pl_ps_apugic_fiq;
   wire [3:0]pl_ps_apugic_irq;
   wire pl_ps_eventi;
-  wire [2:0]pl_ps_irq0;
+  wire [1:0]pl_ps_irq0;
   wire [0:0]pl_ps_irq1;
   wire pl_ps_trace_clk;
   wire pl_ps_trigack_0;
@@ -8100,7 +8100,7 @@ module project_1_PS_0_0_zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e
         .PLPSAPUGICFIQ(pl_ps_apugic_fiq),
         .PLPSAPUGICIRQ(pl_ps_apugic_irq),
         .PLPSEVENTI(pl_ps_eventi),
-        .PLPSIRQ0({1'b0,1'b0,1'b0,1'b0,1'b0,pl_ps_irq0}),
+        .PLPSIRQ0({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,pl_ps_irq0}),
         .PLPSIRQ1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,pl_ps_irq1}),
         .PLPSTRACECLK(pl_ps_trace_clk),
         .PLPSTRIGACK({pl_ps_trigack_3,pl_ps_trigack_2,pl_ps_trigack_1,pl_ps_trigack_0}),

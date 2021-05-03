@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -145,7 +145,7 @@ module project_1_PS_0_0 (
   input bit_as_bool saxigp3_rready,
   input bit [3 : 0] saxigp3_awqos,
   input bit [3 : 0] saxigp3_arqos,
-  input bit [2 : 0] pl_ps_irq0,
+  input bit [1 : 0] pl_ps_irq0,
   output bit_as_bool pl_resetn0,
   output bit_as_bool pl_clk0
 );
@@ -237,7 +237,7 @@ module project_1_PS_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_a
   input bit saxigp3_rready;
   input bit [3 : 0] saxigp3_awqos;
   input bit [3 : 0] saxigp3_arqos;
-  input bit [2 : 0] pl_ps_irq0;
+  input bit [1 : 0] pl_ps_irq0;
   output wire pl_resetn0;
   output wire pl_clk0;
 endmodule
@@ -326,7 +326,7 @@ module project_1_PS_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_a
   input bit saxigp3_rready;
   input bit [3 : 0] saxigp3_awqos;
   input bit [3 : 0] saxigp3_arqos;
-  input bit [2 : 0] pl_ps_irq0;
+  input bit [1 : 0] pl_ps_irq0;
   output wire pl_resetn0;
   output wire pl_clk0;
 endmodule

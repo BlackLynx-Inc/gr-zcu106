@@ -2,6 +2,8 @@ obj-m := dma-proxy.o
 
 SRC := $(shell pwd)
 
+EXTRA_CFLAGS += -O2 -std=gnu99
+
 all:
 	$(MAKE) -C $(KERNEL_SRC) M=$(SRC)
 

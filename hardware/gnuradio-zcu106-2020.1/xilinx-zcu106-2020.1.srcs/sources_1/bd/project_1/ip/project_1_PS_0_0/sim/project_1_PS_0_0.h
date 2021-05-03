@@ -1,7 +1,7 @@
 #ifndef IP_PROJECT_1_PS_0_0_H_
 #define IP_PROJECT_1_PS_0_0_H_
 
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -160,7 +160,7 @@ public:
   sc_core::sc_in< bool > saxigp3_rready;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_awqos;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_arqos;
-  sc_core::sc_in< sc_dt::sc_bv<3> > pl_ps_irq0;
+  sc_core::sc_in< sc_dt::sc_bv<2> > pl_ps_irq0;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
 
@@ -275,7 +275,7 @@ public:
   sc_core::sc_in< bool > saxigp3_rready;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_awqos;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_arqos;
-  sc_core::sc_in< sc_dt::sc_bv<3> > pl_ps_irq0;
+  sc_core::sc_in< sc_dt::sc_bv<2> > pl_ps_irq0;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
 
@@ -390,7 +390,7 @@ public:
   sc_core::sc_in< bool > saxigp3_rready;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_awqos;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_arqos;
-  sc_core::sc_in< sc_dt::sc_bv<3> > pl_ps_irq0;
+  sc_core::sc_in< sc_dt::sc_bv<2> > pl_ps_irq0;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
 
@@ -509,7 +509,7 @@ public:
   sc_core::sc_in< bool > saxigp3_rready;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_awqos;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_arqos;
-  sc_core::sc_in< sc_dt::sc_bv<3> > pl_ps_irq0;
+  sc_core::sc_in< sc_dt::sc_bv<2> > pl_ps_irq0;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
 
@@ -636,7 +636,7 @@ public:
   sc_core::sc_in< bool > saxigp3_rready;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_awqos;
   sc_core::sc_in< sc_dt::sc_bv<4> > saxigp3_arqos;
-  sc_core::sc_in< sc_dt::sc_bv<3> > pl_ps_irq0;
+  sc_core::sc_in< sc_dt::sc_bv<2> > pl_ps_irq0;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
 

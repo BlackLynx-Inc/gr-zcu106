@@ -22,12 +22,21 @@
 *   otherwise there may be issues when using cached memory. The issues were typically the 1st 32 bytes of the buffer
 *   not working in the driver test.
 */
+#include <linux/ioctl.h>
 
-#define TEST_SIZE (3 * 1024 * 1024)
+#define DMA_PROXY_IOCTL_MAGIC  'b'
+#define DMA_PROXY_IOC_READ_BLOCKING		_IOW(DMA_PROXY_IOCTL_MAGIC,  0, int)  //!< IOCTL: read from PL blocking
+#define DMA_PROXY_IOC_WRITE_BLOCKING	_IOW(DMA_PROXY_IOCTL_MAGIC,  1, int)  //!< IOCTL: write to PL blocking
+#define DMA_PROXY_IOC_START_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  2, int)  //!< IOCTL: start read from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  3, int)  //!< IOCTL: complete read from PL (nonblocking)
+#define DMA_PROXY_IOC_START_WRITE		_IOW(DMA_PROXY_IOCTL_MAGIC,  4, int)  //!< IOCTL: start write from PL (nonblocking)
+#define DMA_PROXY_IOC_COMPLETE_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  5, int)  //!< IOCTL: complete write from PL (nonblocking)
 
-struct dma_proxy_channel_interface {
-	unsigned char buffer[TEST_SIZE];
-	enum proxy_status { PROXY_NO_ERROR = 0, PROXY_BUSY = 1, PROXY_TIMEOUT = 2, PROXY_ERROR = 3 } status;
-	unsigned int length;
+#define MAX_BUF_SIZE        	((1 << (MAX_ORDER - 1)) * PAGE_SIZE)  
+#define BUFFER_LIST_INCREMENT 	10
+
+// NOTE the library needs this too
+struct dma_proxy_rw_info {
+    uint32_t offset;       	//!< offset in bytes from start of buffer
+    uint32_t length;        //!< buffer length
 };
-

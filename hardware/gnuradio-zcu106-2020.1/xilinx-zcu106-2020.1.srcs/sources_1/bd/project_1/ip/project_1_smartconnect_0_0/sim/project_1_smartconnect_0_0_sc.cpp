@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -71,6 +71,8 @@ project_1_smartconnect_0_0_sc::project_1_smartconnect_0_0_sc(const sc_core::sc_m
   S00_AXI_tlm_aximm_write_socket = mp_impl->S00_AXI_tlm_aximm_write_socket;
   S01_AXI_tlm_aximm_read_socket = mp_impl->S01_AXI_tlm_aximm_read_socket;
   S01_AXI_tlm_aximm_write_socket = mp_impl->S01_AXI_tlm_aximm_write_socket;
+  S02_AXI_tlm_aximm_read_socket = mp_impl->S02_AXI_tlm_aximm_read_socket;
+  S02_AXI_tlm_aximm_write_socket = mp_impl->S02_AXI_tlm_aximm_write_socket;
   M00_AXI_tlm_aximm_read_socket = mp_impl->M00_AXI_tlm_aximm_read_socket;
   M00_AXI_tlm_aximm_write_socket = mp_impl->M00_AXI_tlm_aximm_write_socket;
 }

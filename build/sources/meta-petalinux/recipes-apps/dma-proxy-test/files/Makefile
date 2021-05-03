@@ -1,14 +1,12 @@
-APP = dma-proxy-test
+UTILS = $(basename $(wildcard *.c))
+HEADERS   := $(wildcard *.h)
 
-# Add any other object files to this list below
-APP_OBJS = dma-proxy-test.o
+all: $(UTILS)
 
-all: build
+% : %.c $(HEADERS)
+	echo $@
+	$(CC) $< $(CFLAGS) -o $@ $(LDFLAGS) $(LDLIBS)
 
-build: $(APP)
-
-$(APP): $(APP_OBJS)
-	$(CC) -o $@ $(APP_OBJS) $(LDFLAGS) $(LDLIBS)
 clean:
-	rm -f $(APP) *.o
+	rm -f $(UTILS) *.o
 

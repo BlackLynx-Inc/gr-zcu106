@@ -1,7 +1,7 @@
 #ifndef IP_PROJECT_1_SMARTCONNECT_0_0_SC_H_
 #define IP_PROJECT_1_SMARTCONNECT_0_0_SC_H_
 
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -80,6 +80,8 @@ public: // module socket-to-socket TLM interface
   xtlm::xtlm_aximm_target_socket* S00_AXI_tlm_aximm_write_socket;
   xtlm::xtlm_aximm_target_socket* S01_AXI_tlm_aximm_read_socket;
   xtlm::xtlm_aximm_target_socket* S01_AXI_tlm_aximm_write_socket;
+  xtlm::xtlm_aximm_target_socket* S02_AXI_tlm_aximm_read_socket;
+  xtlm::xtlm_aximm_target_socket* S02_AXI_tlm_aximm_write_socket;
   xtlm::xtlm_aximm_initiator_socket* M00_AXI_tlm_aximm_read_socket;
   xtlm::xtlm_aximm_initiator_socket* M00_AXI_tlm_aximm_write_socket;
 

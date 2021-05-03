@@ -70,7 +70,8 @@ void *tx_thread(int dma_count)
  	 */
 	tx_proxy_interface_p->length = test_size;
 
-	for (counter = 0; counter < dma_count; counter++) {
+	for (counter = 0; counter < dma_count; counter++) 
+	{
     		for (i = 0; i < test_size; i++)
        			tx_proxy_interface_p->buffer[i] = counter + i;
 
@@ -80,10 +81,11 @@ void *tx_thread(int dma_count)
 		ioctl(tx_proxy_fd, 0, &dummy);
 
 		if (tx_proxy_interface_p->status != PROXY_NO_ERROR)
+		{
 			printf("Proxy tx transfer error\n");
+		}
 	}
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -95,7 +97,8 @@ int main(int argc, char *argv[])
 
 	printf("DMA proxy test\n");
 
-	if (argc != 3) {
+	if (argc != 3) 
+	{
 		printf("Usage: dma-proxy-test <# of DMA transfers to perform> <# of bytes in each transfer (< 3MB)>\n");
 		exit(EXIT_FAILURE);
 	}
@@ -104,21 +107,25 @@ int main(int argc, char *argv[])
 	 */
 	test_size = atoi(argv[2]);
 	if (test_size > TEST_SIZE)
+	{
 		test_size = TEST_SIZE;
+	}
 
 	/* Open the DMA proxy device for the transmit and receive channels
  	 */
-  printf("Opening DMA proxy device TX\n");
+	printf("Opening DMA proxy device TX\n");
 	tx_proxy_fd = open("/dev/dma_proxy_tx", O_RDWR);
 
-	if (tx_proxy_fd < 1) {
+	if (tx_proxy_fd < 1) 
+	{
 		printf("Unable to open DMA proxy device file");
 		exit(EXIT_FAILURE);
 	}
 
 	rx_proxy_fd = open("/dev/dma_proxy_rx", O_RDWR);
- printf("Openning DMA proxy device RX\n");
-	if (rx_proxy_fd < 1) {
+	printf("Openning DMA proxy device RX\n");
+	if (rx_proxy_fd < 1) 
+	{
 		printf("Unable to open DMA proxy device file");
 		exit(EXIT_FAILURE);
 	}
@@ -141,20 +148,25 @@ int main(int argc, char *argv[])
 	tx_proxy_interface_p->length = test_size; 
 
 	for (i = 0; i < test_size; i++)
+	{
 		tx_proxy_interface_p->buffer[i] = i;
+	}
 
 	/* Create the thread for the transmit processing passing the number of transactions to it
 	 */
 	pthread_create(&tid, NULL, tx_thread, atoi(argv[1]));
 
-	for (counter = 0; counter < atoi(argv[1]); counter++) {
+	for (counter = 0; counter < atoi(argv[1]); counter++) 
+	{
 
 		/* Initialize the receive buffer so that it can be verified after the transfer is done
 		 * and setup the size of the transfer for the receive channel
 	  	 */
 		printf("Debug message \n");
-  	for (i = 0; i < test_size; i++)
+		for (i = 0; i < test_size; i++)
+		{
 			rx_proxy_interface_p->buffer[i] = 0;
+		}
 
 		rx_proxy_interface_p->length = test_size;
 
@@ -163,14 +175,20 @@ int main(int argc, char *argv[])
 		ioctl(rx_proxy_fd, 0, &dummy);
 
 		if (rx_proxy_interface_p->status != PROXY_NO_ERROR)
+		{
 			printf("Proxy rx transfer error\n");
+		}
 
 		/* Verify the data recieved matchs what was sent (tx is looped back to tx)
 		 */
 		for (i = 0; i < test_size; i++)
+		{
 			if (rx_proxy_interface_p->buffer[i] != (unsigned char)(counter + i))
+			{
 				printf("buffer not equal, index = %d, data = %d expected data = %d\n", i, 
-					rx_proxy_interface_p->buffer[i], (unsigned char)(counter + i));
+			   		   rx_proxy_interface_p->buffer[i], (unsigned char)(counter + i));
+			}
+		}
 	}
 
 	/* Unmap the proxy channel interface memory and close the device files before leaving

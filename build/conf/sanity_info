@@ -1,4 +1,4 @@
 SANITY_VERSION 1
-TMPDIR /ryftone/chintan/darpa/github/clean/gr-zcu106/build/tmp
-SSTATE_DIR /ryftone/chintan/darpa/github/clean/gr-zcu106/build/sstate-cache
-NATIVELSBSTRING ubuntu-16.04
+TMPDIR /home/dsorber/dev/zcu-106/gr-zcu106/build/tmp
+SSTATE_DIR /home/dsorber/dev/zcu-106/gr-zcu106/build/sstate-cache
+NATIVELSBSTRING linuxmint-19.3
