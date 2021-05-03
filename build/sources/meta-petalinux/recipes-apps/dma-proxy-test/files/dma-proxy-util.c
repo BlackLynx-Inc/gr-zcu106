@@ -4,13 +4,38 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <unistd.h>
-#include <sys/mman.h>
 #include <fcntl.h>
-#include <sys/ioctl.h>
 #include <pthread.h>
+#include <sys/ioctl.h>
+#include <sys/mman.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 #include <dma-proxy-lib.h>
+
+char* RATE_UNITS[] = 
+{
+    "B/s",
+    "KB/s",
+    "MB/s",
+    "GB/s",
+    "TB/s"
+};
+
+double calc_data_rate(uint32_t bytes, double time, char** unit)
+{
+    uint32_t ctr = 0;
+    double data_rate = (double)bytes / time;
+    
+    while (data_rate >= 1024.0)
+    {
+        data_rate /= 1024.0;
+        ++ctr;
+    }
+    
+    *unit = RATE_UNITS[ctr];
+    return data_rate;
+}
 
 struct write_thread_args 
 {
@@ -90,7 +115,7 @@ int main(int argc, char** argv)
     if (tx_dma_buffer == NULL)
     {
         fprintf(stderr, "[WRT] DMA buffer allocation failed\n");
-        return;
+        return -1;
     }
     
     // Allocate receive buffer
@@ -116,12 +141,18 @@ int main(int argc, char** argv)
 
     printf("Buffer contents BEFORE: 0x%08X\n", *(uint32_t*)rx_dma_buffer);
 
+    struct timeval tval_start, tval_end, tval_result;
+    gettimeofday(&tval_start, NULL);
+
     // Read the transmitted data back
     int rc = dmap_read((void*)rx_dma_buffer + offset, xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);
     }
+    
+    gettimeofday(&tval_end, NULL);
+    timersub(&tval_end, &tval_start, &tval_result);
     
     // Join the write thread
     pthread_join(tid, NULL);
@@ -161,6 +192,18 @@ int main(int argc, char** argv)
             printf("\nCompare SUCCESSFUL\n\n");
         }
     }
+    
+    // Display elapsed time
+    printf("Time elapsed: %ld.%06ld s\n", (long int)tval_result.tv_sec, 
+                                          (long int)tval_result.tv_usec);
+    double time = (double)tval_result.tv_sec;
+    
+    // Calculate data rate and scale it 
+    time += ((double)tval_result.tv_usec / (double)1000000.0);    
+    char* unit = NULL;
+    double rate = calc_data_rate(xfer_len, time, &unit);
+    
+    printf("Data rate:    %.2f %s\n", rate, unit);
     
     // Free the buffers
     dmap_free_buffer(tx_dma_buffer);
