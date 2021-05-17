@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     printf("DMA Proxy Util NonBlocking\n\n");
     
     // Set default arguments and override with command line arguments as needed
+    uint32_t device_index = 1;
     size_t buf_size = 1024 * 1024;
     uint32_t offset = 0;
     uint32_t xfer_len = buf_size;
@@ -108,21 +109,21 @@ int main(int argc, char** argv)
     gettimeofday(&tval_start, NULL);
 
     // Kick off the read operation
-    int rc = dmap_read_nb((void*)rx_dma_buffer + offset, xfer_len);
+    int rc = dmap_read_nb(device_index, (void*)rx_dma_buffer + offset, xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);
     }
     
     // Write/transmit the data
-    rc = dmap_write((void*)tx_dma_buffer + offset, xfer_len);
+    rc = dmap_write(device_index, (void*)tx_dma_buffer + offset, xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA write failed: %d\n", rc);
     }
     
     // Wait for the read operation to complete
-    rc = dmap_read_complete((void*)rx_dma_buffer);
+    rc = dmap_read_complete(device_index, (void*)rx_dma_buffer);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);

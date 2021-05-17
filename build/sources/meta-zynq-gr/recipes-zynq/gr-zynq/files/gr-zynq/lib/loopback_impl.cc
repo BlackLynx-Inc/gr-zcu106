@@ -117,7 +117,7 @@ namespace zynq {
         std::memcpy(d_dma_write_buffer, in, xfer_len);
         
         // Kick off the read operation
-        int rc = dmap_read_nb(d_dma_read_buffer, xfer_len);
+        int rc = dmap_read_nb(0, d_dma_read_buffer, xfer_len);
         if (rc)
         {
             std::ostringstream msg;
@@ -126,7 +126,7 @@ namespace zynq {
         }
 
         // Write/transmit the data
-        rc = dmap_write(d_dma_write_buffer, xfer_len);
+        rc = dmap_write(0, d_dma_write_buffer, xfer_len);
         if (rc)
         {
             std::ostringstream msg;
@@ -135,7 +135,7 @@ namespace zynq {
         }
         
         // Wait for the read operation to complete
-        rc = dmap_read_complete(d_dma_read_buffer);
+        rc = dmap_read_complete(0, d_dma_read_buffer);
         if (rc)
         {
             std::ostringstream msg;

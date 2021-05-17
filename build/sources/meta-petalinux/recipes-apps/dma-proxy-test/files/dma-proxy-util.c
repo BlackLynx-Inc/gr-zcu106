@@ -39,6 +39,7 @@ double calc_data_rate(uint32_t bytes, double time, char** unit)
 
 struct write_thread_args 
 {
+    uint32_t device_index;
     char* dma_buffer;
     size_t buffer_size;
     uint32_t offset;
@@ -55,7 +56,7 @@ void* write_thread(struct write_thread_args* args)
 
 #if 1
     // Write/transmit the data
-    int rc = dmap_write((void*)args->dma_buffer + args->offset, args->xfer_len);
+    int rc = dmap_write(args->device_index, (void*)args->dma_buffer + args->offset, args->xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA write failed: %d\n", rc);
@@ -72,6 +73,7 @@ int main(int argc, char** argv)
     printf("DMA Proxy Util\n\n");
     
     // Set default arguments and override with command line arguments as needed
+    uint32_t device_index = 1;
     size_t buf_size = 1024 * 1024;
     uint32_t offset = 0;
     uint32_t xfer_len = buf_size;
@@ -130,6 +132,7 @@ int main(int argc, char** argv)
     memset(rx_dma_buffer, 0x5A, buf_size);
     
     struct write_thread_args args;
+    args.device_index = device_index;
     args.dma_buffer = tx_dma_buffer;
     args.buffer_size = buf_size;
     args.offset = offset;
@@ -145,7 +148,7 @@ int main(int argc, char** argv)
     gettimeofday(&tval_start, NULL);
 
     // Read the transmitted data back
-    int rc = dmap_read((void*)rx_dma_buffer + offset, xfer_len);
+    int rc = dmap_read(device_index, (void*)rx_dma_buffer + offset, xfer_len);
     if (rc)
     {
         fprintf(stderr, "[WRT] DMA read failed: %d\n", rc);

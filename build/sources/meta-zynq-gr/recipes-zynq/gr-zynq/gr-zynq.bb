@@ -14,7 +14,7 @@ export BUILD_SYS
 export HOST_SYS="${MULTIMACH_TARGET_SYS}"
 
 FILES_${PN} += "${datadir}/gnuradio/gr-zynq \
-				${datadir}/gnuradio/grc/blocks/ \
+		${datadir}/gnuradio/grc/blocks/ \
                 ${PYTHON_SITEPACKAGES_DIR}/gnuradio/gr-zynq"
 
 

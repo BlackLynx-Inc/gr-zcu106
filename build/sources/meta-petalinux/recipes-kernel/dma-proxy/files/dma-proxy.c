@@ -71,6 +71,9 @@
 #include <linux/platform_device.h>
 #include <linux/of_dma.h>
 #include <linux/dma-noncoherent.h>
+#include <linux/mutex.h>
+
+#include <linux/delay.h> // just for debug
 
 #include "dma-proxy.h"
 
@@ -84,6 +87,13 @@ MODULE_LICENSE("GPL");
 #define RX_CHANNEL			1
 #define ERROR 			   -1
 #define NOT_LAST_CHANNEL 	0
+
+/*
+ * Globals
+ */  
+DEFINE_MUTEX(PROXY_GLOBAL_MUTEX);
+struct class* PROXY_GLOBAL_CLASS = NULL;
+uint32_t DEVICE_COUNT = 0;
 
 /* 
  * The following module parameter controls if the internal test runs when the module is inserted.
@@ -111,6 +121,7 @@ struct xilinx_dma_t {
 	dev_t dev_node;
 	struct cdev cdev;
 	struct class *class_p;
+	uint32_t device_index;
 	
 	struct dma_proxy_channel tx_channel;
 	struct dma_proxy_channel rx_channel;
@@ -131,6 +142,8 @@ struct dma_proxy_file_t {
 	uint32_t buffer_list_max_idx;	/* index of last used entry in buffer list */
 	enum proxy_status status;		/* status of the proxy channel */
 };
+
+static struct xilinx_dma_t* DEVICES[MAX_DEVICES];
 
 
 /*
@@ -481,7 +494,22 @@ static int mmap(struct file *file, struct vm_area_struct *vma)
         if (rc != 0) 
         {
             pr_err("dma_mmap_coherent: %d (IDX = %u)\n", rc, idx);
-            // TODO: unroll from here if the mapping fails
+            
+            // Mapping failed unroll buffer allocation 
+			for (uint32_t idx = 0; idx < proxy_file->buffer_list_max_idx + 1; ++idx)
+			{
+				// Free the DMA buffer 
+				dma_free_coherent(xilinx_dma->dma_device_p, 
+								  proxy_file->buffer_list[idx].size, 
+								  proxy_file->buffer_list[idx].virt_address, 
+								  proxy_file->buffer_list[idx].phys_addr);
+			
+				// Reset values just in case
+				memset(&proxy_file->buffer_list[idx], 0,
+					   sizeof(struct dma_proxy_file_buffer_t));
+			}
+			proxy_file->buffer_list_max_idx = 0;
+            
             return -EAGAIN;
         }
     }
@@ -555,35 +583,45 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	int rc = 0;
 	struct dma_proxy_rw_info rw_info;
 
+	// Copy the R/W info struct in from userspace
+	ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
+	if (ret) 
+	{
+		return ret;
+	}
+				
+	// Double check before indexing into array
+	if (rw_info.device_index >= MAX_DEVICES)
+	{
+		return -17;
+	}
+	
+	// Grab the specified device and attempt to use it
+	struct xilinx_dma_t* device_to_use = DEVICES[rw_info.device_index];
+	if (device_to_use == NULL)
+	{
+		return -17;
+	}
+	
+	pr_info("BLNX -- using device index: %d\n", rw_info.device_index);
+	
+	// TODO: device status check/locking
+
 	// Decode the IOCTL
     switch (cmd) {
 		
 		case DMA_PROXY_IOC_READ_BLOCKING:
-			// Copy the R/W info struct in from userspace
-            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
-            if (ret) 
-            {
-                break;
-            }
-            
-            rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
+            rc = start_transfer(&device_to_use->rx_channel, proxy_file, &rw_info);
             if (rc)
             {
 				return -1;
 			}
             
-            wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
+            wait_for_transfer(&device_to_use->rx_channel, proxy_file);
 			break;
 			
 		case DMA_PROXY_IOC_START_READ:
-			// Copy the R/W info struct in from userspace
-            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
-            if (ret) 
-            {
-                break;
-            }
-            
-            rc = start_transfer(&xilinx_dma->rx_channel, proxy_file, &rw_info);
+            rc = start_transfer(&device_to_use->rx_channel, proxy_file, &rw_info);
             if (rc)
             {
 				return -1;
@@ -591,35 +629,21 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			break;
 		
 		case DMA_PROXY_IOC_COMPLETE_READ:
-			wait_for_transfer(&xilinx_dma->rx_channel, proxy_file);
+			wait_for_transfer(&device_to_use->rx_channel, proxy_file);
 			break;
 		
 		case DMA_PROXY_IOC_WRITE_BLOCKING:
-			// Copy the R/W info struct in from userspace
-            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
-            if (ret) 
-            {
-                break;
-            }
-            
-            rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
+            rc = start_transfer(&device_to_use->tx_channel, proxy_file, &rw_info);
             if (rc)
             {
 				return -1;
 			}
             
-            wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
+            wait_for_transfer(&device_to_use->tx_channel, proxy_file);
 			break;
 		
 		case DMA_PROXY_IOC_START_WRITE:
-			// Copy the R/W info struct in from userspace
-            ret = copy_from_user(&rw_info, (void *)arg, sizeof(struct dma_proxy_rw_info));
-            if (ret) 
-            {
-                break;
-            }
-            
-            rc = start_transfer(&xilinx_dma->tx_channel, proxy_file, &rw_info);
+            rc = start_transfer(&device_to_use->tx_channel, proxy_file, &rw_info);
             if (rc)
             {
 				return -1;
@@ -627,7 +651,7 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			break;
 			
 		case DMA_PROXY_IOC_COMPLETE_WRITE:
-			wait_for_transfer(&xilinx_dma->tx_channel, proxy_file);
+			wait_for_transfer(&device_to_use->tx_channel, proxy_file);
 			break;
 		
 		default:
@@ -650,10 +674,11 @@ static struct file_operations dm_fops = {
  * Initialize the driver to be a character device such that is responds to
  * file operations.
  */
-static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
+static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name, uint32_t index)
 {
 	int rc;
-	char device_name[32] = "xilinx_dma_proxy";
+	char device_name[20];
+	snprintf(device_name, 20, "%s%d", name, index);
 
 	/* 
 	 * Allocate a character device from the kernel for this driver.
@@ -677,24 +702,31 @@ static int cdevice_init(struct xilinx_dma_t *xilinx_dma_p, char *name)
 	}
 
 	/* 
-	 * Create sysfs class to create the device in sysfs which will allow the 
-	 * device node in /dev to be created
+	 * Create the global sysfs class which will be reused by other proxy 
+	 * devices if present.
 	 */
-	xilinx_dma_p->class_p = class_create(THIS_MODULE, DRIVER_NAME);
-	if (IS_ERR(xilinx_dma_p->dma_device_p->class)) {
-		dev_err(xilinx_dma_p->dma_device_p, "unable to create class\n");
-		rc = ERROR;
-		goto init_error2;
+	if (PROXY_GLOBAL_CLASS == NULL)
+	{
+		PROXY_GLOBAL_CLASS = class_create(THIS_MODULE, DRIVER_NAME);
+		if (IS_ERR(PROXY_GLOBAL_CLASS)) {
+			dev_err(xilinx_dma_p->dma_device_p, "unable to create class\n");
+			rc = ERROR;
+			goto init_error2;
+		}
 	}
+	 
+	/*
+	 * "Install" the class this this device
+	 */ 
+	xilinx_dma_p->class_p = PROXY_GLOBAL_CLASS;
 
 	/* 
 	 * Create the device node in /dev so the device is accessible as a 
 	 * character device
 	 */
-	strcat(device_name, name);
 	xilinx_dma_p->proxy_device_p = device_create(xilinx_dma_p->class_p, NULL,
 												 xilinx_dma_p->dev_node, NULL, 
-												 name);
+												 device_name);
 	if (IS_ERR(xilinx_dma_p->proxy_device_p)) {
 		dev_err(xilinx_dma_p->dma_device_p, "unable to create the device\n");
 		goto init_error3;
@@ -724,7 +756,12 @@ static void cdevice_exit(struct xilinx_dma_t *xilinx_dma_p)
 	 * the char device
 	 */
 	device_destroy(xilinx_dma_p->class_p, xilinx_dma_p->dev_node);
-	class_destroy(xilinx_dma_p->class_p);
+	--DEVICE_COUNT;
+	
+	if (DEVICE_COUNT == 0)
+	{
+		class_destroy(xilinx_dma_p->class_p);
+	}
 	cdev_del(&xilinx_dma_p->cdev);
 	unregister_chrdev_region(xilinx_dma_p->dev_node, 1);
 }
@@ -778,26 +815,62 @@ static int dma_proxy_probe(struct platform_device *pdev)
 	xilinx_dma->dma_device_p = &pdev->dev; 
 	xilinx_dma->tx_channel.parent = xilinx_dma;
 	xilinx_dma->rx_channel.parent = xilinx_dma;
+	
+	char tx_chan_name[16];
+	char rx_chan_name[16];
+	
+	mutex_lock(&PROXY_GLOBAL_MUTEX);
+	
+	uint32_t index = 0;
+	for (; index < MAX_DEVICES; ++index)
+	{
+		// Build TX channel name
+		snprintf(tx_chan_name, 16, "%s%d", "dma_proxy_tx_", index);
+		pr_info("BLNX - trying TX chan: %s\n", tx_chan_name);
+		
+		// Build RX channel name
+		snprintf(rx_chan_name, 16, "%s%d", "dma_proxy_rx_", index);
+		pr_info("BLNX - trying RX chan: %s\n", rx_chan_name);
 	 
-	rc = create_channel(pdev, &xilinx_dma->tx_channel, "dma_proxy_tx", DMA_MEM_TO_DEV);
-	if (rc) {
-		pr_err("unable to create TX channel");
-		return rc;
+		rc = create_channel(pdev, &xilinx_dma->tx_channel, tx_chan_name, DMA_MEM_TO_DEV);
+		if (rc) {
+			continue;
+		}
+		
+		rc = create_channel(pdev, &xilinx_dma->rx_channel, rx_chan_name, DMA_DEV_TO_MEM);
+		if (rc) {
+			continue;
+		}
+		
+		if (rc == 0)
+		{
+			break;
+		}
 	}
 	
-	rc = create_channel(pdev, &xilinx_dma->rx_channel, "dma_proxy_rx", DMA_DEV_TO_MEM);
-	if (rc) {
-		pr_err("unable to create RX channel");
+	if (index == MAX_DEVICES)
+	{
+		pr_err("unable to create TX/RX channels");
+		mutex_unlock(&PROXY_GLOBAL_MUTEX);
 		return rc;
 	}
 	
 	/* 
 	 * Now initialize the character device 
 	 */
-	rc = cdevice_init(xilinx_dma, "xilinx_dma_proxy");
+	rc = cdevice_init(xilinx_dma, "xilinx_dma_proxy", index);
 	if (rc) {
+		mutex_unlock(&PROXY_GLOBAL_MUTEX);
 		return rc;
 	}
+	
+	/**
+	 * Globally register the device
+	 */ 
+	DEVICES[index] = xilinx_dma;
+	xilinx_dma->device_index = index;
+	++DEVICE_COUNT;
+	mutex_unlock(&PROXY_GLOBAL_MUTEX);
 	
 	return 0;
 }
@@ -832,7 +905,11 @@ static int dma_proxy_remove(struct platform_device *pdev)
 	/*
 	 * Teardown character device
 	 */ 
+	mutex_lock(&PROXY_GLOBAL_MUTEX);
 	cdevice_exit(xilinx_dma);
+	DEVICES[xilinx_dma->device_index] = NULL;
+	mutex_unlock(&PROXY_GLOBAL_MUTEX);
+	
 	kfree(xilinx_dma);
 
 	return 0;
@@ -857,8 +934,9 @@ static int __init dma_proxy_init(void)
 {
 	pr_info("BLNX --  LOADING DMA PROXY\n");
 	
+	memset(DEVICES, 0, sizeof(struct xilinx_dma_t*) * MAX_DEVICES);
+	
 	return platform_driver_register(&dma_proxy_driver);
-
 }
 
 static void __exit dma_proxy_exit(void)

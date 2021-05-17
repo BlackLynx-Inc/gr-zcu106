@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #include "dma-proxy-lib.h"
@@ -127,8 +128,8 @@ static inline void* _alloc_proxy_buffer(proxy_buffer_info_t* proxy_buffer, size_
         return NULL;
     }
     
-    // Open the proxy device
-    int fd = open(DMA_PROXY_DEVICE, O_RDWR);
+    // Open the default proxy device
+    int fd = open(DMA_PROXY_DEVICE_DEFAULT, O_RDWR);
     if (fd < 1) 
     {
         return NULL;
@@ -340,11 +341,38 @@ static int _buffer_select_helper(void* buffer, uint32_t length, struct proxy_buf
     return rc;
 }
 
-int dmap_read(void* buffer, uint32_t length)
+static int _validate_device_index(uint32_t device_index)
+{
+    if (device_index >= MAX_DEVICES)
+    {
+        return 0;
+    }
+    
+    // Build representative path
+    char path[24];
+    snprintf(path, 24, "%s%d", DMA_PROXY_DEVICE_BASE, device_index);
+    
+    // Check that path exists and is a character device
+    struct stat stat_buf;
+    int rc = lstat(path, &stat_buf);
+    if (rc == 0 && (stat_buf.st_mode & S_IFMT) == S_IFCHR)
+    {
+        return 1;
+    }
+    
+    return 0;
+}
+
+int dmap_read(uint32_t device_index, void* buffer, uint32_t length)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
+    }
+    
+    if (! _validate_device_index(device_index))
+    {
+        return DMAP_INVALID_DEVICE_IDX;
     }
     
     struct proxy_buffer_info selected;
@@ -358,18 +386,28 @@ int dmap_read(void* buffer, uint32_t length)
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
+        rw_info.device_index = device_index;
     
         rc = ioctl(selected.fd, DMA_PROXY_IOC_READ_BLOCKING, (unsigned long)&rw_info);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
 }
 
-int dmap_read_nb(void* buffer, uint32_t length)
+int dmap_read_nb(uint32_t device_index, void* buffer, uint32_t length)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
+    }
+    
+    if (! _validate_device_index(device_index))
+    {
+        return DMAP_INVALID_DEVICE_IDX;
     }
     
     struct proxy_buffer_info selected;
@@ -383,18 +421,28 @@ int dmap_read_nb(void* buffer, uint32_t length)
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
+        rw_info.device_index = device_index;
     
         rc = ioctl(selected.fd, DMA_PROXY_IOC_START_READ, (unsigned long)&rw_info);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
 }
 
-int dmap_read_complete(void* buffer)
+int dmap_read_complete(uint32_t device_index, void* buffer)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
+    }
+    
+    if (! _validate_device_index(device_index))
+    {
+        return DMAP_INVALID_DEVICE_IDX;
     }
     
     struct proxy_buffer_info selected;
@@ -405,17 +453,31 @@ int dmap_read_complete(void* buffer)
     }
     else
     {
-        rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_READ, 0);
+        struct dma_proxy_rw_info rw_info;
+        rw_info.offset = buffer - selected.buffer;;
+        rw_info.length = 0;
+        rw_info.device_index = device_index;
+        
+        rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_READ, (unsigned long)&rw_info);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
 }
 
-int dmap_write(void* buffer, uint32_t length)
+int dmap_write(uint32_t device_index, void* buffer, uint32_t length)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
+    }
+    
+    if (! _validate_device_index(device_index))
+    {
+        return DMAP_INVALID_DEVICE_IDX;
     }
     
     struct proxy_buffer_info selected;
@@ -429,14 +491,19 @@ int dmap_write(void* buffer, uint32_t length)
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
+        rw_info.device_index = device_index;
     
         rc = ioctl(selected.fd, DMA_PROXY_IOC_WRITE_BLOCKING, (unsigned long)&rw_info);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
 }
 
-int dmap_write_nb(void* buffer, uint32_t length)
+int dmap_write_nb(uint32_t device_index, void* buffer, uint32_t length)
 {
     if (buffer == NULL)
     {
@@ -454,18 +521,28 @@ int dmap_write_nb(void* buffer, uint32_t length)
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
+        rw_info.device_index = device_index;
     
         rc = ioctl(selected.fd, DMA_PROXY_IOC_START_WRITE, (unsigned long)&rw_info);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
 }
 
-int dmap_write_complete(void* buffer)
+int dmap_write_complete(uint32_t device_index, void* buffer)
 {
     if (buffer == NULL)
     {
         return DMAP_INVALID_BUF_PTR;
+    }
+    
+    if (! _validate_device_index(device_index))
+    {
+        return DMAP_INVALID_DEVICE_IDX;
     }
     
     struct proxy_buffer_info selected;
@@ -476,7 +553,16 @@ int dmap_write_complete(void* buffer)
     }
     else
     {
+        struct dma_proxy_rw_info rw_info;
+        rw_info.offset = buffer - selected.buffer;;
+        rw_info.length = 0;
+        rw_info.device_index = device_index;
+        
         rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_WRITE, 0);
+        if (rc == -17)
+        {
+            return DMAP_INVALID_DEVICE_IDX;
+        }
     }
     
     return rc;
