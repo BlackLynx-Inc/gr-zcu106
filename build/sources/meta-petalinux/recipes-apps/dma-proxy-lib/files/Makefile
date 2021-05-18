@@ -7,7 +7,7 @@ SHARED_LIB_NAME = $(LIBNAME).so
 SONAME  = $(SHARED_LIB_NAME).$(MAJOR)
 SHARED_LIB_FULLNAME = $(SONAME).$(MINOR).$(RELEASE)
 
-CFLAGS += "-O2 -pthread"
+CFLAGS += "-std=c99 -O2 -pthread"
 LDFLAGS += "-lpthread
 
 all: shared_lib

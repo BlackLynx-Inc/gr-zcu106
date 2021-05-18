@@ -36,6 +36,8 @@ struct dma_proxy_rw_info {
 #define DMAP_INVALID_BUF_PTR		2
 #define DMAP_INVALID_DEVICE_IDX 	3
 #define DMAP_ACCESS_OUT_OF_BOUNDS	4
+#define DMAP_DEVICE_IN_USE      	5
+#define DMAP_DEVICE_TIMEOUT      	6
 
 
 /**

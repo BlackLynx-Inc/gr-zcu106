@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     printf("DMA Proxy Util NonBlocking\n\n");
     
     // Set default arguments and override with command line arguments as needed
-    uint32_t device_index = 1;
+    uint32_t device_index = 0;
     size_t buf_size = 1024 * 1024;
     uint32_t offset = 0;
     uint32_t xfer_len = buf_size;
@@ -52,27 +52,33 @@ int main(int argc, char** argv)
     }
     else if (argc == 2)
     {
-        buf_size = strtol(argv[1], NULL, 0);
-        xfer_len = buf_size;
+        device_index = strtol(argv[1], NULL, 10);
     }
     else if (argc == 3)
     {
-        fprintf(stderr, "ERROR: please specify offset and length: "
-                "./dma-proxy-util [buffer size] [buffer offset] [xfer length]\n");
-        return -1;
+        device_index = strtol(argv[1], NULL, 10);
+        buf_size = strtol(argv[2], NULL, 0);
+        xfer_len = buf_size;
     }
     else if (argc == 4)
     {
-        buf_size = strtol(argv[1], NULL, 0);
-        offset = strtol(argv[2], NULL, 0);
-        xfer_len = strtol(argv[3], NULL, 0);
+        fprintf(stderr, "ERROR: please specify offset and length: "
+                "./dma-proxy-util [device index] [buffer size] [buffer offset] [xfer length]\n");
+        return -1;
+    }
+    else if (argc == 5)
+    {
+        device_index = strtol(argv[1], NULL, 10);
+        buf_size = strtol(argv[2], NULL, 0);
+        offset = strtol(argv[3], NULL, 0);
+        xfer_len = strtol(argv[4], NULL, 0);
         printf("Setting buffer size to: %u; offset: 0x%08X; xfer len: %u\n", 
                buf_size, offset, xfer_len);
     }
     else
     {
         fprintf(stderr, "ERROR: too many arguments specified: "
-                "./dma-proxy-util [buffer size] [buffer offset] [xfer length]\n");
+                "./dma-proxy-util [device index] [buffer size] [buffer offset] [xfer length]\n");
         return -1;
     }
     

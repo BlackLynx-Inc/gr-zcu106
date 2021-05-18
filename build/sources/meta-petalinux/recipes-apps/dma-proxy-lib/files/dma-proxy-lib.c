@@ -1,6 +1,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,10 +18,21 @@
 #define PAGE_SIZE   sysconf(_SC_PAGESIZE)
 
 typedef struct proxy_buffer_info {
-    int fd;
-    size_t size;
-    void* buffer;   
+    int fd;                     //!< file descriptor used to create buffer
+    size_t size;                //!< buffer size in bytes
+    void* buffer;               //!< pointer to buffer
 } proxy_buffer_info_t;
+
+typedef struct device_info {
+    pthread_mutex_t rd_mutex;      //!< protect READ CV and busy flag
+    pthread_mutex_t wr_mutex;      //!< protect WRITE CV and busy flag
+    pthread_cond_t rd_cv;          //!< used to wait and signal READ status
+    pthread_cond_t wr_cv;          //!< used to wait and signal WRITE status
+    bool rd_busy;                  //!< is READ channel busy (i.e. in use)
+    bool wr_busy;                  //!< is WRITE channel busy (i.e. in use)
+} device_info_t;
+
+enum rw { READ, WRITE };
 
 pthread_mutex_t master_mutex;   // used to make buffer list thread safe
 static uint32_t buffer_list_inc = 10;   // increment size by this amount
@@ -28,6 +40,7 @@ static proxy_buffer_info_t* buffer_list = NULL;
 static uint32_t buffer_list_size = 0;
 static uint32_t buffer_list_idx = 0;
 
+static device_info_t* device_status_table[MAX_DEVICES];
 
 static int __dma_proxy_reg_space_fd;
 static void *__dma_proxy_reg_space_ptr;
@@ -55,6 +68,34 @@ void dma_proxy_lib_init()
     pthread_mutex_lock(&master_mutex);
     _resize_buffer_list();
     pthread_mutex_unlock(&master_mutex);
+    
+    // Setup device status table
+    for (uint32_t device_index = 0; device_index < MAX_DEVICES; ++device_index)
+    {
+        // Build representative path
+        char path[24];
+        snprintf(path, 24, "%s%d", DMA_PROXY_DEVICE_BASE, device_index);
+        
+        // Check that path exists and is a character device
+        struct stat stat_buf;
+        int rc = lstat(path, &stat_buf);
+        if (rc == 0 && (stat_buf.st_mode & S_IFMT) == S_IFCHR)
+        {
+            device_status_table[device_index] = calloc(1, sizeof(device_info_t));
+            pthread_mutex_init(&device_status_table[device_index]->rd_mutex, NULL);
+            pthread_mutex_init(&device_status_table[device_index]->wr_mutex, NULL);
+            
+            pthread_cond_init(&device_status_table[device_index]->rd_cv, NULL);
+            pthread_cond_init(&device_status_table[device_index]->wr_cv, NULL);
+            
+            device_status_table[device_index]->rd_busy = false;
+            device_status_table[device_index]->wr_busy = false;
+        }
+        else
+        {
+            device_status_table[device_index] = NULL;
+        }
+    }
 }
 
 /**
@@ -82,6 +123,15 @@ void dma_proxy_lib_fini()
     }
     free(buffer_list);
     pthread_mutex_unlock(&master_mutex);
+    
+    // Teardown device status table
+    for (uint32_t device_index = 0; device_index < MAX_DEVICES; ++device_index)
+    {
+        if (device_status_table[device_index] != NULL)
+        {
+            free(device_status_table[device_index]);
+        }
+    }
 }
 
 /**
@@ -348,19 +398,82 @@ static int _validate_device_index(uint32_t device_index)
         return 0;
     }
     
-    // Build representative path
-    char path[24];
-    snprintf(path, 24, "%s%d", DMA_PROXY_DEVICE_BASE, device_index);
+    return (device_status_table[device_index] != NULL);
+}
+
+static inline int _wait_for_device(uint32_t device_index, enum rw type, bool block)
+{
+    pthread_mutex_t* mutex = NULL;
+    pthread_cond_t* cv = NULL;
+    bool* busy = NULL;
     
-    // Check that path exists and is a character device
-    struct stat stat_buf;
-    int rc = lstat(path, &stat_buf);
-    if (rc == 0 && (stat_buf.st_mode & S_IFMT) == S_IFCHR)
+    if (type == READ)
     {
-        return 1;
+        mutex = &device_status_table[device_index]->rd_mutex;
+        cv = &device_status_table[device_index]->rd_cv;
+        busy = &device_status_table[device_index]->rd_busy;
+    }
+    else
+    {
+        mutex = &device_status_table[device_index]->wr_mutex;
+        cv = &device_status_table[device_index]->wr_cv;
+        busy = &device_status_table[device_index]->wr_busy;
     }
     
-    return 0;
+    pthread_mutex_lock(mutex);
+    if (*busy)
+    {
+        if (block)
+        {
+            // Blocking wait for device to be not busy
+            struct timespec ts;
+            clock_gettime(CLOCK_REALTIME, &ts);
+            ts.tv_sec += 5000; // 5 sec timeout (in ms)
+            
+            int rc = 0;
+            rc = pthread_cond_timedwait(cv, mutex, &ts);
+            if (rc == ETIMEDOUT)
+            {
+                DMAP_DEVICE_TIMEOUT;
+            }
+        }
+        else
+        {
+            // Nonblocking, return immediately if device is busy
+            pthread_mutex_unlock(mutex);
+            return DMAP_DEVICE_IN_USE;
+        }
+    }
+
+    *busy = true;
+    pthread_mutex_unlock(mutex);
+    
+    return 0;    
+}
+
+static inline void _mark_device_ready(uint32_t device_index, enum rw type)
+{
+    pthread_mutex_t* mutex = NULL;
+    pthread_cond_t* cv = NULL;
+    bool* busy = NULL;
+    
+    if (type == READ)
+    {
+        mutex = &device_status_table[device_index]->rd_mutex;
+        cv = &device_status_table[device_index]->rd_cv;
+        busy = &device_status_table[device_index]->rd_busy;
+    }
+    else
+    {
+        mutex = &device_status_table[device_index]->wr_mutex;
+        cv = &device_status_table[device_index]->wr_cv;
+        busy = &device_status_table[device_index]->wr_busy;
+    }
+    
+    pthread_mutex_lock(mutex);
+    *busy = false;
+    pthread_cond_signal(cv);
+    pthread_mutex_unlock(mutex);
 }
 
 int dmap_read(uint32_t device_index, void* buffer, uint32_t length)
@@ -383,6 +496,13 @@ int dmap_read(uint32_t device_index, void* buffer, uint32_t length)
     }
     else
     {
+        // Wait for device to be ready
+        rc = _wait_for_device(device_index, READ, true);
+        if (rc)
+        {
+            return rc;
+        }
+
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
@@ -391,8 +511,11 @@ int dmap_read(uint32_t device_index, void* buffer, uint32_t length)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_READ_BLOCKING, (unsigned long)&rw_info);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
+        
+        // Mark device ready again
+        _mark_device_ready(device_index, READ);
     }
     
     return rc;
@@ -418,6 +541,13 @@ int dmap_read_nb(uint32_t device_index, void* buffer, uint32_t length)
     }
     else
     {
+        // Wait for device to be ready
+        rc = _wait_for_device(device_index, READ, false);
+        if (rc)
+        {
+            return rc;
+        }
+        
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
@@ -426,7 +556,7 @@ int dmap_read_nb(uint32_t device_index, void* buffer, uint32_t length)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_START_READ, (unsigned long)&rw_info);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
     }
     
@@ -461,8 +591,11 @@ int dmap_read_complete(uint32_t device_index, void* buffer)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_READ, (unsigned long)&rw_info);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
+        
+        // Mark device ready again
+        _mark_device_ready(device_index, READ);
     }
     
     return rc;
@@ -488,6 +621,13 @@ int dmap_write(uint32_t device_index, void* buffer, uint32_t length)
     }
     else
     {
+        // Wait for device to be ready
+        rc = _wait_for_device(device_index, WRITE, true);
+        if (rc)
+        {
+            return rc;
+        }
+        
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
@@ -496,8 +636,11 @@ int dmap_write(uint32_t device_index, void* buffer, uint32_t length)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_WRITE_BLOCKING, (unsigned long)&rw_info);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
+        
+        // Mark device ready again
+        _mark_device_ready(device_index, WRITE);
     }
     
     return rc;
@@ -518,6 +661,13 @@ int dmap_write_nb(uint32_t device_index, void* buffer, uint32_t length)
     }
     else
     {
+        // Wait for device to be ready
+        rc = _wait_for_device(device_index, WRITE, false);
+        if (rc)
+        {
+            return rc;
+        }
+        
         struct dma_proxy_rw_info rw_info;
         rw_info.offset = buffer - selected.buffer;;
         rw_info.length = length;
@@ -526,7 +676,7 @@ int dmap_write_nb(uint32_t device_index, void* buffer, uint32_t length)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_START_WRITE, (unsigned long)&rw_info);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
     }
     
@@ -561,8 +711,11 @@ int dmap_write_complete(uint32_t device_index, void* buffer)
         rc = ioctl(selected.fd, DMA_PROXY_IOC_COMPLETE_WRITE, 0);
         if (rc == -17)
         {
-            return DMAP_INVALID_DEVICE_IDX;
+            rc = DMAP_INVALID_DEVICE_IDX;
         }
+        
+        // Mark device ready again
+        _mark_device_ready(device_index, WRITE);
     }
     
     return rc;

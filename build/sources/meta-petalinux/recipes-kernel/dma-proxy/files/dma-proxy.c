@@ -602,10 +602,6 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	{
 		return -17;
 	}
-	
-	pr_info("BLNX -- using device index: %d\n", rw_info.device_index);
-	
-	// TODO: device status check/locking
 
 	// Decode the IOCTL
     switch (cmd) {
