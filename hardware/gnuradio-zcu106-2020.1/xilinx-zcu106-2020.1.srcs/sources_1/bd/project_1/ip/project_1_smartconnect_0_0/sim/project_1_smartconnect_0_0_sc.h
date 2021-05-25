@@ -82,6 +82,12 @@ public: // module socket-to-socket TLM interface
   xtlm::xtlm_aximm_target_socket* S01_AXI_tlm_aximm_write_socket;
   xtlm::xtlm_aximm_target_socket* S02_AXI_tlm_aximm_read_socket;
   xtlm::xtlm_aximm_target_socket* S02_AXI_tlm_aximm_write_socket;
+  xtlm::xtlm_aximm_target_socket* S03_AXI_tlm_aximm_read_socket;
+  xtlm::xtlm_aximm_target_socket* S03_AXI_tlm_aximm_write_socket;
+  xtlm::xtlm_aximm_target_socket* S04_AXI_tlm_aximm_read_socket;
+  xtlm::xtlm_aximm_target_socket* S04_AXI_tlm_aximm_write_socket;
+  xtlm::xtlm_aximm_target_socket* S05_AXI_tlm_aximm_read_socket;
+  xtlm::xtlm_aximm_target_socket* S05_AXI_tlm_aximm_write_socket;
   xtlm::xtlm_aximm_initiator_socket* M00_AXI_tlm_aximm_read_socket;
   xtlm::xtlm_aximm_initiator_socket* M00_AXI_tlm_aximm_write_socket;
 

@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1 (lin64) Build 2960000 Wed Aug  5 22:57:21 MDT 2020
-// Date        : Fri Apr 30 21:30:17 2021
+// Date        : Mon May 24 22:41:36 2021
 // Host        : buildserver8 running 64-bit Ubuntu 16.04.7 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /ryftone/chintan/darpa/github/dev/gr-zcu106/hardware/gnuradio-zcu106-2020.1/xilinx-zcu106-2020.1.srcs/sources_1/bd/project_1/ip/project_1_proc_sys_reset_0_0/project_1_proc_sys_reset_0_0_stub.v
@@ -13,7 +13,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* x_core_info = "proc_sys_reset,Vivado 2020.1" *)
+(* x_core_info = "proc_sys_reset,Vivado 2020.1.1" *)
 module project_1_proc_sys_reset_0_0(slowest_sync_clk, ext_reset_in, aux_reset_in, 
   mb_debug_sys_rst, dcm_locked, mb_reset, bus_struct_reset, peripheral_reset, 
   interconnect_aresetn, peripheral_aresetn)

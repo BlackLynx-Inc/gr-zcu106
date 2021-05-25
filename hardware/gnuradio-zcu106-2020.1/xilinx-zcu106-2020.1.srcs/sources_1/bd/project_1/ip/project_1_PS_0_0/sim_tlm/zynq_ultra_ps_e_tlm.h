@@ -133,7 +133,7 @@ class zynq_ultra_ps_e_tlm : public sc_core::sc_module   {
     // Non-AXI ports are declared here
     sc_core::sc_in<bool> maxihpm0_fpd_aclk;
     sc_core::sc_in<bool> saxihp1_fpd_aclk;
-    sc_core::sc_in<sc_dt::sc_bv<2> >  pl_ps_irq0;
+    sc_core::sc_in<sc_dt::sc_bv<4> >  pl_ps_irq0;
     sc_core::sc_out<bool> pl_resetn0;
     sc_core::sc_out<bool> pl_clk0;
      

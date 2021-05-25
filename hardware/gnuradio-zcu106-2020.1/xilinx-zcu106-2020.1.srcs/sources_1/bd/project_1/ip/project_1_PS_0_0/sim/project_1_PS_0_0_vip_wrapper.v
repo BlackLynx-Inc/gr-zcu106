@@ -222,7 +222,7 @@ output saxigp3_rvalid;
 input saxigp3_rready;
 input [3 : 0] saxigp3_awqos;
 input [3 : 0] saxigp3_arqos;
-input [1 : 0] pl_ps_irq0;
+input [3 : 0] pl_ps_irq0;
 output pl_resetn0;
 output pl_clk0;
 wire pl_clk_t[3:0] ;
@@ -287,7 +287,7 @@ assign pl_clk0 = pl_clk_t[0] ;
     .C_S_AXI_GP4_DATA_WIDTH(128),
     .C_S_AXI_GP5_DATA_WIDTH(128),
     .C_S_AXI_GP6_DATA_WIDTH(128),
-    .C_FCLK_CLK0_FREQ(99.990005),
+    .C_FCLK_CLK0_FREQ(249.975021),
     .C_FCLK_CLK1_FREQ(93.740631),
     .C_FCLK_CLK2_FREQ(299.970032),
     .C_FCLK_CLK3_FREQ(374.962524)

@@ -86,7 +86,7 @@ project_1_PS_0_0_sc::project_1_PS_0_0_sc(const sc_core::sc_module_name& nm) : sc
     model_param_props.addLong("C_USE_DEBUG_TEST", "0");
     model_param_props.addLong("C_SD0_INTERNAL_BUS_WIDTH", "8");
     model_param_props.addLong("C_SD1_INTERNAL_BUS_WIDTH", "8");
-    model_param_props.addLong("C_NUM_F2P_0_INTR_INPUTS", "2");
+    model_param_props.addLong("C_NUM_F2P_0_INTR_INPUTS", "4");
     model_param_props.addLong("C_NUM_F2P_1_INTR_INPUTS", "1");
     model_param_props.addLong("C_EMIO_GPIO_WIDTH", "92");
     model_param_props.addLong("C_NUM_FABRIC_RESETS", "1");
