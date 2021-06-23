@@ -122,7 +122,7 @@ output wire [153 : 0] m_sc_payld;
     .C_ARBITER_MODE(1),
     .C_SC_ROUTE_WIDTH(6),
     .C_ID_WIDTH(3),
-    .C_ADDR_WIDTH(32),
+    .C_ADDR_WIDTH(64),
     .C_USER_WIDTH(512),
     .C_MAX_PAYLD_BYTES(16),
     .C_S_PIPELINE(0),

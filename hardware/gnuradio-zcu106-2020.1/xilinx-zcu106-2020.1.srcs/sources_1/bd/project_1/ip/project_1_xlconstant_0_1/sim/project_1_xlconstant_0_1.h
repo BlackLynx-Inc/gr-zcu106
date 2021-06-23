@@ -57,7 +57,7 @@
 #include "systemc.h"
 class project_1_xlconstant_0_1 : public sc_module {
   public:
-xlconstant_v1_1_7<32,4567> mod;
+xlconstant_v1_1_7<32,1> mod;
   sc_out< sc_bv<32> > dout;
 project_1_xlconstant_0_1 (sc_core::sc_module_name name);
   };

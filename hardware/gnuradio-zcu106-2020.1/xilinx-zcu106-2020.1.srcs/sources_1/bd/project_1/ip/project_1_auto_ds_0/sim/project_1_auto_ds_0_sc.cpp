@@ -62,8 +62,8 @@ project_1_auto_ds_0_sc::project_1_auto_ds_0_sc(const sc_core::sc_module_name& nm
   // initialize module
     xsc::common_cpp::properties model_param_props;
     model_param_props.addLong("C_AXI_PROTOCOL", "0");
-    model_param_props.addLong("C_S_AXI_ID_WIDTH", "1");
-    model_param_props.addLong("C_SUPPORTS_ID", "0");
+    model_param_props.addLong("C_S_AXI_ID_WIDTH", "16");
+    model_param_props.addLong("C_SUPPORTS_ID", "1");
     model_param_props.addLong("C_AXI_ADDR_WIDTH", "40");
     model_param_props.addLong("C_S_AXI_DATA_WIDTH", "128");
     model_param_props.addLong("C_M_AXI_DATA_WIDTH", "32");

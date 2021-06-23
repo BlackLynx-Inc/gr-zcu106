@@ -106,10 +106,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S00_AXI' transactor parameters
     xsc::common_cpp::properties S00_AXI_transactor_param_props;
-    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S00_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S00_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S00_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -127,7 +127,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -139,7 +139,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
+    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
     // S00_AXI' transactor ports
 
@@ -179,10 +179,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S01_AXI' transactor parameters
     xsc::common_cpp::properties S01_AXI_transactor_param_props;
-    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S01_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S01_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S01_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -200,7 +200,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S01_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S01_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -212,7 +212,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
+    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
     // S01_AXI' transactor ports
 
@@ -257,7 +257,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S02_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S02_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S02_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -287,7 +287,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
+    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
     // S02_AXI' transactor ports
 
@@ -348,10 +348,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S03_AXI' transactor parameters
     xsc::common_cpp::properties S03_AXI_transactor_param_props;
-    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S03_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S03_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S03_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -369,7 +369,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S03_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S03_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -381,7 +381,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S03_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
+    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
 
     // S03_AXI' transactor ports
 
@@ -421,10 +421,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S04_AXI' transactor parameters
     xsc::common_cpp::properties S04_AXI_transactor_param_props;
-    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S04_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S04_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S04_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -442,7 +442,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S04_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S04_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -454,7 +454,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S04_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
+    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
 
     // S04_AXI' transactor ports
 
@@ -499,7 +499,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S05_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S05_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S05_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -529,7 +529,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S05_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
+    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
 
     // S05_AXI' transactor ports
 
@@ -610,7 +610,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     M00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -727,10 +727,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S00_AXI' transactor parameters
     xsc::common_cpp::properties S00_AXI_transactor_param_props;
-    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S00_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S00_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S00_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -748,7 +748,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -760,7 +760,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
+    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
     // S00_AXI' transactor ports
 
@@ -800,10 +800,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S01_AXI' transactor parameters
     xsc::common_cpp::properties S01_AXI_transactor_param_props;
-    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S01_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S01_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S01_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -821,7 +821,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S01_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S01_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -833,7 +833,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
+    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
     // S01_AXI' transactor ports
 
@@ -878,7 +878,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S02_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S02_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S02_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -908,7 +908,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
+    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
     // S02_AXI' transactor ports
 
@@ -969,10 +969,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S03_AXI' transactor parameters
     xsc::common_cpp::properties S03_AXI_transactor_param_props;
-    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S03_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S03_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S03_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -990,7 +990,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S03_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S03_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1002,7 +1002,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S03_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
+    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
 
     // S03_AXI' transactor ports
 
@@ -1042,10 +1042,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S04_AXI' transactor parameters
     xsc::common_cpp::properties S04_AXI_transactor_param_props;
-    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S04_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S04_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S04_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1063,7 +1063,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S04_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S04_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1075,7 +1075,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S04_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
+    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
 
     // S04_AXI' transactor ports
 
@@ -1120,7 +1120,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S05_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S05_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S05_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1150,7 +1150,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S05_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
+    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
 
     // S05_AXI' transactor ports
 
@@ -1231,7 +1231,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     M00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1348,10 +1348,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S00_AXI' transactor parameters
     xsc::common_cpp::properties S00_AXI_transactor_param_props;
-    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S00_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S00_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S00_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1369,7 +1369,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1381,7 +1381,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
+    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
 
     // S00_AXI' transactor ports
 
@@ -1421,10 +1421,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S01_AXI' transactor parameters
     xsc::common_cpp::properties S01_AXI_transactor_param_props;
-    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S01_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S01_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S01_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1442,7 +1442,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S01_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S01_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1454,7 +1454,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
+    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
 
     // S01_AXI' transactor ports
 
@@ -1499,7 +1499,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S02_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S02_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S02_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1529,7 +1529,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
+    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
 
     // S02_AXI' transactor ports
 
@@ -1590,10 +1590,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S03_AXI' transactor parameters
     xsc::common_cpp::properties S03_AXI_transactor_param_props;
-    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S03_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S03_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S03_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1611,7 +1611,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S03_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S03_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1623,7 +1623,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S03_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S03_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
+    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
 
     // S03_AXI' transactor ports
 
@@ -1663,10 +1663,10 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
 
   // 'S04_AXI' transactor parameters
     xsc::common_cpp::properties S04_AXI_transactor_param_props;
-    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S04_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S04_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S04_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1684,7 +1684,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S04_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S04_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1696,7 +1696,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S04_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S04_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
+    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
 
     // S04_AXI' transactor ports
 
@@ -1741,7 +1741,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S05_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S05_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S05_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1771,7 +1771,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     S05_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S05_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
+    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
 
     // S05_AXI' transactor ports
 
@@ -1852,7 +1852,7 @@ void project_1_smartconnect_0_0::before_end_of_elaboration()
     M00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     M00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1956,10 +1956,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S00_AXI_transactor
     xsc::common_cpp::properties S00_AXI_transactor_param_props;
-    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S00_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S00_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S00_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -1977,7 +1977,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1989,7 +1989,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
+    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
   mp_S00_AXI_transactor->ARADDR(S00_AXI_araddr);
   mp_S00_AXI_transactor->ARLEN(S00_AXI_arlen);
   mp_S00_AXI_transactor->ARSIZE(S00_AXI_arsize);
@@ -2013,10 +2013,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S01_AXI_transactor
     xsc::common_cpp::properties S01_AXI_transactor_param_props;
-    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S01_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S01_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S01_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2034,7 +2034,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S01_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S01_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S01_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2046,7 +2046,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
+    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
   mp_S01_AXI_transactor->AWADDR(S01_AXI_awaddr);
   mp_S01_AXI_transactor->AWLEN(S01_AXI_awlen);
   mp_S01_AXI_transactor->AWSIZE(S01_AXI_awsize);
@@ -2076,7 +2076,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S02_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S02_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S02_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S02_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2106,7 +2106,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
+    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
   mp_S02_AXI_transactor->AWADDR(S02_AXI_awaddr);
   mp_S02_AXI_transactor->AWLEN(S02_AXI_awlen);
   mp_S02_AXI_transactor->AWSIZE(S02_AXI_awsize);
@@ -2151,10 +2151,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S03_AXI_transactor
     xsc::common_cpp::properties S03_AXI_transactor_param_props;
-    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S03_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S03_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S03_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2172,7 +2172,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S03_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S03_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S03_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2184,7 +2184,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S03_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S03_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
+    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
   mp_S03_AXI_transactor->ARADDR(S03_AXI_araddr);
   mp_S03_AXI_transactor->ARLEN(S03_AXI_arlen);
   mp_S03_AXI_transactor->ARSIZE(S03_AXI_arsize);
@@ -2208,10 +2208,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S04_AXI_transactor
     xsc::common_cpp::properties S04_AXI_transactor_param_props;
-    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S04_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S04_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S04_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2229,7 +2229,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S04_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S04_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S04_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2241,7 +2241,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S04_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S04_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
+    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
   mp_S04_AXI_transactor->AWADDR(S04_AXI_awaddr);
   mp_S04_AXI_transactor->AWLEN(S04_AXI_awlen);
   mp_S04_AXI_transactor->AWSIZE(S04_AXI_awsize);
@@ -2271,7 +2271,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S05_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S05_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S05_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S05_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2301,7 +2301,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S05_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S05_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
+    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
   mp_S05_AXI_transactor->AWADDR(S05_AXI_awaddr);
   mp_S05_AXI_transactor->AWLEN(S05_AXI_awlen);
   mp_S05_AXI_transactor->AWSIZE(S05_AXI_awsize);
@@ -2367,7 +2367,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     M00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     M00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2580,10 +2580,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S00_AXI_transactor
     xsc::common_cpp::properties S00_AXI_transactor_param_props;
-    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S00_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S00_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S00_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S00_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S00_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2601,7 +2601,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2613,7 +2613,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S00_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S00_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
+    mp_S00_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S00_AXI_transactor", S00_AXI_transactor_param_props);
   mp_S00_AXI_transactor->ARADDR(S00_AXI_araddr);
   mp_S00_AXI_transactor->ARLEN(S00_AXI_arlen);
   mp_S00_AXI_transactor->ARSIZE(S00_AXI_arsize);
@@ -2637,10 +2637,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S01_AXI_transactor
     xsc::common_cpp::properties S01_AXI_transactor_param_props;
-    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S01_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S01_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S01_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S01_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S01_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2658,7 +2658,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S01_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S01_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S01_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S01_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S01_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2670,7 +2670,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S01_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S01_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
+    mp_S01_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S01_AXI_transactor", S01_AXI_transactor_param_props);
   mp_S01_AXI_transactor->AWADDR(S01_AXI_awaddr);
   mp_S01_AXI_transactor->AWLEN(S01_AXI_awlen);
   mp_S01_AXI_transactor->AWSIZE(S01_AXI_awsize);
@@ -2700,7 +2700,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S02_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S02_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S02_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S02_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S02_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S02_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2730,7 +2730,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S02_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S02_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
+    mp_S02_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S02_AXI_transactor", S02_AXI_transactor_param_props);
   mp_S02_AXI_transactor->AWADDR(S02_AXI_awaddr);
   mp_S02_AXI_transactor->AWLEN(S02_AXI_awlen);
   mp_S02_AXI_transactor->AWSIZE(S02_AXI_awsize);
@@ -2775,10 +2775,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S03_AXI_transactor
     xsc::common_cpp::properties S03_AXI_transactor_param_props;
-    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S03_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S03_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S03_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S03_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S03_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2796,7 +2796,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S03_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S03_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "2");
-    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S03_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S03_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S03_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2808,7 +2808,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S03_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_ONLY");
     S03_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
+    mp_S03_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S03_AXI_transactor", S03_AXI_transactor_param_props);
   mp_S03_AXI_transactor->ARADDR(S03_AXI_araddr);
   mp_S03_AXI_transactor->ARLEN(S03_AXI_arlen);
   mp_S03_AXI_transactor->ARSIZE(S03_AXI_arsize);
@@ -2832,10 +2832,10 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
 
   // configure S04_AXI_transactor
     xsc::common_cpp::properties S04_AXI_transactor_param_props;
-    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("DATA_WIDTH", "128");
     S04_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S04_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S04_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S04_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S04_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2853,7 +2853,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S04_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S04_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "2");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
+    S04_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S04_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S04_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -2865,7 +2865,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S04_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
     S04_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
+    mp_S04_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<128,64,1,1,1,1,1,1>("S04_AXI_transactor", S04_AXI_transactor_param_props);
   mp_S04_AXI_transactor->AWADDR(S04_AXI_awaddr);
   mp_S04_AXI_transactor->AWLEN(S04_AXI_awlen);
   mp_S04_AXI_transactor->AWSIZE(S04_AXI_awsize);
@@ -2895,7 +2895,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S05_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S05_AXI_transactor_param_props.addLong("FREQ_HZ", "249975021");
     S05_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
-    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
+    S05_AXI_transactor_param_props.addLong("ADDR_WIDTH", "64");
     S05_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S05_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -2925,7 +2925,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     S05_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S05_AXI_transactor_param_props.addString("CLK_DOMAIN", "project_1_PS_0_0_pl_clk0");
 
-    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
+    mp_S05_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,64,1,1,1,1,1,1>("S05_AXI_transactor", S05_AXI_transactor_param_props);
   mp_S05_AXI_transactor->AWADDR(S05_AXI_awaddr);
   mp_S05_AXI_transactor->AWLEN(S05_AXI_awlen);
   mp_S05_AXI_transactor->AWSIZE(S05_AXI_awsize);
@@ -2991,7 +2991,7 @@ project_1_smartconnect_0_0::project_1_smartconnect_0_0(const sc_core::sc_module_
     M00_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M00_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "16");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    M00_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     M00_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     M00_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");

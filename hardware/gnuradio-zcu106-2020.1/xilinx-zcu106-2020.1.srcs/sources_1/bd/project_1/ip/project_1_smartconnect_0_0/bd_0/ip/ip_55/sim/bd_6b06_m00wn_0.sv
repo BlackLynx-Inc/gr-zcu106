@@ -132,7 +132,7 @@ input wire [15 : 0] s_axis_arb_tdata;
     .C_ARBITER_MODE(1),
     .C_SC_ROUTE_WIDTH(1),
     .C_ID_WIDTH(3),
-    .C_ADDR_WIDTH(32),
+    .C_ADDR_WIDTH(64),
     .C_USER_WIDTH(0),
     .C_MAX_PAYLD_BYTES(16),
     .C_S_PIPELINE(0),

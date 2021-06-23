@@ -206,7 +206,7 @@ void project_1_PS_0_0::before_end_of_elaboration()
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_BRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
-    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -430,7 +430,7 @@ void project_1_PS_0_0::before_end_of_elaboration()
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_BRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
-    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -654,7 +654,7 @@ void project_1_PS_0_0::before_end_of_elaboration()
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_BRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
-    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -851,7 +851,7 @@ project_1_PS_0_0::project_1_PS_0_0(const sc_core::sc_module_name& nm) : project_
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_BRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
-    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -1080,7 +1080,7 @@ project_1_PS_0_0::project_1_PS_0_0(const sc_core::sc_module_name& nm) : project_
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_BRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
-    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "4");
+    S_AXI_HP1_FPD_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_HP1_FPD_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
