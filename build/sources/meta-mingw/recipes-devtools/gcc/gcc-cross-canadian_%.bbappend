@@ -1,6 +1,0 @@
-INSANE_SKIP_${PN}_append_sdkmingw32 = " staticdev"
-EXTRA_OECONF_append_sdkmingw32 = " --disable-nls --disable-lto"
-LDFLAGS_append_sdkmingw32 = " -Wl,-static"
-EXEEXT_sdkmingw32 = ".exe"
-ELFUTILS_sdkmingw32 = ""
-DEPENDS_remove_sdkmingw32 = "nativesdk-gettext"
