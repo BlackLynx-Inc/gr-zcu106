@@ -23,7 +23,6 @@ COMMON_INSTALL = " \
     kernel-modules \
     kmod \
     peekpoke \
-    xilinxdma \
     dma-proxy \
     dma-proxy-lib \
     dma-proxy-test \

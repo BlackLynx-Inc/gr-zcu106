@@ -7,8 +7,8 @@ SHARED_LIB_NAME = $(LIBNAME).so
 SONAME  = $(SHARED_LIB_NAME).$(MAJOR)
 SHARED_LIB_FULLNAME = $(SONAME).$(MINOR).$(RELEASE)
 
-CFLAGS += "-std=c99 -O2 -pthread"
-LDFLAGS += "-lpthread
+CFLAGS += "-std=c99 -O2 -pthread -fPIC"
+LDFLAGS += "-lpthread"
 
 all: shared_lib
 
@@ -20,7 +20,7 @@ clean:
 	$(CC) $(CLAGS) -c -o $@ $<
 
 shared_lib: dma-proxy-lib.o
-	$(CC) -shared -Wl,-soname,$(SONAME) -o $(SHARED_LIB_FULLNAME) $<
+	$(CC) -shared -Wl,-soname,$(SONAME) -fPIC -o $(SHARED_LIB_FULLNAME) $<
 	chmod 644 $(SHARED_LIB_FULLNAME)
 	ln -sf $(SHARED_LIB_FULLNAME) $(SONAME)
 	ln -sf $(SHARED_LIB_FULLNAME) $(SHARED_LIB_NAME)

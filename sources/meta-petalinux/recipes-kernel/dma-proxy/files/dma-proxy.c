@@ -70,7 +70,7 @@
 #include <linux/workqueue.h>
 #include <linux/platform_device.h>
 #include <linux/of_dma.h>
-#include <linux/dma-noncoherent.h>
+#include <linux/dma-map-ops.h>
 #include <linux/mutex.h>
 
 #include <linux/delay.h> // just for debug

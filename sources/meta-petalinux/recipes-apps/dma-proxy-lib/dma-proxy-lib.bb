@@ -11,7 +11,7 @@ SRC_URI = " \
 "
 
 S = "${WORKDIR}"
-TARGET_CC_ARCH += "${LDFLAGS}"
+TARGET_CC_ARCH += "${LDFLAGS} -fPIC"
 
 do_install() {
     oe_runmake 'DESTDIR=${D}' install
