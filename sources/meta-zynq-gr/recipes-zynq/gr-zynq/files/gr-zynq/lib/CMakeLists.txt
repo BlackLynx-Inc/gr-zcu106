@@ -37,7 +37,7 @@ ENDFUNCTION()
 include(GrPlatform) #define LIB_SUFFIX
 
 list(APPEND zynq_sources
-    loopback_impl.cc
+    #loopback_impl.cc
 )
 
 set(zynq_sources "${zynq_sources}" PARENT_SCOPE)
