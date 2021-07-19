@@ -17,5 +17,5 @@ do_install() {
     oe_runmake 'DESTDIR=${D}' install
 }
 
-FILES_${PN} = "${libdir}/libdmaproxy.so.0.1.0"
-FILES_${PN}-dev = "${includedir}/* ${libdir}/libdmaproxy.so ${libdir}/libdmaproxy.so.0"
+FILES_${PN} = "${libdir}/libdmaproxy.so.0.1.0 ${libdir}/libdmaproxy.so.0"
+FILES_${PN}-dev = "${includedir}/* ${libdir}/libdmaproxy.so"
