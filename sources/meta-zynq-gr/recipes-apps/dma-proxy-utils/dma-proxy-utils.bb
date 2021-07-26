@@ -4,11 +4,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
 	file://dma-proxy-reg.c \
-	file://dma-proxy-test.c \
 	file://dma-proxy-util.c \
 	file://dma-proxy-util-nb.c \
 	file://dma-proxy-util-file.c \
-	file://dma-proxy.h \
 	file://Makefile \
 "
 
@@ -27,7 +25,6 @@ do_compile() {
 
 do_install() {
 	     install -d ${D}${bindir}
-	     install -m 0755 dma-proxy-test ${D}${bindir}
 	     install -m 0755 dma-proxy-reg ${D}${bindir}
 	     install -m 0755 dma-proxy-util ${D}${bindir}
 	     install -m 0755 dma-proxy-util-nb ${D}${bindir}

@@ -35,6 +35,7 @@
 
 #include <linux/bitops.h>
 #include <linux/dmapool.h>
+#include <linux/dmaengine.h>
 #include <linux/dma/xilinx_dma.h>
 #include <linux/init.h>
 #include <linux/interrupt.h>

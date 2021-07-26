@@ -210,7 +210,7 @@ int main(int argc, char** argv)
     dmap_free_buffer(tx_dma_buffer);
     dmap_free_buffer(rx_dma_buffer);
     
-    printf("[FIN]\n");
+    printf("[FIN] - recompiled for real\n");
     
     return 0;
 }

@@ -22,10 +22,6 @@ COMMON_INSTALL = " \
     pciutils \
     kernel-modules \
     kmod \
-    peekpoke \
-    dma-proxy \
-    dma-proxy-lib \
-    dma-proxy-test \
     "
 
 IMAGE_INSTALL = " \
