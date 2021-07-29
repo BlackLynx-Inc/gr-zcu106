@@ -213,19 +213,23 @@ python populate_packages_prepend() {
 }
 
 #PV = "3.9.0+git${SRCPV}"
-PV = "3.9.2.0"
+PV = "3.9.2.0-ngsched"
 
 FILESPATHPKG_prepend = "gnuradio-git:"
 
-SRCREV ="c98adfbdbb88c08734a1507d6257755611b947c5"
+#SRCREV ="c98adfbdbb88c08734a1507d6257755611b947c5"
+SRCREV ="5f36d4f4bdf723c04bd4829e302751a688597b2d"
 
 # Make it easy to test against branches
 GIT_BRANCH = "maint-3.9"
 GITHUB_USER = "gnuradio"
 
-SRC_URI = "git://github.com/${GITHUB_USER}/gnuradio.git;branch=${GIT_BRANCH};protocol=https \
-           file://0001-When-cross-compiling-gnuradio-change-how-the-test-fi.patch \
-           file://run-ptest \
+#SRC_URI = "git://github.com/${GITHUB_USER}/gnuradio.git;branch=${GIT_BRANCH};protocol=https \
+#           file://0001-When-cross-compiling-gnuradio-change-how-the-test-fi.patch \
+#           file://run-ptest \
+#          "
+
+SRC_URI = "git://github.com//gnuradio/gnuradio-ngsched.git;branch=master;protocol=https \
           "
 
 S="${WORKDIR}/git"
