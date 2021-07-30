@@ -30,6 +30,7 @@ include(GrPybind)
 
 list(APPEND zynq_python_files
     zynq_loopback_python.cc
+    zynq_loopback_legacy_python.cc
     python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(zynq 

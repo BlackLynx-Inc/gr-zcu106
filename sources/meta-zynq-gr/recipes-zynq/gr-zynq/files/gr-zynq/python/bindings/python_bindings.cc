@@ -22,6 +22,7 @@ namespace py = pybind11;
 /**************************************/
 // BINDING_FUNCTION_PROTOTYPES(
     void bind_zynq_loopback(py::module& m);
+    void bind_zynq_loopback_legacy(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -51,5 +52,6 @@ PYBIND11_MODULE(zynq_python, m)
     /**************************************/
     // BINDING_FUNCTION_CALLS(
     bind_zynq_loopback(m);
+    bind_zynq_loopback_legacy(m);
     // ) END BINDING_FUNCTION_CALLS
 }

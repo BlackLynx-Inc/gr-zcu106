@@ -5,26 +5,27 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#ifndef INCLUDED_ZYNQ_ZYNQ_LOOPBACK_IMPL_H
-#define INCLUDED_ZYNQ_ZYNQ_LOOPBACK_IMPL_H
+#ifndef INCLUDED_ZYNQ_ZYNQ_LOOPBACK_LEGACY_IMPL_H
+#define INCLUDED_ZYNQ_ZYNQ_LOOPBACK_LEGACY_IMPL_H
 
-#include <zynq/zynq_loopback.h>
-
-#include "zynq_buffer.h"
+#include <zynq/zynq_loopback_legacy.h>
 
 namespace gr {
 namespace zynq {
 
-class zynq_loopback_impl : public zynq_loopback
+class zynq_loopback_legacy_impl : public zynq_loopback_legacy
 {
 private:
     uint32_t d_device_index;
     int d_batch_size;
     int d_load;
+    
+    void* d_dma_write_buffer;
+    void* d_dma_read_buffer;
 
 public:
-    zynq_loopback_impl(int device_index, int batch_size, int load);
-    ~zynq_loopback_impl();
+    zynq_loopback_legacy_impl(int device_index, int batch_size, int load);
+    ~zynq_loopback_legacy_impl();
 
     // Where all the action really happens
     void forecast(int noutput_items, gr_vector_int& ninput_items_required);
@@ -39,4 +40,4 @@ public:
 } // namespace zynq
 } // namespace gr
 
-#endif /* INCLUDED_ZYNQ_ZYNQ_LOOPBACK_IMPL_H */
+#endif /* INCLUDED_ZYNQ_ZYNQ_LOOPBACK_LEGACY_IMPL_H */

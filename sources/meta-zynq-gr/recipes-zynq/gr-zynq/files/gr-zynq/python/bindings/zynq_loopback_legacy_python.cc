@@ -13,8 +13,8 @@
 /* If manual edits are made, the following tags should be modified accordingly.    */
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
-/* BINDTOOL_HEADER_FILE(zynq_loopback.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(ab3f6a80592ca3260006379aa39392c9)                     */
+/* BINDTOOL_HEADER_FILE(zynq_loopback_legacy.h)                                    */
+/* BINDTOOL_HEADER_FILE_HASH(47246bf153ecae85695b6f2978804633)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -23,24 +23,24 @@
 
 namespace py = pybind11;
 
-#include <zynq/zynq_loopback.h>
+#include <zynq/zynq_loopback_legacy.h>
 // pydoc.h is automatically generated in the build directory
-#include <zynq_loopback_pydoc.h>
+#include <zynq_loopback_legacy_pydoc.h>
 
-void bind_zynq_loopback(py::module& m)
+void bind_zynq_loopback_legacy(py::module& m)
 {
 
-    using zynq_loopback    = gr::zynq::zynq_loopback;
+    using zynq_loopback_legacy    = gr::zynq::zynq_loopback_legacy;
 
 
-    py::class_<zynq_loopback, gr::block, gr::basic_block,
-        std::shared_ptr<zynq_loopback>>(m, "zynq_loopback", D(zynq_loopback))
+    py::class_<zynq_loopback_legacy, gr::block, gr::basic_block,
+        std::shared_ptr<zynq_loopback_legacy>>(m, "zynq_loopback_legacy", D(zynq_loopback_legacy))
 
-        .def(py::init(&zynq_loopback::make),
+        .def(py::init(&zynq_loopback_legacy::make),
            py::arg("device_index"),
            py::arg("batch_size"),
            py::arg("load"),
-           D(zynq_loopback,make)
+           D(zynq_loopback_legacy,make)
         )
         
 

@@ -27,12 +27,12 @@ public:
     /*!
      * \brief Return a shared_ptr to a new instance of zynq::zynq_loopback.
      *
-     * To avoid accidental use of raw pointers, zynq::cuda_loopback's
+     * To avoid accidental use of raw pointers, zynq::zynq_loopback's
      * constructor is in a private implementation
      * class. zynq::zynq_loopback::make is the public interface for
      * creating new instances.
      */
-    static sptr make(int batch_size, int load);
+    static sptr make(int device_index, int batch_size, int load);
 };
 
 } // namespace zynq

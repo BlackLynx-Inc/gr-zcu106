@@ -6,7 +6,7 @@ SRC_URI = " \
 	file://gr-zynq/ \
 "
 
-DEPENDS += "gnuradio swig-native dma-proxy-lib"
+DEPENDS += "gnuradio dma-proxy-lib python3-pybind11-native "
 
 inherit setuptools3 cmake
 

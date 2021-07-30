@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 #
@@ -23,7 +23,7 @@ import zynq
 class loopback(gr.top_block):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet")
+        gr.top_block.__init__(self, "Simple Loopback")
 
         ##################################################
         # Variables
@@ -33,7 +33,7 @@ class loopback(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zynq_loopback_0 = zynq.zynq_loopback(4096, 1)
+        self.zynq_loopback_0 = zynq.zynq_loopback(0, 4096, 1)
         self.src = blocks.null_source(gr.sizeof_gr_complex)
         self.hd = blocks.head(gr.sizeof_gr_complex*1, 128*4096)
 
