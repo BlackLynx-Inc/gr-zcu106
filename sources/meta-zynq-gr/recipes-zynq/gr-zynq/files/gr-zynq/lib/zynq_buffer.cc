@@ -152,15 +152,6 @@ bool zynq_buffer::input_blocked_callback(int items_required,
     switch (d_context) {
     case buffer_context::HOST_TO_DEVICE:
     case buffer_context::DEVICE_TO_DEVICE:
-        //~ // Adjust "device" buffer
-        //~ rc = input_blocked_callback_logic(items_required,
-                                          //~ items_avail,
-                                          //~ read_index,
-                                          //~ d_device_base,
-                                          //~ zynq_buffer::device_memcpy,
-                                          //~ zynq_buffer::device_memmove);
-        //~ break;
-
     case buffer_context::DEVICE_TO_HOST:
         // Adjust host buffer
         rc = input_blocked_callback_logic(
@@ -189,17 +180,12 @@ bool zynq_buffer::output_blocked_callback(int output_multiple, bool force)
     bool rc = false;
     switch (d_context) {
     case buffer_context::HOST_TO_DEVICE:
+    case buffer_context::DEVICE_TO_HOST:
+    case buffer_context::DEVICE_TO_DEVICE:
         // Adjust host buffer
         rc = output_blocked_callback_logic(output_multiple, force, d_base, std::memmove);
         break;
-
-    //~ case buffer_context::DEVICE_TO_HOST:
-    //~ case buffer_context::DEVICE_TO_DEVICE:
-        //~ // Adjust "device" buffer
-        //~ rc = output_blocked_callback_logic(
-            //~ output_multiple, force, d_device_base, zynq_buffer::device_memmove);
-        //~ break;
-
+    
     default:
         std::ostringstream msg;
         msg << "Unexpected context for zynq_buffer: " << d_context;

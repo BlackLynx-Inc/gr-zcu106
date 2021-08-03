@@ -4,7 +4,6 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
 #include "zynq_loopback_impl.h"
 #include <gnuradio/io_signature.h>
 #include <dma-proxy-lib.h>

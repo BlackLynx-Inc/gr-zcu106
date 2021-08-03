@@ -1,6 +1,7 @@
 /*  dma-proxy.c - The simplest kernel module.
 *
 * Copyright (C) 2013 - 2016 Xilinx, Inc
+* Copyright (C) 2021 BlackLynx, Inc
 *
 *   This program is free software; you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -794,7 +795,7 @@ static int dma_proxy_probe(struct platform_device *pdev)
 {
 	int rc;
 
-	pr_info("BLNX - dma_proxy module initialized\n");
+	pr_info("dma_proxy module initialized\n");
 	
 	/*
 	 * Allocate private data for the platform device and stash
@@ -822,11 +823,11 @@ static int dma_proxy_probe(struct platform_device *pdev)
 	{
 		// Build TX channel name
 		snprintf(tx_chan_name, 16, "%s%d", "dma_proxy_tx_", index);
-		pr_info("BLNX - trying TX chan: %s\n", tx_chan_name);
+		pr_info("dma_proxy - trying TX chan: %s\n", tx_chan_name);
 		
 		// Build RX channel name
 		snprintf(rx_chan_name, 16, "%s%d", "dma_proxy_rx_", index);
-		pr_info("BLNX - trying RX chan: %s\n", rx_chan_name);
+		pr_info("dma_proxy - trying RX chan: %s\n", rx_chan_name);
 	 
 		rc = create_channel(pdev, &xilinx_dma->tx_channel, tx_chan_name, DMA_MEM_TO_DEV);
 		if (rc) {
@@ -878,7 +879,7 @@ static int dma_proxy_remove(struct platform_device *pdev)
 {
 	int i = 0;
 
-	pr_info("BLNX - dma_proxy module exited\n");
+	pr_info("dma_proxy module exited\n");
 	
 	/*
 	 * Retrieve the xilinx_dma_t
@@ -928,8 +929,6 @@ static struct platform_driver dma_proxy_driver = {
 
 static int __init dma_proxy_init(void)
 {
-	pr_info("BLNX --  LOADING DMA PROXY\n");
-	
 	memset(DEVICES, 0, sizeof(struct xilinx_dma_t*) * MAX_DEVICES);
 	
 	return platform_driver_register(&dma_proxy_driver);
@@ -938,13 +937,11 @@ static int __init dma_proxy_init(void)
 static void __exit dma_proxy_exit(void)
 {
 	platform_driver_unregister(&dma_proxy_driver);
-	
-	pr_info("BLNX --  REMOVING DMA PROXY\n");
 }
 
 module_init(dma_proxy_init)
 module_exit(dma_proxy_exit)
 
 MODULE_AUTHOR("Xilinx, Inc.; BlackLynx Inc.");
-MODULE_DESCRIPTION("DMA Proxy Prototype");
+MODULE_DESCRIPTION("Zynq DMA Proxy");
 MODULE_LICENSE("GPL v2");

@@ -4,7 +4,6 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
 #include "zynq_loopback_legacy_impl.h"
 #include <gnuradio/io_signature.h>
 #include <dma-proxy-lib.h>
@@ -122,7 +121,7 @@ int zynq_loopback_legacy_impl::general_work(int noutput_items,
     }
     
     // Copy data out of output (read) DMA buffer
-    std::memcpy(d_dma_read_buffer, in, noutput_items * sizeof(input_type));
+    std::memcpy(out, d_dma_read_buffer, noutput_items * sizeof(input_type));
     
     // Tell runtime system how many input items we consumed on
     // each input stream.
