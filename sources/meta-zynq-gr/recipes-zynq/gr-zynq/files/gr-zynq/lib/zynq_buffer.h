@@ -83,6 +83,7 @@ public:
     static buffer_sptr make_zynq_buffer(int nitems,
                                         std::size_t sizeof_item,
                                         uint64_t downstream_lcm_nitems,
+                                        uint32_t downstream_max_out_mult,
                                         block_sptr link,
                                         block_sptr buf_owner);
 
@@ -110,6 +111,7 @@ private:
     zynq_buffer(int nitems,
                 size_t sizeof_item,
                 uint64_t downstream_lcm_nitems,
+                uint32_t downstream_max_out_mult,
                 block_sptr link,
                 block_sptr buf_owner);
 };

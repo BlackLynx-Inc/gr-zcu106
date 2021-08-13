@@ -31,13 +31,15 @@ void* zynq_buffer::device_memmove(void* dest, const void* src, std::size_t count
 zynq_buffer::zynq_buffer(int nitems,
                          size_t sizeof_item,
                          uint64_t downstream_lcm_nitems,
+                         uint32_t downstream_max_out_mult,
                          block_sptr link,
                          block_sptr buf_owner)
-    : buffer_single_mapped(nitems, sizeof_item, downstream_lcm_nitems, link, buf_owner),
+    : buffer_single_mapped(nitems, sizeof_item, downstream_lcm_nitems, 
+                           downstream_max_out_mult, link, buf_owner),
       d_buffer(nullptr)
 {
     gr::configure_default_loggers(d_logger, d_debug_logger, "zynq_buffer");
-    if (!allocate_buffer(nitems, sizeof_item, downstream_lcm_nitems))
+    if (!allocate_buffer(nitems))
         throw std::bad_alloc();
 }
 
@@ -199,11 +201,16 @@ bool zynq_buffer::output_blocked_callback(int output_multiple, bool force)
 buffer_sptr zynq_buffer::make_zynq_buffer(int nitems,
                                           size_t sizeof_item,
                                           uint64_t downstream_lcm_nitems,
+                                          uint32_t downstream_max_out_mult,
                                           block_sptr link,
                                           block_sptr buf_owner)
 {
-    return buffer_sptr(
-        new zynq_buffer(nitems, sizeof_item, downstream_lcm_nitems, link, buf_owner));
+    return buffer_sptr(new zynq_buffer(nitems, 
+                                       sizeof_item, 
+                                       downstream_lcm_nitems, 
+                                       downstream_max_out_mult,
+                                       link, 
+                                       buf_owner));
 }
 
 
