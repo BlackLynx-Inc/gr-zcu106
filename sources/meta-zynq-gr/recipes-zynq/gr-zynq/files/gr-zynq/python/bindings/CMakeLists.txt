@@ -29,6 +29,9 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND zynq_python_files
+    sw_complex_matrix_inv_10x10_python.cc
+    zynq_complex_matrix_inv_10x10_python.cc
+    zynq_fft_python.cc
     zynq_loopback_python.cc
     zynq_loopback_legacy_python.cc
     python_bindings.cc)

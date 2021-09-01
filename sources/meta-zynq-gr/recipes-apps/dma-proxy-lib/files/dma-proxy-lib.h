@@ -13,7 +13,7 @@ extern "C" {
 #define MAX_DEVICE_MEMORY		    0x80000000L
 
 #define REG_SPACE_BASE_ADDR 	    0xA0000000
-#define REG_SPACE_SIZE			    0x30000			// 64 KB
+#define REG_SPACE_SIZE			    0x10000000			// 256 MB
 
 // NOTE: this is currently duplicated, even though it really shouldn't be
 #define DMA_PROXY_IOCTL_MAGIC  'b'
@@ -23,7 +23,7 @@ extern "C" {
 #define DMA_PROXY_IOC_COMPLETE_READ		_IOW(DMA_PROXY_IOCTL_MAGIC,  3, int)  //!< IOCTL: complete read from PL (nonblocking)
 #define DMA_PROXY_IOC_START_WRITE		_IOW(DMA_PROXY_IOCTL_MAGIC,  4, int)  //!< IOCTL: start write from PL (nonblocking)
 #define DMA_PROXY_IOC_COMPLETE_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  5, int)  //!< IOCTL: complete write from PL (nonblocking)
-#define MAX_DEVICES             16
+#define MAX_DEVICES     8
 
 struct dma_proxy_rw_info {
     uint32_t offset;       	//!< offset in bytes from start of buffer

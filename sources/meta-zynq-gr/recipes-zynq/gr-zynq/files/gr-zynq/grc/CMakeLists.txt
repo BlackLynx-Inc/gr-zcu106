@@ -7,5 +7,8 @@
 #
 
 install(FILES
+    zynq_sw_complex_matrix_inv_10x10.block.yml
+    zynq_zynq_complex_matrix_inv_10x10.block.yml
+    zynq_zynq_fft.block.yml
     DESTINATION share/gnuradio/grc/blocks
 )

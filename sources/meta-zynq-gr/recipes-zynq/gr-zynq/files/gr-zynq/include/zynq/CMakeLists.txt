@@ -11,6 +11,8 @@
 ########################################################################
 install(FILES
     api.h
+    sw_complex_matrix_inv_10x10.h
+    zynq_fft.h
     zynq_loopback.h
     zynq_loopback_legacy.h
     DESTINATION include/zynq

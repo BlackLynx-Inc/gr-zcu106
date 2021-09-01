@@ -64,6 +64,7 @@ int zynq_loopback_impl::general_work(int noutput_items,
     auto out = reinterpret_cast<output_type*>(output_items[0]);
     
     auto num_iters = noutput_items / d_batch_size;
+    uint32_t xfer_size = d_batch_size * sizeof(input_type);
     for (uint32_t idx = 0; idx < d_load; ++idx)
     {
         for (uint32_t iter_idx = 0; iter_idx < num_iters; ++iter_idx)
@@ -71,7 +72,7 @@ int zynq_loopback_impl::general_work(int noutput_items,
             // Kick off the read operation
             int rc = dmap_read_nb(d_device_index, 
                                   (void*)(out + (iter_idx * d_batch_size)), 
-                                  d_batch_size);
+                                  xfer_size);
             if (rc)
             {
                 std::cerr << "DMA read failed: " << rc << std::endl;
@@ -80,7 +81,7 @@ int zynq_loopback_impl::general_work(int noutput_items,
             // Write/transmit the data
             rc = dmap_write(d_device_index, 
                             (void*)(in + (iter_idx * d_batch_size)), 
-                            d_batch_size);
+                            xfer_size);
             if (rc)
             {
                 std::cerr << "DMA write failed: " << rc << std::endl;
