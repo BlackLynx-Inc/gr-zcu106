@@ -29,7 +29,10 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND zynq_python_files
+    sw_CDMA2000_TC_decoder_python.cc
+    sw_CDMA2000_TC_encoder_python.cc
     sw_complex_matrix_inv_10x10_python.cc
+    zynq_CDMA2000_TC_decoder_python.cc
     zynq_complex_matrix_inv_10x10_python.cc
     zynq_fft_python.cc
     zynq_loopback_python.cc

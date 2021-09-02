@@ -7,7 +7,10 @@
 #
 
 install(FILES
+    zynq_sw_CDMA2000_TC_encoder.block.yml
+    zynq_sw_CDMA2000_TC_decoder.block.yml
     zynq_sw_complex_matrix_inv_10x10.block.yml
+    zynq_zynq_CDMA2000_TC_decoder.block.yml
     zynq_zynq_complex_matrix_inv_10x10.block.yml
     zynq_zynq_fft.block.yml
     DESTINATION share/gnuradio/grc/blocks

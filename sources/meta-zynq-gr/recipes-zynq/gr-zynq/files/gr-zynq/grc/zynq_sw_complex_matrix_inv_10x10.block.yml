@@ -28,12 +28,12 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: input
+- label: in
   domain: stream
   dtype: complex
 
 outputs:
-- label: output
+- label: out
   domain: stream
   dtype: complex
 

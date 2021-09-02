@@ -11,7 +11,10 @@
 ########################################################################
 install(FILES
     api.h
+    sw_CDMA2000_TC_decoder.h
+    sw_CDMA2000_TC_encoder.h
     sw_complex_matrix_inv_10x10.h
+    zynq_CDMA2000_TC_decoder.h
     zynq_fft.h
     zynq_loopback.h
     zynq_loopback_legacy.h

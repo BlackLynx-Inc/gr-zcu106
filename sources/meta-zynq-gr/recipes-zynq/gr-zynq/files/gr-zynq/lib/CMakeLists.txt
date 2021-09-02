@@ -26,12 +26,20 @@ ENDFUNCTION()
 include(GrPlatform) #define LIB_SUFFIX
 
 list(APPEND zynq_sources
-     sw_complex_matrix_inv_10x10_impl.cc
-     zynq_buffer.cc
-     zynq_complex_matrix_inv_10x10_impl.cc
-     zynq_fft_impl.cc
-     zynq_loopback_impl.cc
-     zynq_loopback_legacy_impl.cc
+    CDMA2000_TC/bit_utils.cc
+    CDMA2000_TC/tc_utils.cc
+    CDMA2000_TC/get_3GPP_interleaver.cc
+    CDMA2000_TC/cdma2000_TC_encoder.cc
+    CDMA2000_TC/pccc_example.cc
+    sw_CDMA2000_TC_decoder_impl.cc
+    sw_CDMA2000_TC_encoder_impl.cc
+    sw_complex_matrix_inv_10x10_impl.cc
+    zynq_buffer.cc
+    zynq_CDMA2000_TC_decoder_impl.cc
+    zynq_complex_matrix_inv_10x10_impl.cc
+    zynq_fft_impl.cc
+    zynq_loopback_impl.cc
+    zynq_loopback_legacy_impl.cc
 )
 
 set(zynq_sources "${zynq_sources}" PARENT_SCOPE)
