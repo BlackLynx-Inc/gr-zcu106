@@ -32,7 +32,7 @@ public:
      * class. zynq::zynq_loopback_legacy::make is the public interface for
      * creating new instances.
      */
-    static sptr make(int device_index, int batch_size, int load);
+    static sptr make(int device_index, int batch_size, int load, int debug);
 };
 
 } // namespace zynq

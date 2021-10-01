@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(zynq_loopback_legacy.h)                                    */
-/* BINDTOOL_HEADER_FILE_HASH(47246bf153ecae85695b6f2978804633)                     */
+/* BINDTOOL_HEADER_FILE_HASH(3ea96687593535349d738b0779be9512)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -40,6 +40,7 @@ void bind_zynq_loopback_legacy(py::module& m)
            py::arg("device_index"),
            py::arg("batch_size"),
            py::arg("load"),
+           py::arg("debug"),
            D(zynq_loopback_legacy,make)
         )
         

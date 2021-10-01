@@ -32,7 +32,7 @@
 #define DMA_PROXY_IOC_START_WRITE		_IOW(DMA_PROXY_IOCTL_MAGIC,  4, int)  //!< IOCTL: start write from PL (nonblocking)
 #define DMA_PROXY_IOC_COMPLETE_WRITE	_IOW(DMA_PROXY_IOCTL_MAGIC,  5, int)  //!< IOCTL: complete write from PL (nonblocking)
 
-#define MAX_DEVICES             16
+#define MAX_DEVICES             8
 #define MAX_BUF_SIZE        	((1 << (MAX_ORDER - 1)) * PAGE_SIZE)  
 #define BUFFER_LIST_INCREMENT 	10
 

@@ -213,7 +213,7 @@ python populate_packages_prepend() {
 }
 
 #PV = "3.9.0+git${SRCPV}"
-PV = "3.9.2.0-ngsched"
+PV = "ngsched"
 
 FILESPATHPKG_prepend = "gnuradio-git:"
 

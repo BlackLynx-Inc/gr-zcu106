@@ -13,5 +13,5 @@ dma_proxy_test_1: dma_proxy@1 {
 				&axi_dma_1 1>;
 		dma-names = "dma_proxy_tx_1", "dma_proxy_rx_1";
 	};
-	
+
 };

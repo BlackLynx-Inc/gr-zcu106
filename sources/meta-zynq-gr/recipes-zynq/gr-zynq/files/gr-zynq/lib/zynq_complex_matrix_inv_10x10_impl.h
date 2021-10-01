@@ -29,7 +29,7 @@ public:
     static const uint32_t FIRMWARE_COMP_MAT_INV_ID{0x3};
 
     static const uint32_t BATCH_SIZE{4};
-    static const uint32_t DIMENSION{10};
+    static const uint32_t DIMENSION{9};
     static const uint32_t SIZE_SAMPLES{BATCH_SIZE * DIMENSION * DIMENSION};
     static const uint32_t SIZE_BYTES{SIZE_SAMPLES * sizeof(gr_complex)};
     

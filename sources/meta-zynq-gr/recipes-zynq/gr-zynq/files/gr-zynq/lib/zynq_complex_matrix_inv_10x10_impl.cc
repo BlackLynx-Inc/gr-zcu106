@@ -65,6 +65,7 @@ zynq_complex_matrix_inv_10x10_impl::zynq_complex_matrix_inv_10x10_impl(int devic
         msg << "Firmware ID: " << firmware_id << " does not match expected "
             << "value: " << FIRMWARE_COMP_MAT_INV_ID << "! Please select a different "
             << "device/partition ID or load the correct firmware image.\n";
+        //~ std::cerr << msg.str() << std::endl;
         throw std::runtime_error(msg.str());
     }
 

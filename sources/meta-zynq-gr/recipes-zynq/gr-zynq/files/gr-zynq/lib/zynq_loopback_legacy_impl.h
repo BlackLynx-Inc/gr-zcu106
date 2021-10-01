@@ -19,12 +19,13 @@ private:
     uint32_t d_device_index;
     int d_batch_size;
     int d_load;
+    int d_debug;
     
     void* d_dma_write_buffer;
     void* d_dma_read_buffer;
 
 public:
-    zynq_loopback_legacy_impl(int device_index, int batch_size, int load);
+    zynq_loopback_legacy_impl(int device_index, int batch_size, int load, int debug);
     ~zynq_loopback_legacy_impl();
 
     // Where all the action really happens

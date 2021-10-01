@@ -33,7 +33,9 @@ list(APPEND zynq_sources
     CDMA2000_TC/pccc_example.cc
     sw_CDMA2000_TC_decoder_impl.cc
     sw_CDMA2000_TC_encoder_impl.cc
+    sw_complex_matrix_difference_ratio_impl.cc
     sw_complex_matrix_inv_10x10_impl.cc
+    sw_vector_permute_impl.cc
     zynq_buffer.cc
     zynq_CDMA2000_TC_decoder_impl.cc
     zynq_complex_matrix_inv_10x10_impl.cc

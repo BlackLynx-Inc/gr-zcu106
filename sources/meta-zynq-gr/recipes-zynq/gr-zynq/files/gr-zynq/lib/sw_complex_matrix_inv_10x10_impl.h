@@ -24,7 +24,7 @@ private:
     
 public:
 
-    static const uint32_t DIMENSION{10};
+    static const uint32_t DIMENSION{9};
     static const uint32_t SIZE_SAMPLES{DIMENSION * DIMENSION};
     static const uint32_t SIZE_BYTES{SIZE_SAMPLES * sizeof(gr_complex)};
     

@@ -23,7 +23,9 @@ namespace py = pybind11;
 // BINDING_FUNCTION_PROTOTYPES(
     void bind_sw_CDMA2000_TC_encoder(py::module& m);
     void bind_sw_CDMA2000_TC_decoder(py::module& m);
+    void bind_sw_complex_matrix_difference_ratio(py::module& m);
     void bind_sw_complex_matrix_inv_10x10(py::module& m);
+    void bind_sw_vector_permute(py::module& m);
     void bind_zynq_CDMA2000_TC_decoder(py::module& m);
     void bind_zynq_complex_matrix_inv_10x10(py::module& m);
     void bind_zynq_fft(py::module& m);
@@ -59,7 +61,9 @@ PYBIND11_MODULE(zynq_python, m)
     // BINDING_FUNCTION_CALLS(
     bind_sw_CDMA2000_TC_encoder(m);
     bind_sw_CDMA2000_TC_decoder(m);
+    bind_sw_complex_matrix_difference_ratio(m);
     bind_sw_complex_matrix_inv_10x10(m);
+    bind_sw_vector_permute(m);
     bind_zynq_CDMA2000_TC_decoder(m);
     bind_zynq_complex_matrix_inv_10x10(m);
     bind_zynq_fft(m);

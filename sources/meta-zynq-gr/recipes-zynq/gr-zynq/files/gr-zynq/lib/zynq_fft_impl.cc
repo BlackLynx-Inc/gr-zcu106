@@ -67,7 +67,8 @@ zynq_fft_impl::zynq_fft_impl(int device_index, int debug)
         msg << "Firmware ID: " << firmware_id << " does not match expected "
             << "value: " << FIRMWARE_FFT_ID << "! Please select a different "
             << "device/partition ID or load the correct firmware image.\n";
-        throw std::runtime_error(msg.str());
+        //~ throw std::runtime_error(msg.str());
+        std::cerr << msg.str() << std::endl;
     }
     
     if (d_debug)
@@ -77,7 +78,7 @@ zynq_fft_impl::zynq_fft_impl(int device_index, int debug)
     
     // NOTE: this block expects vector input so this really means:
     //  1 * d_fft_size
-    set_output_multiple(1); 
+    set_output_multiple(1);
 }
 
 /*

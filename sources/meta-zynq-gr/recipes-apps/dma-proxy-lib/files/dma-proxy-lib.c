@@ -35,7 +35,7 @@ typedef struct device_info {
 enum rw { READ, WRITE };
 
 pthread_mutex_t master_mutex;   // used to make buffer list thread safe
-static uint32_t buffer_list_inc = 10;   // increment size by this amount
+static uint32_t buffer_list_inc = 20;   // increment size by this amount
 static proxy_buffer_info_t* buffer_list = NULL;
 static uint32_t buffer_list_size = 0;
 static uint32_t buffer_list_idx = 0;

@@ -31,6 +31,7 @@ class benchmark_customcopy(gr.top_block):
         actual_samples = (veclen) * int(nsamples / veclen)
         num_blocks = args.nblocks
         type_ = args.type
+        debug = args.debug
 
         ##################################################
         # Blocks
@@ -38,9 +39,9 @@ class benchmark_customcopy(gr.top_block):
         ptblocks = []
         for idx in range(num_blocks):
             if type_ == 'regular':                
-                ptblocks.append(zynq.zynq_loopback(idx, veclen, load))
+                ptblocks.append(zynq.zynq_loopback(idx, veclen, load, debug))
             elif type_ == 'legacy':
-                ptblocks.append(zynq.zynq_loopback_legacy(idx, veclen, load))
+                ptblocks.append(zynq.zynq_loopback_legacy(idx, veclen, load, debug))
             else:
                 raise ValueError(f'Invalid type: {type_}')
             
@@ -79,6 +80,7 @@ def main(top_block_cls=benchmark_customcopy, options=None):
     parser.add_argument('--nblocks', type=int, default=1)
     parser.add_argument('--load', type=int, default=1)
     parser.add_argument('--type', type=str, default='regular')
+    parser.add_argument('--debug', type=int, default=0)
 
     args = parser.parse_args()
     print(args)

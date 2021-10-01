@@ -1,5 +1,5 @@
-id: zynq_zynq_complex_matrix_inv_10x10
-label: Zynq Complex Matrix Inv 10x10
+id: zynq_zynq_complex_matrix_inv_9x9
+label: Zynq Complex Matrix Inv 9x9
 category: '[zynq]'
 
 templates:
