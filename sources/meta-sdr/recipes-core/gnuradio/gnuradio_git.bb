@@ -4,8 +4,9 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS = "volk gsl fftw python3 python3-six-native alsa-lib boost \
-           python3-pybind11-native python3-numpy python3-numpy-native log4cpp \
-           python3-mako-native git-native gmp libsndfile1"
+           python3-pybind11-native python3-numpy python3-numpy-native spdlog \
+           python3-mako-native git-native gmp libsndfile1 \
+           python3-packaging-native"
 
 #Available PACKAGECONFIG options are qtgui5 grc uhd logging orc ctrlport zeromq staticlibs
 PACKAGECONFIG ??= "qtgui5 grc zeromq"
@@ -42,14 +43,14 @@ RDEPENDS_${PN}-zeromq = "python3-pyzmq"
 
 C_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-#do_configure_prepend() {
+#do_configure:prepend() {
 #    ${BUILD_CC} ${S}/gr-vocoder/lib/codec2/generate_codebook.c -o ${S}/gr-vocoder/lib/generate_codebook -lm
 #    echo "ADD_EXECUTABLE(generate_codebook IMPORTED)" >${S}/gr-vocoder/lib/generate_codebook.txt
 #    echo "SET_PROPERTY(TARGET generate_codebook APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)" >>${S}/gr-vocoder/lib/generate_codebook.txt
 #    echo 'SET_TARGET_PROPERTIES(generate_codebook PROPERTIES IMPORTED_LOCATION_RELEASE "${S}/gr-vocoder/lib/generate_codebook")' >>${S}/gr-vocoder/lib/generate_codebook.txt
 #}
 
-#do_compile_prepend() {
+#do_compile:prepend() {
 #    cp ${S}/gr-vocoder/lib/codec2/defines.h ${B}/gr-vocoder/lib/codec2
 #}
 
@@ -209,27 +210,22 @@ python populate_packages_prepend() {
      #                 prepend=True)
     pn = d.getVar('PN')
     if pkgs:
-        d.appendVar('RDEPENDS_'+pn+'-dev', ' '+' '.join(pkgs))
+        d.appendVar('RDEPENDS:'+pn+'-dev', ' '+' '.join(pkgs))
 }
 
-#PV = "3.9.0+git${SRCPV}"
-PV = "ngsched"
+#PV = "3.10.0+git${SRCPV}"
+#PV = "3.10.0.0"
 
 FILESPATHPKG_prepend = "gnuradio-git:"
 
-#SRCREV ="c98adfbdbb88c08734a1507d6257755611b947c5"
-SRCREV ="691e41607d5fd1e0b33c998cd5f4c427b75bff0e"
+SRCREV ="9e6aeefeae8294026a188d5597c4f7559179dc5c"
 
 # Make it easy to test against branches
-GIT_BRANCH = "maint-3.9"
+GIT_BRANCH = "master"
 GITHUB_USER = "gnuradio"
 
-#SRC_URI = "git://github.com/${GITHUB_USER}/gnuradio.git;branch=${GIT_BRANCH};protocol=https \
-#           file://0001-When-cross-compiling-gnuradio-change-how-the-test-fi.patch \
-#           file://run-ptest \
-#          "
-
-SRC_URI = "git://github.com//gnuradio/gnuradio-ngsched.git;branch=master;protocol=https \
+SRC_URI = "git://github.com/${GITHUB_USER}/gnuradio.git;branch=${GIT_BRANCH};protocol=https \
+           file://run-ptest \
           "
 
 S="${WORKDIR}/git"

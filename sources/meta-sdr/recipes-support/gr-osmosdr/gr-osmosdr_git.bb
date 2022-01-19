@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS = "gnuradio swig-native python-cheetah-native"
 
-# Use PACKAGECONFIG_pn-gr-osmosdr = "uhd hackrf"
+# Use PACKAGECONFIG:pn-gr-osmosdr = "uhd hackrf"
 # to build gr-osmosdr for uhd and hackrf. This variable goes in
 # local.conf or other suitable distro conf file.
 PACKAGECONFIG ??= "rtl-sdr airspy hackrf rfspace"

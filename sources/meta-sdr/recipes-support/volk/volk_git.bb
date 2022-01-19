@@ -3,7 +3,7 @@ HOMEPAGE = "http://libvolk.org"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-DEPENDS = "python3-mako-native"
+DEPENDS = "boost python3-mako-native python3-six-native"
 
 inherit python3native cmake pkgconfig ptest
 
@@ -16,7 +16,7 @@ export HOST_SYS="${MULTIMACH_TARGET_SYS}"
 export STAGING_LIBDIR
 
 PV = "2.5.0"
-SRC_URI = "gitsm://github.com/gnuradio/volk.git;branch=main \
+SRC_URI = "gitsm://github.com/gnuradio/volk.git;branch=master;protocol=https \
            file://0001-Modify-ctest-so-we-can-package-the-testfiles-and-ins.patch \
            file://run-ptest \
           "
