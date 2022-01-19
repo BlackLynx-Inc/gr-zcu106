@@ -218,7 +218,7 @@ PV = "ngsched"
 FILESPATHPKG_prepend = "gnuradio-git:"
 
 #SRCREV ="c98adfbdbb88c08734a1507d6257755611b947c5"
-SRCREV ="e691d00fe3359560d03059af724fa9d84c3ea506"
+SRCREV ="691e41607d5fd1e0b33c998cd5f4c427b75bff0e"
 
 # Make it easy to test against branches
 GIT_BRANCH = "maint-3.9"
