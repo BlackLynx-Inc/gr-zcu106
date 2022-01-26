@@ -1,6 +1,6 @@
 # gr-zcu106 Read Me
 
-Follow the steps below to create a Yocto Linux image for Xilinx ZC106 platform with GNU radio built in the filesystem using OE meta-sdr layer
+Follow the steps below to create a Yocto Linux image for Xilinx ZCU106 platform with GNU radio built in the filesystem using OE meta-sdr layer
 
 ## Build Instructions
 
