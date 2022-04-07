@@ -3,9 +3,9 @@ Create a Vivado 2020.1 Embedded GNU Radio FPGA project for the Xilinx ZCU106 car
 1) Export the XILINX_2020_1_SDx_HOME environment variable to point to the Vivado install
 
    Examples:
-   $ export XILINX_2020_1_SDx_HOME=/opt/Xilinx/SDx/2020.1
+   $ export XILINX_2021_1_SDx_HOME=/opt/Xilinx/SDx/2021.1
    or
-   $ export XILINX_2020_1_SDx_HOME=/opt/Xilinx/Vivado/2020.1
+   $ export XILINX_2021_1_SDx_HOME=/opt/Xilinx/Vivado/2021.1
   
 2) Run the create_design.sh script
    $ ./create_design.sh
